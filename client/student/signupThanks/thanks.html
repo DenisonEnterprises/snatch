@@ -1,0 +1,27 @@
+<template name="thanksForm">
+
+  <head>
+    <title>Bandersnatch - Thanks!</title>
+  </head> 
+  
+  <div class= "thanksContainer">
+  
+    <div class="thanksText">
+      <p>Thank you for signing up for the Bandersnatch App.</p>
+      <p>Please check your Denison email for a verification link!</p>
+      <p>If it does not show up within a few minutes, please check your junk mail.</p>
+    </div>
+  <button onclick="thanks()">Thank You</button>
+    
+    <div class= "ftr">
+      <img src="/img/ThankYou1.png" alt="ThankYou">
+    </div>
+    
+      <script>
+        function thanks() {
+           window.location.href = '/'; 
+        }
+      </script> 
+    
+  </div>
+</template>

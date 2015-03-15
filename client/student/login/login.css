@@ -1,0 +1,127 @@
+.loginContainer {
+  background-image: url(/img/lg/loginLG.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  
+  /* overflow: hidden;*/
+    position:absolute;
+    height:100vh;
+    width:100vw;
+    top:0px;
+    left:0px;
+}
+
+
+
+.loginContainer .loginText{
+  color: white;
+  display:table;
+  margin-right:auto;
+  margin-left:auto;
+  
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  
+  /*background-image: url(/img/red.jpg);*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  
+  
+  
+  /*border: solid white 2px;*/
+  
+  border-radius: 10px;
+  
+  
+  
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  
+  
+  /*display: none;*/
+}
+
+
+.cntr {
+  text-align: center;
+  padding-top: 60px;
+  
+}
+
+.cntr img {
+  max-width: 500px;
+  max-height: 300px;
+  
+  padding-top: 30px;
+  padding-bottom: 5px;
+  width:400px;
+}
+
+
+
+
+ .loginContainer .ftr img{
+  max-width: 60px;
+  max-height: 60px; 
+}
+
+.ftr {
+  padding-top: 40px;
+  text-align: center;
+  color: #000000;
+  font-family: Verdana;
+  font-size: 8px;
+  text-decoration: underline;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.loginContainer .cntr button {
+  font-family: OpenSans;
+  color: #ffffff;
+  font-size: 15px;
+  background-color:#005f5f ;
+  padding: 10px 20px 10px 20px;
+  border: solid #005f5f 2px;
+  display: inline;
+  margin: 0px 10px 0px 10px;
+  /*position: relative;*/
+  
+  font-weight:bolder;
+}
+
+
+.loginContainer .cntr button:hover {
+  background-color:#005f5f ;
+}
+
+
+.loginContainer form{
+  display: inline;
+  
+}
+
+.middle {
+  text-align: center;
+  padding-top: 60px;
+}
+

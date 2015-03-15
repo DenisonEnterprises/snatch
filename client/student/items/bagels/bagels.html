@@ -1,0 +1,85 @@
+<template name="bagels">
+  <head>
+    <title>Bandersnatch - Bagels</title>
+    <br>
+  </head>
+  
+  {{#if isInRole 'student'}}
+  
+  <div class="itemContainer">
+       
+    <div class="nav">
+       <ul>
+          <li>{{currentUser.username}}</li>
+          <li class="Settings">
+            <a href="/settings" >
+              <img src="img/sm/settingsSM.png" alt="Settings">
+            </a>
+          </li>
+          
+          <li class="Info">
+            <a href="/about">
+              <img src="img/sm/infoSM.png" alt="Info">
+            </a>
+          </li>
+          
+      </ul>
+    </div> 
+
+     <h1>Bagels</h1>
+
+      <form id="bagel_list">
+        <ul>
+          {{#each bagel}}
+            {{>bagelBox}}
+          {{/each}}
+        </ul>
+        <button type =button class="backButton" id="backBTN">Menu</button>
+        
+        <button type="submit" class="atcButton">Add To Cart</button>
+      </form>
+    
+    <button type =button id=shakesBTN>Shakes</button>
+    <button type =button id=bevsBTN>Beverages</button>
+    <button type =button id=snackBTN>Snacks</button>
+ 
+    
+  </div>
+  
+   <script>
+    function back() {
+      window.location.href = '/menu'; 
+    }
+     
+     function shakes() {
+      window.location.href = '/shakes'; 
+    }
+     
+     function snacks() {
+      window.location.href = '/snacks'; 
+    }
+     
+     function beverages() {
+      window.location.href = '/beverages'; 
+    }
+     
+
+  </script>
+  
+  
+    {{else}}
+    
+     {{> denied}}
+  
+    {{/if}}
+  
+</template>
+
+
+<template name ="bagelBox">
+ <li>
+    <input type="checkbox" id="{{bagelName}}" name="{{bagelName}}" value="{{bagelPrice}}">
+    <span class="text">{{bagelName}}</span>
+    <span class="price">{{bagelPrice}}</span>
+  </li>
+</template>

@@ -1,0 +1,121 @@
+<template name="menu">
+  
+  <head>
+    <title>Bandersnatch - Menu</title>
+  </head>
+  
+   {{#if isInRole 'student'}}
+  
+  <div class="menuContainer">
+       
+    <div class="nav">
+       <ul>
+          <li>{{currentUser.username}}</li>
+          <li class="Settings">
+            <a href="/settings" >
+              <img src="img/sm/settingsSM.png" alt="Settings">
+            </a>
+          </li>
+          
+          <li class="Info">
+            <a href="/about">
+              <img src="img/sm/infoSM.png" alt="Info">
+            </a>
+          </li>
+         
+         <li class="logout">
+            <a href="/">
+              <button class="logOut" onclick="Logout()">Logout</button>
+           </a>
+         </li>
+          
+      </ul>
+    </div> 
+   
+
+ 
+    <div class="middle">
+      <h1>Main Menu</h1>
+       <br>
+       <button class="bagelBTN" id="bagelBTN">Bagels</button>
+      
+       <button class="shakesBTN" id="shakesBTN">Milkshakes</button>
+      
+       <button class="bevsBTN" id="bevsBTN">Beverages</button>
+      
+       <button class="snackBTN" id="snackBTN"> Snacks </button>
+      
+       <br>
+      
+      <div class= "cart">
+       <button id="cout">Checkout
+       <img src="img/lg/Grocery-CartLG.png" alt="Cart"></button>
+      </div>
+      
+      <div class="notif">
+      <img src="img/cartupdate-3.png"  alt="Order Updated!" id="notif">
+      </div>
+    </div>
+    
+    
+    
+  <script>
+    
+   function checkout() {
+     var button = document.getElementById("cout");
+      if (Local.find({userId: Meteor.user()._id}).count() === 0){
+         var button = document.getElementById("cout");
+         button.disabled = true;
+         button.style.opacity = "0.2";
+         button.style.filter  = 'alpha(opacity=20)'; // IE fallback
+         $("#cout").css("cursor", "default");
+         
+    }else{
+          button.disabled = false;
+          button.style.opacity = "1.0";
+          button.style.filter  = 'alpha(opacity=100)'; // IE fallback
+    }
+     
+   }
+    
+
+    setTimeout(checkout , 500);
+
+     
+
+    
+    setTimeout(function(){
+ 
+      var type = window.location.hash.substr(1);
+      if (type === "u"){
+          $("#notif").fadeIn(2000);
+      }
+    
+    }, 500);
+    
+    
+    setTimeout(function(){
+ 
+      var type = window.location.hash.substr(1);
+      if (type === "u"){
+          $("#notif").fadeOut(2000);
+      }
+    
+    }, 5000);
+   
+    function Logout(){
+       Meteor.logout(); 
+    }
+    
+    </script>
+  
+  </div> 
+  
+  {{else}}
+    
+     {{> denied}}
+  
+  {{/if}} 
+
+  
+</template>

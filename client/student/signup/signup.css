@@ -1,0 +1,58 @@
+
+.signupContainer {
+  background-color: #005f5f;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-family: OpenSans;
+  color: #ffffff;
+  
+
+  overflow: hidden;
+  position:absolute;
+  height:100vh;
+  width:100vw;
+  top:0px;
+  left:0px;
+  
+}
+
+.signupContainer .formContainer{
+   background-image: url(/img/lg/signupbackgroundLG.png);
+   /*background-color: #fff;*/
+   background-repeat: no-repeat;
+   background-position: center;
+   padding-top: 130px;
+   padding-bottom: 125px;
+}
+
+
+.signupContainer button {
+  font-family: OpenSans;
+  color: #fff;
+  font-size: 15px;
+  background: transparent;
+  padding: 10px 20px 10px 20px;
+  border: solid #005f5f 2px;
+  display: inline-block;
+  position: relative;
+  font-weight:bolder;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.signupContainer p{
+  font-family: OpenSans;
+  color: #fff;
+  font-size: 10px;
+}
+
+
+.signupContainer input.invalid{
+  border: 2px solid red;
+}
+
+
+.signupContainer h6{
+   color: red;
+}
+

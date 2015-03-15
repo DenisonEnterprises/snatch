@@ -1,0 +1,23 @@
+<template name="settings">
+  
+  
+
+  <head>
+    <title>Bandersnatch - Settings</title>
+  </head>
+  {{#if isInRole 'student'}}
+  
+  
+  <div class = "settingsContainer">
+   
+  <h1>Settings</h1>
+ 
+  </div>
+    
+    {{else}}
+    
+     {{> denied}}
+  
+    {{/if}}
+  
+</template>

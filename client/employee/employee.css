@@ -1,0 +1,29 @@
+
+.employeeContainer {
+  background-color: black;
+  color: white; 
+  
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /*overflow: hidden;*/
+    position:absolute;
+    height:100vh;
+    width:100vw;
+    top:0px;
+    left:0px;
+}
+
+.employeeContainer h1{
+   padding-top: 30px;
+   text-shadow: 4px 4px #005f5f;
+   font-size: 80px;
+   color: #fff;
+    float: center;
+    padding-right: 150px;
+
+}
+
+.employeeContainer td{
+  white-space: pre; 
+}

@@ -1,0 +1,15 @@
+.settingsContainer {
+  background-color: #005f5f;
+  
+  text-align: center;
+  font-family: OpenSans;
+  color: #ffffff;
+  
+
+  overflow: hidden;
+  position:absolute;
+  height:100vh;
+  width:100vw;
+  top:0px;
+  left:0px;
+}

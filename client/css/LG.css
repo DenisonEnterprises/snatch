@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "Olivier";
+    src: url('/fonts/olivier_demo.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: url('/fonts/OpenSans-Light.ttf') format("truetype");
+}
+
+
+header {
+  font-family: "Olivier";
+  text-shadow: 2px 2px #202020;
+  font-size: 200%;
+}
+
+  
+h1 {
+  font-family: "Olivier";
+  text-shadow: 2px 2px #202020;
+  font-size: 80px;
+  color: #fff;
+}
+
+
+
+
+.button-check {
+  display: inline-block;
+  vertical-align: top;
+  height: 20px;
+  line-height: 18px;
+  padding: 0 20px;
+  font-family: inherit;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  background-color: red;
+  border: 1px solid;
+  border-color: black;
+  border-radius: 25px;
+  
+  position: relative;
+  width: 20px;
+  padding: 0;
+}
+
+
+

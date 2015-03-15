@@ -1,0 +1,67 @@
+<template name="beverages">
+ 
+    
+  <head>
+    <title>Bandersnatch - Beverages</title>
+  </head>
+  
+  {{#if isInRole 'student'}}
+
+
+  
+  
+  <div class="itemContainer">
+    
+    <div class="nav">
+       <ul>
+          <li>{{currentUser.username}}</li>
+          <li class="Settings">
+            <a href="/settings" >
+              <img src="img/sm/settingsSM.png" alt="Settings">
+            </a>
+          </li>
+          
+          <li class="Info">
+            <a href="/about">
+              <img src="img/sm/infoSM.png" alt="Info">
+            </a>
+          </li>
+          
+      </ul>
+    </div> 
+    
+      <h1>Beverages</h1>
+
+      <form id="bev_list">
+        <ul>
+          {{#each bev}}
+            {{>bevBox}}
+          {{/each}}
+        </ul>
+        <button type =button class="backButton" id="backBTN">Menu</button>
+        <button type="submit" class="atcButton">Add To Cart</button>
+      </form>
+        
+    <button type =button id=shakesBTN>Shakes</button>
+    <button type =button id=bagelBTN>Bagels</button>
+    <button type =button id=snackBTN>Snacks</button>
+      
+  </div>
+    
+  
+    {{else}}
+    
+     {{> denied}}
+  
+    {{/if}}
+  
+  
+</template>
+
+<template name ="bevBox">
+  <li>
+    <input type="checkbox" id="{{bevName}}" name="{{bevName}}" value="{{bevPrice}}">
+    <span class="text">{{bevName}}</span>
+    <span class="price"> {{bevPrice}} </span>
+  </li>
+</template>

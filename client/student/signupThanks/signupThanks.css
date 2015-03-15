@@ -1,0 +1,64 @@
+.thanksContainer {
+  background-image: url(/img/lg/loginLG.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  
+  
+  overflow: hidden;
+    position:absolute;
+    height:100vh;
+    width:100vw;
+    top:0px;
+    left:0px;
+ 
+
+}
+.thanksContainer .thanksText {
+  margin-top: 200px;
+  margin-bottom: 40px;
+  
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  
+  
+  display: table;
+  margin-left:auto;
+  margin-right:auto;
+  
+  
+  
+  border: solid #005f5f 2px;
+  font-family:"OpenSans";
+  line-height: 30px;
+  text-align: center;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, .5);
+  
+}
+
+.thanksContainer {
+  font-style: OpenSans;
+  text-align: center;
+  background-color: #fff;
+  
+}
+ .thanksContainer button {
+  font-family: OpenSans;
+  color: #ffffff;
+  font-size: 15px;
+  background: #005f5f;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 40px 10px 40px;
+  border: solid #005f5f 2px; 
+ }
+
+.thanksContainer .ftr img{
+  width: 200px;
+  height: 100px;
+  text-align: center;
+}

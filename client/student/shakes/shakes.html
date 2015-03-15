@@ -1,0 +1,91 @@
+<template name="shakes">
+  
+  <head>
+    <title>Bandersnatch - Shakes</title>
+  </head>
+ 
+  
+  {{#if isInRole 'student'}}
+  
+      <div class="shakesContainer">
+   
+    <div class="nav">
+       <ul>
+          <li>{{currentUser.username}}</li>
+          <li class="Settings">
+            <a href="/settings" >
+              <img src="img/sm/settingsSM.png" alt="Settings">
+            </a>
+          </li>
+          
+          <li class="Info">
+            <a href="/about">
+              <img src="img/sm/infoSM.png" alt="Info">
+            </a>
+          </li>
+          
+      </ul>
+    </div> 
+      
+      <h1>Shakes</h1>  
+    
+    <h3>$2.75 per Shake</h3>
+    
+    <h4>Flavors</h4>
+    
+       <form name="flavor" id="flavor_list">
+          <ul>
+            {{#each flavor}}
+              {{> flavorBox}}
+            {{/each}}
+          </ul>
+        </form>
+    
+    <h4>Mix-ins</h4>
+   
+      <form id="mixin_list">
+        
+<b>Pick Only Three Please!</b> 
+        
+        <br>
+        <ul>
+          {{#each mixin}}
+            {{> mixinBox}}
+          {{/each}}
+        </ul>
+      <br>
+        <button type =button id="backBTN" class="backButton">Menu</button>
+
+        <button type="submit" class="atcButton" >Add To Cart</button>
+      </form>  
+    
+    <button type =button id="bagelBTN">Bagels</button>
+    <button type =button id="bevsBTN">Beverages</button>
+    <button type =button id="snackBTN">Snacks</button>
+    
+  </div> 
+  
+    {{else}}
+      {{> denied}}
+    {{/if}}
+  
+</template>
+
+
+
+
+
+<template name="flavorBox">
+  <li>
+    <input type="checkbox" id="{{flavorName}}" name="{{flavorName}}" value="2.75">
+    <span class="text">{{flavorName}}</span>
+  </li>
+</template>
+
+<template name="mixinBox">
+  <li>
+    <input type="checkbox" id="{{mixinName}}" name="{{mixinName}}" value="2.75">
+    <span class="text">{{mixinName}}</span>
+  </li>
+</template>
+    

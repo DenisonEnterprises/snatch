@@ -1,0 +1,62 @@
+.aboutcontainer {
+   background-image: url(/img/about.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   color: white;
+  
+   overflow: hidden;
+   position:absolute;
+   height:100vh;
+   width:100vw;
+   top:0px;
+   left:0px;
+   
+  text-align: center;
+} 
+
+
+.aboutcontainer .wrapper h1 {
+   padding-top: 20px;
+   text-shadow: 2px 2px #202020;
+   font-size: 80px;
+    
+}
+
+.aboutcontainer .wrapper p {
+   font-family: OpenSans;
+   
+   
+   font-size: 15px;
+   line-height: 20px;
+  
+    padding-top: 0px;
+
+}
+
+
+.aboutcontainer .wrapper {
+    border: solid #005f5f 2px;
+   background-color: rgba(0, 95, 95, .5);
+    
+    margin-top: 200px;
+  
+    width:400px;
+    margin-left:auto;
+    margin-right:auto;
+  
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.aboutcontainer button{
+  font-family: OpenSans;
+  color: #ffffff;
+  font-size: 15px;
+  background: #005f5f;
+  margin: 20px;
+  padding: 10px 94px 10px 94px;
+  border: solid #005f5f 2px;
+}

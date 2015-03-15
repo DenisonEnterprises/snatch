@@ -1,0 +1,55 @@
+<template name="login">
+
+  <head>
+    <title>Bandersnatch - Login</title>
+  </head>
+  
+  <div class="loginContainer">
+
+    
+    <div class="cntr">
+      
+      <img src="img/lg/logoLG.png" alt="Bandersnatch Logo">
+      
+      <br>
+      <label id="loginText" class ="loginText"></label>
+      <br>
+      <form id="login-form">
+          <label for="login-username"></label><input type="text" id="login-username" placeholder="Username" />
+          <label for="login-password"></label><input type="password" id="login-password" placeholder="Password" />
+          <label>&nbsp; </label><button type="submit">Log In</button>
+      </form>
+  
+      <button onclick="sign()">Sign Up</button>
+   
+      
+      <script>
+        function sign() {
+           window.location.href = '/signup'; 
+        }
+          
+     /* $(document).ready( function () {
+          if (Meteor.loggingIn() && Accounts._verifyEmailToken){
+            window.location.href = '/menu';
+          }
+        });*/
+
+      </script> 
+     
+          
+
+        
+    </div>
+    
+    <div class="ftr">
+      
+      <a href="http://www.denisonenterprises.squarespace.com"> <img src="/img/DELogo.png" alt="DElogo"> </a>
+      <p><a href="http://www.denisonenterprises.squarespace.com" target= "_blank">D E N I S O N E N T E R P R I S E S</a></p>
+    </div>
+  
+   
+    </div>
+ 
+    
+  
+</template>

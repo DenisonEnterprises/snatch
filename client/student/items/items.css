@@ -1,0 +1,91 @@
+.itemContainer {
+  background-image: url(/img/MainBackgroundLG.jpg);
+  background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   
+  
+   overflow: hidden;
+   position:absolute;
+   height:100vh;
+   width:100vw;
+   top:0px;
+   left:0px;
+   text-align: center;
+}
+
+
+.itemContainer h1 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.itemContainer form ul {
+  color: white;
+  border: 3px solid;
+  display: table;
+  margin: 0 auto;
+  
+  background-color: rgba(0, 95, 95, .5);
+  text-align: left; 
+}
+
+.itemContainer button {
+  font-family: OpenSans;
+  color: #ffffff;
+  font-size: 15px;
+  background: #005f5f;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 40px 10px 40px;
+  border: solid #005f5f 2px;
+  
+  
+  font-weight:bolder;
+}
+
+.itemContainer form li {
+  list-style: none;
+  padding: 10px 15px 10px 15px;
+}
+
+.itemContainer form .text{
+  padding-left: 7px;
+  position:relative;
+  top: 3px;
+}
+
+.itemContainer form .price{
+  padding-left: 15px;
+  position:relative;
+  top: 3px;
+  float: right;
+}
+
+
+
+.itemContainer .backButton{
+  font-family: OpenSans;
+  color: #005f5f;
+  font-size: 15px;
+  background: white;
+  margin-top: 20px;
+  padding: 10px 40px 10px 40px;
+  border: solid #005f5f 3px;
+  
+  font-weight:bolder;
+}
+
+.itemContainer .atcButton{
+  font-family: OpenSans;
+  color: white;
+  font-size: 15px;
+  background: #bf7148;
+  margin-top: 20px;
+  padding: 10px 40px 10px 40px;
+  border: solid white 3px;
+  
+  font-weight:bolder;
+}

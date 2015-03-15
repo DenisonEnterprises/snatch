@@ -1,0 +1,110 @@
+.menuContainer {
+  background-image: url(/img/lg/menuLG2.jpg);
+  background-size:cover;
+  background-repeat:no-repeat;
+  
+  color: white;
+  
+  overflow: hidden;
+  position:absolute;
+    height:100vh;
+    width:100vw;
+    top:0px;
+    left:0px;
+}
+
+.menuContainer .nav .logOut{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 100px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #005f5f;
+  padding: 2px 15px 2px 15px;
+  text-decoration: none;
+}
+
+.menuContainer .nav .logOut:hover {
+  background: #1ca8a8;
+  text-decoration: none;
+}
+
+.menuContainer .middle button {
+  font-family: OpenSans;
+  color: #ffffff;
+  font-size: 15px;
+  background: #005f5f;
+  margin: 20px;
+  padding: 10px 80px 10px 80px;
+  border: solid white 2px;
+    font-weight:bolder;
+}
+
+.menuContainer .middle emptyButton {
+  background-color: #005f5f;
+  opacity: 0.5;
+  filter: alpha(opacity=100);  
+}
+
+.menuContainer .middle button:hover {
+  /*
+  background-color: #005f5f;
+  opacity: 0.5;
+  filter: alpha(opacity=100);*/
+  
+}
+
+.menuContainer .middle .bagelBTN {
+  font-family: OpenSans;
+  color: #ffffff;
+  font-size: 15px;
+  background: #005f5f;
+  margin: 20px;
+  padding: 10px 94px 10px 94px;
+  border: solid white 2px;
+}
+
+
+
+.menuContainer .middle .snackBTN {
+  font-family: OpenSans;
+  color: #ffffff;
+  font-size: 15px;
+  background: #005f5f;
+  margin: 20px;
+  padding: 10px 93px 10px 93px;
+  border: solid white 2px;
+}
+
+.menuContainer .cart img {
+  width: 30px;
+  height: 30px;
+  padding-bottom: 40px;
+  
+  padding-top: 30px;
+  
+}
+
+.menuContainer .middle button#cout{
+  font-family: OpenSans;
+  color: white;
+  font-size: 35px;
+  background: #bf7148;
+  margin: 20px;
+  padding: 0px 100px 0px 100px;
+  border: solid white 2px;
+  
+  font-family: Olivier;
+}
+
+
+.menuContainer .middle .notif img{
+  display: none;
+   
+  width:25%;
+  height: 25%;
+  
+}
+
+
