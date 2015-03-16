@@ -14,6 +14,18 @@
     left:0px;
 }
 
+.employeeContainer .nav button{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 100px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 70px;
+  background: #005f5f;
+  padding: 45px 85px 45px 85px;
+  text-decoration: none;
+}
+
 .employeeContainer h1{
    padding-top: 30px;
    text-shadow: 4px 4px #005f5f;

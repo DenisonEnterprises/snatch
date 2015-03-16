@@ -1,5 +1,13 @@
 Meteor.subscribe('employee');
 
+Template.employee.events({
+  "click #swapBTN": function( evt, instance ){
+    Router.go('orderList');
+  },
+});
+
+
+
 Template.orderInfo.helpers({
   'order' : function(){
     return ActiveOrders.find().fetch(); 
@@ -84,34 +92,7 @@ Template.itemPrice.helpers({
 });
 
 
-Template.orderInfo.events({
- 
-  'click #finished': function() {
-    var total; 
-    var orNum = this.orderNum;
-    var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
-    var usr = this.user;
-    console.log("USR is " + usr);
-    var cellNumber = this.phone;
-    console.log("CellNumber is " + cellNumber);
-    var cellCarrier = this.carrier;
-    console.log("cellCarrier is " + cellCarrier);
-    
-    
-    var str = "";
-    for (i=0; i < orders.length - 1; i++) {
-      console.log(orders[i].item);
-      str = str + orders[i].item + "\n";
-      total = total + orders.price;
-    }
-   // var lastItem = orders.length; 
-    //str = str + orders[lastItem].item; 
-    Meteor.call('finishedOrder', str, total, orNum, usr, cellNumber, cellCarrier, function(error,result) {
-				if (error)
-					return alert(error.reason);
-			}); 
-  }
-});
+
 
 Template.readyInfo.events({
  
