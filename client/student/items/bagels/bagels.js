@@ -11,7 +11,11 @@ Template.bagels.events({
   },
     "click #bevsBTN": function(evt, instance ){
     Router.go('beverages');
-  }
+  },
+    "click #logout": function(ev, instance){
+  	Meteor.logout();
+  	Router.go('/');
+  },
   
 });
 

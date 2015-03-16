@@ -17,6 +17,9 @@ Template.checkout.events({
     var str = "";
     var temp = "";
     var total = 0; 
+    if(orders.length > 6){			// Cap order size at 5
+    	alert("Woah way too many orders. You can only order 5");
+    }
     for (i=0; i < orders.length; i++) {
         var indvPrice = "";
         indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];

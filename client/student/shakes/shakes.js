@@ -11,7 +11,11 @@ Template.shakes.events({
   },
     "click #bevsBTN": function(evt, instance ){
     Router.go('beverages');
-  }
+  },
+    "click #logout": function(ev, instance){
+  	Meteor.logout();
+  	Router.go('/');
+  },
   
 });
 
@@ -42,6 +46,9 @@ Template.shakes.events({
     });
     $.each($('#mixin_list').serializeArray(),function(){
       form[this.name] = this.name;
+/*      if(price == NULL){
+      		price = "$" + this.value;
+      }*/
     });
   
     var mixinStr = ""
@@ -72,13 +79,14 @@ Template.mixinBox.helpers({
 });
 
 Template.flavorBox.events({
-    'click': function(event) {
+    'click': (function(event) {
       var elements = document.getElementsByName('flavor');
       var i = 0; 
       while (i < 3 && elements[i].checked){
         if(elements[i].checked){
           console.log("checkmate");
         }
+        i = i+1;
       }
       /*
       for (var i = 0, l = 3 ; i < l ; i++) {
@@ -87,7 +95,7 @@ Template.flavorBox.events({
           //console.log("Congrats on a fucking flavor"); 
         }
       }*/
-  },
+  }),
 });
 
 

@@ -13,7 +13,7 @@
     left:0px;
 }
 
-.menuContainer .nav .logOut{
+.menuContainer .nav .Logout button{
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
   border-radius: 100px;
@@ -25,7 +25,7 @@
   text-decoration: none;
 }
 
-.menuContainer .nav .logOut:hover {
+.menuContainer .nav .logout:hover {
   background: #1ca8a8;
   text-decoration: none;
 }

@@ -31,6 +31,11 @@
 
 }
 
+.shakesContainer b {
+  font-family: OpenSans; 
+  color: #fff;
+  font-size: 13px;
+}
 
 .shakesContainer form ul {
   color: white;
@@ -46,6 +51,28 @@
   -webkit-column-count: 3; 
   -moz-column-count: 3; 
   column-count: 3;
+}
+
+.shakesContainer li {
+  list-style: none;
+  padding-top: 10px;
+}
+
+.shakesContainer .nav .Logout button{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 100px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #005f5f;
+  padding: 2px 15px 2px 15px;
+  text-decoration: none;
+}
+
+.shakesContainer .nav .logout:hover {
+  background: #1ca8a8;
+  text-decoration: none;
 }
 
 

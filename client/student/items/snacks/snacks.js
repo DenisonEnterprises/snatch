@@ -11,7 +11,11 @@ Template.snacks.events({
   },
     "click #bevsBTN": function(evt, instance ){
     Router.go('beverages');
-  }
+  },
+  	"click #logout": function(ev, instance){
+  	Meteor.logout();
+  	Router.go('/');
+  	}
   
 });
 
@@ -30,10 +34,10 @@ Template.snacks.events({
 		event.preventDefault();
 
 		var form = {};
-    var price;
+  		var price;
 		$.each($('#snack_list').serializeArray(),function() {
-			form[this.name] = this.name;
-      price = this.value;
+		form[this.name] = this.name;
+    	price = this.value;
 		});
 		for (var key in form) {
 			console.log('ordering');

@@ -7,7 +7,7 @@
   
   {{#if isInRole 'student'}}
   
-      <div class="shakesContainer">
+    <div class="shakesContainer">
    
     <div class="nav">
        <ul>
@@ -23,6 +23,13 @@
               <img src="img/sm/infoSM.png" alt="Info">
             </a>
           </li>
+
+          <li class="Logout">
+            <a href="/">
+              <button class="logout" id="logout">Logout</button>
+            </a>
+          </li>
+          
           
       </ul>
     </div> 
@@ -33,6 +40,7 @@
     
     <h4>Flavors</h4>
     
+<b> Pick one please!</b>
        <form name="flavor" id="flavor_list">
           <ul>
             {{#each flavor}}
