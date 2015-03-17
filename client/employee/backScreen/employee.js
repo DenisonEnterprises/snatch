@@ -1,13 +1,5 @@
 Meteor.subscribe('employee');
 
-Template.employee.events({
-  "click #swapBTN": function( evt, instance ){
-    Router.go('orderList');
-  },
-});
-
-
-
 Template.orderInfo.helpers({
   'order' : function(){
     return ActiveOrders.find().fetch(); 
@@ -93,29 +85,36 @@ Template.itemPrice.helpers({
 
 
 
-
-Template.readyInfo.events({
+Template.orderInfo.events({
  
-  'click #pickUp': function() {
+  'click #finished': function() {
     var total; 
     var orNum = this.orderNum;
-    var orders = ReadyOrders.find({orderNum: orNum}).fetch();
+    var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
     var usr = this.user;
-    var cellNumber = this.cellNumber;
+    console.log("USR is " + usr);
+    var cellNumber = this.phone;
+    console.log("CellNumber is " + cellNumber);
+    var cellCarrier = this.carrier;
+    console.log("cellCarrier is " + cellCarrier);
     
     
     var str = "";
-    for (i=0; i < orders.length; i++) {
+    for (i=0; i < orders.length - 1; i++) {
       console.log(orders[i].item);
       str = str + orders[i].item + "\n";
-      total = total + orders.price; 
+      total = total + orders.price;
     }
-    //var lastItem = orders.length; 
-    //str = str + orders[lastItem].item;
-    Meteor.call('pickUpOrder', str, orNum, total, usr, cellNumber, function(error,result) {
+   // var lastItem = orders.length; 
+    //str = str + orders[lastItem].item; 
+    Meteor.call('finishedOrder', str, total, orNum, usr, cellNumber, cellCarrier, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 
-  } 
+  }
 });
+
+
+
+
 

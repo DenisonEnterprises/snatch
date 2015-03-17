@@ -20,26 +20,28 @@ Template.checkout.events({
     if(orders.length > 6){			// Cap order size at 5
     	alert("Woah way too many orders. You can only order 5");
     }
-    for (i=0; i < orders.length; i++) {
-        var indvPrice = "";
-        indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
-        temp = indvPrice; 
-      
-      str = str + orders[i].item + "\n";
-      total = total + parseFloat(temp);
-    }
-    var final = total.toString();
-    console.log("first final is: " + final);
-    while(final.length < 3){
-      console.log("Edited final: " + final);
-      final += "0";
-    }
-    Meteor.call('placeOrder', str, total, Meteor.user(), function(error,result) {
-				if (error)
-					return alert(error.reason);
-			}); 
-    Router.go('/thankYouCheckout'); 
-
+    else{
+		for (i=0; i < orders.length; i++) {
+			var indvPrice = "";
+			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
+			temp = indvPrice; 
+	  
+		  str = str + orders[i].item;
+		  total = total + parseFloat(temp);
+		}
+		var final = total.toString();
+		console.log("first final is: " + final);
+		while(final.length < 3){
+		  console.log("Edited final: " + final);
+		  final += "0";
+		}
+		console.log("about to call place order...  screen should be changing soon");
+		Meteor.call('placeOrder', str, total, Meteor.user(), function(error,result) {
+					if (error)
+						return alert(error.reason);
+				}); 
+		Router.go('/thankYouCheckout'); 
+	}
    
   },
   

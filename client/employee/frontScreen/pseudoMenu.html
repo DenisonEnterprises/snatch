@@ -1,0 +1,106 @@
+<template name="pseudoMenu">
+
+  <head>
+    <title>Bandersnatch - Menu</title>
+  </head>
+  
+    <style>
+table, th, td {
+    border: solid #005f5f 5px;
+}
+</style>
+
+   
+   <div class="pseudoMenuContainer">
+      <div class="nav">
+		<ul>
+			<li><button type="button" id="swapBTN">Pick Up Orders</button></li>
+		</ul>
+	</div>
+   
+   		<table>
+			<tr>				
+				<th> Bagels </th>
+				<th> Shakes </th>
+				<th> Beverages </th>
+				<th> Snacks </th>
+			</tr>
+			<tr>
+				<th><ul>				<!-- pseudoBagels -->
+				  {{#each bagel}}
+					{{>bagelBox}}
+				  {{/each}}
+       			 </ul></th>
+       			 <th><ul>				<!-- pseudoShakes -->
+       			 	<tr style="text-align:center"><th> Flavors </th></tr>
+       			 	<tr><th><ul>
+						{{#each flavor}}
+						  {{> flavorBox}}
+						{{/each}}       			 	
+       			 	</ul></th></tr>
+       			 	
+       			 	<tr></tr>
+       			 	<tr></tr>
+       			 	<tr></tr>
+       			 	<tr></tr>
+       			 	
+       			 	<tr style="text-align:center"><th> Mixins </th></tr>
+       			 	<tr><th><ul>
+       	 	          {{#each mixin}}
+						{{> mixinBox}}
+					  {{/each}}
+       			 	</ul></th></tr>
+       			 
+       			 </ul></th>
+				<th><ul>				<!-- pseudoBev -->
+				  {{#each bev}}
+					{{>bevBox}}
+				  {{/each}}
+				 </ul></th>
+				<th><ul>				<!-- pseudoSnacks -->
+		          {{#each snack}}
+					{{>snackBox}}
+				  {{/each}}
+				</ul></th>				 
+			</tr>
+		</table>
+		
+        <button type="submit" class="atcBTN">Add To Cart</button>
+		
+   </div> 
+   
+</template>
+   
+<template name ="bagelBox">
+ <li>
+    <input type="checkbox" id="{{bagelName}}" name="{{bagelName}}" value="{{bagelPrice}}">
+    <span class="text">{{bagelName}}</span>
+    <span class="price">{{bagelPrice}}</span>
+  </li>
+</template>   
+   
+   
+<template name ="bevBox">
+  <li>
+    <input type="checkbox" id="{{bevName}}" name="{{bevName}}" value="{{bevPrice}}">
+    <span class="text">{{bevName}}</span>
+    <span class="price"> {{bevPrice}} </span>
+  </li>
+</template>
+
+
+<template name ="snackBox">
+  <li>
+    <input type="checkbox" id="{{snackName}}" name="{{snackName}}" value="{{snackPrice}}">
+    <span class="text">{{snackName}}</span>
+    <span class="price"> {{snackPrice}} </span>
+  </li>
+</template>
+
+ 
+ <template name="flavorBox">
+  <li>
+    <input type="checkbox" id="{{flavorName}}" name="{{flavorName}}" value="2.75">
+    <span class="text">{{flavorName}}</span>
+  </li>
+</template>  

@@ -1,0 +1,14 @@
+.pseudoMenuContainer ul {
+  color: black;
+  list-style-type: none;
+  display: table;
+  margin: 0 auto;
+  
+  text-align: left; 
+}
+
+.pseudoMenuContainer th{
+	width: 250px;
+	font-size: 15px;
+
+}

@@ -1,5 +1,5 @@
 
-<template name="backScreen">
+<template name="employee">
   
  <!--   {{#if isInRole 'employee'}} -->
   
@@ -8,17 +8,17 @@ table, th, td {
     border: solid #005f5f 3px;
 }
 </style>
-	<div class="nav">
-	 	  <button type="button" id="swapBTN">Order List</button>
-	</div>
   <div class="employeeContainer"> 
-   
+   	<div class="nav">
+		<ul>
+			<button type="button" id="swapBTN">Order List</button>
+		</ul>
+	</div>
       <br>
       <br>
        
       <h3 align="center">Current Orders</h3>
         {{> orderInfo}}
-        {{> readyInfo}}
   
   </div>
     <!--
