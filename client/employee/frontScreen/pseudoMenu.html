@@ -18,7 +18,7 @@ table, th, td {
 		</ul>
 	</div>
    
-   		<table>
+   		<table align="center">
 			<tr>				
 				<th> Bagels </th>
 				<th> Shakes </th>
@@ -65,13 +65,13 @@ table, th, td {
 			</tr>
 		</table>
 		
-        <button type="submit" class="atcBTN">Add To Cart</button>
+        <button type="submit" id="atcBTN">Add To Cart</button>
 		
    </div> 
    
 </template>
    
-<template name ="bagelBox">
+<template name ="pbagelBox">
  <li>
     <input type="checkbox" id="{{bagelName}}" name="{{bagelName}}" value="{{bagelPrice}}">
     <span class="text">{{bagelName}}</span>
@@ -80,7 +80,7 @@ table, th, td {
 </template>   
    
    
-<template name ="bevBox">
+<template name ="pbevBox">
   <li>
     <input type="checkbox" id="{{bevName}}" name="{{bevName}}" value="{{bevPrice}}">
     <span class="text">{{bevName}}</span>
@@ -89,7 +89,7 @@ table, th, td {
 </template>
 
 
-<template name ="snackBox">
+<template name ="psnackBox">
   <li>
     <input type="checkbox" id="{{snackName}}" name="{{snackName}}" value="{{snackPrice}}">
     <span class="text">{{snackName}}</span>
@@ -98,9 +98,18 @@ table, th, td {
 </template>
 
  
- <template name="flavorBox">
+ <template name="pflavorBox">
   <li>
     <input type="checkbox" id="{{flavorName}}" name="{{flavorName}}" value="2.75">
     <span class="text">{{flavorName}}</span>
   </li>
 </template>  
+
+
+<template name="pmixinBox">
+  <li>
+    <input type="checkbox" id="{{mixinName}}" name="{{mixinName}}" value="2.75">
+    <span class="text">{{mixinName}}</span>
+  </li>
+</template>
+    

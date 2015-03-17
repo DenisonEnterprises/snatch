@@ -1,5 +1,14 @@
 Meteor.subscribe('employee');
 
+
+Template.employee.events({
+  'click #swapBTN': function( evt, instance ){
+    Router.go('orderList');
+  },
+});
+
+
+
 Template.orderInfo.helpers({
   'order' : function(){
     return ActiveOrders.find().fetch(); 
@@ -35,7 +44,21 @@ Template.orderNum.helpers({
 
 Template.cellNum.helpers({
   'cellNum' : function(){
-    return this.phone;
+  	var temp;
+    var str = this.phone;
+    temp = '(';
+    for(var i = 0; i < 3; i++){
+    	temp = temp + str[i];	
+    }
+    temp = temp + ')'; 
+    for(i = 3; i < 6; i++){
+    	temp += str[i]; 
+    }
+    temp += '-';
+    for(i = 6; i < 10; i++){
+    	temp += str[i];
+    }
+    return temp;
   }
 });
 
@@ -111,7 +134,8 @@ Template.orderInfo.events({
 				if (error)
 					return alert(error.reason);
 			}); 
-  }
+  },
+
 });
 
 

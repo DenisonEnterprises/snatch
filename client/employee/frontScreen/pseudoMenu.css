@@ -12,3 +12,16 @@
 	font-size: 15px;
 
 }
+
+.pseudoMenuContainer button{
+	text-align: center;
+  font-family: OpenSans;
+  color: white;
+  font-size: 15px;
+  background: #bf7148;
+  margin-top: 20px;
+  padding: 10px 40px 10px 40px;
+  border: solid white 3px;
+  
+  font-weight:bolder;
+}

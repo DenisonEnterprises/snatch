@@ -15,43 +15,73 @@ Template.pseudoMenu.events({
     Router.go('backScreen');
   },
   
-  
-});
-  
-  
-/* ------------------------ bagels shit ------------------------ */  
-    
-Template.pseudoMenu.events({
-	'submit form': function(event) {
-		event.preventDefault();
-
+  'click #atcBTN' : function(evt, instance){
+ 	 /* =============== snack Orders =============== */
+ 	 	console.log("The button has been clicked");
+  		event.preventDefault();
 		var form = {};
-    var price; 
-    var count = 0
-		$.each($('#bagel_list').serializeArray(),function() {
+  		var price;
+  		console.log('List of all the snacks ordered:');
+		$.each($('#snack_list').serializeArray(),function() {
+			console.log(this.name);
 			form[this.name] = this.name;
-      price = this.value;
-
-		}); 
-    
+			price = this.value;
+		});
+		console.log('Before the for loop');
 		for (var key in form) {
-			Meteor.call('bagelOrder',form[key], price, function(error,result) {
+			console.log('ordering');
+			Meteor.call('snackOrder',form[key], price, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});
 		}
-    
-    Router.go('/menu#u');
-  }
-});
+		/*
+		/* =============== bev Orders =============== 
+		var form2 = {};
+		$.each($('#bev_list').serializeArray(),function() {
+			form2[this.name] = this.name;
+    	    price = this.value;
+		});
 
-Template.bagelBox.helpers({
+		for (key in form2) {
+			Meteor.call('bevOrder',form2[key], price, function(error,result) {
+				if (error)
+					return alert(error.reason);
+			});
+		}
+		/* =============== bagel Orders =============== 
+		
+		var form3 = {};
+    	var count = 0;
+		$.each($('#bagel_list').serializeArray(),function() {
+			form3[this.name] = this.name;
+     		price = this.value;
+		}); 
+    
+		for (key in form3) {
+			Meteor.call('bagelOrder',form3[key], price, function(error,result) {
+				if (error)
+					return alert(error.reason);
+			});
+		}
+		
+		*/
+		
+		Router.go('pseudoCheck');
+	}
+  	
+});
+  
+  
+/* ------------------------ bagels shit ------------------------ */  
+
+Template.pbagelBox.helpers({
   'bagelName': function(){
     return this.type;
   }
 });
 
-Template.bagelBox.helpers({
+Template.pbagelBox.helpers({
   'bagelPrice': function(){
      return "$" + this.price.toFixed(2);
   }
@@ -66,30 +96,8 @@ Template.pseudoMenu.helpers({
   }
 });
 
-Template.pseudoMenu.events({
 
-	'submit form': function(event) {
-		event.preventDefault();
-
-		var form = {};
-    var price;
-		$.each($('#bev_list').serializeArray(),function() {
-			form[this.name] = this.name;
-      price = this.value;
-		});
-
-		for (var key in form) {
-			Meteor.call('bevOrder',form[key], price, function(error,result) {
-				if (error)
-					return alert(error.reason);
-			});
-		}
-		Router.go('/menu#u')
-	}
-})
-
-
-Template.bevBox.helpers({
+Template.pbevBox.helpers({
   'bevName': function(){
     return this.type;
   }
@@ -97,7 +105,7 @@ Template.bevBox.helpers({
 
 
 
-Template.bevBox.helpers({
+Template.pbevBox.helpers({
   'bevPrice': function(){
      return "$" + this.price.toFixed(2);
   }
@@ -114,32 +122,8 @@ Template.pseudoMenu.helpers({
   }
 });
 
-Template.pseudoMenu.events({
 
-	'submit form': function(event) {
-		event.preventDefault();
-
-		var form = {};
-  		var price;
-		$.each($('#snack_list').serializeArray(),function() {
-		form[this.name] = this.name;
-    	price = this.value;
-		});
-		for (var key in form) {
-			console.log('ordering');
-			Meteor.call('snackOrder',form[key], price, function(error,result) {
-				if (error)
-					return alert(error.reason);
-			});
-		}
-		Router.go('/menu#u')
-
-
-	}
-})
-
-
-Template.snackBox.helpers({
+Template.psnackBox.helpers({
 
   'snackName': function(){
     return this.type;
@@ -148,7 +132,7 @@ Template.snackBox.helpers({
 });
 
 
-Template.snackBox.helpers({
+Template.psnackBox.helpers({
 
   'snackPrice': function(){
     return "$" + this.price.toFixed(2);
@@ -171,54 +155,21 @@ Template.pseudoMenu.helpers({
   }, 
   
 });
-
-Template.pseudoMenu.events({
-  
-  'submit form': function(event) {
-    event.preventDefault();
-    var flavor;
-    var form = {};
-    var price; 
-    
-    $.each($('#flavor_list').serializeArray(),function(){
-      flavor = this.name + "\n";
-      price = "$" + this.value;
-    });
-    $.each($('#mixin_list').serializeArray(),function(){
-      form[this.name] = this.name;
-/*      if(price == NULL){
-      		price = "$" + this.value;
-      }*/
-    });
-  
-    var mixinStr = ""
-    for (var shit in form){
-      mixinStr = mixinStr + form[shit] + "\n";
-      }
-    
-      Meteor.call('shakeOrder',mixinStr, flavor, price,function(error,result) {
-        if (error)
-          return alert(error.reason);
-      });
-    
-    Router.go('/menu#u');
-  }
-});
     
 
-Template.flavorBox.helpers({
+Template.pflavorBox.helpers({
   'flavorName': function(){
     return this.name;
   }
 });
 
-Template.mixinBox.helpers({
+Template.pmixinBox.helpers({
   'mixinName': function(){
     return this.name;
   }
 });
 
-Template.flavorBox.events({
+Template.pflavorBox.events({
     'click': (function(event) {
       var elements = document.getElementsByName('flavor');
       var i = 0; 
@@ -239,7 +190,7 @@ Template.flavorBox.events({
 });
 
 
-Template.mixinBox.events({
+Template.pmixinBox.events({
     'click': function(event) {
       var elements = document.getElementsByName('mixin');
       for (var i = 0,l=4;i<l;i++) {

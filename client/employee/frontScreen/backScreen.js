@@ -43,7 +43,21 @@ Template.orderNum.helpers({
 
 Template.cellNum.helpers({
   'cellNum' : function(){
-    return this.phone;
+  	var temp;
+    var str = this.phone;
+    temp = '(';
+    for(var i = 0; i < 3; i++){
+    	temp = temp + str[i];	
+    }
+    temp = temp + ')'; 
+    for(i = 3; i < 6; i++){
+    	temp += str[i]; 
+    }
+    temp += '-';
+    for(i = 6; i < 10; i++){
+    	temp += str[i];
+    }
+    return temp;
   }
 });
 
