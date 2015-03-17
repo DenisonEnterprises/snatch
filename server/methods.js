@@ -32,13 +32,12 @@ Meteor.methods({
       uName: usr.username,
       fName: usr.firstName,
       lname: usr.lastName,
-      item: thing,
       submitted: new Date(),
       phone: usr.profile.cellNumber,
       carrier: usr.profile.cellCarrier,
       user: usr,
     };
-   // Local.remove({_id: delID});
+    Local.remove({_id: delID});
     return 0;
   },   
   
