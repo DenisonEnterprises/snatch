@@ -47,7 +47,7 @@
 }
 
 
-.signupContainer input.invalid{
+.signupContainer .invalid{
   border: 2px solid red;
 }
 

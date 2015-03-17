@@ -6,102 +6,140 @@ Template.signupForm.rendered = function() {
   $('#signup-email').addClass("invalid");
   $('#signup-cellphone').addClass("invalid"); 
   $('#signup-carrier').addClass("invalid");
-  $('#notif').hide(); 
+    
+  uFlag = false;
+  eFlag = false;
+  pFlag = false;
+  cFlag = false;
+  pwFlag = false;
 
-
-
-  $('#signup-username').focusout(function() {
-   if(!uFlag){ 
-        $('#notif').html("Username Taken");
-	$('#notif').show();
-      }
+  $('#signup-email').focusout(function() {
+   if(!du){ 
+    	$('#notif').html("Please Provide A denison.edu Email");
+    }
    });
-
-
+   
+   $('#signup-cellphone').focusout(function() {
+    if(!pFlag){ 
+     	$('#notif').html("Please Provide 10 Digit Phone Number");
+     }
+    });
 
   $('#signup-username').on('input', function(){
   	var input=$(this).val();
-	var used = Meteor.users.find({username: input}).count() == 0;
-	uFlag = input.length > 0 && used;
+	var usernameTaken = Meteor.users.find({username: input}).count() > 0;
+	var usernameEmpty = input.length == 0;
+	uFlag = !usernameTaken && !usernameEmpty;
 	if(uFlag){
 		$(this).removeClass("invalid").addClass("valid");
+		$('#notif').html("");
 	}else{
 		$(this).removeClass("valid").addClass("invalid");
+		if(usernameTaken){
+			$('#notif').html("Username Taken");
+		}
 	}
 
   });
-
-  
-
-  $('#signup-password').on('input', function(){
-	var input=$(this).val();
-	if(input.length > 0){
-		$(this).removeClass("invalid").addClass("valid");
-	}else{
-		$(this).removeClass("valid").addClass("invalid");
-	}
-
-	var input2=$('#signup-confirm-password').val();
-	if(input === input2){
-		$('#signup-confirm-password').removeClass("invalid").addClass("valid");
-	}else{
-		$('#signup-confirm-password').removeClass("valid").addClass("invalid");
-	}
-  	
-  });
-
 
   $('#signup-email').on('input', function(){
 	var input=$(this).val();
-	console.log(input);
 	var re = new RegExp(".*@denison\.edu");	
 	var Notused = Meteor.users.find({ "profile.du": input }).count() == 0;
-	var du = re.test(input);
-	if(du && Notused){
+	du = re.test(input);
+	eFlag = du && Notused;
+	if(eFlag){
 		$(this).removeClass("invalid").addClass("valid");
+		$('#notif').html("");
 	}else{
 		$(this).removeClass("valid").addClass("invalid");
+		if(!Notused){
+			$('#notif').html("This Email is Already in Use");
+		}
 	}
  	
   });
 
 
+
+  $('#signup-password').on('input', function(){
+	var input=$(this).val();
+	var input2=$('#signup-confirm-password').val();
+	
+	
+	pwFlag = (input === input2) && input.length > 0;
+	
+	if(pwFlag){
+		$('#signup-confirm-password').removeClass("invalid").addClass("valid");
+		$(this).removeClass("invalid").addClass("valid");
+		$('#notif').html("");
+	}else{
+		$('#signup-confirm-password').removeClass("valid").addClass("invalid");
+		$(this).removeClass("valid").addClass("invalid");
+		if(input.length > 0){
+			$('#notif').html("Passwords Do Not Match");
+		}
+	}
+  	
+  });
+ 
+
   $('#signup-confirm-password').on('input', function(){
     var input=$(this).val();
     var input2 = $('#signup-password').val();
-    
-    if(input === input2){
-      $(this).removeClass("invalid").addClass("valid");
+	
+    pwFlag = (input === input2) && input.length > 0;
+	
+    if(pwFlag){
+	  $(this).removeClass("invalid").addClass("valid");
+	  $('#signup-password').removeClass("invalid").addClass("valid");
+	  $('#notif').html("");
     }else{
       $(this).removeClass("valid").addClass("invalid");
+	  $('#signup-password').removeClass("valid").addClass("invalid");
+	  if(input.length > 0){
+		$('#notif').html("Passwords Do Not Match");
+	  }
     }
   });
  
 
   $('#signup-cellphone').on('input', function(){
     var input=$(this).val();
-    if(input.length == 10){
-	$(this).removeClass("invalid").addClass("valid");
+	pFlag = input.length == 10;
+    if(pFlag){
+		$(this).removeClass("invalid").addClass("valid");
+		$('#notif').html("");
     }else{
-	$(this).removeClass("valid").addClass("invalid");
+		$(this).removeClass("valid").addClass("invalid");
      } 
   });
+  
+  
+  
+  $('#signup-carrier').on('input', function(){
+    var input=$(this).val();
+	cFlag = input != "select";
+    if(cFlag){
+		$(this).removeClass("invalid").addClass("valid");
+		$('#notif').html("");
+    }else{
+		$(this).removeClass("valid").addClass("invalid");
+	 	$('#notif').html("Please Select a Carrier");
+     } 
+  });
+  
+  
 }
+
+
 
 Template.signupForm.events({
   "submit #signup-form": function(event, template) {
     event.preventDefault();
       
-    /*if(Meteor.users.find({'emails.address': template.find("#signup-email")}).count() > 0){
-        document.getElementById('signup-email-lbl').style.color = "red";
-    }else{
-    */    //CATCH ERRORS    
-    
-    
-      if(template.find("#signup-carrier").value === "select"){
-        document.getElementById('signup-email-lbl').style.color = "red";
-      }else{
-    
+	if(uFlag && eFlag && pFlag && cFlag && pwFlag){
+        
         Accounts.createUser({
         username: template.find("#signup-username").value,
         password: template.find("#signup-password").value,
@@ -112,19 +150,32 @@ Template.signupForm.events({
           //lastName: template.find("#signup-lastName").value,
           cellNumber: template.find("#signup-cellphone").value,
           cellCarrier: template.find("#signup-carrier").value,
-	  du: template.find("#signup-email").value,
+	  	  du: template.find("#signup-email").value,
           
         }
       }, function(error) {
-        if (error) {
-            console.log("SIGNUP ERROR");
-            //WRITE TO SCREEN
-        }else{
-          window.location.href = '/thanks';  
+        if (!error) {
+          Router.go('thanks');  
         }
       });
     
-     } // end else
+     }else{
+		 if(!uFlag){
+ 			$('#notif').html("Please Provide a Valid Username");
+		 }
+		 if(!eFlag){
+ 			$('#notif').html("Please Provide a Valid Email");
+		 }
+		 if(!pFlag){
+  			$('#notif').html("Please Provide a Valid Phone Number");
+		 }
+		 if(!cFlag){
+			 $('#notif').html("Please Select a Carrier");
+		 }
+		 if(!pwFlag){
+			 $('#notif').html("Please Create and Confirm your Password");
+		 }
+     }
     
   },
   
