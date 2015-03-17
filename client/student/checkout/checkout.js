@@ -46,14 +46,16 @@ Template.checkout.events({
   },
   
   'click #deleteOrder': function() {
+  	console.log("Delete order has been called");
     var delOrder = this.item;
+    console.log("dolOrder is: " + delOrder);
     var delID = this._id;
     console.log("PRECURSOR: id is == " + delID);
     var price = this.value; 
-    Meteor.call('deleteOrder', delOrder, price,  Meteor.user(), function(error,result) {
-				if (error)
-					return alert(error.reason);
-			});  
+    Meteor.call('deleteOrder', delOrder, delID, price,  Meteor.user(), function(error,result) {
+		if (error)
+			return alert(error.reason);
+	});  
     console.log(Local.find().count());
     if(Local.find({userId: Meteor.user()._id}).count() < 2){
       Router.go('/menu');
