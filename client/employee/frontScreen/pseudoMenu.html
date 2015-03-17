@@ -27,11 +27,11 @@ table, th, td {
 			</tr>
 			<tr>
 				<th><ul>				<!-- pseudoBagels -->
-				<form id="bagelList">				
+				<form id="bagelList">
 				  {{#each bagel}}
 					{{>bagelBox}}
 				  {{/each}}
-					</form>
+				  </form>
        			 </ul></th>
        			 <th><ul>				<!-- pseudoShakes -->
        			 	<tr style="text-align:center"><th> Flavors </th></tr>
@@ -39,8 +39,8 @@ table, th, td {
        			 	<form id="flavList">
 						{{#each flavor}}
 						  {{> flavorBox}}
-						{{/each}}   
-						</form>    			 	
+						{{/each}}     
+					</form>  			 	
        			 	</ul></th></tr>
        			 	
        			 	<tr></tr>
@@ -58,8 +58,8 @@ table, th, td {
        			 	</ul></th></tr>
        			 
        			 </ul></th>
-				<th><ul>	
-				<form id="bevList">			<!-- pseudoBev -->
+				<th><ul>				<!-- pseudoBev -->
+				<form id="bevList">
 				  {{#each bev}}
 					{{>bevBox}}
 				  {{/each}}

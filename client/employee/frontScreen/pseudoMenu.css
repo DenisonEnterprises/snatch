@@ -14,25 +14,14 @@
 }
 
 .pseudoMenuContainer button{
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 100px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 35px;
-  background: #005f5f;
-  padding: 20px 25px 20px 25px;
-  text-decoration: none;
-}
-
-.pseudoMenuContainer .nav button{
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 100px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 35px;
-  background: #005f5f;
-  padding: 20px 25px 20px 25px;
-  text-decoration: none;
+	text-align: center;
+  font-family: OpenSans;
+  color: white;
+  font-size: 15px;
+  background: #bf7148;
+  margin-top: 20px;
+  padding: 10px 40px 10px 40px;
+  border: solid white 3px;
+  
+  font-weight:bolder;
 }

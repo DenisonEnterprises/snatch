@@ -43,14 +43,13 @@ Template.pseudoCheck.events({
   },
   
   'click #deleteOrder': function() {
-    var delOrder = this.item;
-    var price = this.value; 
-    Meteor.call('deleteOrder', delOrder, price,  Meteor.user(), function(error,result) {
-				if (error)
-					return alert(error.reason);
-			});  
-    console.log(Local.find().count());
+    var delID = this._id;
+    Meteor.call('deleteOrder', delID,  Meteor.user(), function(error,result) {
+		if (error)
+			return alert(error.reason);
+	});  
     if(Local.find({userId: Meteor.user()._id}).count() < 2){
+      console.log("Deleted all the items in the order");
       Router.go('/pseudoMenu');
     }
   },
