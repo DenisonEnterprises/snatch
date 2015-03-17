@@ -40,8 +40,8 @@ Template.bagels.events({
 		event.preventDefault();
 
 		var form = {};
-    var price; 
-    var count = 0
+ 	   var price; 
+	    var count = 0
 		$.each($('#bagel_list').serializeArray(),function() {
 			form[this.name] = this.name;
       price = this.value;

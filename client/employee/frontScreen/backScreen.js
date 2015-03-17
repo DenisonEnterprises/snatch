@@ -1,4 +1,12 @@
-Meteor.subscribe('employee');
+Meteor.subscribe('backScreen');
+
+Template.backScreen.events({
+  "click #swapBTN": function( evt, instance ){
+    Router.go('pseudoMenu');
+  },
+});
+
+
 
 Template.orderInfo.helpers({
   'order' : function(){
@@ -35,7 +43,21 @@ Template.orderNum.helpers({
 
 Template.cellNum.helpers({
   'cellNum' : function(){
-    return this.phone;
+  	var temp;
+    var str = this.phone;
+    temp = '(';
+    for(var i = 0; i < 3; i++){
+    	temp = temp + str[i];	
+    }
+    temp = temp + ')'; 
+    for(i = 3; i < 6; i++){
+    	temp += str[i]; 
+    }
+    temp += '-';
+    for(i = 6; i < 10; i++){
+    	temp += str[i];
+    }
+    return temp;
   }
 });
 
@@ -84,34 +106,7 @@ Template.itemPrice.helpers({
 });
 
 
-Template.orderInfo.events({
- 
-  'click #finished': function() {
-    var total; 
-    var orNum = this.orderNum;
-    var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
-    var usr = this.user;
-    console.log("USR is " + usr);
-    var cellNumber = this.phone;
-    console.log("CellNumber is " + cellNumber);
-    var cellCarrier = this.carrier;
-    console.log("cellCarrier is " + cellCarrier);
-    
-    
-    var str = "";
-    for (i=0; i < orders.length - 1; i++) {
-      console.log(orders[i].item);
-      str = str + orders[i].item + "\n";
-      total = total + orders.price;
-    }
-   // var lastItem = orders.length; 
-    //str = str + orders[lastItem].item; 
-    Meteor.call('finishedOrder', str, total, orNum, usr, cellNumber, cellCarrier, function(error,result) {
-				if (error)
-					return alert(error.reason);
-			}); 
-  }
-});
+
 
 Template.readyInfo.events({
  

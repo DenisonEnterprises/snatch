@@ -27,6 +27,7 @@ Meteor.methods({
  // Delete order from the checkout menu
   
     deleteOrder: function(thing, price, usr) {
+    console.log("HAYYYYYYY");
     var order = {
       userId: usr._id,
       uName: usr.username,
@@ -39,7 +40,8 @@ Meteor.methods({
       user: usr,
       price: price, 
     };
-    Local.remove({item: thing});
+    console.log("ID is : " + thing);
+    Local.remove({_id: thing.id});
 
 
     return 0;

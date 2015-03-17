@@ -1,37 +1,36 @@
 
 <template name="employee">
   
-    {{#if isInRole 'employee'}}
+ <!--   {{#if isInRole 'employee'}} -->
   
   <style>
 table, th, td {
     border: solid #005f5f 3px;
 }
 </style>
-    
   <div class="employeeContainer"> 
-   
+   	<div class="nav">
+		<ul>
+			<button type="button" id="swapBTN">Order List</button>
+		</ul>
+	</div>
       <br>
       <br>
        
       <h3 align="center">Current Orders</h3>
         {{> orderInfo}}
-      <br>
-      <br>
-      <br>
-      <h3 align="center">Ready for Pick Up</h3>
-        {{> readyInfo}}
   
   </div>
-    
+    <!--
     {{else}}
      {{> denied}}
-  {{/if}}
+  {{/if}} -->
   
   WHEN
   
   
 </template>
+
 
 <template name="orderInfo">
       <form id ="order_list">
@@ -42,7 +41,7 @@ table, th, td {
           <th style="width:100px"> Username </th>
           <th style="width:100px"> First Name </th>
           <th style="width:100px"> Last Name </th>
-          <th style="width:100px"> Cell Phone Number </th>
+          <th style="width:150px"> Cell Phone Number </th>
           <th style="width:100px"> Time of Order </th>
           <th style="width:100px"> Order Number </th>
           <th style="width:100px"> Order </th>
@@ -96,51 +95,3 @@ table, th, td {
 <template name="itemPrice">
   <span>{{price}}</span>
 </template>
-
-    
-<!-- ==================================================== -->
-
-<template name="readyInfo">
-      <form id ="ready_list">        
-        <table  align="center">
-        <tr>
-          <th style="width:100px"> Username </th>
-          <th style="width:100px"> Cell Phone Number </th>
-          <th style="width:100px"> Finish Time </th>
-          <th style="width:100px"> Order Number </th>
-          <th style="width:100px"> Picked Up? </th>
-       </tr>
-        {{#each ready}}
-       <tr>
-          <td align="center" style="width:100px">{{> ready1}}</td>
-         <td align="center" style="width:100px">{{> cellNum}}</td>
-          <td align="center" style="width:100px">{{> ready3}}</td>
-         <td align="center" style="width:100px">{{> orderNum}}</td>
-          <td align="center" style="width:100px">{{> picked}}</td>
-       </tr>   
-        {{/each}}
-     </table> 
-  </form>
-
-  
-</template>
-
-<template name="fname2">
-  <span>{{fName2}}</span>
-</template>
-
-<template name ="ready1">
-      <span>{{readyName}}</span>
-</template>
-<template name ="ready2">
-      <span>{{readyDeets}}</span>
-</template>
-<template name ="ready3">
-      <span>{{readyTime}}</span>
-</template>
-<template name ="picked">
-      <button id="pickUp">Picked Up</button>
-</template>  
-
-
-    

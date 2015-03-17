@@ -1,0 +1,82 @@
+
+<template name="backScreen">
+  
+ <!--   {{#if isInRole 'employee'}} -->
+  
+  <style>
+table, th, td {
+    border: solid #005f5f 5px;
+}
+</style>
+
+
+    
+  <div class="backScreenContainer"> 
+   	<div class="nav">
+		<ul>
+			<li><button type="button" id="swapBTN">Main Menu</button></li>
+		</ul>
+	</div>
+      <br>
+      <br>
+      <br>
+      <h3 align="center">Ready for Pick Up</h3>
+        {{> readyInfo}}
+
+ 	  
+  </div>
+    
+    <!--
+    {{else}}
+     {{> denied}}
+  {{/if}} -->
+  
+</template>
+
+    
+<!-- ==================================================== -->
+
+<template name="readyInfo">
+      <form id ="ready_list">        
+        <table  align="center">
+        <tr>
+          <th style="width:130px"> Username </th>
+          <th style="width:150px"> Cell Phone Number </th>
+          <th style="width:100px"> Finish Time </th>
+          <th style="width:100px"> Order Number </th>
+          <th style="width:100px"> Picked Up? </th>
+       </tr>
+        {{#each ready}}
+       <tr>
+          <td align="center" style="width:100px">{{> ready1}}</td>
+         <td align="center" style="width:100px">{{> cellNum}}</td>
+          <td align="center" style="width:100px">{{> ready3}}</td>
+         <td align="center" style="width:100px">{{> orderNum}}</td>
+          <td align="center" style="width:100px">{{> picked}}</td>
+       </tr>   
+        {{/each}}
+     </table> 
+  </form>
+
+  
+</template>
+
+<template name="fname2">
+  <span>{{fName2}}</span>
+</template>
+
+<template name ="ready1">
+      <span>{{readyName}}</span>
+</template>
+<template name ="ready2">
+      <span>{{readyDeets}}</span>
+</template>
+<template name ="ready3">
+      <span>{{readyTime}}</span>
+</template>
+<template name ="picked">
+      <button id="pickUp">Picked Up</button>
+</template>  
+
+
+    

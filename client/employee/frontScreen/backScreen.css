@@ -1,0 +1,52 @@
+
+.backScreenContainer {
+  background-color: black;
+  color: white; 
+  
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /*overflow: hidden;*/
+    position:absolute;
+    height:100vh;
+    width:100vw;
+    top:0px;
+    left:0px;
+}
+
+.backScreenContainer button{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 100px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 35px;
+  background: #005f5f;
+  padding: 20px 25px 20px 25px;
+  text-decoration: none;
+}
+
+.backScreenContainer h1{
+   padding-top: 30px;
+   text-shadow: 4px 4px #005f5f;
+   font-size: 80px;
+   color: #fff;
+    float: center;
+    padding-right: 150px;
+
+}
+
+.backScreenContainer td{
+	width: 200px; 
+	height: 100px;
+	font-size: 20px;
+	border: 5px solid #005f5f;
+}
+
+.backScreenContainer th{
+	width: 200px; 
+	height: 100px;
+	font-size: 20px;
+	border: 5px solid #005f5f;
+
+}

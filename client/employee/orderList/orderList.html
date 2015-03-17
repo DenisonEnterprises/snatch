@@ -1,0 +1,60 @@
+<template name="orderList"> 
+ <!--   {{#if isInRole 'employee'}} -->
+  
+  <style>
+table, th, td {
+    border: solid #005f5f 3px;
+}
+</style>
+
+  <div class="orderListContainer"> 
+   	<div class="nav">
+		<ul>
+			<li><button type="button" id="swapBTN">Incoming Orders</button></li>
+		</ul>
+	</div>
+      <br>
+      <br>
+     <h3 align="center">Total Collection of Items Ordered</h3>
+        {{> itemInfo}}
+  
+  </div>
+
+
+
+
+</template>
+
+
+<template name="itemInfo">
+      <form id ="order_list">        
+        <table  align="center">
+        <tr>
+          <th> Pepperoni Bagels </th>
+          <th>{{pepPizzaNum}}</th>
+          </tr>
+          <tr>
+          <th> Cheese Bagels </th>
+          <th>{{CheesePizzaNum}}</th>
+          </tr>
+          <tr>
+          <th> Snagel</th>
+          <th>{{snagelNum}}</th>
+          </tr>
+          <tr>
+          <th> Oreo Nutella Milkshakes </th>
+          <th>{{onShakes}}</th>
+       </tr>
+     </table> 
+  </form>
+
+  
+</template>
+
+
+
+
+
+
+
+

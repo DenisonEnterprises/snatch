@@ -1,4 +1,4 @@
-Template.checkout.helpers({
+Template.pseudoCheck.helpers({
   
   'order': function() {
     //if prevents error due to ordering of page loading, etc.
@@ -10,7 +10,7 @@ Template.checkout.helpers({
   
 });
 
-Template.checkout.events({
+Template.pseudoCheck.events({
   
   'click #placeOrder': function() {
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
@@ -30,12 +30,9 @@ Template.checkout.events({
 		  total = total + parseFloat(temp);
 		}
 		var final = total.toString();
-		console.log("first final is: " + final);
 		while(final.length < 3){
-		  console.log("Edited final: " + final);
 		  final += "0";
 		}
-		console.log("about to call place order...  screen should be changing soon");
 		Meteor.call('placeOrder', str, total, Meteor.user(), function(error,result) {
 					if (error)
 						return alert(error.reason);
@@ -47,8 +44,6 @@ Template.checkout.events({
   
   'click #deleteOrder': function() {
     var delOrder = this.item;
-    var delID = this._id;
-    console.log("PRECURSOR: id is == " + delID);
     var price = this.value; 
     Meteor.call('deleteOrder', delOrder, price,  Meteor.user(), function(error,result) {
 				if (error)
@@ -56,7 +51,7 @@ Template.checkout.events({
 			});  
     console.log(Local.find().count());
     if(Local.find({userId: Meteor.user()._id}).count() < 2){
-      Router.go('/menu');
+      Router.go('/pseudoMenu');
     }
   },
   
@@ -75,7 +70,7 @@ Template.checkout.events({
     Router.go('beverages');
   },
    "click #menu": function(evt, instance){
-      Router.go('menu');
+      Router.go('pseudoMenu');
    },
   
   
