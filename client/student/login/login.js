@@ -8,24 +8,10 @@ Template.login.events({
     Meteor.loginWithPassword(template.find("#login-username").value, template.find("#login-password").value, 
    
         function(error) {
-        if (error) {
-          $("#loginText").html(error);
-          
-          $('#loginText').css('background-image', 'url(/img/verified.jpg)');
-          $('#loginText').css('border', 'solid white 2px');
-          
-          $("#loginText").fadeIn(2000);
-          
-          setTimeout(function(){
-              $("#loginText").fadeOut(2000);
-           }, 4000);
-
-        }
-          else{
-            
-          }
-       
-      });
+        	if (error) {
+				$('#notifText').html("Incorrect Password");
+        	}
+      	});
     
       if (Roles.userIsInRole(Meteor.user()._id, 'employee')){
            window.location.href = '/employee'; 
@@ -37,6 +23,10 @@ Template.login.events({
            //window.location.href = '/denied';
       }
     
+  },
+  
+  "click #signUp": function(evt, template) {
+	  Router.go("signup");
   }
 });
 
@@ -44,11 +34,8 @@ Template.login.events({
 
 Template.login.created = function() {
   if (Accounts._verifyEmailToken) {
-    Accounts.verifyEmail(Accounts._verifyEmailToken);    
-    Meteor.call("makeStudent");
-    
-    
-    
-
+      Accounts.verifyEmail(Accounts._verifyEmailToken);    
+      Meteor.call("makeStudent");
+	  Router.go("menu");
   }
 };

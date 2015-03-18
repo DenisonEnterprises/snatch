@@ -12,6 +12,48 @@
    
   <h1>Settings</h1>
  
+  <h5 id="notif">Notif</h5>
+ 
+ 
+  <button id="changeUsername" class="normal">Change Username</button>
+  
+  
+  <button id="changePassword" class="normal">Change Password</button>
+ 
+ 	<br>
+
+
+ 	<form id="uNameForm">
+		<label>New Username</label>
+		<input type="text" id="newU"/>
+		<br>
+		<button type="submit">Change</button>
+	</form>
+	
+ 	<form id="pWordForm">
+		<div id="old">
+			<label>Old Password</label>
+			<input type="password" id="oldP"/>
+		</div>
+		<div id="new">
+		<label>New Password</label>
+			<input type="password" id="newP">
+			<label>Confirm New Password</label>
+			<input type="password" id="cnp">
+		</div>
+		<button type="submit" id="pwSubmit">Change</button>
+	</form>
+	
+
+ 
+  <button id="rmAccount" class="remove">Delete Account</button>
+ 
+	<form id="delForm">
+		<h4 id="msg">Are you certain you want to delete your account?</h4>
+		<button id="yes" class="remove">YES</button>
+		<button id="no">NO</button>
+	</form>
+ 
   </div>
     
     {{else}}

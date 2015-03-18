@@ -13,3 +13,64 @@
   top:0px;
   left:0px;
 }
+
+.settingsContainer h1{
+	margin: 40px;
+}
+
+.settingsContainer button{
+    font-family: OpenSans;
+    color: #fff;
+    font-size: 15px;
+    background: transparent;
+    padding: 10px 20px 10px 20px;
+    border: solid white 2px;
+    display: inline-block;
+    position: relative;
+    font-weight:bolder;
+    margin-right: 10px;
+    margin-left: 10px;
+	margin-top:10px;
+	margin-bottom:30px;
+}
+
+.settingsContainer .normal{
+    font-family: OpenSans;
+    color: #fff;
+    font-size: 15px;
+    background: transparent;
+    padding: 10px 20px 10px 20px;
+    border: solid white 2px;
+    display: inline-block;
+    position: relative;
+    font-weight:bolder;
+    margin-right: 10px;
+    margin-left: 10px;
+	margin-top:10px;
+	margin-bottom:30px;
+}
+
+.settingsContainer .remove{
+    font-family: OpenSans;
+    color: white;
+    font-size: 15px;
+    background: red;
+    padding: 10px 20px 10px 20px;
+    border: solid white 2px;
+    display: inline-block;
+    position: relative;
+    font-weight:bolder;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+
+.settingsContainer form{
+	display:none;
+	margin-bottom: 50px;
+}
+
+.settingsContainer h5{
+	display:none;
+}

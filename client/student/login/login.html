@@ -12,32 +12,18 @@
       <img src="img/lg/logoLG.png" alt="Bandersnatch Logo">
       
       <br>
-      <label id="loginText" class ="loginText"></label>
+      <h6 id="notifText">TEXT</h6>
       <br>
       <form id="login-form">
           <label for="login-username"></label><input type="text" id="login-username" placeholder="Username" />
           <label for="login-password"></label><input type="password" id="login-password" placeholder="Password" />
-          <label>&nbsp; </label><button type="submit">Log In</button>
+		  <br>
+		  <br>
+		  <button id="signUp">Sign Up</button>
+          <button type="submit">Log In</button>
       </form>
   
-      <button onclick="sign()">Sign Up</button>
-   
       
-      <script>
-        function sign() {
-           window.location.href = '/signup'; 
-        }
-          
-     /* $(document).ready( function () {
-          if (Meteor.loggingIn() && Accounts._verifyEmailToken){
-            window.location.href = '/menu';
-          }
-        });*/
-
-      </script> 
-     
-          
-
         
     </div>
     
