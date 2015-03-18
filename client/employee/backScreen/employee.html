@@ -17,7 +17,9 @@ table, th, td {
       <br>
       <br>
        
-      <h3 align="center">Current Orders</h3>
+      <h1 align="center">Current Orders</h1>
+     <br>
+      <br>
         {{> orderInfo}}
   
   </div>
@@ -37,31 +39,33 @@ table, th, td {
      
       
       <table align="center">
-        <tr>
-          <th style="width:100px"> Username </th>
+        <tr class="titles">
+          <th style="width: 100px"> DELETE </th>
+          <th style="width: 130px"> Username </th>
           <th style="width:150px"> Cell Phone Number </th>
-          <th style="width:100px"> Time of Order </th>
-          <th style="width:100px"> Order Number </th>
-          <th style="width:100px"> Order </th>
-          <th style="width:100px"> Price of items </th>
-          <th style="width:100px"> Finished? </th>
+          <th style="width: 100px"> Time of Order </th>
+          <th style="width: 100px"> Order Number </th>
+          <th style="width: 200px"> Order </th>
+          <th style="width: 100px"> Finished? </th>
        </tr>
         {{#each order}}
        <tr>
-          <td align="center" style="width:100px">{{> order1}}</td>
-         <td align="center" style="width:100px">{{> cellNum}}</td>
-          <td align="center" style="width:100px">{{> order3}}</td>
-         <td align="center" style="width:100px">{{> orderNum}}</td>
-         <td align="center" style="width:150px">{{> order2}}</td>
-         <td align="center" style="width:100px">{{> itemPrice}}</td>
-          <td align="center" style="width:100px">{{> done}}</td>
+       		<td class="delete" style="width: 100px">{{> deleteBTN}}</td>
+          <td style="width: 130px">{{> order1}}</td>
+         <td style="width: 150px">{{> cellNum}}</td>
+          <td style="width: 100px">{{> order3}}</td>
+         <td style="width: 100px">{{> orderNum}}</td>
+         <td style="width: 200px">{{> order2}}</td>
+          <td class="done" style="width: 100px">{{> done}}</td>
        </tr>   
         {{/each}}
      </table> 
   </form>
 </template>
 
-
+<template name="deleteBTN">
+	<button id="deleBTN"> Delete </button>
+</template>
 <template name="cellNum">
   <span>{{cellNum}}</span>
 </template>
@@ -80,7 +84,4 @@ table, th, td {
 </template>
 <template name ="done">
   <button id="finished">Finished</button>
-</template>
-<template name="itemPrice">
-  <span>{{price}}</span>
 </template>

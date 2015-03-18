@@ -43,7 +43,7 @@ Template.bagels.events({
     var price; 
     var count = 0
 		$.each($('#bagel_list').serializeArray(),function() {
-			form[this.name] = this.name;
+			form[this.name] = this.name + "\n";
       price = this.value;
 
 		}); 

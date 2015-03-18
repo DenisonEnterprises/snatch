@@ -34,10 +34,10 @@ Template.pseudoCheck.events({
 		  final += "0";
 		}
 		Meteor.call('placeOrder', str, total, Meteor.user(), function(error,result) {
-					if (error)
-						return alert(error.reason);
-				}); 
-		Router.go('/thankYouCheckout'); 
+			if (error)
+				return alert(error.reason);
+		}); 
+		Router.go('/pseudoTYC'); 
 	}
    
   },

@@ -36,7 +36,7 @@ Template.snacks.events({
 		var form = {};
   		var price;
 		$.each($('#snack_list').serializeArray(),function() {
-		form[this.name] = this.name;
+		form[this.name] = this.name  + "\n";
     	price = this.value;
 		});
 		for (var key in form) {

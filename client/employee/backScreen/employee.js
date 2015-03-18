@@ -42,35 +42,6 @@ Template.orderNum.helpers({
   }
 });
 
-Template.cellNum.helpers({
-  'cellNum' : function(){
-  	var temp;
-    var str = this.phone;
-    temp = '(';
-    for(var i = 0; i < 3; i++){
-    	temp = temp + str[i];	
-    }
-    temp = temp + ')'; 
-    for(i = 3; i < 6; i++){
-    	temp += str[i]; 
-    }
-    temp += '-';
-    for(i = 6; i < 10; i++){
-    	temp += str[i];
-    }
-    return temp;
-  }
-});
-
-
-Template.itemPrice.helpers({
-  'price' : function(){
-    return "$" + this.price;
-  }
-});
-
-
-
 Template.orderInfo.events({
  
   'click #finished': function() {
@@ -91,12 +62,19 @@ Template.orderInfo.events({
       str = str + orders[i].item + "\n";
       total = total + orders.price;
     }
-   // var lastItem = orders.length; 
-    //str = str + orders[lastItem].item; 
+    console.log("about to call finishedOrder");
     Meteor.call('finishedOrder', str, total, orNum, usr, cellNumber, cellCarrier, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 
+  },
+  
+  'click #deleBTN': function(){
+      var delID = this._id;
+      Meteor.call('deleteActiveOrder', delID,  Meteor.user(), function(error,result) {
+		if (error)
+			return alert(error.reason);
+      });  
   },
 
 });

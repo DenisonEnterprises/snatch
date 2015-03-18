@@ -7,36 +7,19 @@ Template.backScreen.events({
 });
 
 
-Template.orderInfo.helpers({
-  'order' : function(){
-    return ActiveOrders.find().fetch(); 
+
+
+
+Template.readyInfo.helpers({
+  'ready' : function(){
+ 	 console.log("I found a ready! Actually, I found: " + ReadyOrders.find().fetch());
+ 	 return ReadyOrders.find().fetch();
   }
 });
 
-Template.order3.helpers({
-  'orderTime' : function(){
-    var time = this.submitted;
-    return time.getHours() + ":" + time.getMinutes() + "." + time.getSeconds();
-  }
-});
-
-
-Template.order2.helpers({
-  'orderDeets' : function(){
-    return this.item; 
-  }
-});
-
-Template.order1.helpers({
-  'userName' : function(){
+Template.ready1.helpers({
+  'readyName' : function(){
     return this.uName;
-  }
-});
-
-Template.orderNum.helpers({
-  'orderNum' : function(){
-    return this.orderNum;
-    
   }
 });
 
@@ -60,24 +43,6 @@ Template.cellNum.helpers({
   }
 });
 
-Template.fName.helpers({
-  'firstName' : function(){
-    return this.fName;
-  }
-});
-
-Template.lName.helpers({
-  'lastName' : function(){
-    return this.lName;
-  }
-});
-
-Template.readyInfo.helpers({
-  'ready' : function(){
-  return ReadyOrders.find().fetch();
-  }
-});
-
 Template.ready3.helpers({
   'readyTime' : function(){
     var time = this.submitted; 
@@ -85,16 +50,9 @@ Template.ready3.helpers({
   }
 });
 
-Template.ready2.helpers({
-  'readyDeets' : function(){
-    console.log(this);
-    return this.item;
-  }
-});
-
-Template.ready1.helpers({
-  'readyName' : function(){
-    return this.uName;
+Template.orderNum.helpers({
+  'orderNum' : function(){
+    return this.orderNum;
   }
 });
 
@@ -103,8 +61,6 @@ Template.itemPrice.helpers({
     return "$" + this.price;
   }
 });
-
-
 
 
 Template.readyInfo.events({
@@ -123,8 +79,7 @@ Template.readyInfo.events({
       str = str + orders[i].item + "\n";
       total = total + orders.price; 
     }
-    //var lastItem = orders.length; 
-    //str = str + orders[lastItem].item;
+
     Meteor.call('pickUpOrder', str, orNum, total, usr, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);

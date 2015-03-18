@@ -27,21 +27,19 @@ Meteor.methods({
  // Delete order from the checkout menu
   
     deleteOrder: function(delID, usr) {
-    var order = {
-      userId: usr._id,
-      uName: usr.username,
-      fName: usr.firstName,
-      lname: usr.lastName,
-      submitted: new Date(),
-      phone: usr.profile.cellNumber,
-      carrier: usr.profile.cellCarrier,
-      user: usr,
-    };
-    Local.remove({_id: delID});
-    return 0;
-  },   
+		Local.remove({_id: delID});
+		return 0;
+	},   
   
-
+  
+  deleteActiveOrder: function(delID, user){
+  		console.log("DeleteActiveOrder has been called");
+  		console.log("delID is: " + delID);
+  		ActiveOrders.remove({_id: delID});
+  		return 0;
+  },
+  
+  
   // Employee has finished making an order
   finishedOrder: function(thing, price, orNum, usr, cellNum, cellCarrier){
     var order = {

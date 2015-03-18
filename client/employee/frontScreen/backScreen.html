@@ -17,10 +17,10 @@ table, th, td {
 			<li><button type="button" id="swapBTN">Main Menu</button></li>
 		</ul>
 	</div>
+
+      <h1 align="center">Ready for Pick Up</h1>
       <br>
       <br>
-      <br>
-      <h3 align="center">Ready for Pick Up</h3>
         {{> readyInfo}}
 
  	  
@@ -39,20 +39,22 @@ table, th, td {
 <template name="readyInfo">
       <form id ="ready_list">        
         <table  align="center">
-        <tr>
-          <th style="width:100px"> Username </th>
-          <th style="width:150px"> Cell Phone Number </th>
-          <th style="width:100px"> Finish Time </th>
-          <th style="width:100px"> Order Number </th>
-          <th style="width:100px"> Picked Up? </th>
+        <tr class="titles">
+          <th> Username </th>
+          <th> Cell Phone Number </th>
+          <th> Finish Time </th>
+          <th> Order Number </th>
+          <th> Total Price </th>
+          <th> Picked Up? </th>
        </tr>
         {{#each ready}}
        <tr>
-          <td align="center" style="width:100px">{{> ready1}}</td>
-         <td align="center" style="width:100px">{{> cellNum}}</td>
-          <td align="center" style="width:100px">{{> ready3}}</td>
-         <td align="center" style="width:100px">{{> orderNum}}</td>
-          <td align="center" style="width:100px">{{> picked}}</td>
+          <td align="center">{{> ready1}}</td>
+         <td align="center">{{> cellNum}}</td>
+          <td align="center">{{> ready3}}</td>
+         <td align="center">{{> orderNum}}</td>
+         <td align="center">{{> itemPrice}}</td>
+          <td align="center">{{> picked}}</td>
        </tr>   
         {{/each}}
      </table> 
@@ -61,19 +63,23 @@ table, th, td {
   
 </template>
 
-<template name="fname2">
-  <span>{{fName2}}</span>
-</template>
-
 <template name ="ready1">
       <span>{{readyName}}</span>
 </template>
-<template name ="ready2">
-      <span>{{readyDeets}}</span>
-</template>
+
+<template name="cellNum">
+	<span>{{cellNum}}</span>
+</template>	
 <template name ="ready3">
       <span>{{readyTime}}</span>
 </template>
+<template name="orderNum">
+	<span>{{orderNum}}</span>
+</template>
+<template name="itemPrice">
+	<span>{{price}}</span>
+</template>
+	
 <template name ="picked">
       <button id="pickUp">Picked Up</button>
 </template>  
