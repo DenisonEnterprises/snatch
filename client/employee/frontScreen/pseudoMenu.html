@@ -16,12 +16,16 @@ table, th, td {
 		<ul>
 			<li><button type="button" id="swapBTN">Pick Up Orders</button></li>
 		</ul>
-	</div>
-   
+	  </div>
+   	<br>
+   	<br>
+   	<br>
+   	<br>
+   	<br>
    		<table align="center">
-			<tr>				
-				<th> Bagels </th>
-				<th> Shakes </th>
+			<tr class="titles">				
+				<th> Bagels </th>		
+				<th style="width:350px"> Shakes </th>
 				<th> Beverages </th>
 				<th> Snacks </th>
 			</tr>
@@ -30,38 +34,38 @@ table, th, td {
 				<form id="bagelList">
 				  {{#each bagel}}
 					{{>bagelBox}}
+					<br>
 				  {{/each}}
 				  </form>
        			 </ul></th>
        			 <th><ul>				<!-- pseudoShakes -->
-       			 	<tr style="text-align:center"><th> Flavors </th></tr>
+       			 	<tr style="text-align:center">
+       			 	<th class="flavMix" > Flavors </th>
+       			  <th class="flavMix" > Mixins </th></tr>
        			 	<tr><th><ul>
-       			 	<form id="flavList">
-						{{#each flavor}}
-						  {{> flavorBox}}
-						{{/each}}     
-					</form>  			 	
+						<form id="flavList">
+							<br>
+							{{#each flavor}}
+							  {{> flavorBox}}
+							
+							{{/each}}     
+						</form>  			 	
+       			 	</ul></th>
+       			 	<th><ul>
+						<form id="mixList">
+						  <br>
+						  {{#each mixin}}
+							{{> mixinBox}}
+						  {{/each}}
+						  </form>
        			 	</ul></th></tr>
        			 	
-       			 	<tr></tr>
-       			 	<tr></tr>
-       			 	<tr></tr>
-       			 	<tr></tr>
-       			 	
-       			 	<tr style="text-align:center"><th> Mixins </th></tr>
-       			 	<tr><th><ul>
-       			 	<form id="mixList">
-       	 	          {{#each mixin}}
-						{{> mixinBox}}
-					  {{/each}}
-					  </form>
-       			 	</ul></th></tr>
-       			 
        			 </ul></th>
 				<th><ul>				<!-- pseudoBev -->
 				<form id="bevList">
 				  {{#each bev}}
 					{{>bevBox}}
+					<br>
 				  {{/each}}
 				  </form>
 				 </ul></th>
@@ -69,13 +73,14 @@ table, th, td {
 				<form id="snackList">
 		          {{#each snack}}
 					{{>snackBox}}
+					<br>
 				  {{/each}}
 				  </form>
 				</ul></th>				 
 			</tr>
 		</table>
 		
-        <button type="submit" id="atcBTN">Add To Cart</button>
+        <button class="submit" id="atcBTN">Add To Cart</button>
 		
    </div> 
    

@@ -62,43 +62,6 @@ Template.cellNum.helpers({
   }
 });
 
-Template.fName.helpers({
-  'firstName' : function(){
-    return this.fName;
-  }
-});
-
-Template.lName.helpers({
-  'lastName' : function(){
-    return this.lName;
-  }
-});
-
-Template.readyInfo.helpers({
-  'ready' : function(){
-  return ReadyOrders.find().fetch();
-  }
-});
-
-Template.ready3.helpers({
-  'readyTime' : function(){
-    var time = this.submitted; 
-    return time.getHours() + ":" + time.getMinutes() + "." + time.getSeconds();
-  }
-});
-
-Template.ready2.helpers({
-  'readyDeets' : function(){
-    console.log(this);
-    return this.item;
-  }
-});
-
-Template.ready1.helpers({
-  'readyName' : function(){
-    return this.uName;
-  }
-});
 
 Template.itemPrice.helpers({
   'price' : function(){
