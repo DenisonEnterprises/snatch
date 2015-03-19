@@ -27,15 +27,17 @@ Meteor.methods({
   
  // Delete order from the checkout menu
   
-    deleteOrder: function(delID, usr) {
+	deleteOrder: function(delID, usr) {
 		Local.remove({_id: delID});
 		return 0;
 	},   
   
+  deleteCHKOrder: function(delItem){
+  		Local.remove({item: delItem});
+  		return 1;
+  },
   
   deleteActiveOrder: function(delID, user){
-  		console.log("DeleteActiveOrder has been called");
-  		console.log("delID is: " + delID);
   		ActiveOrders.remove({_id: delID});
   		return 0;
   },

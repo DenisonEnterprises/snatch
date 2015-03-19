@@ -52,7 +52,6 @@ Template.orderInfo.events({
     var cellNumber = this.phone;
     var cellCarrier = this.carrier;
     var inhaus = this.inHouse;
-    
     var str = "";
     for (i=0; i < orders.length - 1; i++) {
       console.log(orders[i].item);
