@@ -51,30 +51,22 @@ Template.orderInfo.events({
     var usr = this.user;
     var cellNumber = this.phone;
     var cellCarrier = this.carrier;
-<<<<<<< HEAD
-    
-    
-=======
     var inhaus = this.inHouse;
->>>>>>> e4db9b4aaadae1a82e185b89aeb4a66fc49afa77
     var str = "";
     for (i=0; i < orders.length; i++) {
       str = str + orders[i].item + "\n";
       total = total + orders.price;
     }
-<<<<<<< HEAD
     
     Meteor.call('finishedOrder', str, total, orNum, usr, cellNumber, cellCarrier, function(error,result) {
 			if (error)
 				return alert(error.reason);
 		}); 
-=======
     console.log("about to call finishedOrder");
     Meteor.call('finishedOrder', str, total, inhaus, orNum, usr, cellNumber, cellCarrier, function(error,result) {
 		if (error)
 			return alert(error.reason);
 	}); 
->>>>>>> e4db9b4aaadae1a82e185b89aeb4a66fc49afa77
   },
   
   'click #deleBTN': function(){

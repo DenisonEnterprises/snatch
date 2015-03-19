@@ -39,13 +39,14 @@ Meteor.methods({
   		return 1;
   },
   
-<<<<<<< HEAD
     deleteActiveOrder: function(delID, user){
   		console.log("DeleteActiveOrder has been called");
   		console.log("delID is: " + delID);
-=======
+  		Local.remove({_id: delID}); 
+  		return 0;
+  	}, 
+  	
   deleteActiveOrder: function(delID, user){
->>>>>>> e4db9b4aaadae1a82e185b89aeb4a66fc49afa77
   		ActiveOrders.remove({_id: delID});
   		return 0;
     },
