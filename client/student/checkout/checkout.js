@@ -4,6 +4,9 @@ Template.checkout.helpers({
     //if prevents error due to ordering of page loading, etc.
     if (Meteor.user()) {
       var user = Meteor.user();
+      if(Local.find({userId: Meteor.user()._id}).count() == 0){
+    	  Router.go('/menu');
+  	  }
       return Local.find({userId: user._id});
     }
   }
@@ -36,7 +39,7 @@ Template.checkout.events({
 		  final += "0";
 		}
 		console.log("about to call place order...  screen should be changing soon");
-		Meteor.call('placeOrder', str, total, Meteor.user(), function(error,result) {
+		Meteor.call('placeOrder', str, total, false, Meteor.user(), function(error,result) {
 					if (error)
 						return alert(error.reason);
 				}); 

@@ -49,12 +49,9 @@ Template.orderInfo.events({
     var orNum = this.orderNum;
     var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
     var usr = this.user;
-    console.log("USR is " + usr);
     var cellNumber = this.phone;
-    console.log("CellNumber is " + cellNumber);
     var cellCarrier = this.carrier;
-    console.log("cellCarrier is " + cellCarrier);
-    
+    var inhaus = this.inHouse;
     
     var str = "";
     for (i=0; i < orders.length - 1; i++) {
@@ -63,10 +60,10 @@ Template.orderInfo.events({
       total = total + orders.price;
     }
     console.log("about to call finishedOrder");
-    Meteor.call('finishedOrder', str, total, orNum, usr, cellNumber, cellCarrier, function(error,result) {
-				if (error)
-					return alert(error.reason);
-			}); 
+    Meteor.call('finishedOrder', str, total, inhaus, orNum, usr, cellNumber, cellCarrier, function(error,result) {
+		if (error)
+			return alert(error.reason);
+	}); 
   },
   
   'click #deleBTN': function(){

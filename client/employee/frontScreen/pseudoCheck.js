@@ -33,7 +33,7 @@ Template.pseudoCheck.events({
 		while(final.length < 3){
 		  final += "0";
 		}
-		Meteor.call('placeOrder', str, total, Meteor.user(), function(error,result) {
+		Meteor.call('placeOrder', str, total, true, Meteor.user(), function(error,result) {
 			if (error)
 				return alert(error.reason);
 		}); 

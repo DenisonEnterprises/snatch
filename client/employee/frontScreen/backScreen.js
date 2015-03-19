@@ -71,7 +71,7 @@ Template.readyInfo.events({
     var orders = ReadyOrders.find({orderNum: orNum}).fetch();
     var usr = this.user;
     var cellNumber = this.cellNumber;
-    
+    var inhaus = this.inHouse;
     
     var str = "";
     for (i=0; i < orders.length; i++) {
@@ -80,7 +80,7 @@ Template.readyInfo.events({
       total = total + orders.price; 
     }
 
-    Meteor.call('pickUpOrder', str, orNum, total, usr, cellNumber, function(error,result) {
+    Meteor.call('pickUpOrder', str, orNum, inhaus, total, usr, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 
