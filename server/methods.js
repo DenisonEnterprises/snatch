@@ -3,6 +3,10 @@ Meteor.methods({
         Roles.setUserRoles(this.userId, 'student');
     },
 
+	rm: function() {
+		
+	},
+
   placeOrder: function(thing, price, inHouse, usr) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {

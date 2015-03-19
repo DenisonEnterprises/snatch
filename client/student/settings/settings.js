@@ -1,13 +1,8 @@
-Template.settings.rendered = function() {
-	
-}
-
 Template.settings.events({
     "click #rmAccount": function( evt, instance ){
 		$('#uNameForm').hide();
 		$('#pWordForm').hide();
 		$('#delForm').show();
-		
     },
 	
     "click #changePassword": function( evt, instance ){
@@ -29,6 +24,24 @@ Template.settings.events({
 		$('#delForm').hide();
 		$('#uNameForm').show();
 		
+    },
+	
+    "click #back": function( evt, instance ){
+		$('#pWordForm').hide();
+		$('#delForm').hide();
+		$('#uNameForm').hide();
+		Router.go("menu");
+    },
+	
+		
+    "click #no": function( evt, instance ){
+		$('#delForm').hide();
+    },
+	
+    "click #yes": function( evt, instance ){
+		$('#delForm').hide();
+		Meteor.call("rm");
+		Router.go("/");
     },
 	
 	

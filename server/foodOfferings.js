@@ -1,6 +1,9 @@
+//THIS ENTIRE FILE NEEDS TO BE DELETED!!!!!!!
+
+
 // Bagels
 
-if (Bagels.find().count() === 0) {
+if (Bagels.find().count() === 0){
 	Bagels.insert({type: 'Pizza Bagel (Cheese) ', price: 2.75});
   Bagels.insert({type: 'Pizza Bagel (Pepperoni) ', price: 2.75});
   Bagels.insert({type: 'Snagel ', price: 2.00});

@@ -1,3 +1,5 @@
+Meteor.subscribe('bagels');
+
 Template.bagels.events({
   "click #backBTN": function( evt, instance ){
     Router.go('menu');

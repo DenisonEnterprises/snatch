@@ -32,10 +32,20 @@ Template.login.events({
 
 
 
-Template.login.created = function() {
+Template.login.rendered = function() {
   if (Accounts._verifyEmailToken) {
       Accounts.verifyEmail(Accounts._verifyEmailToken);    
       Meteor.call("makeStudent");
 	  Router.go("menu");
+  }
+  
+  console.log("Run");
+  
+  var usr = Meteor.user()
+  if (usr != null){
+	  var ver = usr.emails[0].verified;
+	  if(ver){
+		  Router.go("menu");
+	  }
   }
 };

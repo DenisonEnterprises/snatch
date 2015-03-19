@@ -1,3 +1,6 @@
+Meteor.subscribe('beverages');
+
+
 Template.beverages.events({
   "click #bagelBTN": function( evt, instance ){
     Router.go('bagels');

@@ -1,3 +1,4 @@
+Meteor.subscribe("local");
 Template.checkout.helpers({
   
   'order': function() {
