@@ -12,7 +12,7 @@ Template.pseudoMenu.events({
   },
   
   "click #swapBTN": function( evt, instance ){
-    Router.go('/backScreen');
+    Router.go('backScreen');
   },
   
   'click #atcBTN' : function(evt, instance){

@@ -49,24 +49,20 @@ Template.orderInfo.events({
     var orNum = this.orderNum;
     var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
     var usr = this.user;
-    console.log("USR is " + usr);
     var cellNumber = this.phone;
-    console.log("CellNumber is " + cellNumber);
     var cellCarrier = this.carrier;
-    console.log("cellCarrier is " + cellCarrier);
     
     
     var str = "";
-    for (i=0; i < orders.length - 1; i++) {
-      console.log(orders[i].item);
+    for (i=0; i < orders.length; i++) {
       str = str + orders[i].item + "\n";
       total = total + orders.price;
     }
-    console.log("about to call finishedOrder");
+    
     Meteor.call('finishedOrder', str, total, orNum, usr, cellNumber, cellCarrier, function(error,result) {
-				if (error)
-					return alert(error.reason);
-			}); 
+			if (error)
+				return alert(error.reason);
+		}); 
   },
   
   'click #deleBTN': function(){

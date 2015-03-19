@@ -17,7 +17,9 @@ Meteor.methods({
       carrier: usr.profile.cellCarrier,
       user: usr,
       price: price,
+      
     };
+    console.log("price is: " + price);
     ActiveOrders.insert(order);
     Local.remove({userId: usr._id});
 
@@ -32,12 +34,12 @@ Meteor.methods({
 	},   
   
   
-  deleteActiveOrder: function(delID, user){
+    deleteActiveOrder: function(delID, user){
   		console.log("DeleteActiveOrder has been called");
   		console.log("delID is: " + delID);
   		ActiveOrders.remove({_id: delID});
   		return 0;
-  },
+    },
   
   
   // Employee has finished making an order
@@ -55,10 +57,12 @@ Meteor.methods({
       user: usr,
       price: price, 
     };
-    
+    console.log("about to insert " + thing);
     ReadyOrders.insert(order);
+    console.log("about to remove order with number: " + orNum);
     ActiveOrders.remove({orderNum: orNum});
-    
+    console.log("process is finished");
+    /*
     var msg = ""; 
     var cellPhone = order.phone.toString(); 
     var cellCar = order.carrier.toString(); 
@@ -96,7 +100,7 @@ Meteor.methods({
 
       //subject: "Your order is ready!",
       text: "Your order is ready!",
-    });
+    });*/
    
     return 0;
   },

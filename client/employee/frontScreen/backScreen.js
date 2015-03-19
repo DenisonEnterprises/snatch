@@ -2,7 +2,7 @@ Meteor.subscribe('backScreen');
 
 Template.backScreen.events({
   "click #swapBTN": function( evt, instance ){
-    Router.go('pseudoMenu');
+    Router.go('/pseudoMenu');
   },
 });
 
@@ -19,12 +19,16 @@ Template.readyInfo.helpers({
 
 Template.ready1.helpers({
   'readyName' : function(){
+    	console.log("This template is not a little bitch -- 1");
+
     return this.uName;
   }
 });
 
 Template.cellNum.helpers({
   'cellNum' : function(){
+    	console.log("This template is not a little bitch -- 2");
+
   	var temp;
     var str = this.phone;
     temp = '(';
@@ -43,21 +47,25 @@ Template.cellNum.helpers({
   }
 });
 
-Template.ready3.helpers({
+/*
+ Template.ready3.helpers({
   'readyTime' : function(){
     var time = this.submitted; 
     return time.getHours() + ":" + time.getMinutes() + "." + time.getSeconds();
   }
-});
+});*/
 
 Template.orderNum.helpers({
   'orderNum' : function(){
+  	console.log("This template is not a little bitch -- 3");
     return this.orderNum;
   }
 });
 
-Template.itemPrice.helpers({
+
+Template.readyInfo.helpers({
   'price' : function(){
+  	console.log("This template is a little bitch -- 4");
     return "$" + this.price;
   }
 });
@@ -81,9 +89,9 @@ Template.readyInfo.events({
     }
 
     Meteor.call('pickUpOrder', str, orNum, total, usr, cellNumber, function(error,result) {
-				if (error)
-					return alert(error.reason);
-			}); 
+		if (error)
+			return alert(error.reason);
+	}); 
   } 
 });
 
