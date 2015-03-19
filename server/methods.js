@@ -3,10 +3,11 @@ Meteor.methods({
         Roles.setUserRoles(this.userId, 'student');
     },
 
-  placeOrder: function(thing, price, usr) {
+  placeOrder: function(thing, price, inHouse, usr) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {
       userId: usr._id,
+      inHouse: inHouse,
       uName: usr.username,
       fName: usr.profile.firstName,
       lName: usr.profile.lastName,
@@ -28,24 +29,33 @@ Meteor.methods({
   
  // Delete order from the checkout menu
   
-    deleteOrder: function(delID, usr) {
+	deleteOrder: function(delID, usr) {
 		Local.remove({_id: delID});
 		return 0;
 	},   
   
+  deleteCHKOrder: function(delItem){
+  		Local.remove({item: delItem});
+  		return 1;
+  },
   
+<<<<<<< HEAD
     deleteActiveOrder: function(delID, user){
   		console.log("DeleteActiveOrder has been called");
   		console.log("delID is: " + delID);
+=======
+  deleteActiveOrder: function(delID, user){
+>>>>>>> e4db9b4aaadae1a82e185b89aeb4a66fc49afa77
   		ActiveOrders.remove({_id: delID});
   		return 0;
     },
   
   
   // Employee has finished making an order
-  finishedOrder: function(thing, price, orNum, usr, cellNum, cellCarrier){
+  finishedOrder: function(thing, price, inHouse, orNum, usr, cellNum, cellCarrier){
     var order = {
       userId: usr._id,
+      inHouse: inHouse,
       uName: usr.username,
       fName: usr.firstName,
       lname: usr.lastName,
@@ -105,9 +115,10 @@ Meteor.methods({
     return 0;
   },
   
-  pickUpOrder: function(thing, orNum, price, usr, cellNum){
+  pickUpOrder: function(thing, orNum, inHouse, price, usr, cellNum){
     var order = {
       userId: usr._id,
+      inHouse: inHouse,
       uName: usr.username,
       fName: usr.firstName,
       lname: usr.lastName,

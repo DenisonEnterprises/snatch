@@ -4,6 +4,9 @@ Template.checkout.helpers({
     //if prevents error due to ordering of page loading, etc.
     if (Meteor.user()) {
       var user = Meteor.user();
+      if(Local.find({userId: Meteor.user()._id}).count() == 0){
+    	  Router.go('/menu');
+  	  }
       return Local.find({userId: user._id});
     }
   }
@@ -14,9 +17,11 @@ Template.checkout.events({
   
   'click #placeOrder': function() {
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
+   	var delUN = Meteor.user().username;
     var str = "";
     var temp = "";
     var total = 0; 
+	var orNum = ActiveOrders.find().count();
     if(orders.length > 6){			// Cap order size at 5
     	alert("Woah way too many orders. You can only order 5");
     }
@@ -30,25 +35,36 @@ Template.checkout.events({
 		  total = total + parseFloat(temp);
 		}
 		var final = total.toString();
-		console.log("first final is: " + final);
 		while(final.length < 3){
-		  console.log("Edited final: " + final);
 		  final += "0";
 		}
-		console.log("about to call place order...  screen should be changing soon");
-		Meteor.call('placeOrder', str, total, Meteor.user(), function(error,result) {
+	    if(confirm("There are " + orNum + " order in front of you!\n To delete your order, press 'cancel'")){
+			Meteor.call('placeOrder', str, total, false, Meteor.user(), function(error,result) {
+				if (error)
+					return alert(error.reason);
+			}); 
+			Router.go('/thankYouCheckout'); 	
+		}else{
+			console.log("We just lost a customer :(");
+			console.log(Meteor.user());
+			var delOrders = Local.find({uName: delUN}).fetch();
+			for(var i = 0; i < delOrders.length; i++){
+				console.log(delOrders[i].item);
+				Meteor.call('deleteCHKOrder', delOrders[i].item, function(error,result) {
+					console.log("bye-bye order!");
 					if (error)
 						return alert(error.reason);
 				}); 
-		Router.go('/thankYouCheckout'); 
+			}
+		}
+
 	}
    
   },
   
   'click #deleteOrder': function() {
     var delID = this._id;
-    var price = this.value; 
-    Meteor.call('deleteOrder', delID, price,  Meteor.user(), function(error,result) {
+    Meteor.call('deleteOrder', delID, Meteor.user(), function(error,result) {
 		if (error)
 			return alert(error.reason);
 	});  

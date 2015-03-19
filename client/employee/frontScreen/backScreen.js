@@ -79,7 +79,7 @@ Template.readyInfo.events({
     var orders = ReadyOrders.find({orderNum: orNum}).fetch();
     var usr = this.user;
     var cellNumber = this.cellNumber;
-    
+    var inhaus = this.inHouse;
     
     var str = "";
     for (i=0; i < orders.length; i++) {
@@ -88,10 +88,17 @@ Template.readyInfo.events({
       total = total + orders.price; 
     }
 
+<<<<<<< HEAD
     Meteor.call('pickUpOrder', str, orNum, total, usr, cellNumber, function(error,result) {
 		if (error)
 			return alert(error.reason);
 	}); 
+=======
+    Meteor.call('pickUpOrder', str, orNum, inhaus, total, usr, cellNumber, function(error,result) {
+				if (error)
+					return alert(error.reason);
+			}); 
+>>>>>>> e4db9b4aaadae1a82e185b89aeb4a66fc49afa77
   } 
 });
 
