@@ -5,15 +5,11 @@ Meteor.methods({
     },
 
 	rm: function() {
-		Local.remove({_id: this.userId});
+		Meteor.users.remove({_id: this.userId});
 	},
 	
 	uName: function(newName) {
 		Meteor.users.update({_id: this.userId}, {$set:{username: newName}} ); 
-	},
-	
-	delLocalByUser: function() {
-		Local.remove({userId: this.userId});
 	},
 
   placeOrder: function(thing, price, inHouse, usr) {
