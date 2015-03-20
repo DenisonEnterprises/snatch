@@ -31,7 +31,7 @@
   text-align: left; 
 }
 
-.itemContainer button {
+.itemContainer .teal button {
   font-family: OpenSans;
   color: #ffffff;
   font-size: 15px;
@@ -57,12 +57,12 @@
   text-decoration: none;
 }
 
-/*
-.itemContainer .nav .Logout:hover {
+
+.itemContainer .nav .logout:hover {
   background: #1ca8a8;
   text-decoration: none;
 }
-*/
+
 
 .itemContainer form li {
   list-style: none;

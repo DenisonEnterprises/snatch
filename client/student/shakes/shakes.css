@@ -53,10 +53,11 @@
   column-count: 3;
 }
 
+/*
 .shakesContainer li {
   list-style: none;
   padding-top: 10px;
-}
+}*/
 
 .shakesContainer .nav .Logout button{
   -webkit-border-radius: 28;
@@ -76,7 +77,7 @@
 }
 
 
-.shakesContainer button {
+.shakesContainer .teal button {
   font-family: OpenSans;
   color: #ffffff;
   font-size: 15px;

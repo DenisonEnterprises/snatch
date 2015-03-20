@@ -14,8 +14,9 @@ Template.shakes.events({
     Router.go('beverages');
   },
     "click #logout": function(ev, instance){
-  	Meteor.logout();
-  	Router.go('/');
+		Meteor.call("delLocalByUser");
+		Meteor.logout();
+		window.location.assign("/");
   },
   
 });

@@ -91,6 +91,14 @@ Template.checkout.events({
    "click #menu": function(evt, instance){
       Router.go('menu');
    },
+   
+"click #logout": function(evt, instance){
+	Meteor.call("delLocalByUser");
+	Meteor.logout();
+	window.location.assign("/");
+},
+   
+
   
   
   
