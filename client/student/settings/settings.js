@@ -40,8 +40,7 @@ Template.settings.events({
 	
     "click #yes": function( evt, instance ){
 		$('#delForm').hide();
-		console.log("CALL SERVER");
-		Meteor.call("rm");
+		Meteor.call("remo");
 		Router.go("/");
     },
 	

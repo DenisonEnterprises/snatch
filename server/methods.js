@@ -4,8 +4,7 @@ Meteor.methods({
         Roles.setUserRoles(this.userId, 'student');
     },
 
-	rm: function() {
-		console.log("REMOVE USER");
+	remo: function() {
 		Meteor.users.remove({_id: this.userId});
 	},
 	
