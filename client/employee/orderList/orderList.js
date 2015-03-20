@@ -1,4 +1,6 @@
-Meteor.subscribe('orderList');
+Meteor.subscribe('active');
+Meteor.subscribe('ready');
+Meteor.subscribe('finished');
 
 Template.orderList.events({
   "click #swapBTN": function(evt, instance ){

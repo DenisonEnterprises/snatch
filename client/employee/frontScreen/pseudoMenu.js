@@ -1,4 +1,6 @@
-Meteor.subscribe('pseudoMenu');
+Meteor.subscribe('active');
+Meteor.subscribe('ready');
+Meteor.subscribe('finished');
 
 Template.pseudoMenu.helpers({
   'bagel': function(){

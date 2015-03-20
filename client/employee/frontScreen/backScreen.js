@@ -1,14 +1,13 @@
-Meteor.subscribe('backScreen');
+Meteor.subscribe('active');
+Meteor.subscribe('ready');
+Meteor.subscribe('finished');
+
 
 Template.backScreen.events({
   "click #swapBTN": function( evt, instance ){
     Router.go('/pseudoMenu');
   },
 });
-
-
-
-
 
 Template.readyInfo.helpers({
   'ready' : function(){
@@ -19,10 +18,15 @@ Template.readyInfo.helpers({
 
 Template.ready1.helpers({
   'readyName' : function(){
-    	console.log("This template is not a little bitch -- 1");
-
     return this.uName;
   }
+});
+
+Template.orderPrice.helpers({
+	'price' : function(){
+		console.log("This is: " + this);
+		return this.price;
+	}
 });
 
 Template.cellNum.helpers({
@@ -57,7 +61,6 @@ Template.cellNum.helpers({
 
 Template.orderNum.helpers({
   'orderNum' : function(){
-  	console.log("This template is not a little bitch -- 3");
     return this.orderNum;
   }
 });
@@ -65,7 +68,6 @@ Template.orderNum.helpers({
 
 Template.readyInfo.helpers({
   'price' : function(){
-  	console.log("This template is a little bitch -- 4");
     return "$" + this.price;
   }
 });
@@ -87,11 +89,6 @@ Template.readyInfo.events({
       str = str + orders[i].item + "\n";
       total = total + orders.price; 
     }
-
-    Meteor.call('pickUpOrder', str, orNum, total, usr, cellNumber, function(error,result) {
-		if (error)
-			return alert(error.reason);
-	}); 
     Meteor.call('pickUpOrder', str, orNum, inhaus, total, usr, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);

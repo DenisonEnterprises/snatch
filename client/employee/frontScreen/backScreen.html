@@ -43,6 +43,7 @@ table, th, td {
           <th> Username </th>
           <th> Cell Phone Number </th>
           <th> Order Number </th>
+          <th> Items </th>
           <th> Total Price </th> 
           <th> Picked Up? </th>
        </tr>
@@ -51,7 +52,8 @@ table, th, td {
           <td align="center">{{> ready1}}</td>
          <td align="center">{{> cellNum}}</td>
          <td align="center">{{> orderNum}}</td>
-         <td align="center">{{price}}</td>  
+         <td align="left">{{> order2}}</td>
+         <td align="center">{{> orderPrice}}</td>  
           <td align="center"><button id="pickUp">Picked Up</button></td>
        </tr>   
         {{/each}}
@@ -65,11 +67,8 @@ table, th, td {
       <span>{{readyName}}</span>
 </template>
 
-<template name="cellNum">
-	<span>{{cellNum}}</span>
-</template>	
-<template name="orderNum">
-	<span>{{orderNum}}</span>
+<template name="orderPrice">
+	<span>{{price}}</span>
 </template>
 
 <!--

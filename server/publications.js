@@ -24,6 +24,17 @@ Meteor.publish('local', function(){
 	return Local.find();
 });
 
+Meteor.publish('active', function(){ 
+	return ActiveOrders.find();
+});
+
+Meteor.publish('finished', function(){
+	return FinishedOrders.find();
+});
+
+Meteor.publish('ready', function(){
+	return ReadyOrders.find();
+});
 //Roles??
 //Local
 

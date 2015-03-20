@@ -1,4 +1,5 @@
 Meteor.methods({
+		
     makeStudent: function () {
         Roles.setUserRoles(this.userId, 'student');
     },
@@ -13,8 +14,6 @@ Meteor.methods({
       userId: usr._id,
       inHouse: inHouse,
       uName: usr.username,
-      fName: usr.profile.firstName,
-      lName: usr.profile.lastName,
       item: thing,
       submitted: new Date(),
       orderNum: orNum,
@@ -24,7 +23,6 @@ Meteor.methods({
       price: price,
       
     };
-    console.log("price is: " + price);
     ActiveOrders.insert(order);
     Local.remove({userId: usr._id});
 
@@ -44,8 +42,6 @@ Meteor.methods({
   },
   
     deleteActiveOrder: function(delID, user){
-  		console.log("DeleteActiveOrder has been called");
-  		console.log("delID is: " + delID);
   		Local.remove({_id: delID}); 
   		return 0;
   	}, 
@@ -188,7 +184,7 @@ Meteor.methods({
       userId: user._id,
       uName: user.username,
       price: price,
-      item: str + "\n" + flavor + " " + mixins,
+      item: str + flavor + " " + mixins,
       submitted: new Date(),        
     }
     Local.insert(order);
