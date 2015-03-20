@@ -16,8 +16,9 @@ Template.beverages.events({
     Router.go('menu');
   },
     "click #logout": function(ev, instance){
-  	Meteor.logout();
-  	Router.go('/');
+		Meteor.call("delLocalByUser");
+		Meteor.logout();
+		window.location.assign("/");
   },
   
 });

@@ -1,3 +1,5 @@
+Meteor.subscribe('local');
+
 Template.menu.rendered = function() {
 	
 	
@@ -60,7 +62,9 @@ Template.menu.events({
     },
 	
 	"click #logout": function(evt, instance){
+		Meteor.call("delLocalByUser");
 		Meteor.logout();
+		window.location.assign("/");
 	}
 
 

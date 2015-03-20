@@ -109,3 +109,22 @@
   border: solid #005f5f 2px;
   font-weight:bolder;
 }
+
+
+
+.checkoutContainer .nav .Logout button{
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 100px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #005f5f;
+  padding: 2px 15px 2px 15px;
+  text-decoration: none;
+}
+
+.checkoutContainer .nav .logout:hover {
+  background: #1ca8a8;
+  text-decoration: none;
+}

@@ -183,8 +183,6 @@ Template.signupForm.events({
     Router.go('/');
   },
   
-  //Test Push
-
   
 
  } );

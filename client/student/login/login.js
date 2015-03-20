@@ -9,19 +9,25 @@ Template.login.events({
    
         function(error) {
         	if (error) {
-				$('#notifText').html("Incorrect Password");
+				var used = Meteor.users.find({username: $('#login-username').val()}).count() > 0;
+				if (used){
+					$('#notifText').html("Incorrect Password");
+					$('#notifText').show();
+				}else{
+					$('#notifText').html("Incorrect Username");
+					$('#notifText').show();
+				}
+        	}else{
+        		
+		        if (Roles.userIsInRole(Meteor.user()._id, 'employee')){
+		             window.location.href = '/employee'; 
+		        }else if(Roles.userIsInRole(Meteor.user()._id, 'student')){
+		             window.location.href = '/menu';
+		        }
+				
         	}
       	});
     
-      if (Roles.userIsInRole(Meteor.user()._id, 'employee')){
-           window.location.href = '/employee'; 
-      }else if(Roles.userIsInRole(Meteor.user()._id, 'student')){
-           window.location.href = '/menu';
-      }else{
-           console.log("NOT WORKING");
-           console.log(Meteor.user()._id);
-           //window.location.href = '/denied';
-      }
     
   },
   
