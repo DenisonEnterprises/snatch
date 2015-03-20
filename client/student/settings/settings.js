@@ -40,6 +40,7 @@ Template.settings.events({
 	
     "click #yes": function( evt, instance ){
 		$('#delForm').hide();
+		console.log("CALL SERVER");
 		Meteor.call("rm");
 		Router.go("/");
     },
@@ -48,14 +49,35 @@ Template.settings.events({
 	
 	
     "submit #uNameForm": function(event, template) {
-      event.preventDefault();
-	  $('#uNameForm').hide();
+      	event.preventDefault();
 	  
-	 // Meteor.users.update({_id:Meteor.user()._id}, {$set:{username: "NEWNAME"}} ); 
-	 Meteor.call("uName", $('#newU').val());
-	  
-	  $('#notif').html("Username Succesfully Changed");
-	  $('#notif').show();
+     	var input=$($('#newU')).val();
+		
+  		var usernameTaken = Meteor.users.find({username: input}).count() > 0;
+  		var usernameEmpty = input.length == 0;
+  		uFlag = !usernameTaken && !usernameEmpty;
+  		if(uFlag){
+		 Meteor.call("uName", $('#newU').val());
+		  $('#notif').html("Username Succesfully Changed");
+		  $('#notif').show();
+  	  	  $('#uNameForm').hide();
+		  
+  		}else{
+  			$(this).removeClass("valid").addClass("invalid");
+  			if(usernameTaken){
+  				$('#notif').html("Username Taken");
+	  		 	$('#notif').show();
+				
+			}else{
+  				$('#notif').html("Please Enter A Username");
+	  		 	$('#notif').show();
+				
+			}
+  		}
+  	
+	 
+	 
+
     },
 	
 	

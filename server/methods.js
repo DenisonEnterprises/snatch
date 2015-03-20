@@ -5,7 +5,8 @@ Meteor.methods({
     },
 
 	rm: function() {
-		Local.remove({_id: this.userId});
+		console.log("REMOVE USER");
+		Meteor.users.remove({_id: this.userId});
 	},
 	
 	uName: function(newName) {
@@ -13,7 +14,7 @@ Meteor.methods({
 	},
 	
 	delLocalByUser: function() {
-		Meteor.users.update({_id: this.userId}, {$set:{username: newName}} );
+		Local.remove({userId: this.userId});
 	},
 
   placeOrder: function(thing, price, inHouse, usr) {
