@@ -1,10 +1,8 @@
-<template name="menu">
+<template name="menuLoading">
   
   <head>
     <title>Bandersnatch - Menu</title>
   </head>
-  
-   {{#if isInRole 'student'}}
   
   <div class="menuContainer">
        
@@ -12,21 +10,15 @@
        <ul>
           <li>{{currentUser.username}}</li>
           <li class="Settings">
-            <a href="/settings" >
               <img src="img/sm/settingsSM.png" alt="Settings">
-            </a>
           </li>
-          
+       
           <li class="Info">
-            <a href="/about">
-              <img src="img/sm/infoSM.png" alt="Info">
-            </a>
+              <img src="img/sm/infoSM.png" alt="Info"> 
           </li>
          
          <li class="Logout">
-            <a href="/">
-              <button class="logout" id="logout">Logout</button>
-           </a>
+              <button class="logout">Logout</button>
          </li>
           
       </ul>
@@ -37,18 +29,18 @@
     <div class="middle">
       <h1>Main Menu</h1>
        <br>
-       <button class="bagelBTN" id="bagelBTN">Bagels</button>
+       <button class="bagelBTN">Bagels</button>
       
-       <button class="shakesBTN" id="shakesBTN">Milkshakes</button>
+       <button class="shakesBTN">Milkshakes</button>
       
-       <button class="bevsBTN" id="bevsBTN">Beverages</button>
+       <button class="bevsBTN">Beverages</button>
       
-       <button class="snackBTN" id="snackBTN"> Snacks </button>
+       <button class="snackBTN"> Snacks </button>
       
        <br>
       
       <div class= "cart">
-       <button id="cout" class="cout">Checkout
+       <button class="cout">Checkout
        <img src="img/lg/Grocery-CartLG.png" alt="Cart"></button>
       </div>
       
@@ -57,13 +49,13 @@
       </div>
     </div>
   
+  
+  
+  		
+  
+  
   </div> 
   
-  {{else}}
-    
-     {{> denied}}
-  
-  {{/if}} 
 
   
 </template>
