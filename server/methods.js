@@ -55,6 +55,18 @@ Meteor.methods({
   		return 0;
     },
   
+  	uName: function(newName) {
+		Meteor.users.update({_id: this.userId}, {$set:{username: newName}} ); 
+	},
+  	
+	delLocalByUser: function() {
+		Local.remove({userId: this.userId});
+	},
+
+ 	rm: function() {
+-		Local.remove({_id: this.userId});
+ 	},
+
   
   // Employee has finished making an order
   finishedOrder: function(thing, price, inHouse, orNum, usr, cellNum, cellCarrier){
