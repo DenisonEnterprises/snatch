@@ -47,26 +47,18 @@
            </div>
          </div>
          
-         
          <div class="itemz">
            <div class="moveItem">
            {{item}}
            </div>
          </div>
          
-         
-         
-         
-         
-         
          <div class="price">
            <div class="movePrice">
           {{price}}
            </div>
          </div>
-         
-         
-         
+        
          <br>
        </div>
        
@@ -90,6 +82,9 @@
        </div>
        <img src="img/checkBottom.png" alt="CheckBottom">
  <br>
+ 	<h3> There are {{> orNum}} Orders in front of yours. </h3>
+ 	<h3> If you wish to cancel, click 'cancel'. Else, click 'Place Order' </h3>
+ 	<button class="deleteOrder" id="deleteOrder"> Cancel </button>
     <button class="backBTN" id="menu">Menu</button>  
     <button class="placeOrderBTN" id="placeOrder">Place Order</button>
        <br>
@@ -103,21 +98,7 @@
        
      </div>
   </div>
-  
-     <script>
-    function deleteOrder(item) {
-      var delOrder = Local.find({item: item}).fetch();
-      Meteor.call('deleteOrder', delOrder, Meteor.user(), function(error,result) {
-          if (error)
-            return alert(error.reason);
-			});
-    }
-       
-       
 
-       
-       
-  </script>
   
     {{else}}
     
@@ -127,5 +108,7 @@
   
 </template>
 
-
+<template name="orNum">
+	<span>{{orderNum}}</span>
+</template>
 

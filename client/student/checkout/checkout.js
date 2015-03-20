@@ -18,6 +18,12 @@ Template.checkout.helpers({
   
 });
 
+Template.orNum.helpers({
+	'orderNum' : function() {
+		return ActiveOrders.find().count();
+	}
+});
+
 Template.checkout.events({
   
   'click #placeOrder': function() {
@@ -43,39 +49,25 @@ Template.checkout.events({
 		while(final.length < 3){
 		  final += "0";
 		}
-	    if(confirm("There are " + orNum + " order in front of you!\n To delete your order, press 'cancel'")){
-			Meteor.call('placeOrder', str, total, false, Meteor.user(), function(error,result) {
-				if (error)
-					return alert(error.reason);
-			}); 
-			Router.go('/thankYouCheckout'); 	
-		}else{
-			console.log("We just lost a customer :(");
-			console.log(Meteor.user());
-			var delOrders = Local.find({uName: delUN}).fetch();
-			for(var i = 0; i < delOrders.length; i++){
-				console.log(delOrders[i].item);
-				Meteor.call('deleteCHKOrder', delOrders[i].item, function(error,result) {
-					console.log("bye-bye order!");
-					if (error)
-						return alert(error.reason);
-				}); 
-			}
-		}
-
+		Meteor.call('placeOrder', str, total, false, Meteor.user(), function(error,result) {
+			if (error)
+				return alert(error.reason);
+		}); 
+		Router.go('/thankYouCheckout'); 	
 	}
    
   },
   
   'click #deleteOrder': function() {
-    var delID = this._id;
-    Meteor.call('deleteOrder', delID, Meteor.user(), function(error,result) {
+    var delID = Meteor.user()._id;
+    console.log("delID: " + delID);
+    Meteor.call('deleteOrder', delID, function(error,result) {
 		if (error)
 			return alert(error.reason);
-	});  
-    if(Local.find({userId: Meteor.user()._id}).count() < 2){
-      Router.go('/menu');
-    }
+	}); 
+	console.log(Local.find().count() + " number of items left in Local"); 
+    //Router.go('/menu');
+    
   },
   
   

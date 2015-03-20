@@ -35,8 +35,8 @@ Meteor.methods({
   
  // Delete order from the checkout menu
   
-	deleteOrder: function(delID, usr) {
-		Local.remove({_id: delID});
+	deleteOrder: function(delID) {
+		Local.remove({userId: delID});
 		return 0;
 	},   
   
