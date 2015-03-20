@@ -51,6 +51,9 @@ Template.settings.events({
       event.preventDefault();
 	  $('#uNameForm').hide();
 	  
+	 // Meteor.users.update({_id:Meteor.user()._id}, {$set:{username: "NEWNAME"}} ); 
+	 Meteor.call("uName", $('#newU').val());
+	  
 	  $('#notif').html("Username Succesfully Changed");
 	  $('#notif').show();
     },

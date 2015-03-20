@@ -5,7 +5,11 @@ Meteor.methods({
     },
 
 	rm: function() {
-		
+		Meteor.users.remove({_id: this.userId});
+	},
+	
+	uName: function(newName) {
+		Meteor.users.update({_id: this.userId}, {$set:{username: newName}} ); 
 	},
 
   placeOrder: function(thing, price, inHouse, usr) {
