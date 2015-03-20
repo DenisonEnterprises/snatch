@@ -1,4 +1,8 @@
 Meteor.subscribe("local");
+Meteor.subscribe('active');
+Meteor.subscribe('ready');
+Meteor.subscribe('finished');
+
 Template.checkout.helpers({
   
   'order': function() {
