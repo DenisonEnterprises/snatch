@@ -4,8 +4,8 @@
 // Bagels
 
 if (Bagels.find().count() === 0){
-	Bagels.insert({type: 'Pizza Bagel (Cheese) ', price: 2.75});
-  Bagels.insert({type: 'Pizza Bagel (Pepperoni) ', price: 2.75});
+	Bagels.insert({type: 'Pizza Bagel (Cheese) ', price: 3.00});
+  Bagels.insert({type: 'Pizza Bagel (Pepperoni) ', price: 3.00});
   Bagels.insert({type: 'Snagel ', price: 2.00});
   Bagels.insert({type: 'Klynch ', price: 1.75});
   Bagels.insert({type: "Nuckin' Futz ", price: 2.00});
@@ -17,7 +17,7 @@ if (Bagels.find().count() === 0){
 
 if (Snacks.find().count() === 0) {
   Snacks.insert({type: 'Popcorn ', price: 1.00});
-  Snacks.insert({type: 'Pizza Pretzel ', price: 2.75});
+  Snacks.insert({type: 'Pizza Pretzel ', price: 3.00});
   Snacks.insert({type: 'Pita Pizza ', price: 4.00});
   Snacks.insert({type: 'Nerds Rope ', price: 1.25});
   Snacks.insert({type: "Mad Hatter's Mix ", price: 1.50});
@@ -41,22 +41,22 @@ if (Beverages.find().count() === 0) {
 // Milkshakes -- flavor & mixin
 
 if (Milkshakes.find().count() === 0){
-  Milkshakes.insert({type: 'flavor', name: 'Vanilla ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Chocolate ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Dark Chocolate ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'White Chocolate ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Chai ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Peppermint ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Hazelnut ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Irish Cream ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Banana ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Strawberry ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Pumpkin ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Raspberry ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Almond ', price: 2.75});
-	Milkshakes.insert({type: 'flavor', name: 'Coconut ', price: 2.75});
-  Milkshakes.insert({type: 'flavor', name: 'Cherry ', price: 2.75});
-  Milkshakes.insert({type: 'flavor', name: 'Pomegranate ', price: 2.75});
+  Milkshakes.insert({type: 'flavor', name: 'Vanilla ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Chocolate ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Dark Chocolate ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'White Chocolate ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Chai ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Peppermint ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Hazelnut ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Irish Cream ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Banana ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Strawberry ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Pumpkin ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Raspberry ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Almond ', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Coconut ', price: 3.00});
+  Milkshakes.insert({type: 'flavor', name: 'Cherry ', price: 3.00});
+  Milkshakes.insert({type: 'flavor', name: 'Pomegranate ', price: 3.00});
   Milkshakes.insert({type: 'mixin', name: 'Oreo ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Reeses ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Peanutbutter ', price: 0.00});

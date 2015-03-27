@@ -68,7 +68,7 @@ Meteor.methods({
 	},
 
  	rm: function() {
--		Local.remove({_id: this.userId});
+		Local.remove({_id: this.userId});
  	},
 
   

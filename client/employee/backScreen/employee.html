@@ -42,6 +42,7 @@ table, th, td {
           <th style="width:150px"> Cell Phone Number </th>
           <th style="width: 100px"> Time of Order </th>
           <th style="width: 100px"> Order Number </th>
+		  <th style="width:100px"> In House? </th>
           <th style="width: 200px"> Order </th>
           <th style="width: 100px"> Finished? </th>
        </tr>
@@ -52,6 +53,7 @@ table, th, td {
          <td style="width: 150px">{{> cellNum}}</td>
           <td style="width: 100px">{{> order3}}</td>
          <td style="width: 100px">{{> orderNum}}</td>
+		 <td style="width:100px">{{>inHaus}}</td>
          <td style="width: 200px">{{> order2}}</td>
           <td class="done" style="width: 100px">{{> done}}</td>
        </tr>   
@@ -65,6 +67,9 @@ table, th, td {
 </template>
 <template name="cellNum">
   <span>{{cellNum}}</span>
+</template>
+<template name="inHaus">
+	<span>{{inHaus}}</span>
 </template>
 
 <template name ="order1">

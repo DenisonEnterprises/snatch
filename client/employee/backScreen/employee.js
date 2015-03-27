@@ -36,6 +36,18 @@ Template.order1.helpers({
   }
 });
 
+Template.inHaus.helpers({
+	'inHaus' : function(){
+		if(this.inHouse){
+			return "Yes";
+		}
+		else{
+			return "No";
+		}
+	}
+	
+});
+
 Template.orderNum.helpers({
   'orderNum' : function(){
     return this.orderNum;

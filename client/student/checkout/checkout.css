@@ -99,6 +99,18 @@
   font-weight:bolder;
 }
 
+.checkoutContainer .miniText button{
+    font-family: OpenSans;
+    color: #ffffff;
+    font-size: 25px;
+    background: black;
+    margin: 25px;
+    padding: 15px 35px 15px 35px;
+    border: solid black 3.5px;
+    font-weight:bolder;
+	cursor: default;
+}
+
 .checkoutContainer .cout .bevBTN{
   font-family: OpenSans;
   color: #ffffff;

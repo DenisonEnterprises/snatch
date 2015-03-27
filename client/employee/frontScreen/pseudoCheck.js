@@ -42,7 +42,7 @@ Template.pseudoCheck.events({
 			if (error)
 				return alert(error.reason);
 		}); 
-		Router.go('/pseudoTYC'); 
+		Router.go('/backScreen'); 
 	}
    
   },
