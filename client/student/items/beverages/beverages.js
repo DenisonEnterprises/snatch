@@ -20,6 +20,23 @@ Template.beverages.events({
 		Meteor.logout();
 		window.location.assign("/");
   },
+  "click #bev_list": function(evt, instance){ //gets all clicks
+	  count = 0;
+	  $.each($('#bev_list').serializeArray(),function() {
+			count++
+	  });
+	  
+	  if(count === 0){
+		  $('#atcButton').prop('disabled', true); //TO DISABLED
+		  $('#atcButton').fadeTo(0,.4);
+		  $('#atcButton').css("cursor", "default");
+	  }else{
+		  $('#atcButton').prop('disabled', false); //TO ENABLE
+		  $('#atcButton').fadeTo(0,1);
+		  $('#atcButton').css("cursor", "pointer");
+	  }
+  	
+   },
   
 });
 
