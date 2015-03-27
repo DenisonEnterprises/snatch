@@ -19,6 +19,15 @@ Template.shakes.events({
 		window.location.assign("/");
   },
   
+  "click #small": function(evt, instance){
+  	price = "$2.50";
+  	console.log("Price is: " + price);
+  },
+  "click #reg": function(evt, instance){
+  	price = "$3.00";
+  	console.log("Price is: " + price);
+  },
+  
 });
 
 
@@ -34,17 +43,22 @@ Template.shakes.helpers({
   
 });
 
+
+Template.shakes.rendered = function(){
+
+
+};
+
+
 Template.shakes.events({
-  
+
   'submit form': function(event) {
     event.preventDefault();
     var flavor;
     var form = {};
-    var price; 
-    
+  	
     $.each($('#flavor_list').serializeArray(),function(){
       flavor = this.name + "\n";
-      price = "$" + this.value;
     });
     $.each($('#mixin_list').serializeArray(),function(){
       form[this.name] = this.name;

@@ -28,13 +28,20 @@
   font-family: OpenSans; 
   color: #fff;
   font-size: 20px;
-
 }
 
 .shakesContainer b {
   font-family: OpenSans; 
   color: #fff;
   font-size: 13px;
+}
+
+
+.shakesContainer .shakeSize{
+	display:inline;
+	font-family: OpenSans; 
+	color: white;
+	font-size: 30px;
 }
 
 .shakesContainer form ul {
