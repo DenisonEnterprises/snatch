@@ -20,9 +20,26 @@ Template.bagels.events({
 		window.location.assign("/");
   },
   
+  
+  "click #bagel_list": function(evt, instance){ //gets all clicks
+	  count = 0;
+	  $.each($('#bagel_list').serializeArray(),function() {
+			count++
+	  });
+	  
+	  if(count === 0){
+		  $('#atcButton').prop('disabled', true); //TO DISABLED
+		  $('#atcButton').fadeTo(0,.4);
+		  $('#atcButton').css("cursor", "default");
+	  }else{
+		  $('#atcButton').prop('disabled', false); //TO ENABLE
+		  $('#atcButton').fadeTo(0,1);
+		  $('#atcButton').css("cursor", "pointer");
+	  }
+  	
+   },
+
 });
-
-
 
 
 
@@ -42,13 +59,18 @@ Template.bagels.events({
 	'submit form': function(event) {
 		event.preventDefault();
 
+
+
+
+
+
+
 		var form = {};
     var price; 
     var count = 0
 		$.each($('#bagel_list').serializeArray(),function() {
 			form[this.name] = this.name + "\n";
-      price = this.value;
-
+      	  	price = this.value;
 		}); 
     
 		for (var key in form) {

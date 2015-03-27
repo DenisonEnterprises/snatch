@@ -32,12 +32,22 @@
 .checkoutContainer .cout .line .rmBtn{
    position: absolute;
   display: inline;
-
 }
 
 .checkoutContainer .cout .line .rmBtn .moveBtn{
    position: relative;
    right: 160px;
+}
+
+.checkoutContainer .cout .line .rmBtn{
+    cursor:url('/img/middle-finger.cur'), pointer;
+}
+.checkoutContainer .cout .line .rmBtn .moveBtn{
+    cursor:url('/img/middle-finger.cur'), pointer;
+}
+
+.checkoutContainer .cout .line .rmBtn .moveBtn .button-check{
+    cursor:url('/img/middle-finger.cur'), pointer;
 }
 
 .checkoutContainer .cout .line .itemz{

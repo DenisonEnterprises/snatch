@@ -30,7 +30,7 @@
 
      <h1>Bagels</h1>
 
-      <form id="bagel_list">
+      <form id="bagel_list" class="bagel_list">
         <ul>
           {{#each bagel}}
             {{>bagelBox}}
@@ -38,7 +38,7 @@
         </ul>
         <button type ="button" class="backButton" id="backBTN">Menu</button>
         
-        <button type="submit" class="atcButton">Add To Cart</button>
+        <button type="submit" class="atcButton" id="atcButton" disabled="disabled">Add To Cart</button>
       </form>
     
 	<div class="teal">

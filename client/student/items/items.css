@@ -105,5 +105,10 @@
   padding: 10px 40px 10px 40px;
   border: solid white 3px;
   
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  cursor: default;
+  
+  
   font-weight:bolder;
 }
