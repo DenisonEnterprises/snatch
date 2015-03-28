@@ -19,6 +19,8 @@ Template.shakes.events({
 		window.location.assign("/");
   },
   
+  
+  
   "click #small": function(evt, instance){
   	price = "$2.50";
   	console.log("Price is: " + price);
@@ -27,6 +29,36 @@ Template.shakes.events({
   	price = "$3.00";
   	console.log("Price is: " + price);
   },
+  
+  
+  "click": function(evt, instance){ //gets all clicks
+	  countF = 0;
+	  countM = 0;
+	  countS = 0;
+	  $.each($('#flavor_list').serializeArray(),function() {
+		  countF++;
+	  });
+	  
+	  $.each($('#mixin_list').serializeArray(),function(){
+		  countM++;
+	  });
+	  
+	  $.each($('#size_list').serializeArray(),function(){
+	  	  countS++;
+	  });
+	  console.log(countS);
+	  if(countM === 0 || countF === 0 || countF > 2 || countM > 3 || countS === 0){
+		  $('#atcButton').prop('disabled', true); //TO DISABLED
+		  $('#atcButton').fadeTo(0,.4);
+		  $('#atcButton').css("cursor", "default");
+	  }else{
+		  $('#atcButton').prop('disabled', false); //TO ENABLE
+		  $('#atcButton').fadeTo(0,1);
+		  $('#atcButton').css("cursor", "pointer");
+	  }
+  	
+   },
+  
   
 });
 
@@ -43,11 +75,6 @@ Template.shakes.helpers({
   
 });
 
-
-Template.shakes.rendered = function(){
-
-
-};
 
 
 Template.shakes.events({
@@ -94,35 +121,5 @@ Template.mixinBox.helpers({
   }
 });
 
-Template.flavorBox.events({
-    'click': (function(event) {
-      var elements = document.getElementsByName('flavor');
-      var i = 0; 
-      while (i < 3 && elements[i].checked){
-        if(elements[i].checked){
-          console.log("checkmate");
-        }
-        i = i+1;
-      }
-      /*
-      for (var i = 0, l = 3 ; i < l ; i++) {
-       // console.log("Congrats on a fucking flavor");
-        if (elements[i].checked) {
-          //console.log("Congrats on a fucking flavor"); 
-        }
-      }*/
-  }),
-});
-
-
-Template.mixinBox.events({
-    'click': function(event) {
-      var elements = document.getElementsByName('mixin');
-      for (var i = 0,l=4;i<l;i++) {
-        if (elements[i].checked) {
-        }
-      }
-  },
-});
 
 

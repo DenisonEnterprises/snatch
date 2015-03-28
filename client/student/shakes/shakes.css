@@ -35,13 +35,30 @@
   color: #fff;
   font-size: 13px;
 }
-
-
-.shakesContainer .shakeSize{
-	display:inline;
-	font-family: OpenSans; 
+/*
+.shakesContainer .shakez .shakeSize{
+	font-size: 25px;
+	font-family: OpenSans;
 	color: white;
-	font-size: 30px;
+}*/
+
+
+.shakesContainer .shakez{
+    color: white;
+    border: 3px solid;
+	display: inline-block;
+	font-size: 25px;
+  
+    padding: 10px 20px 10px 20px;
+  
+  
+    background-color: rgba(0, 95, 95, .5);
+    text-align: center;
+  
+    -webkit-column-count: 2; 
+    -moz-column-count: 2; 
+    column-count: 2;
+	
 }
 
 .shakesContainer form ul {
@@ -132,6 +149,10 @@
   margin-top: 20px;
   padding: 10px 40px 10px 40px;
   border: solid white 3px;
+  
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  cursor: default;
   
   font-weight:bolder;
 }

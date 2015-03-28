@@ -35,19 +35,12 @@
       <h1>Shakes</h1>  
     <br>
 
-		  <div class="shakez">
-			   <label class="shakeSize"> Small Milkshake <input type="radio" id="small" name="size" value="small"></label>
-	      </div>
-		 <br>
 
-		  <div class="shakez">
-		  <label class="shakeSize"> Regular Milkshake   <input type="radio" id="reg" name="size" value="reg"></label>
-		</div>
 		    
 			<br>
     <h4>Flavors</h4>
     
-<b> Pick one please!</b>
+<b> Pick up to two please!</b>
        <form name="flavor" id="flavor_list">
           <ul>
             {{#each flavor}}
@@ -60,7 +53,7 @@
    
       <form id="mixin_list">
         
-<b>Pick Only Three Please!</b> 
+<b>Pick up to three please!</b> 
         
         <br>
         <ul>
@@ -69,15 +62,22 @@
           {{/each}}
         </ul>
       <br>
-	  <br>
-	  <br>
-	
-
-
-        <button type =button id="backBTN" class="backButton">Menu</button>
-
-        <button type="submit" class="atcButton" >Add To Cart</button>
       </form>  
+	  <form id="size_list">
+		  <h4> Choose a size! </h4>
+		  <br>
+		  	  <div class="shakez">
+		  		   <label class="shakeSize"> Small Milkshake <input type="radio" id="small" name="size" value="small"></label>
+		  	  <label class="shakeSize"> Regular Milkshake   <input type="radio" id="reg" name="size" value="reg"></label>
+		  	</div>
+		
+	<br>
+	
+          <button type =button id="backBTN" class="backButton">Menu</button>
+
+          <button type="submit" class="atcButton" id="atcButton" disabled="disabled">Add To Cart</button>
+		  
+	  </form>
     <div class="teal">
     	<button type =button id="bagelBTN">Bagels</button>
     	<button type =button id="bevsBTN">Beverages</button>
