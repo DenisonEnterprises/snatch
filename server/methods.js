@@ -49,16 +49,11 @@ Meteor.methods({
   		return 1;
   },
   
-    deleteActiveOrder: function(delID, user){
+    deleteActiveOrder: function(delID){
   		Local.remove({_id: delID}); 
   		return 0;
   	}, 
   	
-  deleteActiveOrder: function(delID, user){
-  		ActiveOrders.remove({_id: delID});
-  		return 0;
-    },
-  
   	uName: function(newName) {
 		Meteor.users.update({_id: this.userId}, {$set:{username: newName}} ); 
 	},
