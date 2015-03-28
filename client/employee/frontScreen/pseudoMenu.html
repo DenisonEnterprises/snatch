@@ -10,19 +10,11 @@ table, th, td {
 }
 </style>
 
+
    
    <div class="pseudoMenuContainer">
-      <div class="nav">
-		<ul>
-			<li><button type="button" id="swapBTN">Pick Up Orders</button></li>
-		</ul>
-	  </div>
-   	<br>
-   	<br>
-   	<br>
-   	<br>
-   	<br>
-   		<table align="center">
+	   
+   		<table align="center" cellpadding="0" cellspacing="0" border="0">
 			<tr class="titles">				
 				<th> Bagels </th>		
 				<th style="width:350px"> Shakes </th>
@@ -43,7 +35,7 @@ table, th, td {
        			 	<th class="flavMix" > Flavors </th>
        			  <th class="flavMix" > Mixins </th></tr>
        			 	<tr><th><ul>
-						<form id="flavList">
+						<form id="flavList" class="flavList">
 							<br>
 							{{#each flavor}}
 							  {{> flavorBox}}
@@ -52,7 +44,7 @@ table, th, td {
 						</form>  			 	
        			 	</ul></th>
        			 	<th><ul>
-						<form id="mixList">
+						<form id="mixList" class="mixList">
 						  <br>
 						  {{#each mixin}}
 							{{> mixinBox}}
@@ -80,7 +72,14 @@ table, th, td {
 			</tr>
 		</table>
 		
-        <button class="submit" id="atcBTN">Add To Cart</button>
+  	   <button class="submit" id="atcBTN">Add To Cart</button>
+        <div class="nav">
+  		<ul>
+  			<li><button type="button" id="swapBTN">Pick Up Orders</button></li>
+  		</ul>
+  	  </div>
+		
+        
 		
    </div> 
    

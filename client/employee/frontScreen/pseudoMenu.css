@@ -1,17 +1,16 @@
 .pseudoMenuContainer {
-  background-color: black;
-  color: white; 
-  
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  /*overflow: hidden;*/
     position:absolute;
-    height:100vh;
-    width:100vw;
-    top:0px;
-    left:0px;
+    top: 0px;
+    left: 0px;
+	background-color: black;
+	color: white;
+	width: 100vw;
+	height: 100vh;
+	
+	overflow:hidden;
 }
+
+
 
 .pseudoMenuContainer ul {
   color: white;
@@ -22,6 +21,11 @@
   text-align: left; 
 }
 
+.pseudoMenuContainer table{
+	border-collapse:collapse;
+}
+
+
 .pseudoMenuContainer .titles th{
 	font-size: 25px;
 	border: 5px;
@@ -30,14 +34,14 @@
 	vertical-align: middle;
 }
 
-.pseudoMenuContainer .flavMix{
-	font-size: 20px; 
-	border: 0px;
-}
+
 .pseudoMenuContainer th{
 	width: 250px;
 	font-size: 15px;
+	
+}
 
+.pseudoMenuContainer .flavMix th{
 }
 
 .pseudoMenuContainer .nav button{
@@ -46,11 +50,11 @@
   border-radius: 100px;
   font-family: Arial;
   color: #ffffff;
-  font-size: 35px;
+  font-size: 20px;
   background: #005f5f;
-  padding: 20px 25px 20px 25px;
+  padding: 10px 15px 10px 15px;
   text-decoration: none;
-  margin-top: 25px;
+  margin-top: 10px;
   margin-right: 20px;
 }
 
@@ -59,13 +63,13 @@
   text-align: center;
   font-family: OpenSans;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   background: #bf7148;
   position: absolute;
-  margin-top: 20px;
-  margin-right: 20px;
-  margin-left: 40%;
-  padding: 20px 40px 20px 40px;
+  margin-top: 10px;
+  margin-left: 20px;
+  
+  padding: 10px 20px 10px 20px;
   border: solid white 3px;
   font-weight:bolder;
 }

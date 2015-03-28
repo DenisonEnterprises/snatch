@@ -5,33 +5,16 @@
   </head>
     
   
-  {{#if isInRole 'student'}}
+  {{#if isInRole 'employee'}}
 
 
    <div class="pseudoCheckContainer">
-    <div class="nav">
-       <ul>
-          <li>{{currentUser.username}}</li>
-          <li class="Settings">
-            <a href="/settings" >
-              <img src="img/sm/settingsSM.png" alt="Settings">
-            </a>
-          </li>
-          
-          <li class="Info">
-            <a href="/about">
-              <img src="img/sm/infoSM.png" alt="Info">
-            </a>
-          </li>
-          
-      </ul>
-    </div> 
+    
      
      <div class="cout">
     
  
   
-    <h1>Employee's Checkout</h1>
        <img src="img/checkTop.png" alt="CheckTop">
   <br>
 
@@ -76,16 +59,7 @@
        
     {{/each}}
        
-        <div class="line">
-         <br>
-       </div>
-       
-       <div class="line">
-         <br>
-       </div>
-       <div class="line">
-         <br>
-       </div>
+ 
        <img src="img/checkBottom.png" alt="CheckBottom">
  <br>
     <button class="backBTN" id="menu">Menu</button>  

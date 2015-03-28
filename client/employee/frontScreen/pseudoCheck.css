@@ -8,7 +8,6 @@
   
  /* overflow: hidden; */
     position:absolute;
-    height:100vh;
     width:100vw;
     top:0px;
     left:0px;
@@ -18,6 +17,11 @@
 
 .pseudoCheckContainer h1{
   padding: 30px;
+}
+
+
+.pseudoCheckContainer .cout{
+	margin-top: 25px;
 }
 
 

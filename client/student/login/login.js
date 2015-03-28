@@ -20,7 +20,7 @@ Template.login.events({
         	}else{
         		
 		        if (Roles.userIsInRole(Meteor.user()._id, 'employee')){
-		             window.location.href = '/employee'; 
+		             window.location.href = '/backScreen'; 
 		        }else if(Roles.userIsInRole(Meteor.user()._id, 'student')){
 		             window.location.href = '/menu';
 		        }
@@ -50,7 +50,7 @@ Template.login.rendered = function() {
   var usr = Meteor.user()
   if (usr != null){
 	  var ver = usr.emails[0].verified;
-	  if(ver){
+	  if(ver && Roles.userIsInRole(Meteor.user()._id, 'student')){
 		  Router.go("menu");
 	  }
   }
