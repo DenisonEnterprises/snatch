@@ -42,7 +42,7 @@ Template.checkout.events({
 			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
 			temp = indvPrice; 
 	  
-		  str = str + orders[i].item;
+		  str = str + orders[i].item + "\n";
 		  total = total + parseFloat(temp);
 		}
 		var final = total.toString();

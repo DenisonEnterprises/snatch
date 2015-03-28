@@ -87,6 +87,7 @@ Template.readyInfo.events({
     for (i=0; i < orders.length; i++) {
       console.log(orders[i].item);
       str = str + orders[i].item + "\n";
+	 
       total = total + orders.price; 
     }
     Meteor.call('pickUpOrder', str, orNum, inhaus, total, usr, cellNumber, function(error,result) {

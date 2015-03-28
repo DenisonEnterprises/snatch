@@ -48,7 +48,11 @@ Meteor.methods({
   		Local.remove({item: delItem});
   		return 1;
   },
-  
+  	
+  delOrder: function(orderId){
+	  ActiveOrders.remove({_id: orderId});
+  },
+	
     deleteActiveOrder: function(delID){
   		Local.remove({_id: delID}); 
   		return 0;

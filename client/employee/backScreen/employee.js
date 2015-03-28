@@ -19,14 +19,19 @@ Template.orderInfo.helpers({
 Template.order3.helpers({
   'orderTime' : function(){
     var time = this.submitted;
-    return time.getHours() + ":" + time.getMinutes() + "." + time.getSeconds();
+	
+	if(time.getHours() > 12){
+	    return (time.getHours() - 12) + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
+	}else{
+	    return time.getHours() + ":" + ("0" + time.getMinutes()).slice(-2) + " AM"; //AM
+	}
   }
 });
 
 
 Template.order2.helpers({
   'orderDeets' : function(){
-    return this.item; 
+    return this.item + "\n"; 
   }
 });
 
@@ -51,7 +56,6 @@ Template.inHaus.helpers({
 Template.orderNum.helpers({
   'orderNum' : function(){
     return this.orderNum;
-    
   }
 });
 
@@ -70,8 +74,6 @@ Template.orderInfo.events({
     for (i=0; i < orders.length; i++) {
       str = str + orders[i].item + "\n";
       total = total + orders[i].price;
-      console.log('orders.price: ' + orders.price);
-      console.log('updated total is: ' + total);
     }
     
   //  console.log("about to call finishedOrder");
@@ -84,7 +86,7 @@ Template.orderInfo.events({
   
   'click #deleBTN': function(){
       var delID = this._id;
-      Meteor.call('deleteActiveOrder', delID,  Meteor.user(), function(error,result) {
+      Meteor.call('delOrder', delID, function(error,result) {
 		if (error)
 			return alert(error.reason);
       });  
