@@ -1,3 +1,5 @@
+Meteor.subscribe('users');
+
 Template.signupForm.rendered = function() {
   
   $('#signup-confirm-password').addClass("invalid");
@@ -28,7 +30,9 @@ Template.signupForm.rendered = function() {
   $('#signup-username').on('input', function(){
   	var input=$(this).val();
 	var usernameTaken = Meteor.users.find({username: input}).count() > 0;
+	
 	var usernameEmpty = input.length == 0;
+	
 	uFlag = !usernameTaken && !usernameEmpty;
 	if(uFlag){
 		$(this).removeClass("invalid").addClass("valid");

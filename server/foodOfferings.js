@@ -67,12 +67,6 @@ if (Milkshakes.find().count() === 0){
 	Milkshakes.insert({type: 'mixin', name: 'Heath ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Malt ', price: 0.00});
   
-  // ---------- Create Employee Account ---------------------
-  // MOVE IN THE FUTURE!!!!!!!!!!!!!!!!!!!!!!!
-  
-  //var bsUser = Meteor.users.findOne({username: "BSNEMP"}); 
-  //Roles.createRole('employee');
-  //Roles.setUserRoles(bsUser, 'employee');
 }
 
    

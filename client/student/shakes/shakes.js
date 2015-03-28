@@ -24,6 +24,10 @@ Template.shakes.events({
   "click #small": function(evt, instance){
   	price = "$2.50";
   	console.log("Price is: " + price);
+	
+	//Meteor.call("createAct");
+  
+	
   },
   "click #reg": function(evt, instance){
   	price = "$3.00";

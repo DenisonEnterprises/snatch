@@ -209,4 +209,16 @@ Meteor.methods({
     Local.insert(order);
   },
   
+  
+  createAct: function() {
+      var bsUser = Meteor.users.findOne({username: "bsnemp"}); 
+      Roles.setUserRoles(bsUser, 'employee');
+	
+      var mana = Meteor.users.findOne({username: "bsnman"}); 
+      Roles.setUserRoles(mana, 'manager');
+	  console.log("created");
+  }
+  
+  
+  
 });
