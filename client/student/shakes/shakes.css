@@ -42,6 +42,10 @@
 	color: white;
 }*/
 
+.shakesContainer form b{
+	font-family: OpenSans;
+	font-size: 15px;
+}
 
 .shakesContainer .shakez{
     color: white;
