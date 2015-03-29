@@ -71,8 +71,9 @@
 	margin-bottom: 50px;
 }
 
-.settingsContainer h5{
+.settingsContainer .notif{
 	display:none;
+	color:yellow;
 }
 
 .settingsContainer .delForm{

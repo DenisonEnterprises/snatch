@@ -83,20 +83,59 @@ Template.settings.events({
     "submit #pWordForm": function(event, template) {
       event.preventDefault();
 	  if(old){
-		  old = false;
-		  $('#old').hide();
-		  $('#new').show();
-  	      $('#pwSubmit').html("Change");
+		 
+		  var p = $('#oldP').val();
+		  Accounts.changePassword(p, p, function (error) {
+			  if(error){
+				  $('#notif').html("Incorrect Password");
+				  $('#notif').show();
+			  }else{
+				  old = false;
+				  $('#old').hide();
+				  $('#new').show();
+		  	      $('#pwSubmit').html("Change");
+				  $('#notif').hide();
+				  previous = p;
+			  }
+
+		  });
 		  
 		  
 	  }else{
-	  	  $('#new').hide();
-		  $('#pWordForm').hide();
+		  //actual change password
+		  
+		  var p1 = $('#newP').val();
+		  var p2 =  $('#cnp').val();
+		  
+		  if(p1 === p2){
+				 
+				 
+			  Accounts.changePassword(previous, p1, function (error) {
+				  if(error){
+					  $('#notif').html("An Unknown Issue Occured. Please Try Again.");
+					  $('#notif').show();
+				  }else{
+				  	  $('#new').hide();
+					  $('#pWordForm').hide();
 		  
 		  
 		  
-		  $('#notif').html("Password Succesfully Changed");
-		  $('#notif').show();
+					  $('#notif').html("Password Succesfully Changed");
+					  $('#notif').show();
+				  }
+
+			  });
+				 
+				 
+		  }else{
+			  $('#notif').html("Passwords Do Not Match");
+			  $('#notif').show();
+		  }
+		  
+		  
+		  
+		  
+	  	 
 	  }
     },
 	
