@@ -87,11 +87,8 @@ Meteor.methods({
       user: usr,
       price: price, 
     };
-    console.log("about to insert " + thing);
     ReadyOrders.insert(order);
-    console.log("about to remove order with number: " + orNum);
     ActiveOrders.remove({orderNum: orNum});
-    console.log("process is finished");
     /*
     var msg = ""; 
     var cellPhone = order.phone.toString(); 
@@ -196,10 +193,11 @@ Meteor.methods({
     Local.insert(order);
   },
 
- shakeOrder: function(mixins, flavor, price) {
+ shakeOrder: function(mixins, flavor, price, size) {
     var user = Meteor.user();
-    var str = "Shake: ";
+    var str = size + " shake: ";
     var order = {
+	  size: size,
       userId: user._id,
       uName: user.username,
       price: price,
@@ -216,7 +214,6 @@ Meteor.methods({
 	
       var mana = Meteor.users.findOne({username: "bsnman"}); 
       Roles.setUserRoles(mana, 'manager');
-	  console.log("created");
   }
   
   

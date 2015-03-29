@@ -23,7 +23,6 @@ Template.shakes.events({
   
   "click #small": function(evt, instance){
   	price = "$2.50";
-  	console.log("Price is: " + price);
 	
 	//Meteor.call("createAct");
   
@@ -31,7 +30,6 @@ Template.shakes.events({
   },
   "click #reg": function(evt, instance){
   	price = "$3.00";
-  	console.log("Price is: " + price);
   },
   
   
@@ -50,8 +48,7 @@ Template.shakes.events({
 	  $.each($('#size_list').serializeArray(),function(){
 	  	  countS++;
 	  });
-	  console.log(countS);
-	  if(countM === 0 || countF === 0 || countF > 2 || countM > 3 || countS === 0){
+	  if(countF === 0 || countF > 2 || countM > 3 || countS === 0){
 		  $('#atcButton').prop('disabled', true); //TO DISABLED
 		  $('#atcButton').fadeTo(0,.4);
 		  $('#atcButton').css("cursor", "default");
@@ -87,9 +84,15 @@ Template.shakes.events({
     event.preventDefault();
     var flavor;
     var form = {};
+	var size; 
   	
     $.each($('#flavor_list').serializeArray(),function(){
-      flavor = this.name + "\n";
+		flavor = this.name + "\n";
+		if(this.price == "2.50"){
+			size = "Small"; 
+		}else{
+			size = "Regular";
+		}
     });
     $.each($('#mixin_list').serializeArray(),function(){
       form[this.name] = this.name;
@@ -97,13 +100,12 @@ Template.shakes.events({
       		price = "$" + this.value;
       }*/
     });
-  
     var mixinStr = ""
     for (var shit in form){
       mixinStr = mixinStr + form[shit] + "\n";
       }
     
-      Meteor.call('shakeOrder',mixinStr, flavor, price,function(error,result) {
+      Meteor.call('shakeOrder',mixinStr, flavor, price, size, function(error,result) {
         if (error)
           return alert(error.reason);
       });

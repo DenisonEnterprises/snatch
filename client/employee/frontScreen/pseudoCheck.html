@@ -59,9 +59,17 @@
        
     {{/each}}
        
- 
-       <img src="img/checkBottom.png" alt="CheckBottom">
+ 	  <div class="totalPrice">
+		  	<img src="img/checkBottom.png" alt="CheckBottom">
+		  <div class="price">
+ 				    {{> totalPrice}}
+				</div>
+       	
+	    </div>
  <br>
+  <div class="miniText">
+  	<button> There are {{> orNum}} Orders in front of yours. </button>
+ </div>
  <br>
  <br>
  <br>
@@ -74,21 +82,6 @@
        
      </div>
   </div>
-  
-     <script>
-    function deleteOrder(item) {
-      var delOrder = Local.find({item: item}).fetch();
-      Meteor.call('deleteOrder', delOrder, Meteor.user(), function(error,result) {
-          if (error)
-            return alert(error.reason);
-			});
-    }
-       
-       
-
-       
-       
-  </script>
   
     {{else}}
      {{> deniedEmp}}

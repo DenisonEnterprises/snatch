@@ -66,7 +66,7 @@ Template.login.rendered = function() {
 	  }
 	  
 	  if(Roles.userIsInRole(Meteor.user()._id, 'employee')){
-		  Router.go("pseudoMenu");
+		 // Router.go("pseudoMenu");
 	  }
   }
 };

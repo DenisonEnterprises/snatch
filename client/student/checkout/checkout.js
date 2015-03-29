@@ -18,6 +18,22 @@ Template.checkout.helpers({
   
 });
 
+Template.totalPrice.helpers({
+	'totPrice': function(){
+		var orders = Local.find({userId: Meteor.user()._id}).fetch();
+		var tp = 0; 
+		var temp = ""; 
+		var indvPrice = "";
+		for(var i = 0; i < orders.length; i++){
+			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
+			temp = indvPrice; 
+			tp = tp + parseFloat(temp);
+		}
+		var final = tp.toString();
+		return "$" + final;
+	}
+});
+
 Template.orNum.helpers({
 	'orderNum' : function() {
 		return ActiveOrders.find().count();
@@ -25,7 +41,7 @@ Template.orNum.helpers({
 });
 
 Template.checkout.events({
-  
+ 
   'click #placeOrder': function() {
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
    	var delUN = Meteor.user().username;
@@ -66,7 +82,6 @@ Template.checkout.events({
   				if (error)
   					return alert(error.reason);
   			});  
-      console.log(Local.find().count());
       if(Local.find({userId: Meteor.user()._id}).count() < 2){
         Router.go('/menu');
       }

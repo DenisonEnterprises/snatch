@@ -30,7 +30,7 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  right: .75px;
+  right: 2px;
 }
 
 .pseudoCheckContainer .cout .line .rmBtn{
@@ -67,8 +67,32 @@
 }
 
 
+.pseudoCheckContainer .cout .totalPrice{
+	background: url(img/checkBottom.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    right: .75px;
+}
+
+.pseudoCheckContainer .cout .totalPrice .price{
+	position: relative;
+	left: 125px;
+	top: -104px;
+}
 
 
+.pseudoCheckContainer .cout .miniText button{
+    font-family: OpenSans;
+    color: #ffffff;
+    font-size: 25px;
+    background: black;
+    margin: 25px;
+    padding: 15px 35px 15px 35px;
+    border: solid black 3.5px;
+    font-weight:bolder;
+	cursor: default;
+}
 
 .pseudoCheckContainer .cout .goButton{
   font-family: OpenSans;

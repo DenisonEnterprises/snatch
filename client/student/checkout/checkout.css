@@ -29,6 +29,21 @@
   right: .75px;
 }
 
+.checkoutContainer .cout .totalPrice{
+	background: url(img/checkBottom.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    right: .75px;
+}
+
+.checkoutContainer .cout .totalPrice .price{
+	position: relative;
+	left: 125px;
+	top: -104px;
+}
+
+
 .checkoutContainer .cout .line .rmBtn{
    position: absolute;
   display: inline;
@@ -71,10 +86,6 @@
   position: relative; 
   left: 100px; 
 }
-
-
-
-
 
 .checkoutContainer .cout .goButton{
   font-family: OpenSans;
