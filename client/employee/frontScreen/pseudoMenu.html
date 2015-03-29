@@ -4,12 +4,18 @@
     <title>Bandersnatch - Menu</title>
   </head>
   
+  
+  {{#if isInRole 'employee'}}
+  
+  
     <style>
 table, th, td {
     border: solid #005f5f 5px;
 }
 </style>
 
+
+	
 
    
    <div class="pseudoMenuContainer">
@@ -82,6 +88,10 @@ table, th, td {
         
 		
    </div> 
+   
+     {{else}}
+      {{> deniedEmp}}
+   {{/if}}
    
 </template>
    

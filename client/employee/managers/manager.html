@@ -2,14 +2,16 @@
 
 <head>
 	<title> Bandersnatch - Managers </title>
-	<br>
 </head>	
 	
-<!--	{{#if isInRole 'manager'}} -->
+	{{#if isInRole 'manager'}}
 	<h1> Managers </h1>
 	
 	
 	
-	
+  
+    {{else}}
+     {{> deniedEmp}}
+    {{/if}}
 	
 </template>

@@ -1,5 +1,5 @@
 <template name="orderList"> 
- <!--   {{#if isInRole 'employee'}} -->
+ {{#if isInRole 'employee'}}
   
   <style>
 table, th, td {
@@ -22,7 +22,10 @@ table, th, td {
   </div>
 
 
-
+      {{else}}
+       {{> deniedEmp}}
+    {{/if}}
+	
 
 </template>
 

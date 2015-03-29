@@ -1,7 +1,12 @@
 
 <template name="employee">
   
- <!--   {{#if isInRole 'employee'}} -->
+  <head>
+    <title>Bandersnatch - Employee</title>
+  </head>
+  
+   {{#if isInRole 'employee'}}
+  
   
   <style>
 table, th, td {
@@ -23,10 +28,10 @@ table, th, td {
         {{> orderInfo}}
   
   </div>
-    <!--
+    
     {{else}}
-     {{> denied}}
-  {{/if}} -->
+     {{> deniedEmp}}
+  {{/if}} 
   
 </template>
 
