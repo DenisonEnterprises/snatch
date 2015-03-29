@@ -50,13 +50,23 @@ Template.login.rendered = function() {
 	  Router.go("menu");
   }
   
-  console.log("Run");
+  if (Accounts._resetPasswordToken) {
+	  Accounts.resetPassword(Accounts._resetPasswordToken, 'nick');
+	  Router.go("menu");
+	}
   
+  console.log("rendered");
+  
+    
   var usr = Meteor.user()
   if (usr != null){
 	  var ver = usr.emails[0].verified;
 	  if(ver && Roles.userIsInRole(Meteor.user()._id, 'student')){
 		  Router.go("menu");
+	  }
+	  
+	  if(Roles.userIsInRole(Meteor.user()._id, 'employee')){
+		  Router.go("pseudoMenu");
 	  }
   }
 };

@@ -17,11 +17,21 @@ Meteor.startup(function () {
     return 'Bandersnatch App - Confirm Your Email Address';
   };
 
-  // A Function that takes a user object and a url, and returns the body text for the email.
-  // Note: if you need to return HTML instead, use Accounts.emailTemplates.verifyEmail.html
+ 
   Accounts.emailTemplates.verifyEmail.text = function(user, url) {
     return 'Hello ' + user.username + '!\n\nClick on the following link to verify your email address: \n' + url + '\n\nThank You!\nThe Bandersnatch Dev Team';
   };
+  
+  
+  Accounts.emailTemplates.resetPassword.subject = function(user) {
+    return 'Bandersnatch App - Password Reset';
+  };
+
+  Accounts.emailTemplates.resetPassword.text = function(user, url) {
+    return 'Hello ' + user.username + '!\n\nClick on the following link to reset your password to \'nick\'. You should then change your password to something unique from the settings page. \n' + url + '\n\nThank You!\nThe Bandersnatch Dev Team';
+  };
+
+
 
 
 });
@@ -39,15 +49,3 @@ Accounts.onCreateUser(function(options, user) {
   return user;
 });
 
-//DONT NEED BELOW ---- CANT BE A STUDENT UNLESS VERIFIED AND STUDENT LOCKS THEM OUT
-// (server-side) called whenever a login is attempted
-/*
-Accounts.validateLoginAttempt(function(attempt){
-  if (attempt.user && attempt.user.emails && !attempt.user.emails[0].verified ) {
-    console.log('email not verified');
-
-    return false; // the login is aborted
-  }
-  return true;
-}); 
-*/
