@@ -4,19 +4,9 @@
     <title>Bandersnatch - Menu</title>
   </head>
   
-  
+
+
   {{#if isInRole 'employee'}}
-  
-  
-    <style>
-table, th, td {
-    border: solid #005f5f 5px;
-}
-</style>
-
-
-	
-
    
    <div class="pseudoMenuContainer">
 	   
@@ -40,8 +30,8 @@ table, th, td {
        			 	<tr style="text-align:center">
        			 	<th class="flavMix" > Flavors </th>
        			  <th class="flavMix" > Mixins </th></tr>
-       			 	<tr><th><ul>
-						<form id="flavList" class="flavList">
+       			 	<tr><th class="inner1"><ul>
+						<form id="flavList">
 							<br>
 							{{#each flavor}}
 							  {{> flavorBox}}
@@ -49,8 +39,8 @@ table, th, td {
 							{{/each}}     
 						</form>  			 	
        			 	</ul></th>
-       			 	<th><ul>
-						<form id="mixList" class="mixList">
+       			 	<th class="inner2"><ul>
+						<form id="mixList">
 						  <br>
 						  {{#each mixin}}
 							{{> mixinBox}}
@@ -88,11 +78,9 @@ table, th, td {
         
 		
    </div> 
-   
      {{else}}
       {{> deniedEmp}}
    {{/if}}
-   
 </template>
    
 <template name ="pbagelBox">

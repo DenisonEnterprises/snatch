@@ -22,7 +22,9 @@
 }
 
 .pseudoMenuContainer table{
-	border-collapse:collapse;
+
+    border: solid #005f5f 5px;
+
 }
 
 
@@ -32,6 +34,9 @@
 	height: 45px;
 	text-align: center;
 	vertical-align: middle;
+	
+    border: solid #005f5f 5px;
+	
 }
 
 
@@ -39,9 +44,24 @@
 	width: 250px;
 	font-size: 15px;
 	
+    border: solid #005f5f 5px;
+	
+	
 }
 
-.pseudoMenuContainer .flavMix th{
+.pseudoMenuContainer .flavMix{
+	border: none;
+}
+
+.pseudoMenuContainer .inner1{
+	border: none;
+    border-top: solid #005f5f 5px;
+    border-right: solid #005f5f 5px;
+}
+
+.pseudoMenuContainer .inner2{
+	border: none;
+    border-top: solid #005f5f 5px;
 }
 
 .pseudoMenuContainer .nav button{
@@ -56,6 +76,7 @@
   text-decoration: none;
   margin-top: 10px;
   margin-right: 20px;
+  
 }
 
 
@@ -67,9 +88,9 @@
   background: #bf7148;
   position: absolute;
   margin-top: 10px;
-  margin-left: 20px;
-  
   padding: 10px 20px 10px 20px;
   border: solid white 3px;
   font-weight:bolder;
+  margin-left: 20px;
+  
 }

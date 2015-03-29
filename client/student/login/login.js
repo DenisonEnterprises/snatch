@@ -20,9 +20,9 @@ Template.login.events({
         	}else{
         		
 		        if (Roles.userIsInRole(Meteor.user()._id, 'employee')){
-		             window.location.href = '/backScreen'; 
+		             Router.go('backScreen'); 
 		        }else if(Roles.userIsInRole(Meteor.user()._id, 'student')){
-		             window.location.href = '/menu';
+		             Router.go('menu');
 		        }
 				
         	}
@@ -33,7 +33,12 @@ Template.login.events({
   
   "click #signUp": function(evt, template) {
 	  Router.go("signup");
-  }
+  },
+  
+  "click #forgot": function(evt, template) {
+	  Router.go("forgot");
+  },
+  
 });
 
 

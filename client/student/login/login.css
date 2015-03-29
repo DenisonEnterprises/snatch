@@ -95,13 +95,13 @@
 
 
 
-.loginContainer .cntr button {
+.loginContainer .cntr .normal{
   font-family: OpenSans;
   color: #ffffff;
   font-size: 15px;
   background-color:#005f5f ;
   padding: 10px 20px 10px 20px;
-  border: solid #005f5f 2px;
+  border: solid white 2px;
   display: inline;
   margin: 0px 10px 0px 10px;
   /*position: relative;*/
@@ -109,10 +109,21 @@
   font-weight:bolder;
 }
 
-
-.loginContainer .cntr button:hover {
+.loginContainer .cntr .forgot{
+  font-family: OpenSans;
+  color: #ffffff;
+  font-size: 10px;
   background-color:#005f5f ;
+  padding: 5px 10px 5px 10px;
+  border: solid #005f5f 1px;
+  margin-top: 15px;
+  /*position: relative;*/
+  
+  font-weight:bolder;
 }
+
+
+
 
 
 .loginContainer form{
