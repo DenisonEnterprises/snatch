@@ -87,7 +87,7 @@ Template.shakes.events({
 	var size; 
   	
     $.each($('#flavor_list').serializeArray(),function(){
-		flavor = this.name + "\n";
+		flavor = this.name;
 		if(this.price == "2.50"){
 			size = "Small"; 
 		}else{
@@ -102,7 +102,7 @@ Template.shakes.events({
     });
     var mixinStr = ""
     for (var shit in form){
-      mixinStr = mixinStr + form[shit] + "\n";
+      mixinStr = mixinStr + form[shit];
       }
     
       Meteor.call('shakeOrder',mixinStr, flavor, price, size, function(error,result) {

@@ -24,7 +24,7 @@ Template.bagels.events({
   "click #bagel_list": function(evt, instance){ //gets all clicks
 	  count = 0;
 	  $.each($('#bagel_list').serializeArray(),function() {
-			count++
+		  count++;
 	  });
 	  
 	  if(count === 0){
@@ -69,7 +69,7 @@ Template.bagels.events({
     var price; 
     var count = 0
 		$.each($('#bagel_list').serializeArray(),function() {
-			form[this.name] = this.name + "\n";
+			form[this.name] = this.name;
       	  	price = this.value;
 		}); 
     

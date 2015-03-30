@@ -31,7 +31,7 @@ Template.order3.helpers({
 
 Template.order2.helpers({
   'orderDeets' : function(){
-    return this.item + "\n"; 
+    return this.item; 
   }
 });
 
@@ -70,15 +70,13 @@ Template.orderInfo.events({
     var cellCarrier = this.carrier;
     var inhaus = this.inHouse;
     var str = "";
-    console.log('first total is: ' + total);
     for (i=0; i < orders.length; i++) {
       str = str + orders[i].item + "\n";
       total = total + orders[i].price;
     }
-    
+    var delID = this._id; 
   //  console.log("about to call finishedOrder");
-    console.log('the total price is: ' + total);
-    Meteor.call('finishedOrder', str, total, inhaus, orNum, usr, cellNumber, cellCarrier, function(error,result) {
+    Meteor.call('finishedOrder', str, delID, total, inhaus, orNum, usr, cellNumber, cellCarrier, function(error,result) {
 		if (error)
 			return alert(error.reason);
 	}); 

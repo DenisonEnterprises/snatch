@@ -72,7 +72,7 @@ Meteor.methods({
 
   
   // Employee has finished making an order
-  finishedOrder: function(thing, price, inHouse, orNum, usr, cellNum, cellCarrier){
+  finishedOrder: function(thing, delID, price, inHouse, orNum, usr, cellNum, cellCarrier){
     var order = {
       userId: usr._id,
       inHouse: inHouse,
@@ -88,7 +88,7 @@ Meteor.methods({
       price: price, 
     };
     ReadyOrders.insert(order);
-    ActiveOrders.remove({orderNum: orNum});
+    ActiveOrders.remove({_id: delID});
     /*
     var msg = ""; 
     var cellPhone = order.phone.toString(); 

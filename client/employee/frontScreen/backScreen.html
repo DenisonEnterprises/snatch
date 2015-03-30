@@ -2,12 +2,6 @@
 <template name="backScreen">
   
   {{#if isInRole 'employee'}}
-  
-  <style>
-table, th, td {
-    border: solid #005f5f 5px;
-}
-</style>
 
 
     <div class="backScreenBackgound">
@@ -52,18 +46,22 @@ table, th, td {
        </tr>
         {{#each ready}}
        <tr>
-          <td align="center">{{> ready1}}</td>
-         <td align="center">{{> cellNum}}</td>
-         <td align="center">{{> orderNum}}</td>
-         <td align="left">{{> order2}}</td>
-         <td align="center">{{> orderPrice}}</td>  
-          <td align="center"><button id="pickUp">Picked Up</button></td>
+          <td>{{> ready1}}</td>
+         <td>{{> cellNum}}</td>
+         <td>{{> orderNum}}</td>
+         <td class="items">{{> item}}</td>
+         <td>{{> orderPrice}}</td>  
+          <td><button id="pickUp">Picked Up</button></td>
        </tr>   
         {{/each}}
      </table> 
   </form>
 
   
+</template>
+
+<template name="item">
+	<span>{{item}}</span>
 </template>
 
 <template name ="ready1">

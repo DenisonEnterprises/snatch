@@ -56,7 +56,7 @@ Template.beverages.events({
 		var form = {};
     var price;
 		$.each($('#bev_list').serializeArray(),function() {
-			form[this.name] = this.name + "\n";
+			form[this.name] = this.name;
       price = this.value;
 		});
 

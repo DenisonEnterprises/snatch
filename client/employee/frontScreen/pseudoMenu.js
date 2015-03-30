@@ -19,19 +19,14 @@ Template.pseudoMenu.events({
   
   'click #atcBTN' : function(evt, instance){
  	 /* =============== snack Orders =============== */
- 	 	console.log("The button has been clicked");
   		event.preventDefault();
 		var form = {};
   		var price;
-  		console.log('List of all the snacks ordered:');
 		$.each($('#snackList').serializeArray(),function() {
-			console.log(this.name);
 			form[this.name] = this.name;
 			price = this.value;
 		});
-		console.log('Before the for loop');
 		for (var key in form) {
-			console.log('ordering');
 			Meteor.call('snackOrder',form[key], price, function(error,result) {
 				if (error)
 					return alert(error.reason);
@@ -177,17 +172,9 @@ Template.pflavorBox.events({
       var i = 0; 
       while (i < 3 && elements[i].checked){
         if(elements[i].checked){
-          console.log("checkmate");
         }
         i = i+1;
       }
-      /*
-      for (var i = 0, l = 3 ; i < l ; i++) {
-       // console.log("Congrats on a fucking flavor");
-        if (elements[i].checked) {
-          //console.log("Congrats on a fucking flavor"); 
-        }
-      }*/
   }),
 });
 
