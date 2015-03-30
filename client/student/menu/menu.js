@@ -7,13 +7,8 @@ Template.menu.rendered = function() {
 
     var button = document.getElementById("cout");
    
-    if (Local.find({userId: Meteor.user()._id}).count() === 0){
-       button.disabled = true;
-       button.style.opacity = "0.2";
-       button.style.filter  = 'alpha(opacity=20)'; // IE fallback
-       $("#cout").css("cursor", "default");
- 
-     }else{
+    if (Local.find({userId: Meteor.user()._id}).count() > 0){
+        $("#cout").css("cursor", "pointer");
         button.disabled = false;
         button.style.opacity = "1.0";
         button.style.filter  = 'alpha(opacity=100)'; // IE fallback
@@ -64,7 +59,8 @@ Template.menu.events({
 	"click #logout": function(evt, instance){
 		Meteor.call("delLocalByUser");
 		Meteor.logout();
-		window.location.assign("/");
+		window.location.assign("/")
+		
 	}
 
 

@@ -96,6 +96,11 @@
   border: solid white 2px;
   
   font-family: Olivier;
+  
+  
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  cursor: default;
 }
 
 

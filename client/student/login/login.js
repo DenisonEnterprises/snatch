@@ -54,9 +54,7 @@ Template.login.rendered = function() {
 	  Accounts.resetPassword(Accounts._resetPasswordToken, 'nick');
 	  Router.go("menu");
 	}
-  
-  console.log("rendered");
-  
+    
     
   var usr = Meteor.user()
   if (usr != null){
