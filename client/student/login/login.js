@@ -68,5 +68,13 @@ Template.login.rendered = function() {
 	  if(Roles.userIsInRole(Meteor.user()._id, 'employee')){
 		 // Router.go("pseudoMenu");
 	  }
+	  
+	  if(Roles.userIsInRole(Meteor.user()._id, 'employee2')){
+		 // Router.go("employee");
+	  }
+	  
+	  if(Roles.userIsInRole(Meteor.user()._id, 'manager')){
+		 // Router.go("manager");
+	  }
   }
 };

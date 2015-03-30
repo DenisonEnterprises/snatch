@@ -209,11 +209,12 @@ Meteor.methods({
   
   
   createAct: function() {
-      var bsUser = Meteor.users.findOne({username: "bsnemp"}); 
-      Roles.setUserRoles(bsUser, 'employee');
+      var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 
+      //Roles.createRole('employee2');
+	  Roles.setUserRoles(bsUser, 'employee2');
 	
-      var mana = Meteor.users.findOne({username: "bsnman"}); 
-      Roles.setUserRoles(mana, 'manager');
+      //var mana = Meteor.users.findOne({username: "bsnman"}); 
+      //Roles.setUserRoles(mana, 'manager');
   }
   
   

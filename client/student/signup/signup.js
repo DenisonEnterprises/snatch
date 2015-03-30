@@ -52,6 +52,7 @@ Template.signupForm.rendered = function() {
 	var Notused = Meteor.users.find({ "profile.du": input }).count() == 0;
 	du = re.test(input);
 	eFlag = du && Notused;
+	
 	if(eFlag){
 		$(this).removeClass("invalid").addClass("valid");
 		$('#notif').html("");
