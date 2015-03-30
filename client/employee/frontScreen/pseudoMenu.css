@@ -92,5 +92,9 @@
   border: solid white 3px;
   font-weight:bolder;
   margin-left: 20px;
-  
+
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  cursor: default;
+
 }

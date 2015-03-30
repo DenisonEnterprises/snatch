@@ -9,8 +9,39 @@ Template.pseudoMenu.helpers({
 });
 
 Template.pseudoMenu.events({
-  'click': function(count){
-     return this.value; 
+  'click': function(evt, instance){ // get all clicks
+	  countBev = 0;
+	  countBag = 0;
+	  countSnack = 0;
+	  
+	  countFlav = 0;
+	  countMix = 0;
+	  countSize = 0;
+	  
+	$.each($('#snackList').serializeArray(),function() {
+		countSnack++;
+	});
+	
+	$.each($('#bevList').serializeArray(),function() {
+		countBev++;
+	});
+	
+	$.each($('#bagelList').serializeArray(),function() {
+		countBag++;
+	}); 
+	
+	//LOGIC FOR SHAKES!!!!!
+	
+	if(countBev > 0 || countBag > 0 || countSnack > 0){
+	  $('#atcBTN').prop('disabled', false); //TO ENABLE
+	  $('#atcBTN').fadeTo(0,1);
+	  $('#atcBTN').css("cursor", "pointer");
+	}else{
+	  $('#atcBTN').prop('disabled', true); //TO DISABLED
+	  $('#atcBTN').fadeTo(0,.4);
+	  $('#atcBTN').css("cursor", "default");
+	}
+	
   },
   
   "click #swapBTN": function( evt, instance ){
@@ -166,27 +197,5 @@ Template.pmixinBox.helpers({
   }
 });
 
-Template.pflavorBox.events({
-    'click': (function(event) {
-      var elements = document.getElementsByName('flavor');
-      var i = 0; 
-      while (i < 3 && elements[i].checked){
-        if(elements[i].checked){
-        }
-        i = i+1;
-      }
-  }),
-});
-
-
-Template.pmixinBox.events({
-    'click': function(event) {
-      var elements = document.getElementsByName('mixin');
-      for (var i = 0,l=4;i<l;i++) {
-        if (elements[i].checked) {
-        }
-      }
-  },
-});
 
 
