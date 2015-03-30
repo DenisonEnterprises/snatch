@@ -14,9 +14,24 @@ Template.pseudoMenu.events({
 	  countBag = 0;
 	  countSnack = 0;
 	  
-	  countFlav = 0;
-	  countMix = 0;
-	  countSize = 0;
+	  countF = 0;
+	  countM = 0;
+	  countS = 0;
+
+	$.each($('#flavList').serializeArray(),function() {
+	  countF++;
+	  console.log(countF);
+	});
+
+	$.each($('#mixList').serializeArray(),function(){
+	  countM++;
+	  console.log(countF);
+	});
+
+	$.each($('#sizeList').serializeArray(),function(){
+	  countS++;
+	  console.log(countS);
+	});
 	  
 	$.each($('#snackList').serializeArray(),function() {
 		countSnack++;
@@ -32,7 +47,7 @@ Template.pseudoMenu.events({
 	
 	//LOGIC FOR SHAKES!!!!!
 	
-	if(countBev > 0 || countBag > 0 || countSnack > 0){
+	if(countBev > 0 || countBag > 0 || countSnack > 0 || ((countF > 0 && countF < 3) && (countM < 4) && countS > 0)){
 	  $('#atcBTN').prop('disabled', false); //TO ENABLE
 	  $('#atcBTN').fadeTo(0,1);
 	  $('#atcBTN').css("cursor", "pointer");
@@ -42,6 +57,15 @@ Template.pseudoMenu.events({
 	  $('#atcBTN').css("cursor", "default");
 	}
 	
+  },
+  
+  "click #small": function(evt, instance){
+  	price = "$2.50";
+
+	//Meteor.call("createAct");
+  },
+  "click #reg": function(evt, instance){
+  	price = "$3.00";
   },
   
   "click #swapBTN": function( evt, instance ){
@@ -93,7 +117,31 @@ Template.pseudoMenu.events({
 			});
 		}
 		
-		
+		/* =============== shake orders ==================*/
+	    var flavor;
+	    var form4 = {};
+		var size; 
+  	
+	    $.each($('#flavor_list').serializeArray(),function(){
+			flavor = this.name;
+			if(this.price == 2.50){
+				size = "Small"; 
+			}else{
+				size = "Regular";
+			}
+	    });
+	    $.each($('#mixin_list').serializeArray(),function(){
+	      form4[this.name] = this.name;
+	    });
+	    var mixinStr = ""
+	    for (var shit in form4){
+	      mixinStr = mixinStr + form[shit];
+	      }
+    
+	      Meteor.call('shakeOrder',mixinStr, flavor, price, size, function(error,result) {
+	        if (error)
+	          return alert(error.reason);
+	      });
 		
 		Router.go('pseudoCheck');
 	}

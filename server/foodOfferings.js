@@ -10,6 +10,7 @@ if (Bagels.find().count() === 0){
   Bagels.insert({type: 'Klynch ', price: 1.75});
   Bagels.insert({type: "Nuckin' Futz ", price: 2.00});
   Bagels.insert({type: 'Pesto Bagel ', price: 3.25});
+  Bagels.insert({type: 'WDU Bagel', price: 2.00});
 }
 
 
@@ -19,7 +20,6 @@ if (Snacks.find().count() === 0) {
   Snacks.insert({type: 'Popcorn ', price: 1.00});
   Snacks.insert({type: 'Pizza Pretzel ', price: 3.00});
   Snacks.insert({type: 'Pita Pizza ', price: 4.00});
-  Snacks.insert({type: 'Nerds Rope ', price: 1.25});
   Snacks.insert({type: "Mad Hatter's Mix ", price: 1.50});
   Snacks.insert({type: 'Hot Pretzel ', price: 1.50});
   Snacks.insert({type: 'Hot Pretzel (Cheese) ', price: 2.00});
@@ -44,7 +44,6 @@ if (Milkshakes.find().count() === 0){
   Milkshakes.insert({type: 'flavor', name: 'Vanilla ', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Chocolate ', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Dark Chocolate ', price: 3.00});
-	Milkshakes.insert({type: 'flavor', name: 'White Chocolate ', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Chai ', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Peppermint ', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Hazelnut ', price: 3.00});
@@ -59,11 +58,10 @@ if (Milkshakes.find().count() === 0){
   Milkshakes.insert({type: 'flavor', name: 'Pomegranate ', price: 3.00});
   Milkshakes.insert({type: 'mixin', name: 'Oreo ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Reeses ', price: 0.00});
-	Milkshakes.insert({type: 'mixin', name: 'Peanutbutter ', price: 0.00});
+	Milkshakes.insert({type: 'mixin', name: 'Peanut Butter ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'M&M ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Nutella ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Butterfingers ', price: 0.00});
-	Milkshakes.insert({type: 'mixin', name: 'Snickers ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Heath ', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Malt ', price: 0.00});
   

@@ -3,8 +3,50 @@ Meteor.subscribe('active');
 Meteor.subscribe('ready');
 Meteor.subscribe('finished');
 
+Template.shake.helpers({
+	'shake': function(){
+		console.log("HERE2");
+	    if (Meteor.user()) {
+	      var user = Meteor.user();
+	      if(Local.find({userId: Meteor.user()._id}).count() == 0){
+	    	  Router.go('/menu');
+	  	  }
+		  console.log(Local.find({type: "shake"}).count());
+	      return Local.find({type: "shake"});
+	    }
+	  }
+});
+
+Template.mixins.helpers({
+	'mixins': function(){
+		console.log("HERE2");
+	    if (Meteor.user()) {
+	      var user = Meteor.user();
+	      if(Local.find({userId: Meteor.user()._id}).count() == 0){
+	    	  Router.go('/menu');
+	  	  }
+		  console.log(Local.find({type: "mixin"}).count());
+	      return Local.find({type: "mixin"});
+	    }
+	  }
+
+});
+
+Template.flavors.helpers({
+	'flavors': function(){
+	    if (Meteor.user()) {
+	      var user = Meteor.user();
+	      if(Local.find({userId: Meteor.user()._id}).count() == 0){
+	    	  Router.go('/menu');
+	  	  }
+		  console.log("HERE");
+		  console.log(Local.find({type: "flavor"}).count());
+	      return Local.find({type: "flavor"});
+	    }
+	  }
+});
+
 Template.checkout.helpers({
-  
   'order': function() {
     //if prevents error due to ordering of page loading, etc.
     if (Meteor.user()) {
@@ -20,7 +62,7 @@ Template.checkout.helpers({
 
 Template.totalPrice.helpers({
 	'totPrice': function(){
-		var orders = Local.find({userId: Meteor.user()._id}).fetch();
+		var orders = Local.find().fetch();
 		var tp = 0; 
 		var temp = ""; 
 		var indvPrice = "";

@@ -193,15 +193,46 @@ Meteor.methods({
     Local.insert(order);
   },
 
- shakeOrder: function(mixins, flavor, price, size) {
+  flavOrder:function(flavor){
+	  var user = Meteor.user(); 
+	  var flavStr = "Flavors: "; 
+	  for(var shit in flavor){
+	  	  flavStr = flavStr + flavor[shit] + ", ";
+	  }
+	  var order = {
+		  type: "flavor",
+		  userId: user._id,
+		  item: flavStr,
+		  uName : user.username,
+	  }
+	  Local.insert(order);
+  },
+  
+  mixOrder: function(mixins){
+	  var user = Meteor.user();
+	  var mixinStr = "Mixins: ";
+	  for (var shit in mixins){
+		  mixinStr = mixinStr + mixins[shit] + ", ";
+	  }
+	  var order = {
+		  type: "mixin",
+		  userId : user._id,
+		  item: mixinStr,
+		  uName : user.username,
+	  }
+	  Local.insert(order);
+  },
+
+ shakeOrder: function(price, size) {
     var user = Meteor.user();
     var str = size + " shake: ";
     var order = {
+		type: "shake",
 	  size: size,
       userId: user._id,
       uName: user.username,
       price: price,
-      item: str + flavor + " " + mixins,
+      item: str + " ",
       submitted: new Date(),        
     }
     Local.insert(order);

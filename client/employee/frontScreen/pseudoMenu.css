@@ -21,10 +21,14 @@
   text-align: left; 
 }
 
+.pseudoMenuContainer input{
+	position:relative;
+	top: -3px; 
+	
+}
+
 .pseudoMenuContainer table{
-
     border: solid #005f5f 5px;
-
 }
 
 
@@ -57,6 +61,17 @@
 	border: none;
     border-top: solid #005f5f 5px;
     border-right: solid #005f5f 5px;
+}
+
+.pseudoMenuContainer .lowerL{
+	border: none;
+    border-top: solid #005f5f 5px;
+ /*   border-right: solid #005f5f 5px;*/
+}
+
+.pseudoMenuContainer .lowerR{	
+	border: none;
+	border-top: solid #005f5f 5px;
 }
 
 .pseudoMenuContainer .inner2{

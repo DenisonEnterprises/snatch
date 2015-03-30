@@ -35,7 +35,6 @@
 							<br>
 							{{#each flavor}}
 							  {{> flavorBox}}
-							
 							{{/each}}     
 						</form>  			 	
        			 	</ul></th>
@@ -46,9 +45,16 @@
 							{{> mixinBox}}
 						  {{/each}}
 						  </form>
-       			 	</ul></th></tr>
-       			 	
-       			 </ul></th>
+						  <br>
+ 							<form id="sizeList" class="lowerL">
+								<br>
+ 	 					  	<label class="shakeSize"><input type="radio" id="small" name="size" value="small">   Small Milkshake</label>
+							<br>
+  							 <label class="shakeSize"><input type="radio" id="reg" name="size" value="reg">   Regular Milkshake</label>
+ 						 </form>
+					</ul></th>
+					</tr>
+       			</ul></th>
 				<th><ul>				<!-- pseudoBev -->
 				<form id="bevList">
 				  {{#each bev}}

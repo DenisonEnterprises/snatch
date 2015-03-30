@@ -85,31 +85,36 @@ Template.shakes.events({
     var flavor;
     var form = {};
 	var size; 
-  	
+	if(this.price == 2.50){
+		size = "Small"; 
+	}else{
+		size = "Regular";
+	}
+	Meteor.call('shakeOrder', price, size, function(error,result) {
+		if (error)
+		  return alert(error.reason);
+	});
+	
+	// ------ order flavors ------ //
+	var flavForm = {};
     $.each($('#flavor_list').serializeArray(),function(){
-		flavor = this.name;
-		if(this.price == "2.50"){
-			size = "Small"; 
-		}else{
-			size = "Regular";
-		}
+		flavForm[this.name] = this.name;
     });
+	Meteor.call('flavOrder', flavForm, function(error, result){
+		if(error)
+			return alert(error.reason);
+	});
+	// ------ order mixins ------ //
+	
     $.each($('#mixin_list').serializeArray(),function(){
       form[this.name] = this.name;
-/*      if(price == NULL){
-      		price = "$" + this.value;
-      }*/
     });
-    var mixinStr = ""
-    for (var shit in form){
-      mixinStr = mixinStr + form[shit];
-      }
-    
-      Meteor.call('shakeOrder',mixinStr, flavor, price, size, function(error,result) {
-        if (error)
-          return alert(error.reason);
-      });
-    
+	Meteor.call('mixOrder', form, function(error, result){
+		console.log("calling mixOrder");
+		if(error)
+			return alert(error.reason);	
+	});  
+	
     Router.go('/menu#u');
   }
 });
