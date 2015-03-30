@@ -46,10 +46,10 @@ Template.checkout.events({
     var temp = "";
     var total = 0; 
 	var orNum = ActiveOrders.find().count();
-    if(orders.length > 6){			// Cap order size at 5
-    	alert("Woah way too many orders. You can only order 5");
-    }
-    else{
+    if(orders.length > 6){			// Cap order size at 6
+		$('#notif').html("Sorry! You can only order up to 6 items!");    
+		$('#notif').show();
+    }else{
 		for (i=0; i < orders.length; i++) {
 			var indvPrice = "";
 			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
@@ -65,6 +65,8 @@ Template.checkout.events({
 			if (error)
 				return alert(error.reason);
 		}); 
+		$('#notif').hide();
+		
 		Router.go('/thankYouCheckout'); 	
 	}
    

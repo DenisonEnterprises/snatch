@@ -161,3 +161,7 @@
   background: #1ca8a8;
   text-decoration: none;
 }
+
+.checkoutContainer .notif {
+  display:none;
+}
