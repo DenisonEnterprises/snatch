@@ -13,27 +13,22 @@ Template.menu.rendered = function() {
         button.style.opacity = "1.0";
         button.style.filter  = 'alpha(opacity=100)'; // IE fallback
   	 }
-
- 
-    setTimeout(function(){
-
-      var type = window.location.hash.substr(1);
-      if (type === "u"){
+    
+	 var type = window.location.hash.substr(1);
+     if (type === "u"){
+	  	window.history.pushState("", "", '/menu');
+ 		
+   	  	setTimeout(function(){
           $("#notif").fadeIn(2000);
-      }
- 
-    }, 500);
+   	 	}, 100);
  
  
-    setTimeout(function(){
-
-      var type = window.location.hash.substr(1);
-      if (type === "u"){
+    	setTimeout(function(){
           $("#notif").fadeOut(2000);
-      }
- 
-    }, 5000);
+    	}, 3000);
 
+
+	}
 	
 }
 
