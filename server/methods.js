@@ -132,7 +132,7 @@ Meteor.methods({
     return 0;
   },
   
-  pickUpOrder: function(thing, orNum, inHouse, price, usr, cellNum){
+  pickUpOrder: function(thing, delID, orNum, inHouse, price, usr, cellNum){
     var order = {
       userId: usr._id,
       inHouse: inHouse,
@@ -147,7 +147,7 @@ Meteor.methods({
       price: price,
     };
     FinishedOrders.insert(order);
-    ReadyOrders.remove({orderNum: orNum});  
+    ReadyOrders.remove({_id: delID});  
     
     return 0;
   },  

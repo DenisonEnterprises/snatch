@@ -34,10 +34,7 @@ Template.pseudoCheck.events({
 		  str = str + orders[i].item;
 		  total = total + parseFloat(temp);
 		}
-		var final = total.toString();
-		while(final.length < 3){
-		  final += "0";
-		}
+		total = total.toFixed(2);
 		Meteor.call('placeOrder', str, total, true, Meteor.user(), function(error,result) {
 			if (error)
 				return alert(error.reason);

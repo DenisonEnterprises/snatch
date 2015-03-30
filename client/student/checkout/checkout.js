@@ -25,12 +25,9 @@ Template.totalPrice.helpers({
 		var temp = ""; 
 		var indvPrice = "";
 		for(var i = 0; i < orders.length; i++){
-			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
-			temp = indvPrice; 
-			tp = tp + parseFloat(temp);
+			tp += parseFloat((orders[i].price).slice(1)); 
 		}
-		var final = tp.toString();
-		return "$" + final;
+		return "$" + tp.toFixed(2);
 	}
 });
 
@@ -61,10 +58,9 @@ Template.checkout.events({
 		  str = str + orders[i].item + "\n";
 		  total = total + parseFloat(temp);
 		}
-		var final = total.toString();
-		while(final.length < 3){
-		  final += "0";
-		}
+
+		total = total.toFixed(2);
+		
 		Meteor.call('placeOrder', str, total, false, Meteor.user(), function(error,result) {
 			if (error)
 				return alert(error.reason);

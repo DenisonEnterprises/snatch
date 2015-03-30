@@ -23,7 +23,9 @@ Template.ready1.helpers({
 
 Template.orderPrice.helpers({
 	'price' : function(){
-		return this.price;
+		var price = parseFloat((this.price).slice(1)); 
+		
+		return "$" + price.toFixed(2); 
 	}
 });
 
@@ -61,12 +63,6 @@ Template.orderNum.helpers({
 });
 
 
-Template.readyInfo.helpers({
-  'price' : function(){
-    return "$" + this.price;
-  }
-});
-
 
 Template.readyInfo.events({
  
@@ -77,14 +73,14 @@ Template.readyInfo.events({
     var usr = this.user;
     var cellNumber = this.cellNumber;
     var inhaus = this.inHouse;
-    
+    var delID = this._id; 
     var str = "";
     for (i=0; i < orders.length; i++) {
       str = str + orders[i].item;
 	 
       total = total + orders.price; 
     }
-    Meteor.call('pickUpOrder', str, orNum, inhaus, total, usr, cellNumber, function(error,result) {
+    Meteor.call('pickUpOrder', str, delID, orNum, inhaus, total, usr, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 
