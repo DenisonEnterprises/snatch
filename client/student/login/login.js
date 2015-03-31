@@ -23,8 +23,11 @@ Template.login.events({
 		             Router.go('backScreen'); 
 		        }else if(Roles.userIsInRole(Meteor.user()._id, 'student')){
 		             Router.go('menu');
-		        }
-				
+ 		        }else if(Roles.userIsInRole(Meteor.user()._id, 'employee2')){
+ 		             Router.go('employee');
+  		        }else if(Roles.userIsInRole(Meteor.user()._id, 'manager')){
+  		             Router.go('manager');
+				 }
         	}
       	});
     

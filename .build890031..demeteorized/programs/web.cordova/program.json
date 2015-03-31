@@ -1,0 +1,455 @@
+{
+  "format": "web-program-pre1",
+  "manifest": [
+    {
+      "path": "13e8a8f0f84bfe32c444aa3a526dd64a8a0daf4d.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/13e8a8f0f84bfe32c444aa3a526dd64a8a0daf4d.js",
+      "size": 537208,
+      "hash": "13e8a8f0f84bfe32c444aa3a526dd64a8a0daf4d"
+    },
+    {
+      "path": "43bedf9c27bc2e887483f90797aa6aa179899bff.css",
+      "where": "client",
+      "type": "css",
+      "cacheable": true,
+      "url": "/43bedf9c27bc2e887483f90797aa6aa179899bff.css?meteor_css_resource=true",
+      "size": 148931,
+      "hash": "43bedf9c27bc2e887483f90797aa6aa179899bff"
+    },
+    {
+      "path": "packages/bootstrap/img/glyphicons-halflings.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/bootstrap/img/glyphicons-halflings.png",
+      "size": 12799,
+      "hash": "84f613631b07d4fe22acbab50e551c0fe04bd78b"
+    },
+    {
+      "path": "packages/bootstrap/img/glyphicons-halflings-white.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/bootstrap/img/glyphicons-halflings-white.png",
+      "size": 8777,
+      "hash": "a25c4705320fd63c33790e666872910e702b9bf6"
+    },
+    {
+      "path": "app/fonts/BebasNeue.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/fonts/BebasNeue.ttf",
+      "size": 53128,
+      "hash": "c84a97a8afbafc2c0ba00343cba3afe8d1bc96a9"
+    },
+    {
+      "path": "app/fonts/OpenSans-Light.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/fonts/OpenSans-Light.ttf",
+      "size": 222412,
+      "hash": "40442c189568184b6e6c27a25d69f14d91b65039"
+    },
+    {
+      "path": "app/fonts/circula-medium.otf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/fonts/circula-medium.otf",
+      "size": 47496,
+      "hash": "52fdd6ed46c3cdf22bf3453b292d6d59719d5549"
+    },
+    {
+      "path": "app/fonts/olivier_demo.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/fonts/olivier_demo.ttf",
+      "size": 60332,
+      "hash": "653e88ed454cff30fe6d21179782ae9602ebc861"
+    },
+    {
+      "path": "app/img/DELogo.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/DELogo.png",
+      "size": 30224,
+      "hash": "cbc002a51273e5f10edf4130418e6de153b5599d"
+    },
+    {
+      "path": "app/img/DELogoWhite.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/DELogoWhite.png",
+      "size": 24701,
+      "hash": "33d0808ae445482994584247559c00cc0d946236"
+    },
+    {
+      "path": "app/img/MainBackgroundLG.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/MainBackgroundLG.jpg",
+      "size": 509343,
+      "hash": "257c888e248a90d82bbaed7b92a1148aa7d7a474"
+    },
+    {
+      "path": "app/img/ThankYou1.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/ThankYou1.png",
+      "size": 12962,
+      "hash": "de17de487e35ddd0c7abd2b36fc9833ed5d0fff6"
+    },
+    {
+      "path": "app/img/ThankYouPage.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/ThankYouPage.png",
+      "size": 855839,
+      "hash": "e333ca592e8c5ce5b3215504cee672baf54fb174"
+    },
+    {
+      "path": "app/img/about.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/about.jpg",
+      "size": 1585633,
+      "hash": "12783a2eacdf1e59f650213374cef6a6bf53a6ea"
+    },
+    {
+      "path": "app/img/accessdenied.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/accessdenied.png",
+      "size": 357425,
+      "hash": "82b3ff3229883dec5b4a593a7e3faa12e165fca2"
+    },
+    {
+      "path": "app/img/cartupdate-3.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/cartupdate-3.png",
+      "size": 12604,
+      "hash": "0ce2d4af5615a2a10979db3cd12fc96f98104cb8"
+    },
+    {
+      "path": "app/img/checkBottom.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/checkBottom.png",
+      "size": 56644,
+      "hash": "6c982cb188cf5a4035456681a830a84437358795"
+    },
+    {
+      "path": "app/img/checkLeft.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/checkLeft.png",
+      "size": 4851,
+      "hash": "f07f135d3db40458e8c247b39823c2a68e0b550a"
+    },
+    {
+      "path": "app/img/checkMiddle.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/checkMiddle.png",
+      "size": 21708,
+      "hash": "2abc594c19d0422b260b34b3677fe3aa9f9fc65a"
+    },
+    {
+      "path": "app/img/checkMiddle2.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/checkMiddle2.png",
+      "size": 5498,
+      "hash": "da366ce71b034b028bd2bcc77248c261ff2bd3fe"
+    },
+    {
+      "path": "app/img/checkRight.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/checkRight.png",
+      "size": 5465,
+      "hash": "8c53055f872c01ff9fa0a8140a9fd6fe9c239d33"
+    },
+    {
+      "path": "app/img/checkTop.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/checkTop.png",
+      "size": 49534,
+      "hash": "f90aea96f5d15274c20e51c933077973428483db"
+    },
+    {
+      "path": "app/img/deniedEmp.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/deniedEmp.png",
+      "size": 390282,
+      "hash": "1c4bf18c7b13f72749887b903890d0eea3f1777b"
+    },
+    {
+      "path": "app/img/loading.gif",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/loading.gif",
+      "size": 32887,
+      "hash": "d4fa5854c151fe74a756f6eb109aaf1cf289f00c"
+    },
+    {
+      "path": "app/img/middle-finger.cur",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/middle-finger.cur",
+      "size": 4286,
+      "hash": "763d9b3ee303beb9ee9bed5b38ebad534f08c3a1"
+    },
+    {
+      "path": "app/img/red.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/red.jpg",
+      "size": 29906,
+      "hash": "6bbfe191c17dd0f86310f0fe7728efefaee30ce0"
+    },
+    {
+      "path": "app/img/verified.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/verified.jpg",
+      "size": 30946,
+      "hash": "b3c49696ac48655e343999dee2fa7862d53db78e"
+    },
+    {
+      "path": "app/img/lg/Grocery-CartLG.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/Grocery-CartLG.png",
+      "size": 1160,
+      "hash": "be57a818880f269c20f453028825216c8cadf62b"
+    },
+    {
+      "path": "app/img/lg/infoLG.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/infoLG.png",
+      "size": 2020,
+      "hash": "b3de200a7c7815f5de1d60504b58bfe5f82b9c4e"
+    },
+    {
+      "path": "app/img/lg/lightsLG.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/lightsLG.jpg",
+      "size": 59981,
+      "hash": "5e8be19cb1de0b916be9cec139d7aab893fd130d"
+    },
+    {
+      "path": "app/img/lg/loginLG.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/loginLG.jpg",
+      "size": 724641,
+      "hash": "0f10558e97546018b9de6eb8f57fbf9d9fc04cfe"
+    },
+    {
+      "path": "app/img/lg/logoLG.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/logoLG.png",
+      "size": 61198,
+      "hash": "8b02fa00f3fed598f4a7026251cbad3827641fa7"
+    },
+    {
+      "path": "app/img/lg/menuLG2.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/menuLG2.jpg",
+      "size": 344764,
+      "hash": "1cfcda4a1759e68142513208e05aaff31d57edb9"
+    },
+    {
+      "path": "app/img/lg/roundlogoLG.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/roundlogoLG.png",
+      "size": 13980,
+      "hash": "2bf3586535fc6eb73a2bea687b59be10d30be81a"
+    },
+    {
+      "path": "app/img/lg/settingsLG.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/settingsLG.png",
+      "size": 2753,
+      "hash": "a433a6c576911d276a0954c3f6348f0288feead4"
+    },
+    {
+      "path": "app/img/lg/signupbackgroundLG.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/lg/signupbackgroundLG.png",
+      "size": 19814,
+      "hash": "91a9c36687d6d8238f0eac321daa4d4839c7e6c5"
+    },
+    {
+      "path": "app/img/md/Grocery-CartMD.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/md/Grocery-CartMD.png",
+      "size": 1160,
+      "hash": "be57a818880f269c20f453028825216c8cadf62b"
+    },
+    {
+      "path": "app/img/md/idkMD.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/md/idkMD.jpg",
+      "size": 98812,
+      "hash": "4fcce830f7e72dd2e2d24771bdc63ac24294fa81"
+    },
+    {
+      "path": "app/img/md/infoMD.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/md/infoMD.png",
+      "size": 2020,
+      "hash": "b3de200a7c7815f5de1d60504b58bfe5f82b9c4e"
+    },
+    {
+      "path": "app/img/md/loginMD.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/md/loginMD.jpg",
+      "size": 169599,
+      "hash": "1b8f9adbe5c35d722740205e271301db2c6b081a"
+    },
+    {
+      "path": "app/img/md/logoMD.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/md/logoMD.png",
+      "size": 43029,
+      "hash": "374ef1f7c97709c25a6833bdb93038179d43c978"
+    },
+    {
+      "path": "app/img/md/menuMD.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/md/menuMD.jpg",
+      "size": 118166,
+      "hash": "3bc405aa2c34ab3bd435dd5fc8d7cc83136e68a3"
+    },
+    {
+      "path": "app/img/md/settingsMD.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/md/settingsMD.png",
+      "size": 2753,
+      "hash": "a433a6c576911d276a0954c3f6348f0288feead4"
+    },
+    {
+      "path": "app/img/sm/Grocery-CartSM.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/sm/Grocery-CartSM.png",
+      "size": 1160,
+      "hash": "be57a818880f269c20f453028825216c8cadf62b"
+    },
+    {
+      "path": "app/img/sm/idkSM.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/sm/idkSM.jpg",
+      "size": 85346,
+      "hash": "12cd5b190f58bd7ada1c4bc1f2fe6a9894c63d4d"
+    },
+    {
+      "path": "app/img/sm/infoSM.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/sm/infoSM.png",
+      "size": 2020,
+      "hash": "b3de200a7c7815f5de1d60504b58bfe5f82b9c4e"
+    },
+    {
+      "path": "app/img/sm/loginSM.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/sm/loginSM.jpg",
+      "size": 149063,
+      "hash": "b6874ef3531607fda307cdbacd25ab667bf47e18"
+    },
+    {
+      "path": "app/img/sm/logoSM.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/sm/logoSM.png",
+      "size": 35537,
+      "hash": "d277f160bdef90697b4d3430581afd709aaf2039"
+    },
+    {
+      "path": "app/img/sm/menuSM.jpg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/sm/menuSM.jpg",
+      "size": 102611,
+      "hash": "0ce48ab2a1d8f623e81aebcb924063f601a5ac4b"
+    },
+    {
+      "path": "app/img/sm/settingsSM.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/img/sm/settingsSM.png",
+      "size": 2753,
+      "hash": "a433a6c576911d276a0954c3f6348f0288feead4"
+    }
+  ]
+}
