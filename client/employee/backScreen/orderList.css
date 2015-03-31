@@ -20,7 +20,7 @@
   border-radius: 100px;
   font-family: Arial;
   color: #ffffff;
-  font-size: 35px;
+  font-size: 20px;
   background: #005f5f;
   padding: 20px 25px 20px 25px;
   text-decoration: none;
@@ -33,9 +33,9 @@
    text-shadow: 4px 4px #005f5f;
    font-size: 80px;
    color: #fff;
-    float: center;
+    float: right;
     padding-right: 150px;
-
+	
 }
 
 .orderListContainer td{
@@ -43,7 +43,7 @@
 }
 
 .orderListContainer th{
-	width: 200px; 
+	width: 350px; 
 	height: 80px;
 	font-size: 25px;
 	border: 5px solid #005f5f;
