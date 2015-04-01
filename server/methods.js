@@ -29,7 +29,6 @@ Meteor.methods({
       carrier: usr.profile.cellCarrier,
       user: usr,
       price: price,
-      
     };
     ActiveOrders.insert(order);
     Local.remove({userId: usr._id});

@@ -84,12 +84,16 @@ Template.shakes.events({
     event.preventDefault();
     var flavor;
     var form = {};
-	var size; 
-	if(this.price == 2.50){
-		size = "Small"; 
-	}else{
-		size = "Regular";
+	var price; 
+	var size;
+	if(document.getElementById('small').checked) {
+		size = "Small ";
+		price = "2.50";
+	}else if(document.getElementById('reg').checked) {
+		size = "Reg ";
+		price = "3.00";
 	}
+
 	Meteor.call('shakeOrder', price, size, function(error,result) {
 		if (error)
 		  return alert(error.reason);
@@ -110,7 +114,6 @@ Template.shakes.events({
       form[this.name] = this.name;
     });
 	Meteor.call('mixOrder', form, function(error, result){
-		console.log("calling mixOrder");
 		if(error)
 			return alert(error.reason);	
 	});  

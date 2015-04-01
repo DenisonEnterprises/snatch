@@ -63,13 +63,22 @@ Template.checkout.helpers({
 Template.totalPrice.helpers({
 	'totPrice': function(){
 		var orders = Local.find().fetch();
-		var tp = 0; 
-		var temp = ""; 
+		var total = 0; 
 		var indvPrice = "";
-		for(var i = 0; i < orders.length; i++){
-			tp += parseFloat((orders[i].price).slice(1)); 
+		console.log(orders.length + " many orders");
+		for (i=0; i < orders.length; i++) {
+			if(orders[i].type == "shake"){
+				console.log("WE FOUND A SHAKE");
+				console.log(orders[i].price);
+				indvPrice = orders[i].price;
+				total = total + parseFloat(indvPrice);
+			}else if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
+				indvPrice = orders[i].price;
+				total = total + parseFloat(indvPrice.slice(1));		
+			}
 		}
-		return "$" + tp.toFixed(2);
+		console.log("In totPrice: " + total);
+		return "$" + total.toFixed(2);
 	}
 });
 
@@ -85,7 +94,6 @@ Template.checkout.events({
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
    	var delUN = Meteor.user().username;
     var str = "";
-    var temp = "";
     var total = 0; 
 	var orNum = ActiveOrders.find().count();
     if(orders.length > 6){			// Cap order size at 6
@@ -94,15 +102,13 @@ Template.checkout.events({
     }else{
 		for (i=0; i < orders.length; i++) {
 			var indvPrice = "";
-			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
-			temp = indvPrice; 
-	  
+			indvPrice = orders[i].price;
 		  str = str + orders[i].item + "\n";
-		  total = total + parseFloat(temp);
+		  total = total + parseFloat(indvPrice.slice(1));
 		}
 
 		total = total.toFixed(2);
-		
+		console.log("Total price: " + total);
 		Meteor.call('placeOrder', str, total, false, Meteor.user(), function(error,result) {
 			if (error)
 				return alert(error.reason);
