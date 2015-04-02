@@ -115,6 +115,12 @@
   padding: 10px 60px 10px 66px;
   border: solid white 2px;
   font-weight:bolder;
+  
+  
+  
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  cursor: default;
 }
 
 .pseudoCheckContainer .cout .backBTN{

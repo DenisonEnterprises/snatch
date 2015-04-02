@@ -66,6 +66,7 @@ Template.orderInfo.events({
     var orNum = this.orderNum;
     var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
     var usr = this.user;
+	var apple = this.uName; 
     var cellNumber = this.phone;
     var cellCarrier = this.carrier;
     var inhaus = this.inHouse;
@@ -76,7 +77,7 @@ Template.orderInfo.events({
     }
     var delID = this._id; 
   //  console.log("about to call finishedOrder");
-    Meteor.call('finishedOrder', str, delID, total, inhaus, orNum, usr, cellNumber, cellCarrier, function(error,result) {
+    Meteor.call('employeeFinishedOrder', str, delID, total, inhaus, apple, orNum, usr, cellNumber, cellCarrier, function(error,result) {
 		if (error)
 			return alert(error.reason);
 	}); 

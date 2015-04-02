@@ -36,6 +36,31 @@ Meteor.methods({
     return 0;
   },   
   
+  
+  
+  
+  employeePlaceOrder: function(thing, price, inHouse, usr, apple) {
+    var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
+    var order = {
+      userId: usr._id,
+      inHouse: inHouse,
+      uName: apple,
+      item: thing,
+      submitted: new Date(),
+      orderNum: orNum,
+      phone: usr.profile.cellNumber,
+      carrier: usr.profile.cellCarrier,
+      user: usr,
+      price: price,
+    };
+    ActiveOrders.insert(order);
+    Local.remove({userId: usr._id});
+
+    return 0;
+  },   
+  
+  
+  
  // Delete order from the checkout menu
   
 	deleteOrder: function(delID) {
@@ -130,6 +155,24 @@ Meteor.methods({
    
     return 0;
   },
+  
+  employeeFinishedOrder: function(thing, delID, price, inHouse, apple, orNum, usr, cellNum, cellCarrier){
+    var order = {
+      userId: usr._id,
+      inHouse: inHouse,
+      uName: apple,
+      item: thing,
+      submitted: new Date(),
+      orderNum: orNum,
+      phone: cellNum,
+      carrier: cellCarrier,
+      user: usr,
+      price: price, 
+    };
+    ReadyOrders.insert(order);
+    ActiveOrders.remove({_id: delID});
+	return 0;
+	},
   
   pickUpOrder: function(thing, delID, orNum, inHouse, price, usr, cellNum){
     var order = {
