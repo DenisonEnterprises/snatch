@@ -3,47 +3,36 @@ Meteor.subscribe('active');
 Meteor.subscribe('ready');
 Meteor.subscribe('finished');
 
-Template.shake.helpers({
-	'shake': function(){
-		console.log("HERE2");
-	    if (Meteor.user()) {
-	      var user = Meteor.user();
-	      if(Local.find({userId: Meteor.user()._id}).count() == 0){
-	    	  Router.go('/menu');
-	  	  }
-		  console.log(Local.find({type: "shake"}).count());
-	      return Local.find({type: "shake"});
-	    }
-	  }
+
+Template.Shake.helpers({
+	'mixins' : function(){
+		console.log("MIXIN: " + this.mixin);
+		return this.mixin;
+	}
+	
 });
 
-Template.mixins.helpers({
-	'mixins': function(){
-		console.log("HERE2");
-	    if (Meteor.user()) {
-	      var user = Meteor.user();
-	      if(Local.find({userId: Meteor.user()._id}).count() == 0){
-	    	  Router.go('/menu');
-	  	  }
-		  console.log(Local.find({type: "mixin"}).count());
-	      return Local.find({type: "mixin"});
-	    }
-	  }
-
+Template.Shake.helpers({
+	'flavors' : function(){
+		console.log("FLAVOR: " + this.flavor);
+		return this.flavor; 
+	}
+	
 });
 
-Template.flavors.helpers({
-	'flavors': function(){
-	    if (Meteor.user()) {
-	      var user = Meteor.user();
-	      if(Local.find({userId: Meteor.user()._id}).count() == 0){
-	    	  Router.go('/menu');
-	  	  }
-		  console.log("HERE");
-		  console.log(Local.find({type: "flavor"}).count());
-	      return Local.find({type: "flavor"});
-	    }
-	  }
+Template.checkout.helpers({
+		'shake': function(){
+			  var orders = new Array();
+			  var shakeList = new Array();
+			  var countS = 0;
+			  //if prevents error due to ordering of page loading, etc.
+			  if (Meteor.user()) {
+				var user = Meteor.user();
+				orders = Local.find({userId: user._id, type: "shake"}).fetch();
+				console.log(orders);
+				return orders;
+			  }
+		}
 });
 
 Template.checkout.helpers({
@@ -67,12 +56,7 @@ Template.totalPrice.helpers({
 		var indvPrice = "";
 		console.log(orders.length + " many orders");
 		for (i=0; i < orders.length; i++) {
-			if(orders[i].type == "shake"){
-				console.log("WE FOUND A SHAKE");
-				console.log(orders[i].price);
-				indvPrice = orders[i].price;
-				total = total + parseFloat(indvPrice);
-			}else if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
+			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
 				indvPrice = orders[i].price;
 				total = total + parseFloat(indvPrice.slice(1));		
 			}

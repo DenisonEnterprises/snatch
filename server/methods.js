@@ -265,20 +265,22 @@ Meteor.methods({
 	  Local.insert(order);
   },
 
- shakeOrder: function(price, size) {
-    var user = Meteor.user();
-    var str = size + " shake: ";
-    var order = {
-		type: "shake",
-	  size: size,
-      userId: user._id,
-      uName: user.username,
-      price: price,
-      item: str + " ",
-      submitted: new Date(),        
-    }
-    Local.insert(order);
-  },
+  shakeOrder: function(flavors, mixins, price, size) {
+     var user = Meteor.user();
+     var str = size + " shake: ";
+     var order = {
+ 	  type: "shake",
+ 	  size: size,
+       userId: user._id,
+ 	  flavor: flavors,
+ 	  mixin: mixins,
+       uName: user.username,
+       price: price,
+       item: str + " ",
+       submitted: new Date(),        
+     }
+     Local.insert(order);
+   },
   
   
   createAct: function() {

@@ -82,46 +82,44 @@ Template.shakes.events({
 
   'submit form': function(event) {
     event.preventDefault();
-    var flavor;
-    var form = {};
+    var flavForm = {};
+	var mixForm = {};
 	var price; 
 	var size;
 	if(document.getElementById('small').checked) {
 		size = "Small ";
-		price = "2.50";
+		price = "$2.50";
 	}else if(document.getElementById('reg').checked) {
 		size = "Reg ";
-		price = "3.00";
+		price = "$3.00";
 	}
-
-	Meteor.call('shakeOrder', price, size, function(error,result) {
+	
+    $.each($('#flavor_list').serializeArray(),function(){
+		flavForm[this.name] = this.name;
+    });
+    var flavStr = ""
+    for (var shit in flavForm){
+      flavStr = flavStr + flavForm[shit] + "\n";
+    }
+	
+	
+    $.each($('#mixin_list').serializeArray(),function(){
+      mixForm[this.name] = this.name;
+    });
+    var mixinStr = ""
+    for (var shit in mixForm){
+      mixinStr = mixinStr + mixForm[shit] + "\n";
+    }
+	
+	Meteor.call('shakeOrder', flavStr, mixinStr, price, size, function(error,result) {
 		if (error)
 		  return alert(error.reason);
 	});
 	
-	// ------ order flavors ------ //
-	var flavForm = {};
-    $.each($('#flavor_list').serializeArray(),function(){
-		flavForm[this.name] = this.name;
-    });
-	Meteor.call('flavOrder', flavForm, function(error, result){
-		if(error)
-			return alert(error.reason);
-	});
-	// ------ order mixins ------ //
-	
-    $.each($('#mixin_list').serializeArray(),function(){
-      form[this.name] = this.name;
-    });
-	Meteor.call('mixOrder', form, function(error, result){
-		if(error)
-			return alert(error.reason);	
-	});  
 	
     Router.go('/menu#u');
   }
 });
-    
 
 Template.flavorBox.helpers({
   'flavorName': function(){

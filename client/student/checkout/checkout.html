@@ -41,6 +41,9 @@
   <br>
 
       {{#each order}}
+       <div class="line">
+         <br>
+       </div>
        
        <div class="line">
          
@@ -66,32 +69,18 @@
    </div>	
 
        
-       <div class="line">
-         <br>
-       </div>
-       
+
       
        
     {{/each}}	  
    
-		  {{#each shake}}
-		  <div class="line">
-				  {{shake}}
-	 		 </div>
-		  {{/each}}
-		  
-		  {{#each flavors}}
-		  <div class="line">
-				  {{flavors}}
-			  </div>
-		  {{/each}}	
-		  
-		  {{#each mixins}}
-		  <div class="line">
-				  {{mixins}}
-			  </div>
-		  {{/each}}	  
-
+		<div class="cout">
+			<div class="shakeDiv">
+		  	{{#each shake}}
+			  {{> Shake}}
+			{{/each}}		
+			</div>  
+		</div>
        
         <div class="line">
          <br>
@@ -141,20 +130,25 @@
   
 </template>
 
-<template name="shake">
-	<span>{{shake}}</span>
-</template>
-
-
-<template name="mixins">
+<template name="Shake">
+	<div class="line">
+    <div class="rmBtn">
+      <div class="moveBtn">
+        <button name="{{item}}" id="deleteOrder" class='button-check'>X</button>
+      </div>
+    </div>	 
+</div>
+	 <div class="line">
+		 <div class="mixins">
 	<span>{{mixins}}</span>
+		</div>
+	</div>
+	 <div class="line">
+		 <div class="mixins">
+	<span style="align:left">{{flavors}}</span>
+		</div>
+	</div>
 </template>
-
-
-<template name="flavors">
-	<span>{{flavors}}</span>
-</template>
-
 
 <template name="totalPrice">
 	<span>{{totPrice}}</span>
