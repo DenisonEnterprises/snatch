@@ -52,23 +52,23 @@ Template.beverages.events({
 
 	'submit form': function(event) {
 		event.preventDefault();
-
+		var price = {};
 		var form = {};
     var price;
 		$.each($('#bev_list').serializeArray(),function() {
 			form[this.name] = this.name;
-      price = this.value;
+   		 	price[this.name] = this.value;
 		});
 
 		for (var key in form) {
-			Meteor.call('bevOrder',form[key], price, function(error,result) {
+			Meteor.call('bevOrder',form[key], price[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});
 		}
 		Router.go('/menu#u')
 	}
-})
+});
 
 
 Template.bevBox.helpers({

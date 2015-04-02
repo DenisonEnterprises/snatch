@@ -58,23 +58,17 @@ Template.bagels.events({
 Template.bagels.events({
 	'submit form': function(event) {
 		event.preventDefault();
-
-
-
-
-
-
-
-		var form = {};
+	var form = {};
+	var price = {};
     var price; 
-    var count = 0
+    var count = 0;
 		$.each($('#bagel_list').serializeArray(),function() {
 			form[this.name] = this.name;
-      	  	price = this.value;
+      	  	price[this.name] = this.value;
 		}); 
-    
+ 
 		for (var key in form) {
-			Meteor.call('bagelOrder',form[key], price, function(error,result) {
+			Meteor.call('bagelOrder',form[key], price[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});

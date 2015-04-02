@@ -54,16 +54,16 @@ Template.snacks.events({
 
 	'submit form': function(event) {
 		event.preventDefault();
-
+		var price = {};
 		var form = {};
   		var price;
 		$.each($('#snack_list').serializeArray(),function() {
-		form[this.name] = this.name;
-    	price = this.value;
+			form[this.name] = this.name;
+	    	price[this.name] = this.value;
 		});
 		for (var key in form) {
 			console.log('ordering');
-			Meteor.call('snackOrder',form[key], price, function(error,result) {
+			Meteor.call('snackOrder',form[key], price[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});
@@ -72,7 +72,8 @@ Template.snacks.events({
 
 
 	}
-})
+});
+
 
 
 Template.snackBox.helpers({
