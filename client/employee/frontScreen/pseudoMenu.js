@@ -75,14 +75,14 @@ Template.pseudoMenu.events({
   'click #atcBTN' : function(evt, instance){
  	 /* =============== snack Orders =============== */
   		event.preventDefault();
-		var form = {};
-  		var price;
+		var form1 = {};
+  		var price1 = {};
 		$.each($('#snackList').serializeArray(),function() {
-			form[this.name] = this.name;
-			price = this.value;
+			form1[this.name] = this.name;
+			price1[this.name] = this.value;
 		});
-		for (var key in form) {
-			Meteor.call('snackOrder',form[key], price, function(error,result) {
+		for (var key in form1) {
+			Meteor.call('snackOrder',form1[key], price1[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});
@@ -90,13 +90,14 @@ Template.pseudoMenu.events({
 		
 		/* =============== bev Orders =============== */
 		var form2 = {};
+		var price2 = {};
 		$.each($('#bevList').serializeArray(),function() {
 			form2[this.name] = this.name;
-    	    price = this.value;
+    	    price2[this.name] = this.value;
 		});
 
 		for (key in form2) {
-			Meteor.call('bevOrder',form2[key], price, function(error,result) {
+			Meteor.call('bevOrder',form2[key], price2[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});
@@ -104,32 +105,41 @@ Template.pseudoMenu.events({
 		/* =============== bagel Orders =============== */
 		
 		var form3 = {};
+		var price3 = {};
     	var count = 0;
 		$.each($('#bagelList').serializeArray(),function() {
 			form3[this.name] = this.name;
-     		price = this.value;
+     		price3[this.name] = this.value;
 		}); 
     
 		for (key in form3) {
-			Meteor.call('bagelOrder',form3[key], price, function(error,result) {
+			Meteor.call('bagelOrder',form3[key], price3[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});
 		}
 		
 		/* =============== shake orders ==================*/
-	    var flavor;
+	    var flavForm = {};
 	    var form4 = {};
 		var size; 
+		var price; 
   	
 	    $.each($('#flavor_list').serializeArray(),function(){
-			flavor = this.name;
+			flavor[this.name] = this.name;
 			if(this.price == 2.50){
 				size = "Small"; 
 			}else{
 				size = "Regular";
 			}
 	    });
+	    var flavStr = ""
+	    for (var shit in flavForm){
+	      flavStr = flavStr + flavForm[shit];
+	      }
+		
+		
+		
 	    $.each($('#mixin_list').serializeArray(),function(){
 	      form4[this.name] = this.name;
 	    });
@@ -138,7 +148,7 @@ Template.pseudoMenu.events({
 	      mixinStr = mixinStr + form[shit];
 	      }
     
-	      Meteor.call('shakeOrder',mixinStr, flavor, price, size, function(error,result) {
+	      Meteor.call('shakeOrder',mixinStr, flavStr, price, size, function(error,result) {
 	        if (error)
 	          return alert(error.reason);
 	      });
