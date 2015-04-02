@@ -2,6 +2,8 @@ Meteor.subscribe('active');
 Meteor.subscribe('ready');
 Meteor.subscribe('finished');
 
+
+
 Template.pseudoMenu.helpers({
   'bagel': function(){
     return Bagels.find().fetch();
@@ -121,38 +123,42 @@ Template.pseudoMenu.events({
 		
 		/* =============== shake orders ==================*/
 	    var flavForm = {};
-	    var form4 = {};
-		var size; 
+		var mixForm = {};
 		var price; 
-  	
+		var boolOrder= false; 
+		var size;
+		if(document.getElementById('small').checked) {
+			size = "Small ";
+			price = "$2.50";
+			boolOrder = true; 
+		}else if(document.getElementById('reg').checked) {
+			size = "Reg ";
+			price = "$3.00";
+			boolOrder = true; 
+		}
+	
 	    $.each($('#flavor_list').serializeArray(),function(){
-			flavor[this.name] = this.name;
-			if(this.price == 2.50){
-				size = "Small"; 
-			}else{
-				size = "Regular";
-			}
+			flavForm[this.name] = this.name;
 	    });
 	    var flavStr = ""
 	    for (var shit in flavForm){
-	      flavStr = flavStr + flavForm[shit];
-	      }
-		
-		
-		
+	      flavStr = flavStr + flavForm[shit] + "\n";
+	    }
+	
+	
 	    $.each($('#mixin_list').serializeArray(),function(){
-	      form4[this.name] = this.name;
+	      mixForm[this.name] = this.name;
 	    });
 	    var mixinStr = ""
-	    for (var shit in form4){
-	      mixinStr = mixinStr + form[shit];
-	      }
-    
-	      Meteor.call('shakeOrder',mixinStr, flavStr, price, size, function(error,result) {
-	        if (error)
-	          return alert(error.reason);
-	      });
-		
+	    for (var shit in mixForm){
+	      mixinStr = mixinStr + mixForm[shit] + "\n";
+	    }
+		if(boolOrder){
+			Meteor.call('shakeOrder', flavStr, mixinStr, price, size, function(error,result) {
+				if (error)
+				  return alert(error.reason);
+			});
+		}
 		Router.go('pseudoCheck');
 	}
   	

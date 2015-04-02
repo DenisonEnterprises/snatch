@@ -9,16 +9,39 @@
 
 
    <div class="pseudoCheckContainer">
-    
+    <div class="nav">
+       <ul>
+          <li>{{currentUser.username}}</li>
+          <li class="Settings">
+            <a href="/settings" >
+              <img src="img/sm/settingsSM.png" alt="Settings">
+            </a>
+          </li>
+          
+          <li class="Info">
+            <a href="/about">
+              <img src="img/sm/infoSM.png" alt="Info">
+            </a>
+          </li>
+          <li class="Logout"> 
+               <button class="logout" id="logout">Logout</button>
+          </li>
+          
+      </ul>
+    </div> 
      
-     <div class="cout">
+    <div class="cout">
     
  
   
+    <h1>Checkout</h1>
        <img src="img/checkTop.png" alt="CheckTop">
-  <br>
+
 
       {{#each order}}
+       <div class="line">
+         <br>
+       </div>
        
        <div class="line">
          
@@ -28,37 +51,47 @@
            </div>
          </div>
          
-         
          <div class="itemz">
            <div class="moveItem">
            {{item}}
            </div>
          </div>
          
-         
-         
-         
-         
-         
          <div class="price">
            <div class="movePrice">
           {{price}}
-           </div>
+	   </div>	  
          </div>
-         
-         
-         
+    
+     <br>
+   </div>	
+
+ 
+       
+    {{/each}}
+	
+		  <!--
+   <div class = "line">
+		<div class="cout">
+			<div class="shakeDiv">
+		  	{{#each shake}}
+			  {{> Shake}}
+			{{/each}}		
+			</div>  
+		</div>
+     </div> -->
+	   
+	   
+        <div class="line">
          <br>
        </div>
        
        <div class="line">
          <br>
        </div>
-       
-      
-       
-    {{/each}}
-       
+       <div class="line">
+         <br>
+       </div>
  	  <div class="totalPrice">
 		  	<img src="img/checkBottom.png" alt="CheckBottom">
 		  <div class="price">
@@ -66,32 +99,35 @@
 				</div>
        	
 	    </div>
-		
-		
-	<form id="appleForm">
-		<label>Apples to Apples Card</label>
-		<input type="text" id="appleName"/>
-	</form>
-		
-		
-  <div class="miniText">
-  	<button> There are {{> orNum}} Orders in front of yours. </button>
- </div>
+ <br>
+  
+<form id="appleForm">
+	<label>Apples to Apples Card</label>
+	<input type="text" id="appleName"/>
+</form>
+	
+  
+  
+ <div class="miniText">
+ 	<button> There are {{> orNum}} Orders in front of yours. </button>
+</div>
+ 	<!-- ><button class="placeOrderBTN" id="deleteOrder"> Cancel </button> -->
     <button class="backBTN" id="menu">Menu</button>  
     <button class="placeOrderBTN" id="placeOrder" disabled="disabled">Place Order</button>
-    
        
        
 
        
      </div>
   </div>
+
   
     {{else}}
-     {{> deniedEmp}}
+    
+     {{> denied}}
+  
     {{/if}}
   
 </template>
-
 
 

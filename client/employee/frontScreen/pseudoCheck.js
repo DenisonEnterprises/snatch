@@ -3,6 +3,23 @@ Meteor.subscribe('active');
 Meteor.subscribe('ready');
 Meteor.subscribe('finished');
 
+Template.Shake.helpers({
+	'mixins' : function(){
+		console.log("MIXIN: " + this.mixin);
+		return this.mixin;
+	}
+	
+});
+
+Template.Shake.helpers({
+	'flavors' : function(){
+		console.log("FLAVOR: " + this.flavor);
+		return this.flavor; 
+	}
+	
+});
+
+
 Template.pseudoCheck.rendered = function() {
 
 	console.log("render");
@@ -28,13 +45,27 @@ Template.pseudoCheck.rendered = function() {
 }
 
 
+Template.pseudoCheck.helpers({
+		'shake': function(){
+			  var orders = new Array();
+			  var shakeList = new Array();
+			  var countS = 0;
+			  //if prevents error due to ordering of page loading, etc.
+			  if (Meteor.user()) {
+				var user = Meteor.user();
+				orders = Local.find({userId: user._id, type: "shake"}).fetch();
+				console.log(orders);
+				return orders;
+			  }
+		}
+});
 
 Template.pseudoCheck.helpers({
-  
   'order': function() {
     //if prevents error due to ordering of page loading, etc.
     if (Meteor.user()) {
       var user = Meteor.user();
+      
       return Local.find({userId: user._id});
     }
   }
@@ -51,8 +82,7 @@ Template.pseudoCheck.events({
     var total = 0; 
     
  	var apple=$($('#appleName')).val();
-	
-	
+
 	
 		for (i=0; i < orders.length; i++) {
 			var indvPrice = "";
