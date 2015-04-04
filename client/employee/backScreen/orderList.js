@@ -50,7 +50,8 @@ Template.itemInfo.helpers({
 		var j = 0;			// number of oreo nutella milkshakes
 		var itemDeets;		// array for the items to fall into
 		var oreo; 		// bool value for milkshake with oreos
-		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
+		j = ActiveOrders.find({item: "Reg  shake:  \n"}).count(); 
+		/*forEach(function(order){ itemDeets = order.item.split('\n'); 
 		for(index = 0; index < itemDeets.length; index++){
 			if(itemDeets[index] == ' Oreo '){
 				oreo = true;
@@ -58,9 +59,10 @@ Template.itemInfo.helpers({
 			if(oreo && itemDeets[index] == 'Nutella '){
 				j++;
 			}
-		}
-		});
-		return j;	}	
+		}*/
+		
+		return j;	
+	}
 });
 
 /*

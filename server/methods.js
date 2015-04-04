@@ -282,15 +282,20 @@ Meteor.methods({
      Local.insert(order);
    },
   
-  
+  /*
   createAct: function() {
       var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 
-      //Roles.createRole('employee2');
+      Roles.createRole('employee2');
 	  Roles.setUserRoles(bsUser, 'employee2');
+	  
+      var bsUser1 = Meteor.users.findOne({username: "bsnemp"}); 
+      Roles.createRole('employee');
+	  Roles.setUserRoles(bsUser1, 'employee');
 	
-      //var mana = Meteor.users.findOne({username: "bsnman"}); 
-      //Roles.setUserRoles(mana, 'manager');
-  }
+      var mana = Meteor.users.findOne({username: "bsnman"}); 
+      //Roles.createRole('manager');
+      Roles.setUserRoles(mana, 'manager');
+  }*/
   
   
   

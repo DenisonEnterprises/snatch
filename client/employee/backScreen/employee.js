@@ -23,6 +23,7 @@ Template.order3.helpers({
 	if(time.getHours() > 12){
 	    return (time.getHours() - 12) + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
 	}else{
+		console.log(time.getHours());
 	    return time.getHours() + ":" + ("0" + time.getMinutes()).slice(-2) + " AM"; //AM
 	}
   }
@@ -61,8 +62,9 @@ Template.orderNum.helpers({
 
 Template.orderInfo.events({
  
-  'click #finished': function() {
-    var total = 0; 
+  'click #finished': function(evt) {
+	  
+	var total = 0; 
     var orNum = this.orderNum;
     var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
     var usr = this.user;
@@ -76,11 +78,11 @@ Template.orderInfo.events({
       total = total + orders[i].price;
     }
     var delID = this._id; 
-  //  console.log("about to call finishedOrder");
     Meteor.call('employeeFinishedOrder', str, delID, total, inhaus, apple, orNum, usr, cellNumber, cellCarrier, function(error,result) {
 		if (error)
 			return alert(error.reason);
 	}); 
+	
   },
   
   'click #deleBTN': function(){

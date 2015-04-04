@@ -24,7 +24,7 @@ Template.shakes.events({
   "click #small": function(evt, instance){
   	price = "$2.50";
 	
-	//Meteor.call("createAct");
+	//Meteor.call("createAct"); //DELETE
   
 	
   },
