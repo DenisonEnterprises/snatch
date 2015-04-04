@@ -3,32 +3,48 @@ Meteor.subscribe('active');
 Meteor.subscribe('ready');
 Meteor.subscribe('finished');
 
-Template.Shake.helpers({
+
+
+Template.PseudoShake.helpers({
 	'mixins' : function(){
-		console.log("MIXIN: " + this.mixin);
 		return this.mixin;
 	}
 	
 });
 
-Template.Shake.helpers({
+Template.PseudoShake.helpers({
 	'flavors' : function(){
-		console.log("FLAVOR: " + this.flavor);
 		return this.flavor; 
 	}
 	
 });
 
+Template.PseudoShake.helpers({
+	'shake': function(){
+		console.log("SHAKE: " + this.item);
+		return this.item;
+	}
+});
+
+Template.PseudoShake.helpers({
+	'price' : function(){
+		return this.price; 
+	}
+});
+
+Template.PseudoShake.helpers({
+	'shakey' : function(){
+		return this.item == "Shake: ";
+	}
+	
+});
 
 Template.pseudoCheck.rendered = function() {
-
-	console.log("render");
 	$('#appleName').on('input', function(){
 		var input=$(this).val();
 	    var button = document.getElementById("placeOrder");
 		
 		if(input.length > 0){
-			
 	        $("#placeOrder").css("cursor", "pointer");
 	        button.disabled = false;
 	        button.style.opacity = "1.0";
@@ -46,31 +62,20 @@ Template.pseudoCheck.rendered = function() {
 
 
 Template.pseudoCheck.helpers({
-		'shake': function(){
-			  var orders = new Array();
-			  var shakeList = new Array();
-			  var countS = 0;
-			  //if prevents error due to ordering of page loading, etc.
-			  if (Meteor.user()) {
-				var user = Meteor.user();
-				orders = Local.find({userId: user._id, type: "shake"}).fetch();
-				console.log(orders);
-				return orders;
-			  }
-		}
+    'order': function() {
+      //if prevents error due to ordering of page loading, etc.
+      if (Meteor.user()) {
+        var user = Meteor.user();
+  	  console.log("NUM OF ITEMS: " + Local.find({userId: user._id}).count());
+        if(Local.find({userId: Meteor.user()._id}).count() == 0){
+      	  Router.go('/pseudoMenu');
+    	  }
+		 
+        return Local.find({userId: user._id});
+      }
+    }
 });
 
-Template.pseudoCheck.helpers({
-  'order': function() {
-    //if prevents error due to ordering of page loading, etc.
-    if (Meteor.user()) {
-      var user = Meteor.user();
-      
-      return Local.find({userId: user._id});
-    }
-  }
-  
-});
 
 Template.pseudoCheck.events({
   

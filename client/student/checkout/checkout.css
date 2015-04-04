@@ -26,7 +26,7 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  right: .75px;
+  right: 2px;
 }
 
 .checkoutContainer .cout .totalPrice{
@@ -34,7 +34,7 @@
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    right: .75px;
+    right: 2px;
 }
 
 .checkoutContainer .cout .totalPrice .price{
@@ -65,28 +65,36 @@
     cursor:url('/img/middle-finger.cur'), pointer;
 }
 
-.checkoutContainer .cout .line .itemz{
-   position: absolute;    
-  display: inline;
-}
+
 
 .checkoutContainer .cout .line .itemz .moveItem{
-   position: relative;
-  right: 120px;
+  position: relative;
   min-width: 200px;
+  display: inline-block;
   text-align: left; 
+  right: 20px; 
 }
 
 
 
+.checkoutContainer .cout .line .itemz .mixins{
+  position: relative;
+  min-width: 200px;
+  display: inline-block;
+  text-align: left; 
+  left: 0px;
+}
+
 .checkoutContainer .cout .line .price{
-  position: absolute;    
-  display: inline;
+   position: absolute;    
+   display: inline;
 }
 
 .checkoutContainer .cout .line .price .movePrice{
   position: relative; 
   left: 100px; 
+  z-index: 1;
+  top: -20px;
 }
 
 .checkoutContainer .cout .goButton{

@@ -32,7 +32,6 @@ Template.pseudoMenu.events({
 	  
 	  countF = 0;
 	  countM = 0;
-	  countS = 0;
 
 	$.each($('#flavList').serializeArray(),function() {
 	  countF++;
@@ -60,7 +59,7 @@ Template.pseudoMenu.events({
 	
 	//LOGIC FOR SHAKES!!!!!
 	
-	if(countBev > 0 || countBag > 0 || countSnack > 0 || ((countF > 0 && countF < 3) && (countM < 4) && countS > 0)){
+	if(countBev > 0 || countBag > 0 || countSnack > 0 || ((countF > 0 && countF < 3) && (countM < 4))){
 	  $('#atcBTN').prop('disabled', false); //TO ENABLE
 	  $('#atcBTN').fadeTo(0,1);
 	  $('#atcBTN').css("cursor", "pointer");
@@ -72,14 +71,6 @@ Template.pseudoMenu.events({
 	
   },
   
-  "click #small": function(evt, instance){
-  	price = "$2.50";
-
-	//Meteor.call("createAct");
-  },
-  "click #reg": function(evt, instance){
-  	price = "$3.00";
-  },
   
   "click #swapBTN": function( evt, instance ){
     Router.go('backScreen');
@@ -131,41 +122,37 @@ Template.pseudoMenu.events({
 					return alert(error.reason);
 			});
 		}
-		
 		/* =============== shake orders ==================*/
 	    var flavForm = {};
 		var mixForm = {};
-		var price; 
-		var boolOrder= false; 
+		var boolOrder = false; 
 		var size;
-		if(document.getElementById('small').checked) {
-			size = "Small ";
-			price = "$2.50";
-			boolOrder = true; 
-		}else if(document.getElementById('reg').checked) {
-			size = "Reg ";
-			price = "$3.00";
-			boolOrder = true; 
-		}
 	
-	    $.each($('#flavor_list').serializeArray(),function(){
+	    $.each($('#flavList').serializeArray(),function(){
 			flavForm[this.name] = this.name;
+			console.log("flavor: " + flavForm);
+			boolOrder = true; 
 	    });
 	    var flavStr = ""
 	    for (var shit in flavForm){
-	      flavStr = flavStr + flavForm[shit] + "\n";
+	      flavStr = flavStr + flavForm[shit] + ", ";
 	    }
+		flavStr = flavStr.substring(0, flavStr.length - 2);
+	    
 	
-	
-	    $.each($('#mixin_list').serializeArray(),function(){
+	    $.each($('#mixList').serializeArray(),function(){
 	      mixForm[this.name] = this.name;
 	    });
 	    var mixinStr = ""
 	    for (var shit in mixForm){
-	      mixinStr = mixinStr + mixForm[shit] + "\n";
+	      mixinStr = mixinStr + mixForm[shit] + ", ";
 	    }
+		mixinStr = mixinStr.substring(0, mixinStr.length - 2);
+		
+		console.log("Bool order: " + boolOrder);
 		if(boolOrder){
-			Meteor.call('shakeOrder', flavStr, mixinStr, price, size, function(error,result) {
+			console.log("placing a shake order");
+			Meteor.call('shakeOrder', flavStr, mixinStr, function(error,result) {
 				if (error)
 				  return alert(error.reason);
 			});

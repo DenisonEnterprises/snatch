@@ -41,46 +41,16 @@
   <br>
 
       {{#each order}}
-       <div class="line">
-         <br>
-       </div>
-       
-       <div class="line">
-         
-         <div class="rmBtn">
-           <div class="moveBtn">
-             <button name="{{item}}" id="deleteOrder" class='button-check'>X</button>
-           </div>
-         </div>
-         
-         <div class="itemz">
-           <div class="moveItem">
-           {{item}}
-           </div>
-         </div>
-         
-         <div class="price">
-           <div class="movePrice">
-          {{price}}
-	   </div>	  
-         </div>
-    
-     <br>
-   </div>	
-
-       
-
-      
-       
-    {{/each}}	  
-   
-		<div class="cout">
-			<div class="shakeDiv">
-		  	{{#each shake}}
+	  
+	 
+         <div class="line">
+          <br>
+        </div>
 			  {{> Shake}}
-			{{/each}}		
-			</div>  
-		</div>
+
+
+    {{/each}}	  
+
        
         <div class="line">
          <br>
@@ -131,24 +101,48 @@
 </template>
 
 <template name="Shake">
+
 	<div class="line">
-    <div class="rmBtn">
-      <div class="moveBtn">
-        <button name="{{item}}" id="deleteOrder" class='button-check'>X</button>
-      </div>
-    </div>	 
-</div>
-	 <div class="line">
-		 <div class="mixins">
-	<span>{{mixins}}</span>
+	    <div class="rmBtn">
+	      <div class="moveBtn">
+	        <button name="{{item}}" id="deleteOrder" class='button-check'>X</button>
+	      </div>
+	    </div>	 
+
+		<div class="itemz">
+			<div class="moveItem">
+				<span>{{shake}}</span>	
+			</div>
 		</div>
+		
+       <div class="price">
+         <div class="movePrice">
+  		   <span>{{price}}</span>
+         </div>	  
+       </div>
 	</div>
+	{{#if shakey shake}}
+
 	 <div class="line">
-		 <div class="mixins">
-	<span style="align:left">{{flavors}}</span>
+		 <div class="itemz">
+			 <div class="mixins">
+	<span style="text-align: left">{{flavors}}</span>
+		     </div>
 		</div>
-	</div>
+	 </div>
+	 
+	 <div class="line">
+		 <div class="itemz">
+		 	<div class="mixins">
+				<span>{{mixins}}</span>
+			</div>
+		</div>
+	 </div>
+
+	 {{/if}}
+
 </template>
+
 
 <template name="totalPrice">
 	<span>{{totPrice}}</span>

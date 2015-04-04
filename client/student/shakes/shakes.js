@@ -18,25 +18,13 @@ Template.shakes.events({
 		Meteor.logout();
 		window.location.assign("/");
   },
-  
-  
-  
-  "click #small": function(evt, instance){
-  	price = "$2.50";
-	
-	//Meteor.call("createAct"); //DELETE
-  
-	
-  },
-  "click #reg": function(evt, instance){
-  	price = "$3.00";
-  },
+ 
   
   
   "click": function(evt, instance){ //gets all clicks
 	  countF = 0;
 	  countM = 0;
-	  countS = 0;
+	 
 	  $.each($('#flavor_list').serializeArray(),function() {
 		  countF++;
 	  });
@@ -44,11 +32,8 @@ Template.shakes.events({
 	  $.each($('#mixin_list').serializeArray(),function(){
 		  countM++;
 	  });
-	  
-	  $.each($('#size_list').serializeArray(),function(){
-	  	  countS++;
-	  });
-	  if(countF === 0 || countF > 2 || countM > 3 || countS === 0){
+
+	  if(countF === 0 || countF > 2 || countM > 3 ){
 		  $('#atcButton').prop('disabled', true); //TO DISABLED
 		  $('#atcButton').fadeTo(0,.4);
 		  $('#atcButton').css("cursor", "default");
@@ -84,34 +69,27 @@ Template.shakes.events({
     event.preventDefault();
     var flavForm = {};
 	var mixForm = {};
-	var price; 
 	var size;
-	if(document.getElementById('small').checked) {
-		size = "Small ";
-		price = "$2.50";
-	}else if(document.getElementById('reg').checked) {
-		size = "Reg ";
-		price = "$3.00";
-	}
 	
     $.each($('#flavor_list').serializeArray(),function(){
 		flavForm[this.name] = this.name;
     });
-    var flavStr = ""
+    var flavStr = "";
     for (var shit in flavForm){
-      flavStr = flavStr + flavForm[shit] + "\n";
+      flavStr = flavStr + flavForm[shit] + ", ";
     }
-	
+	flavStr = flavStr.substring(0, flavStr.length - 2);
 	
     $.each($('#mixin_list').serializeArray(),function(){
       mixForm[this.name] = this.name;
     });
     var mixinStr = ""
     for (var shit in mixForm){
-      mixinStr = mixinStr + mixForm[shit] + "\n";
+      mixinStr = mixinStr + mixForm[shit] + ", ";
     }
+	mixinStr = mixinStr.substring(0, mixinStr.length - 2);
 	
-	Meteor.call('shakeOrder', flavStr, mixinStr, price, size, function(error,result) {
+	Meteor.call('shakeOrder', flavStr, mixinStr, function(error,result) {
 		if (error)
 		  return alert(error.reason);
 	});

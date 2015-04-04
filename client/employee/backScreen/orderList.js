@@ -11,56 +11,25 @@ Template.orderList.events({
 Template.itemInfo.helpers({
 	'CheesePizzaNum' : function(){
 		var j = 0;			// number of cheese pizza bagels
-		var itemDeets;		// array for the items to fall into
-		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
-		for(index = 0; index < itemDeets.length; index++){
-			if(itemDeets[index] == 'Pizza Bagel (Cheese) '){
-				j++;
-			}
-		}
-		});
+		j = ActiveOrders.find({item: 'Pizza Bagel (Cheese) '}).count();
 		return j;
 	},
 	
 	'pepPizzaNum' : function(){ 
 		var j = 0;			// number of pepperoni pizza bagels
-		var itemDeets;		// array for the items to fall into
-		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
-		for(index = 0; index < itemDeets.length; index++){
-			if(itemDeets[index] == 'Pizza Bagel (Pepperoni) '){
-				j++;
-			}
-		}
-		});
-		return j;	},
+		j = ActiveOrders.find({item: 'Pizza Bagel (Pepperoni) '}).count()
+		return j;
+	},
 	
 	'snagelNum' : function(){
 		var j = 0;			// number of snagels
-		var itemDeets;		// array for the items to fall into
-		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
-		for(index = 0; index < itemDeets.length; index++){
-			if(itemDeets[index] == 'Snagel '){
-				j++;
-			}
-		}
-		});
-		return j;	},
+		j = ActiveOrders.find({item: "Snagel "}).count(); 
+		return j;
+	},
 	
 	'onShakes' : function(){
 		var j = 0;			// number of oreo nutella milkshakes
-		var itemDeets;		// array for the items to fall into
-		var oreo; 		// bool value for milkshake with oreos
-		j = ActiveOrders.find({item: "Reg  shake:  \n"}).count(); 
-		/*forEach(function(order){ itemDeets = order.item.split('\n'); 
-		for(index = 0; index < itemDeets.length; index++){
-			if(itemDeets[index] == ' Oreo '){
-				oreo = true;
-			}
-			if(oreo && itemDeets[index] == 'Nutella '){
-				j++;
-			}
-		}*/
-		
+		j = ActiveOrders.find({item: "Shake:  \n"}).count(); 		
 		return j;	
 	}
 });

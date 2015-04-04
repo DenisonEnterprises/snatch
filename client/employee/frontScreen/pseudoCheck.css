@@ -31,7 +31,7 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  right: 2px;
+  right: 0px;
 }
 
 .pseudoCheckContainer .cout .line .rmBtn{
@@ -45,35 +45,43 @@
    right: 160px;
 }
 
-.pseudoCheckContainer .cout .line .itemz{
-   position: absolute;    
-  display: inline;
-}
 
 .pseudoCheckContainer .cout .line .itemz .moveItem{
-   position: relative;
-  right: 120px;
+  position: relative;
   min-width: 200px;
+  display: inline-block;
   text-align: left; 
+  right: 20px; 
+}
+
+
+
+.pseudoCheckContainer .cout .line .itemz .mixins{
+  position: relative;
+  min-width: 200px;
+  display: inline-block;
+  text-align: left; 
+  left: 0px;
 }
 
 .pseudoCheckContainer .cout .line .price{
-  position: absolute;    
-  display: inline;
+   position: absolute;    
+   display: inline;
 }
 
 .pseudoCheckContainer .cout .line .price .movePrice{
   position: relative; 
   left: 100px; 
+  z-index: 1;
+  top: -20px;
 }
-
 
 .pseudoCheckContainer .cout .totalPrice{
 	background: url(img/checkBottom.png);
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    right: .75px;
+    right: 0px;
 }
 
 .pseudoCheckContainer .cout .totalPrice .price{

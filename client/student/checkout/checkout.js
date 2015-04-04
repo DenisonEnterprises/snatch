@@ -6,7 +6,6 @@ Meteor.subscribe('finished');
 
 Template.Shake.helpers({
 	'mixins' : function(){
-		console.log("MIXIN: " + this.mixin);
 		return this.mixin;
 	}
 	
@@ -14,26 +13,30 @@ Template.Shake.helpers({
 
 Template.Shake.helpers({
 	'flavors' : function(){
-		console.log("FLAVOR: " + this.flavor);
 		return this.flavor; 
 	}
 	
 });
 
-Template.checkout.helpers({
-		'shake': function(){
-			  var orders = new Array();
-			  var shakeList = new Array();
-			  var countS = 0;
-			  //if prevents error due to ordering of page loading, etc.
-			  if (Meteor.user()) {
-				var user = Meteor.user();
-				orders = Local.find({userId: user._id, type: "shake"}).fetch();
-				console.log(orders);
-				return orders;
-			  }
-		}
+Template.Shake.helpers({
+	'shake': function(){
+		return this.item;
+	}
 });
+
+Template.Shake.helpers({
+	'price' : function(){
+		return this.price; 
+	}
+});
+
+Template.Shake.helpers({
+	'shakey' : function(){
+		return this.item == "Shake: ";
+	}
+	
+});
+
 
 Template.checkout.helpers({
   'order': function() {
@@ -46,7 +49,6 @@ Template.checkout.helpers({
       return Local.find({userId: user._id});
     }
   }
-  
 });
 
 Template.totalPrice.helpers({
@@ -54,14 +56,12 @@ Template.totalPrice.helpers({
 		var orders = Local.find().fetch();
 		var total = 0; 
 		var indvPrice = "";
-		console.log(orders.length + " many orders");
 		for (i=0; i < orders.length; i++) {
 			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
 				indvPrice = orders[i].price;
 				total = total + parseFloat(indvPrice.slice(1));		
 			}
 		}
-		console.log("In totPrice: " + total);
 		return "$" + total.toFixed(2);
 	}
 });
@@ -92,7 +92,6 @@ Template.checkout.events({
 		}
 
 		total = total.toFixed(2);
-		console.log("Total price: " + total);
 		Meteor.call('placeOrder', str, total, false, Meteor.user(), function(error,result) {
 			if (error)
 				return alert(error.reason);
