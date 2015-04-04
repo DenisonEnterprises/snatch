@@ -10,6 +10,20 @@ Template.pseudoMenu.helpers({
   }
 });
 
+
+Template.pseudoMenu.rendered = function(){
+    var num = Local.find({uName: "bsnemp"}).count(); 
+	if(num > 0){	
+  	  $('#atcBTN').prop('disabled', false); //TO ENABLE
+  	  $('#atcBTN').fadeTo(0,1);
+  	  $('#atcBTN').css("cursor", "pointer");
+	}else{					
+  	  $('#atcBTN').prop('disabled', true); //TO DISABLED
+  	  $('#atcBTN').fadeTo(0,.4);
+  	  $('#atcBTN').css("cursor", "default");
+	}
+};
+
 Template.pseudoMenu.events({
   'click': function(evt, instance){ // get all clicks
 	  countBev = 0;
@@ -22,17 +36,14 @@ Template.pseudoMenu.events({
 
 	$.each($('#flavList').serializeArray(),function() {
 	  countF++;
-	  console.log(countF);
 	});
 
 	$.each($('#mixList').serializeArray(),function(){
 	  countM++;
-	  console.log(countF);
 	});
 
 	$.each($('#sizeList').serializeArray(),function(){
 	  countS++;
-	  console.log(countS);
 	});
 	  
 	$.each($('#snackList').serializeArray(),function() {
