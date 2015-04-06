@@ -32,6 +32,5 @@ Template.manager.events({
 	'click #sendEmail': function(evt){
 		Meteor.call('sendEmail');
 		Meteor.call('pushFinished');
-		ReadyOrders.find().remove();
 	}
 });

@@ -188,6 +188,7 @@ Meteor.methods({
       user: usr,
       price: price,
     };
+	console.log("PRICE: " + price);
     FinishedOrders.insert(order);
     ReadyOrders.remove({_id: delID});  
     
@@ -304,30 +305,28 @@ Meteor.methods({
 	   var totOrders = FinishedOrders.find().fetch();
 	   var price = 0.0;
 	   var indvPrice = "";
+	   var text = "";
 	   var late = ""; 
-	   for(var ord in totOrders){
-		   indvPrice = ord.price;
-		   price += parseFloat(indvPrice.slice(1));
+	   for(var i = 0; i < totOrders.length; i++){
+		   price += parseFloat(totOrders[i].price);
+		
 	   } 
-	   console.log("total revenue of the night: " + price);
+	   text += "total revenue of the night: $" + price + "\n";
 	   
 	   var latePPL = ReadyOrders.find().fetch(); 
-	   for(var person in latePPL){
-		   late += person.uName + ", "
+	   for(i = 0; i < latePPL.length; i++){
+		   late += latePPL[i].uName + ", ";
 	   }
-	   console.log("List of people who didn't pick up Order: " + late);
-	   
-	   
-	  // late.slice(0, late.length - 1);
-	   /*
+	   text += "List of people who didn't pick up Order: " + late + "\n";
+	   	   
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
          to: "costa_n1@denison.edu",
 
          subject: "Daily Stats",
-         text: "test!", //Still Need to Implement
+         text: text, //Still Need to Implement
        });
-	   */
+	   
    },
  
    pushFinished: function(){
@@ -335,7 +334,8 @@ Meteor.methods({
 	   for(var order in finished){
 		   Data.insert(order);
 	   }
-	   FinishedOrders.find().remove();
+	   FinishedOrders.remove({});
+	   ReadyOrders.remove({});
    },
    
    

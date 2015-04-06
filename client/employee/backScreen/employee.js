@@ -20,7 +20,7 @@ Template.order3.helpers({
   'orderTime' : function(){
     var time = this.submitted;
 	
-	if(time.getHours() >= 12 && < 24){
+	if(time.getHours() >= 12 && time.getHours() < 24){
 	    return (time.getHours() - 12) + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
 	}else{
 		console.log(time.getHours());
@@ -78,6 +78,7 @@ Template.orderInfo.events({
       total = total + orders[i].price;
     }
     var delID = this._id; 
+	console.log("Total price: " + total);
     Meteor.call('employeeFinishedOrder', str, delID, total, inhaus, apple, orNum, usr, cellNumber, cellCarrier, function(error,result) {
 		if (error)
 			return alert(error.reason);
