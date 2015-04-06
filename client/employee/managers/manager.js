@@ -28,5 +28,8 @@ Template.manager.events({
 		$('#on').show();
 		$('#off').hide();
 	},
-	
+
+	'click #sendEmail': function(evt){
+		Meteor.call('sendEmail');
+	}
 });

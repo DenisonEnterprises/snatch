@@ -282,14 +282,6 @@ Meteor.methods({
    },
    
    appOff: function() {
-       
-	   Email.send({
-         from: "bandersnatchApp@gmail.com",
-         to: "costa_n1@denison.edu",
-
-         subject: "Daily Stats",
-         text: "test!", //Still Need to Implement
-       });
 	   
 		Instance.update({
 		  name: "bandersnatch"
@@ -306,6 +298,37 @@ Meteor.methods({
 	});
    },
   
+   sendEmail: function(){
+	   console.log("send email");
+	   
+	   var totOrders = FinishedOrders.find().fetch();
+	   var price = 0.0;
+	   var indvPrice = "";
+	   var late = ""; 
+	   for(var ord in totOrders){
+		   indvPrice = ord.price;
+		   price += parseFloat(indvPrice.slice(1));
+	   } 
+	   console.log("total revenue of the night: " + price);
+	   
+	   var latePPL = ReadyOrders.find().fetch(); 
+	   for(var person in latePPL){
+		   late += person.uName + ", "
+	   }
+	   console.log("List of people who didn't pick up Order: " + late);
+	   
+	   
+	  // late.slice(0, late.length - 1);
+	   /*
+	   Email.send({
+         from: "bandersnatchApp@gmail.com",
+         to: "costa_n1@denison.edu",
+
+         subject: "Daily Stats",
+         text: "test!", //Still Need to Implement
+       });
+	   */
+   }
   /*
   createAct: function() {
       var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 

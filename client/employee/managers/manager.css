@@ -37,3 +37,18 @@
 	margin-bottom:30px;
 }
 
+.ManagerContainer .lower button{
+    font-family: OpenSans;
+    color: #fff;
+    font-size: 15px;
+    background: #005f5f;
+    padding: 10px 20px 10px 20px;
+    border: solid white 2px;
+    display: inline-block;
+    position: relative;
+    font-weight:bolder;
+    margin-right: 10px;
+    margin-left: 10px;
+	margin-top:10px;
+	margin-bottom:60px;
+}
