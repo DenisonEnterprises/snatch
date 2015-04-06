@@ -4,7 +4,7 @@
 // Bagels
 
 if (Bagels.find().count() === 0){
-	Bagels.insert({type: 'Pizza Bagel (Cheese) ', price: 3.00});
+  Bagels.insert({type: 'Pizza Bagel (Cheese) ', price: 3.00});
   Bagels.insert({type: 'Pizza Bagel (Pepperoni) ', price: 3.00});
   Bagels.insert({type: 'Snagel ', price: 2.00});
   Bagels.insert({type: 'Klynch ', price: 1.75});
@@ -67,4 +67,10 @@ if (Milkshakes.find().count() === 0){
   
 }
 
+if (Instance.find().count() == 0){
+	Instance.insert({
+		name: "bandersnatch",
+		status: "on",
+	});
+}
    
