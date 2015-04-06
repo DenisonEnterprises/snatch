@@ -123,7 +123,7 @@ Template.signupForm.rendered = function() {
   
   $('#signup-carrier').on('input', function(){
     var input=$(this).val();
-	cFlag = input != "select";
+	cFlag = (input != "select");
     if(cFlag){
 		$(this).removeClass("invalid").addClass("valid");
 		$('#notif').html("");
