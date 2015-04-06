@@ -5,6 +5,8 @@
   </head>
   
    {{#if isInRole 'student'}}
+   
+   {{#if appOn}}
   
   <div class="menuContainer">
        
@@ -56,6 +58,14 @@
     </div>
   
   </div> 
+  
+  {{else}}
+    
+     {{> offScreen}}
+  
+  {{/if}}
+  
+  
   
   {{else}}
     
