@@ -3,6 +3,10 @@
     <title>Bandersnatch - About</title>
   </head>
 
+
+	{{#if isInRole 'student'}}
+	
+	{{#if appOn}}
   
   
   <div class="aboutcontainer">
@@ -24,7 +28,19 @@
   </div>
 
 
+  {{else}}
+    
+     {{> offScreen}}
   
+  {{/if}}
+  
+  
+  
+  {{else}}
+    
+     {{> denied}}
+  
+  {{/if}}
   
 </template>
 

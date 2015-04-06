@@ -10,7 +10,7 @@
   {{#if isInRole 'student'}}
 
 
-  
+  {{#if appOn}}
   
   <div class="itemContainer">
     
@@ -55,7 +55,11 @@
 	</div>
       
   </div>
+    {{else}}
     
+       {{> offScreen}}
+  
+    {{/if}}
   
     {{else}}
     

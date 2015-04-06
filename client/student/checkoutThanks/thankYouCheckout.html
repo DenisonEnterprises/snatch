@@ -3,6 +3,10 @@
     <title>Thank you for your order!</title>
   </head>
   
+  {{#if isInRole 'student'}}
+  
+  {{#if appOn}}
+  
   <div class="thxCheckContainer">
       <div class="thxCheckout">
         <img src="/img/ThankYouPage.png" alt="thxCheck">
@@ -11,5 +15,19 @@
     <button align="center" id="thanks">Thank You</button>
     
   </div>
+  
+  {{else}}
+    
+     {{> offScreen}}
+  
+  {{/if}}
+  
+  
+  
+  {{else}}
+    
+     {{> denied}}
+  
+  {{/if}}
     
 </template>

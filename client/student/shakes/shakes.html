@@ -6,7 +6,7 @@
  
   
   	{{#if isInRole 'student'}}
-  
+  	{{#if appOn}}
     <div class="shakesContainer">
    
     <div class="nav">
@@ -71,6 +71,13 @@
     	<button type =button id="snackBTN">Snacks</button>
 	</div>
   </div> 
+  
+  
+  {{else}}
+    
+     {{> offScreen}}
+  
+  {{/if}}
   
     {{else}}
       {{> denied}}

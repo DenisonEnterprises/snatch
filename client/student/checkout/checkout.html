@@ -9,7 +9,7 @@
   
   {{#if isInRole 'student'}}
 
-
+  {{#if appOn}}
    <div class="checkoutContainer">
     <div class="nav">
        <ul>
@@ -94,7 +94,13 @@
   
     {{else}}
     
-     {{> denied}}
+     {{> offScreen}}
+  
+    {{/if}}
+	
+    {{else}}
+    
+       {{> denied}}
   
     {{/if}}
   

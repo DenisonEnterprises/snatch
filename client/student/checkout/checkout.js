@@ -145,3 +145,16 @@ Template.checkout.events({
   
   
 });
+
+
+Template.checkout.helpers({
+    appOn:function(){
+		var app = Instance.findOne({name: "bandersnatch"}); 
+		if(app.status == "on"){
+			return true;
+		}else{
+			return false;
+		}
+
+    }
+});

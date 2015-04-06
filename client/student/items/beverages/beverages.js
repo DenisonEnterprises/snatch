@@ -83,3 +83,15 @@ Template.bevBox.helpers({
      return "$" + this.price.toFixed(2);
   }
 });
+
+Template.beverages.helpers({
+    appOn:function(){
+		var app = Instance.findOne({name: "bandersnatch"}); 
+		if(app.status == "on"){
+			return true;
+		}else{
+			return false;
+		}
+
+    }
+});

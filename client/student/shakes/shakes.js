@@ -111,5 +111,16 @@ Template.mixinBox.helpers({
   }
 });
 
+Template.shakes.helpers({
+    appOn:function(){
+		var app = Instance.findOne({name: "bandersnatch"}); 
+		if(app.status == "on"){
+			return true;
+		}else{
+			return false;
+		}
+
+    }
+});
 
 

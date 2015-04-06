@@ -7,7 +7,7 @@
   </head>
   {{#if isInRole 'student'}}
   
-  
+  {{#if appOn}}
   <div class = "settingsContainer">
    
   <h1>Settings</h1>
@@ -58,7 +58,11 @@
  <button id="back">Main Menu</button>
  
   </div>
+  {{else}}
+    
+     {{> offScreen}}
   
+  {{/if}}
   
     
     {{else}}
