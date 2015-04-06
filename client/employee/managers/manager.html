@@ -3,15 +3,22 @@
 <head>
 	<title> Bandersnatch - Managers </title>
 </head>	
+	<!--{{#if isInRole 'manager'}}-->
 	
-	{{#if isInRole 'manager'}}
-	<h1> Managers </h1>
+	<div class='ManagerContainer'>
+	
+		<h1> Managers </h1>
+	
+	<label id="notif">App Running</label>
+	
+	<button type="button" id="on" class="on">Turn ON</button>
+	<button type="button" id="off" class="off">Turn OFF</button>
 	
 	
+	</div>
 	
-  
-    {{else}}
+    <!--{{else}}
      {{> deniedEmp}}
-    {{/if}}
+    {{/if}}-->
 	
 </template>

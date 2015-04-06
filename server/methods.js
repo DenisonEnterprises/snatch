@@ -280,6 +280,31 @@ Meteor.methods({
      }
      Local.insert(order);
    },
+   
+   appOff: function() {
+       
+	   Email.send({
+         from: "bandersnatchApp@gmail.com",
+         to: "costa_n1@denison.edu",
+
+         subject: "Daily Stats",
+         text: "test!", //Still Need to Implement
+       });
+	   
+		Instance.update({
+		  name: "bandersnatch"
+		}, {
+		  $set: {status: "off"}
+		});
+	},
+   
+   appOn: function() {
+	Instance.update({
+	  name: "bandersnatch"
+	}, {
+	  $set: {status: "on"}
+	});
+   },
   
   /*
   createAct: function() {

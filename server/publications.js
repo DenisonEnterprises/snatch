@@ -32,6 +32,10 @@ Meteor.publish('finished', function(){
 	return FinishedOrders.find();
 });
 
+Meteor.publish('instance', function(){
+	return Instance.find();
+});
+
 Meteor.publish('ready', function(){
 	return ReadyOrders.find();
 });
