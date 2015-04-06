@@ -328,7 +328,16 @@ Meteor.methods({
          text: "test!", //Still Need to Implement
        });
 	   */
+   },
+ 
+   pushFinished: function(){
+	   var finished = FinishedOrders.find().fetch(); 
+	   for(var order in finished){
+		   Data.insert(order);
+	   }
+	   FinishedOrders.find().remove();
    }
+   
   /*
   createAct: function() {
       var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 
