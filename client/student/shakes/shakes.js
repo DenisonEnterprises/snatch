@@ -33,7 +33,7 @@ Template.shakes.events({
 		  countM++;
 	  });
 
-	  if(countF === 0 || countF > 2 || countM > 3 ){
+	  if(countF === 0 || countF > 2 || countM > 2 ){
 		  $('#atcButton').prop('disabled', true); //TO DISABLED
 		  $('#atcButton').fadeTo(0,.4);
 		  $('#atcButton').css("cursor", "default");

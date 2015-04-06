@@ -59,7 +59,7 @@ Template.pseudoMenu.events({
 	
 	//LOGIC FOR SHAKES!!!!!
 	
-	if(countBev > 0 || countBag > 0 || countSnack > 0 || ((countF > 0 && countF < 3) && (countM < 4))){
+	if(countBev > 0 || countBag > 0 || countSnack > 0 || ((countF > 0 && countF < 3) && (countM < 3))){
 	  $('#atcBTN').prop('disabled', false); //TO ENABLE
 	  $('#atcBTN').fadeTo(0,1);
 	  $('#atcBTN').css("cursor", "pointer");

@@ -336,7 +336,9 @@ Meteor.methods({
 		   Data.insert(order);
 	   }
 	   FinishedOrders.find().remove();
-   }
+   },
+   
+   
    
   /*
   createAct: function() {
