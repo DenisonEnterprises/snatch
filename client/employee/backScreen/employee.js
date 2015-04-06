@@ -20,7 +20,7 @@ Template.order3.helpers({
   'orderTime' : function(){
     var time = this.submitted;
 	
-	if(time.getHours() > 12){
+	if(time.getHours() >= 12 && < 24){
 	    return (time.getHours() - 12) + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
 	}else{
 		console.log(time.getHours());
