@@ -1,6 +1,7 @@
 Meteor.subscribe('active');
 Meteor.subscribe('ready');
 Meteor.subscribe('finished');
+Meteor.subscribe('local');
 
 
 
@@ -13,14 +14,28 @@ Template.pseudoMenu.helpers({
 
 Template.pseudoMenu.rendered = function(){
     var num = Local.find({uName: "bsnemp"}).count(); 
-	if(num > 0){	
-  	  $('#atcBTN').prop('disabled', false); //TO ENABLE
-  	  $('#atcBTN').fadeTo(0,1);
-  	  $('#atcBTN').css("cursor", "pointer");
-	}else{					
-  	  $('#atcBTN').prop('disabled', true); //TO DISABLED
-  	  $('#atcBTN').fadeTo(0,.4);
-  	  $('#atcBTN').css("cursor", "default");
+ 	var type = window.location.hash.substr(1);
+    if (type === "m"){
+  	window.history.pushState("", "", '/pseudoMenu');
+		if(num > 0){	
+	  	  $('#atcBTN').prop('disabled', false); //TO ENABLE
+	  	  $('#atcBTN').fadeTo(0,1);
+	  	  $('#atcBTN').css("cursor", "pointer");
+		}else{					
+	  	  $('#atcBTN').prop('disabled', true); //TO DISABLED
+	  	  $('#atcBTN').fadeTo(0,.4);
+	  	  $('#atcBTN').css("cursor", "default");
+		}
+	}else{
+		if(num > 1){	
+	  	  $('#atcBTN').prop('disabled', false); //TO ENABLE
+	  	  $('#atcBTN').fadeTo(0,1);
+	  	  $('#atcBTN').css("cursor", "pointer");
+		}else{					
+	  	  $('#atcBTN').prop('disabled', true); //TO DISABLED
+	  	  $('#atcBTN').fadeTo(0,.4);
+	  	  $('#atcBTN').css("cursor", "default");
+		}
 	}
 };
 

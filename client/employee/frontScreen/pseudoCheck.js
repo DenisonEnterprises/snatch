@@ -66,10 +66,6 @@ Template.pseudoCheck.helpers({
       //if prevents error due to ordering of page loading, etc.
       if (Meteor.user()) {
         var user = Meteor.user();
-  	    console.log("NUM OF ITEMS: " + Local.find({userId: user._id}).count());
-        /*if(Local.find({userId: Meteor.user()._id}).count() == 0){
-      	  Router.go('/pseudoMenu');
-    	 }*/
 		 
         return Local.find({userId: user._id});
       }
@@ -119,8 +115,11 @@ Template.pseudoCheck.events({
 		if (error)
 			return alert(error.reason);
 	});  
-    if(Local.find({userId: Meteor.user()._id}).count() < 2){
-      Router.go('/pseudoMenu');
+	var num = Local.find({userId: Meteor.user()._id}).count();
+	console.log('num: ' + num);
+    if(num < 2){
+  	  	Router.go('/pseudoMenu');
+	  	
     }
   },
   
@@ -139,7 +138,7 @@ Template.pseudoCheck.events({
     Router.go('beverages');
   },
    "click #menu": function(evt, instance){
-      Router.go('pseudoMenu');
+      Router.go('/pseudoMenu#m');
    },
   
   
