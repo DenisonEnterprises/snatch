@@ -43,13 +43,11 @@ Template.order2.helpers({
 
 Template.addIn.helpers({
     'flavor': function() {
-		console.log(this.flavor);
   	  return this.flavor;
     },
   
     'mixin': function() {
-		console.log(this.mixin);
-  	  return this.mixin;
+  	  return ' ' + this.mixin;
     },	
 	
 });
