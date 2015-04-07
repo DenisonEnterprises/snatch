@@ -53,13 +53,14 @@ Template.checkout.helpers({
 
 Template.totalPrice.helpers({
 	'totPrice': function(){
-		var orders = Local.find().fetch();
-		var total = 0; 
+	    var orders = Local.find({userId: Meteor.user()._id}).fetch();
+		var total = 0.0; 
 		var indvPrice = "";
 		for (i=0; i < orders.length; i++) {
 			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
 				indvPrice = orders[i].price;
 				total = total + parseFloat(indvPrice.slice(1));		
+				console.log("TOTAL: " + total);
 			}
 		}
 		return "$" + total.toFixed(2);
