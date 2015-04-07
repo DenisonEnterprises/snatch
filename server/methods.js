@@ -16,13 +16,15 @@ Meteor.methods({
 		Local.remove({userId: this.userId});
 	},
 
-  placeOrder: function(thing, price, inHouse, usr) {
+  placeOrder: function(thing, flavor, mixin, price, inHouse, usr) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: usr.username,
       item: thing,
+		flavor: flavor, 
+		mixin: mixin,
       submitted: new Date(),
       orderNum: orNum,
       phone: usr.profile.cellNumber,

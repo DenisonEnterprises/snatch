@@ -78,6 +78,8 @@ Template.checkout.events({
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
    	var delUN = Meteor.user().username;
     var str = "";
+	var flavor = ""; 
+	var mixin = "";
     var total = 0; 
 	var orNum = ActiveOrders.find().count();
     if(orders.length > 6){			// Cap order size at 6
@@ -87,12 +89,16 @@ Template.checkout.events({
 		for (i=0; i < orders.length; i++) {
 			var indvPrice = "";
 			indvPrice = orders[i].price;
+			if(orders[i].item == "Shake: "){
+				flavor = orders[i].flavor; 
+				mixin = orders[i].mixin; 
+			}
 		  str = str + orders[i].item + "\n";
 		  total = total + parseFloat(indvPrice.slice(1));
 		}
 
 		total = total.toFixed(2);
-		Meteor.call('placeOrder', str, total, false, Meteor.user(), function(error,result) {
+		Meteor.call('placeOrder', str, flavor, mixin, total, false, Meteor.user(), function(error,result) {
 			if (error)
 				return alert(error.reason);
 		}); 

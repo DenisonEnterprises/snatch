@@ -57,7 +57,8 @@
           <td style="width: 100px">{{> order3}}</td>
          <td style="width: 100px">{{> orderNum}}</td>
 		 <td style="width:100px">{{>inHaus}}</td>
-         <td style="width: 200px" class="items">{{> order2}}</td>
+         <td style="width: 200px" class="items">{{> order2}} {{> addIn}}</td>
+ 	
           <td class="done" style="width: 100px">{{> done}}</td>
        </tr>   
         {{/each}}
@@ -80,7 +81,12 @@
 </template>
 
 <template name ="order2">
-  <span>{{orderDeets}}</span>
+    <span>{{orderDeets}}</span>
+</template>
+
+<template name="addIn">
+		<span>{{flavor}}</span>
+		<span>{{mixin}}</span>
 </template>
 
 <template name ="order3">

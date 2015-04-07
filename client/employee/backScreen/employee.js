@@ -13,8 +13,13 @@ Template.employee.events({
 Template.orderInfo.helpers({
   'order' : function(){
     return ActiveOrders.find().fetch(); 
-  }
+  },
+  
+  'shakey' : function() {
+	  return this.item == "Shake: ";
+  },
 });
+
 
 Template.order3.helpers({
   'orderTime' : function(){
@@ -33,8 +38,22 @@ Template.order3.helpers({
 Template.order2.helpers({
   'orderDeets' : function(){
     return this.item; 
-  }
+  },
 });
+
+Template.addIn.helpers({
+    'flavor': function() {
+		console.log(this.flavor);
+  	  return this.flavor;
+    },
+  
+    'mixin': function() {
+		console.log(this.mixin);
+  	  return this.mixin;
+    },	
+	
+});
+
 
 Template.order1.helpers({
   'userName' : function(){
