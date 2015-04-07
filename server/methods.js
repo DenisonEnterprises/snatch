@@ -41,17 +41,17 @@ Meteor.methods({
   
   
   
-  employeePlaceOrder: function(thing, price, inHouse, usr, apple) {
+  employeePlaceOrder: function(thing, flavor, mixin, price, inHouse, usr, apple) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: apple,
       item: thing,
+		flavor: flavor,
+		mixin: mixin,
       submitted: new Date(),
       orderNum: orNum,
-      phone: usr.profile.cellNumber,
-      carrier: usr.profile.cellCarrier,
       user: usr,
       price: price,
     };
