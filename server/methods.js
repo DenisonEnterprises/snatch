@@ -16,15 +16,14 @@ Meteor.methods({
 		Local.remove({userId: this.userId});
 	},
 
-  placeOrder: function(thing, flavor, mixin, price, inHouse, usr) {
+  placeOrder: function(thing, shakes, price, inHouse, usr) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: usr.username,
       item: thing,
-		flavor: flavor, 
-		mixin: mixin,
+		shakes: shakes,
       submitted: new Date(),
       orderNum: orNum,
       phone: usr.profile.cellNumber,
@@ -41,15 +40,14 @@ Meteor.methods({
   
   
   
-  employeePlaceOrder: function(thing, flavor, mixin, price, inHouse, usr, apple) {
+  employeePlaceOrder: function(thing, shakes, price, inHouse, usr, apple) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: apple,
       item: thing,
-		flavor: flavor,
-		mixin: mixin,
+		shakes: shakes,
       submitted: new Date(),
       orderNum: orNum,
       user: usr,
@@ -158,7 +156,7 @@ Meteor.methods({
     return 0;
   },
   
-  employeeFinishedOrder: function(thing, delID, price, inHouse, apple, orNum, usr, cellNum, cellCarrier){
+  employeeFinishedOrder: function(thing, delID, price, inHouse, apple, orNum, usr, cellNum, cellCarrier, shakes){
     var order = {
       userId: usr._id,
       inHouse: inHouse,
@@ -170,6 +168,7 @@ Meteor.methods({
       carrier: cellCarrier,
       user: usr,
       price: price, 
+		shakes: shakes,
     };
     ReadyOrders.insert(order);
     ActiveOrders.remove({_id: delID});
@@ -238,36 +237,8 @@ Meteor.methods({
     Local.insert(order);
   },
 
-  flavOrder:function(flavor){
-	  var user = Meteor.user(); 
-	  var flavStr = "Flavors: "; 
-	  for(var shit in flavor){
-	  	  flavStr = flavStr + flavor[shit] + ", ";
-	  }
-	  var order = {
-		  type: "flavor",
-		  userId: user._id,
-		  item: flavStr,
-		  uName : user.username,
-	  }
-	  Local.insert(order);
-  },
-  
-  mixOrder: function(mixins){
-	  var user = Meteor.user();
-	  var mixinStr = "Mixins: ";
-	  for (var shit in mixins){
-		  mixinStr = mixinStr + mixins[shit] + ", ";
-	  }
-	  var order = {
-		  type: "mixin",
-		  userId : user._id,
-		  item: mixinStr,
-		  uName : user.username,
-	  }
-	  Local.insert(order);
-  },
 
+ 
   shakeOrder: function(flavors, mixins) {
      var user = Meteor.user();
      var str =  "Shake: ";

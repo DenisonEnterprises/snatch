@@ -42,14 +42,16 @@ Template.order2.helpers({
 });
 
 Template.addIn.helpers({
-    'flavor': function() {
-  	  return this.flavor;
+    'info': function() {
+		var str = "";
+		var len = this.shakes.length;
+		var i;
+		for(i = 0; i < len; i++){
+			str += (i+1) + ". " + this.shakes[i].flavor + "\n     " + this.shakes[i].mixin + "\n\n";
+		}
+  	  return str;
     },
   
-    'mixin': function() {
-  	  return ' ' + this.mixin;
-    },	
-	
 });
 
 
@@ -80,7 +82,8 @@ Template.orderNum.helpers({
 Template.orderInfo.events({
  
   'click #finished': function(evt) {
-	  
+	
+	  var sh = this.shakes;
 	var total = 0; 
     var orNum = this.orderNum;
     var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
@@ -96,7 +99,7 @@ Template.orderInfo.events({
     }
     var delID = this._id; 
 	console.log("Total price: " + total);
-    Meteor.call('employeeFinishedOrder', str, delID, total, inhaus, apple, orNum, usr, cellNumber, cellCarrier, function(error,result) {
+    Meteor.call('employeeFinishedOrder', str, delID, total, inhaus, apple, orNum, usr, cellNumber, cellCarrier, sh, function(error,result) {
 		if (error)
 			return alert(error.reason);
 	}); 
@@ -112,4 +115,6 @@ Template.orderInfo.events({
   },
 
 });
+
+
 

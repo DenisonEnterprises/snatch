@@ -49,7 +49,7 @@
           <td>{{> ready1}}</td>
          <td>{{> cellNum}}</td>
          <td>{{> orderNum}}</td>
-         <td class="items">{{> item}}</td>
+         <td class="items">{{> item}} {{> addIns}}</td>
          <td>{{> orderPrice}}</td>  
           <td><button type="button" id="pickUp">Picked Up</button></td>
        </tr>   
@@ -72,4 +72,7 @@
 	<span>{{price}}</span>
 </template>
 
-    
+<template name="addIns">
+		<span>{{info}}</span>
+</template>
+

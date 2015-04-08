@@ -29,11 +29,7 @@ Template.orderPrice.helpers({
 	}
 });
 
-Template.item.helpers({	
-	'item' : function(){
-		return this.item;
-	}
-});
+
 
 Template.cellNum.helpers({
   'cellNum' : function(){
@@ -63,6 +59,25 @@ Template.orderNum.helpers({
 });
 
 
+Template.item.helpers({	
+	'item' : function(){
+		return this.item;
+	}
+});
+
+Template.addIns.helpers({
+    'info': function() {
+		var str = "";
+		var len = this.shakes.length;
+		var i;
+		for(i = 0; i < len; i++){
+			str += (i+1) + ". " + this.shakes[i].flavor + "\n     " + this.shakes[i].mixin + "\n\n";
+		}
+  	  return str;
+    },
+  
+	
+});
 
 Template.readyInfo.events({
  

@@ -83,6 +83,9 @@ Template.pseudoCheck.events({
     var total = 0; 
 	var flavor = "";
 	var mixin = "";
+	
+	var shakeStr = false;
+	shakes = [];
     
  	var apple=$($('#appleName')).val();
 
@@ -91,16 +94,25 @@ Template.pseudoCheck.events({
 			var indvPrice = "";
 			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
 			temp = indvPrice; 
+			
 			if(orders[i].item == "Shake: "){
-				flavor = orders[i].flavor;
-				mixin = orders[i].mixin;
+				shakes.push(orders[i]);
+				shakeStr = true;
+			}else{
+				
+	  		  str = str + orders[i].item + "\n";
+				
 			}
-		  str = str + orders[i].item + "\n";
-		  total = total + parseFloat(temp);
+			  total = total + parseFloat(temp);
 		}
+		
+		
+		if(shakeStr){
+			str = str + "Shake: " + "\n";
+		}
+		
 		total = total.toFixed(2);
-		console.log("CALL");
-		Meteor.call('employeePlaceOrder', str, flavor, mixin, total, true, Meteor.user(), apple, function(error,result) {
+		Meteor.call('employeePlaceOrder', str, shakes, total, true, Meteor.user(), apple, function(error,result) {
 			if (error)
 				return alert(error.reason + "FUCK");
 		}); 

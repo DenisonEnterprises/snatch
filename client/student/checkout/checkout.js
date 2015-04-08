@@ -81,7 +81,9 @@ Template.checkout.events({
     var str = "";
 	var flavor = ""; 
 	var mixin = "";
+	var shakeStr = false;
     var total = 0; 
+	shakes = [];
 	var orNum = ActiveOrders.find().count();
     if(orders.length > 6){			// Cap order size at 6
 		$('#notif').html("Sorry! You can only order up to 6 items!");    
@@ -91,15 +93,20 @@ Template.checkout.events({
 			var indvPrice = "";
 			indvPrice = orders[i].price;
 			if(orders[i].item == "Shake: "){
-				flavor = orders[i].flavor; 
-				mixin = orders[i].mixin; 
-			}
-		  str = str + orders[i].item + "\n";
+				shakes.push(orders[i]);
+				shakeStr = true;
+			}else{
+		  	  str = str + orders[i].item + "\n";
+		  	}
 		  total = total + parseFloat(indvPrice.slice(1));
+		}
+		
+		if(shakeStr){
+			str = str + "Shake: " + "\n";
 		}
 
 		total = total.toFixed(2);
-		Meteor.call('placeOrder', str, flavor, mixin, total, false, Meteor.user(), function(error,result) {
+		Meteor.call('placeOrder', str, shakes, total, false, Meteor.user(), function(error,result) {
 			if (error)
 				return alert(error.reason);
 		}); 
