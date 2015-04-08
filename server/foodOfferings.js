@@ -5,12 +5,14 @@
 
 if (Bagels.find().count() === 0){
   Bagels.insert({type: 'Pizza Bagel (Cheese) ', price: 3.00});
-  Bagels.insert({type: 'Pizza Bagel (Pepperoni) ', price: 3.00});
+  Bagels.insert({type: 'Pizza Bagel (Pep) ', price: 3.00});
   Bagels.insert({type: 'Snagel ', price: 2.00});
   Bagels.insert({type: 'Klynch ', price: 1.75});
   Bagels.insert({type: "Nuckin' Futz ", price: 2.00});
   Bagels.insert({type: 'Pesto Bagel ', price: 3.25});
   Bagels.insert({type: 'WDU Bagel', price: 2.00});
+  Bagels.insert({type: 'Pesto Bagel (Pep) ', price: 3.50});
+  Bagels.insert({type: 'Half Bagel', price: 2.00});
 }
 
 
@@ -23,6 +25,7 @@ if (Snacks.find().count() === 0) {
   Snacks.insert({type: "Mad Hatter's Mix ", price: 1.50});
   Snacks.insert({type: 'Hot Pretzel ', price: 1.50});
   Snacks.insert({type: 'Hot Pretzel (Cheese) ', price: 2.00});
+  Snacks.insert({type: 'Hot Pretzel (Pep) ', price: 2.50});
 }
 
 
