@@ -79,9 +79,16 @@ Template.pseudoMenu.events({
 	  $('#atcBTN').fadeTo(0,1);
 	  $('#atcBTN').css("cursor", "pointer");
 	}else{
-	  $('#atcBTN').prop('disabled', true); //TO DISABLED
-	  $('#atcBTN').fadeTo(0,.4);
-	  $('#atcBTN').css("cursor", "default");
+	    var num = Local.find({uName: "bsnemp"}).count(); 
+		if(num > 0 && ((countF > 0 && countF < 3) && (countM < 3))){	
+	  	  $('#atcBTN').prop('disabled', false); //TO ENABLE
+	  	  $('#atcBTN').fadeTo(0,1);
+	  	  $('#atcBTN').css("cursor", "pointer");
+		}else{					
+	  	  $('#atcBTN').prop('disabled', true); //TO DISABLED
+	  	  $('#atcBTN').fadeTo(0,.4);
+	  	  $('#atcBTN').css("cursor", "default");
+		}
 	}
 	
   },
