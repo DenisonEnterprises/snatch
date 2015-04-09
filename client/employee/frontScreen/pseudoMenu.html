@@ -18,6 +18,8 @@
 				<th> Snacks </th>
 			</tr>
 			<tr>
+				
+				
 				<th><ul>				<!-- pseudoBagels -->
 				<form id="bagelList">
 				  {{#each bagel}}
@@ -26,10 +28,12 @@
 				  {{/each}}
 				  </form>
        			 </ul></th>
+				 
+				 
        			 <th><ul>				<!-- pseudoShakes -->
        			 	<tr style="text-align:center">
        			 	<th class="flavMix" > Flavors </th>
-       			  <th class="flavMix" > Mixins </th></tr>
+       			  	<th class="flavMix" > Mixins </th></tr>
        			 	<tr><th class="inner1"><ul>
 						<form id="flavList">
 							<br>
@@ -41,14 +45,19 @@
        			 	<th class="inner2"><ul>
 						<form id="mixList">
 						  <br>
+						  
 						  {{#each mixin}}
 							{{> pmixinBox}}
+							<br>
 						  {{/each}}
 						  </form>
 						  <br>
 					</ul></th>
 					</tr>
        			</ul></th>
+				
+				
+				
 				<th><ul>				<!-- pseudoBev -->
 				<form id="bevList">
 				  {{#each bev}}
@@ -57,6 +66,9 @@
 				  {{/each}}
 				  </form>
 				 </ul></th>
+				 
+				 
+				 
 				<th><ul>				<!-- pseudoSnacks -->
 				<form id="snackList">
 		          {{#each snack}}
