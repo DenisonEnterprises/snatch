@@ -40,13 +40,14 @@ Meteor.methods({
   
   
   
-  employeePlaceOrder: function(thing, shakes, price, inHouse, usr, apple) {
+  employeePlaceOrder: function(thing, shakes, price, inHouse, usr, apple, com) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: apple,
       item: thing,
+		comment: com,
 		shakes: shakes,
       submitted: new Date(),
       orderNum: orNum,
@@ -313,20 +314,20 @@ Meteor.methods({
    
    
    
-  /*
+  
   createAct: function() {
       var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 
       Roles.createRole('employee2');
 	  Roles.setUserRoles(bsUser, 'employee2');
-	  
+	/*  
       var bsUser1 = Meteor.users.findOne({username: "bsnemp"}); 
       Roles.createRole('employee');
 	  Roles.setUserRoles(bsUser1, 'employee');
 	
       var mana = Meteor.users.findOne({username: "bsnman"}); 
       //Roles.createRole('manager');
-      Roles.setUserRoles(mana, 'manager');
-  }*/
+      Roles.setUserRoles(mana, 'manager');*/
+  }
   
   
   
