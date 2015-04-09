@@ -2,6 +2,7 @@ Meteor.subscribe('instance');
 
 Template.manager.rendered = function(){
 	var app = Instance.findOne({name: "bandersnatch"}); 
+	$('#notif2').hide();
 	if(app.status == "on"){
 		$('#notif').html("App is currently running");
 		$('#on').hide();
@@ -32,5 +33,9 @@ Template.manager.events({
 	'click #sendEmail': function(evt){
 		Meteor.call('sendEmail');
 		Meteor.call('pushFinished');
+		$('#notif2').show();
+   	  	setTimeout(function(){
+          $("#notif2").fadeOut(1000);
+   	 	}, 3000);
 	}
 });
