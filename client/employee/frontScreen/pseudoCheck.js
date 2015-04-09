@@ -81,8 +81,7 @@ Template.pseudoCheck.events({
     var str = "";
     var temp = "";
     var total = 0; 
-	var flavor = "";
-	var mixin = "";
+	var indvPrice = "";
 	
 	var shakeStr = false;
 	shakes = [];
@@ -91,7 +90,7 @@ Template.pseudoCheck.events({
 
 	
 		for (i=0; i < orders.length; i++) {
-			var indvPrice = "";
+			indvPrice = "";
 			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
 			temp = indvPrice; 
 			
@@ -100,22 +99,31 @@ Template.pseudoCheck.events({
 				shakeStr = true;
 			}else{
 				
-	  		  str = str + orders[i].item + "\n";
 				
+				total = parseFloat(temp);
+				total = total.toFixed(2);
+				Meteor.call('employeePlaceOrder', orders[i].item, shakes, total, true, Meteor.user(), apple); 				
 			}
-			  total = total + parseFloat(temp);
 		}
 		
 		
 		if(shakeStr){
-			str = str + "Shake: " + "\n";
+			//seperate into seperate shake orders
+			var single = [];
+			for(j = 0; j < shakes.length; j++){
+				single.push(shakes[j]);
+				indvPrice = "";
+				indvPrice = (shakes[j].price)[1] + (shakes[j].price)[2] + (shakes[j].price)[3] + (shakes[j].price)[4];
+				total = parseFloat(indvPrice);
+				total = total.toFixed(2);
+				Meteor.call('employeePlaceOrder', "Shake: \n", single, total, true, Meteor.user(), apple); 				
+				single = [];
+			}
+			
+
 		}
 		
-		total = total.toFixed(2);
-		Meteor.call('employeePlaceOrder', str, shakes, total, true, Meteor.user(), apple, function(error,result) {
-			if (error)
-				return alert(error.reason + "FUCK");
-		}); 
+		
 		Router.go('/pseudoMenu'); 
 	
    

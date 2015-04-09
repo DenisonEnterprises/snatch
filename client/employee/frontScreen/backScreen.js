@@ -23,9 +23,14 @@ Template.ready1.helpers({
 
 Template.orderPrice.helpers({
 	'price' : function(){
-		var price = parseFloat((this.price).slice(1)); 
+
+		if(this.inHouse){
+			return "PAID";
+		}else{
+			var price = parseFloat((this.price).slice(1)); 
+			return "$" + price.toFixed(2); 
+		}
 		
-		return "$" + price.toFixed(2); 
 	}
 });
 

@@ -26,10 +26,18 @@ Template.order3.helpers({
     var time = this.submitted;
 	
 	if(time.getHours() >= 12 && time.getHours() < 24){
-	    return (time.getHours() - 12) + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
+	    if(time.getHours() == 12){
+			return '12' + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
+	    }else{
+			return (time.getHours() - 12) + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
+	    }
+		
 	}else{
-		console.log(time.getHours());
-	    return time.getHours() + ":" + ("0" + time.getMinutes()).slice(-2) + " AM"; //AM
+		if(time.getHours() == 0){
+	    	return '12' + ":" + ("0" + time.getMinutes()).slice(-2) + " AM"; //AM
+		}else{
+	    	return time.getHours() + ":" + ("0" + time.getMinutes()).slice(-2) + " AM"; //AM
+		}
 	}
   }
 });

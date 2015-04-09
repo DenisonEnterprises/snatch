@@ -1,18 +1,18 @@
-//THIS ENTIRE FILE NEEDS TO BE DELETED!!!!!!!
+//THIS ENTIRE FILE NEEDS TO BE DELETED!!
 
 
-// Bagels
+// Bagelz
 
 if (Bagels.find().count() === 0){
   Bagels.insert({type: 'Pizza Bagel (Cheese) ', price: 3.00});
   Bagels.insert({type: 'Pizza Bagel (Pep) ', price: 3.00});
   Bagels.insert({type: 'Snagel ', price: 2.00});
-  Bagels.insert({type: 'Klynch ', price: 1.75});
+  Bagels.insert({type: 'Klynch ', price: 2.00});
   Bagels.insert({type: "Nuckin' Futz ", price: 2.00});
   Bagels.insert({type: 'Pesto Bagel ', price: 3.25});
   Bagels.insert({type: 'WDU Bagel', price: 2.00});
   Bagels.insert({type: 'Pesto Bagel (Pep) ', price: 3.50});
-  Bagels.insert({type: 'Half Bagel', price: 2.00});
+  Bagels.insert({type: 'Half and Half', price: 4.00});
 }
 
 
@@ -21,11 +21,11 @@ if (Bagels.find().count() === 0){
 if (Snacks.find().count() === 0) {
   Snacks.insert({type: 'Popcorn ', price: 1.00});
   Snacks.insert({type: 'Pizza Pretzel ', price: 3.00});
+  Snacks.insert({type: 'Pizza Pretzel (Pep)', price: 3.50});
   Snacks.insert({type: 'Pita Pizza ', price: 4.00});
   Snacks.insert({type: "Mad Hatter's Mix ", price: 1.50});
   Snacks.insert({type: 'Hot Pretzel ', price: 1.50});
   Snacks.insert({type: 'Hot Pretzel (Cheese) ', price: 2.00});
-  Snacks.insert({type: 'Hot Pretzel (Pep) ', price: 2.50});
 }
 
 
@@ -34,7 +34,8 @@ if (Snacks.find().count() === 0) {
 if (Beverages.find().count() === 0) {
   Beverages.insert({type: 'Coffee', price: 1.00});
   Beverages.insert({type: 'Hum', price: 2.00});
-  Beverages.insert({type: 'Chai Tea', price: 2.00});
+  Beverages.insert({type: 'Chai Tea (Hot)', price: 2.00});
+  Beverages.insert({type: 'Chai Tea (Cold)', price: 2.00});
   Beverages.insert({type: 'Iced Tea', price: 1.00});
   Beverages.insert({type: 'Latte', price: 2.00});
   Beverages.insert({type: 'Red Bull', price: 2.00});
@@ -47,6 +48,7 @@ if (Milkshakes.find().count() === 0){
   Milkshakes.insert({type: 'flavor', name: 'Vanilla', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Chocolate', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Dark Chocolate', price: 3.00});
+	Milkshakes.insert({type: 'flavor', name: 'Caramel', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Chai', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Peppermint', price: 3.00});
 	Milkshakes.insert({type: 'flavor', name: 'Hazelnut', price: 3.00});
@@ -67,6 +69,8 @@ if (Milkshakes.find().count() === 0){
 	Milkshakes.insert({type: 'mixin', name: 'Butterfingers', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Heath', price: 0.00});
 	Milkshakes.insert({type: 'mixin', name: 'Malt', price: 0.00});
+	
+	
   
 }
 
