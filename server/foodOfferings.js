@@ -1,4 +1,4 @@
-//THIS ENTIRE FILE NEEDS TO BE DELETED!!
+//THIS ENTIRE FILE NEEDS TO BE DELETED!!!!!!!!
 
 
 // Bagelz
@@ -10,9 +10,9 @@ if (Bagels.find().count() === 0){
   Bagels.insert({type: 'Klynch ', price: 2.00});
   Bagels.insert({type: "Nuckin' Futz ", price: 2.00});
   Bagels.insert({type: 'Pesto Bagel ', price: 3.25});
+  Bagels.insert({type: 'Pesto Bagel (Pep) ', price: 3.25});
   Bagels.insert({type: 'WDU Bagel', price: 2.00});
-  Bagels.insert({type: 'Pesto Bagel (Pep) ', price: 3.50});
-  Bagels.insert({type: 'Half and Half', price: 4.00});
+  Bagels.insert({type: 'Half and Half', price: 3.00});
 }
 
 
@@ -21,8 +21,7 @@ if (Bagels.find().count() === 0){
 if (Snacks.find().count() === 0) {
   Snacks.insert({type: 'Popcorn ', price: 1.00});
   Snacks.insert({type: 'Pizza Pretzel ', price: 3.00});
-  Snacks.insert({type: 'Pizza Pretzel (Pep)', price: 3.50});
-  Snacks.insert({type: 'Pita Pizza ', price: 4.00});
+  Snacks.insert({type: 'Pizza Pretzel (Pep)', price: 3.00});
   Snacks.insert({type: "Mad Hatter's Mix ", price: 1.50});
   Snacks.insert({type: 'Hot Pretzel ', price: 1.50});
   Snacks.insert({type: 'Hot Pretzel (Cheese) ', price: 2.00});
