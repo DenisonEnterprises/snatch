@@ -313,7 +313,7 @@ Meteor.methods({
    },
    
    
-   
+   /*
   
   createAct: function() {
       var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 
@@ -326,9 +326,9 @@ Meteor.methods({
 	
       var mana = Meteor.users.findOne({username: "bsnman"}); 
       //Roles.createRole('manager');
-      Roles.setUserRoles(mana, 'manager');*/
+      Roles.setUserRoles(mana, 'manager');
   }
-  
+  */
   
   
 });

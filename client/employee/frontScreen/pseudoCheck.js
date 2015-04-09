@@ -76,7 +76,6 @@ Template.pseudoCheck.events({
   
     
   'click #placeOrder': function() {
-	  Meteor.call('createAct');
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
     var str = "";
     var temp = "";
