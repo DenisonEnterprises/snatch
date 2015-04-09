@@ -2,8 +2,8 @@ Meteor.startup(function () {
  
     
   
-  //process.env.MAIL_URL = 'smtp://postmaster%40mg.bandersnatchapp.com:7c404250e5bd113160c73c072d5302ef@smtp.mailgun.org:587';
-  process.env.MAIL_URL = 'smtp://postmaster%40sandboxfcd2843bbbf94d548727db6e5c49d042.mailgun.org:5363348933de6527c476fc95aee0052a@smtp.mailgun.org:587';
+  process.env.MAIL_URL = 'smtp://postmaster%40mg.denisonbandersnatch.com:0457f9d34815fa35bd98ca57ddcb61d5@smtp.mailgun.org:587';
+  //process.env.MAIL_URL = 'smtp://postmaster%40sandboxfcd2843bbbf94d548727db6e5c49d042.mailgun.org:5363348933de6527c476fc95aee0052a@smtp.mailgun.org:587';
   //sandboxfcd2843bbbf94d548727db6e5c49d042.mailgun.org
   
 // By default, the email is sent from no-reply@meteor.com. If you wish to receive email from users asking for help with their account, be sure to set this to an email address that you can receive email at.
