@@ -283,9 +283,7 @@ Meteor.methods({
 	});
    },
   
-   sendEmail: function(){
-	   console.log("send email");
-	   
+   sendEmail: function(){	   
 	   var totOrders = FinishedOrders.find().fetch();
 	   var price = 0.0;
 	   var indvPrice = "";
@@ -301,8 +299,62 @@ Meteor.methods({
 	   for(i = 0; i < latePPL.length; i++){
 		   late += latePPL[i].uName + ", ";
 	   }
-	   text += "List of people who didn't pick up Order: " + late + "\n";
+	   text += "List of people who didn't pick up Order: " + late + "\n\n";
+	   text += "Stats from last night: " + "\n"
 	   	   
+	/* --------- num Pep Pizza Bagels --------- */
+		var numPizzaBagel = 0;	
+		var itemDeets;		// array for the items to fall into
+		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
+			for(index = 0; index < itemDeets.length; index++){
+				if(itemDeets[index] == 'Pizza Bagel (Pep) '){
+					numPizzaBagel++;
+				}
+			}
+		});
+		text += "- Number of Pep Pizza Bagels sold: " + numPizzaBagels + "\n";
+		
+	/* --------- num Cheez Pizza Bagels --------- */
+		var numchez = 0;	
+		var itemDeets3;		// array for the items to fall into
+		ActiveOrders.find().forEach(function(order){ itemDeets3 = order.item.split('\n'); 
+			for(index = 0; index < itemDeets3.length; index++){
+				if(itemDeets3[index] == 'Pizza Bagel (Cheese) '){
+					numchez++;
+				}
+			}
+		});
+		text += "- Number of Cheese Pizza Bagels sold: " + numchez + "\n";	
+	   
+	/* --------- num Snagels --------- */
+	   
+		var numSnagel = 0; 
+		var itemDeets2;		// array for the items to fall into
+		ActiveOrders.find().forEach(function(order){ itemDeets2 = order.item.split('\n'); 
+			for(index = 0; index < itemDeets2.length; index++){
+				if(itemDeets2[index] == 'Snagel '){
+					numSnagel++;
+				}
+			}
+		});
+		text += "- Number of Snagels sold: " + numSnagel + "\n";
+	   
+	 /* --------- num Shakes --------- */  
+		var numShake = 0;
+		var itemDeets4;		// array for the items to fall into
+		ActiveOrders.find().forEach(function(order){ itemDeets4 = order.item.split('\n'); 
+		for(index = 0; index < itemDeets4.length; index++){
+			if(itemDeets4[index] == "Shake: "){
+				numShake++;
+			}
+		}
+		});
+		text += "- Number of Shakes sold: " + numShakes + "\n"
+		
+		
+		
+		   
+		   
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
          to: "costa_n1@denison.edu",
