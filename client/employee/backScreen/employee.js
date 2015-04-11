@@ -106,7 +106,6 @@ Template.orderInfo.events({
       total = total + orders[i].price;
     }
     var delID = this._id; 
-	console.log("Total price: " + total);
     Meteor.call('employeeFinishedOrder', str, delID, total, inhaus, apple, orNum, usr, cellNumber, cellCarrier, sh, function(error,result) {
 		if (error)
 			return alert(error.reason);

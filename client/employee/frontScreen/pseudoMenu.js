@@ -44,9 +44,13 @@ Template.pseudoMenu.events({
 	  countBev = 0;
 	  countBag = 0;
 	  countSnack = 0;
-	  
+	  countOR = 0;
 	  countF = 0;
 	  countM = 0;
+
+  	$.each($('#otherList').serializeArray(),function() {
+  	  countOR++;
+  	});
 
 	$.each($('#flavList').serializeArray(),function() {
 	  countF++;
@@ -74,7 +78,7 @@ Template.pseudoMenu.events({
 	
 	//LOGIC FOR SHAKES!!!!!
 	
-	if(countBev > 0 || countBag > 0 || countSnack > 0 || ((countF > 0 && countF < 3) && (countM < 3))){
+	if(countOR > 0 || countBev > 0 || countBag > 0 || countSnack > 0 || ((countF > 0 && countF < 3) && (countM < 3))){
 	  $('#atcBTN').prop('disabled', false); //TO ENABLE
 	  $('#atcBTN').fadeTo(0,1);
 	  $('#atcBTN').css("cursor", "pointer");
@@ -98,9 +102,26 @@ Template.pseudoMenu.events({
     Router.go('backScreen');
   },
   
-  'click #atcBTN' : function(evt, instance){
- 	 /* =============== snack Orders =============== */
+  "click #atcBTN" : function(evt, instance){
+	  console.log("CLICKED ACTBTN");
+	  
+	 /* =============== other =============== */
   		event.preventDefault();
+		
+		var thing = $($('#itemThing')).val();
+		var price = "$" + $($('#otherPrice')).val(); 
+	//	console.log("THING: " + thing);
+	//	console.log("PRICE: " + parseFloat($($('#otherPrice')).val()));
+	  	$.each($('#otherList').serializeArray(),function() {
+			console.log('order');
+			Meteor.call('otherOrder', thing, price, function(error, result){
+				if(error)
+					return alert(error.reason);
+			});
+	  	});	  
+	  
+ 	 /* =============== snack Orders =============== */
+
 		var form1 = {};
   		var price1 = {};
 		$.each($('#snackList').serializeArray(),function() {
@@ -152,7 +173,6 @@ Template.pseudoMenu.events({
 	
 	    $.each($('#flavList').serializeArray(),function(){
 			flavForm[this.name] = this.name;
-			console.log("flavor: " + flavForm);
 			boolOrder = true; 
 	    });
 	    var flavStr = ""
@@ -171,19 +191,16 @@ Template.pseudoMenu.events({
 	    }
 		mixinStr = mixinStr.substring(0, mixinStr.length - 2);
 		
-		console.log("Bool order: " + boolOrder);
 		if(boolOrder){
-			console.log("placing a shake order");
 			Meteor.call('shakeOrder', flavStr, mixinStr, function(error,result) {
 				if (error)
 				  return alert(error.reason);
 			});
 		}
 		Router.go('pseudoCheck');
-	}
-  	
+	},
+
 });
-  
   
 /* ------------------------ bagels shit ------------------------ */  
 

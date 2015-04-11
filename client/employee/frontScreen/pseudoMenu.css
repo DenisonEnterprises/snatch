@@ -26,6 +26,41 @@
 	
 }
 
+.pseudoMenuContainer .otherMark{
+    position: absolute;
+   display: inline;
+}
+
+.pseudoMenuContainer .otherMark table{
+    position: relative;
+	left: 220px;
+    background: black;
+	text-align: center;
+    margin: 10px;
+    padding: 15px 35px 15px 35px;
+    border: solid #005f5f 3.5px;
+    font-weight:bolder;
+	display: inline-block;
+	cursor: default;
+}
+
+.pseudoMenuContainer .otherMark th{
+	border: 0px;
+}
+
+.pseudoMenuContainer .otherMark td{
+	border: 0px;
+}
+
+
+.pseudoMenuContainer .otherMark .bottom label{
+    font-family: OpenSans;
+	text-align: center;
+    color: #ffffff;
+    font-size: 25px;
+}
+
+
 .pseudoMenuContainer table{
     border: solid #005f5f 5px;
 }

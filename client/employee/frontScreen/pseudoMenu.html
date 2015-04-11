@@ -76,11 +76,32 @@
 					<br>
 				  {{/each}}
 				  </form>
-				</ul></th>				 
+				</ul></th>	
+	 
 			</tr>
 		</table>
+	   <div class='otherMark'>
+			   <table>
+					<form id="otherList">
+				  	 {{> oBox}}
+					  </form>
+				<tr>
+					<th> Other: </th>
+					<th> Price: </th>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" id="itemThing"/>
+					</td>
+					<td>	
+						<input type="text" id="otherPrice"/>
+					</td>
+				</tr>
+			</table>
+		</div>
 		
-  	   <button class="submit" id="atcBTN" disabled="disabled">Add To Cart</button>
+		
+   	   <button class="submit" id="atcBTN" disabled="disabled">Add To Cart</button>
         <div class="nav">
   		<ul>
   			<li><button type="button" id="swapBTN">Pick Up Orders</button></li>
@@ -129,11 +150,15 @@
   </li>
 </template>  
 
+<template name="oBox">
+	<li>
+		<input type="checkBox" id="other" name="otherThing" value ="3.00">
+		<span> Other: </span>
+	</li>
+</template>
 
 <template name="pmixinBox">
-  <li>
     <input type="checkbox" id="{{mixinName}}" name="{{mixinName}}" value="2.75">
-    <span class="text">{{mixinName}}</span>
-  </li>
+    <span for="{{mixinName}}" class="text">{{mixinName}}</span>
 </template>
     

@@ -40,14 +40,13 @@ Meteor.methods({
   
   
   
-  employeePlaceOrder: function(thing, shakes, price, inHouse, usr, apple, com) {
+  employeePlaceOrder: function(thing, shakes, price, inHouse, usr, apple) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: apple,
       item: thing,
-		comment: com,
 		shakes: shakes,
       submitted: new Date(),
       orderNum: orNum,
@@ -233,12 +232,23 @@ Meteor.methods({
       uName: user.username,
       price: price,
       item: snack,
-      submitted: new Date()
+      submitted: new Date(),
     };
     Local.insert(order);
   },
 
-
+  otherOrder: function(thing, price){
+	  var user = Meteor.user(); 
+	  var order = {
+		  userId: user._id,
+		  itemType: "other", 
+		  uName: user.username, 
+		  price: price,
+		  item: thing,
+		  submitted: new Date(),
+	  };
+	  Local.insert(order);
+  },
  
   shakeOrder: function(flavors, mixins) {
      var user = Meteor.user();

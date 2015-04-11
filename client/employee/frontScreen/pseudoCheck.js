@@ -76,6 +76,7 @@ Template.pseudoCheck.events({
   
     
   'click #placeOrder': function() {
+	console.log("placing order");
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
     var str = "";
     var temp = "";
@@ -86,9 +87,6 @@ Template.pseudoCheck.events({
 	shakes = [];
     
  	var apple=$($('#appleName')).val();
-	var com = $($('#comment')).val();
-
-
 	
 		for (i=0; i < orders.length; i++) {
 			indvPrice = "";
@@ -103,7 +101,7 @@ Template.pseudoCheck.events({
 				
 				total = parseFloat(temp);
 				total = total.toFixed(2);
-				Meteor.call('employeePlaceOrder', orders[i].item, shakes, total, true, Meteor.user(), apple, com); 				
+				Meteor.call('employeePlaceOrder', orders[i].item, shakes, total, true, Meteor.user(), apple); 				
 			}
 		}
 		
@@ -117,7 +115,7 @@ Template.pseudoCheck.events({
 				indvPrice = (shakes[j].price)[1] + (shakes[j].price)[2] + (shakes[j].price)[3] + (shakes[j].price)[4];
 				total = parseFloat(indvPrice);
 				total = total.toFixed(2);
-				Meteor.call('employeePlaceOrder', "Shake: \n", single, total, true, Meteor.user(), apple, com); 				
+				Meteor.call('employeePlaceOrder', "Shake: \n", single, total, true, Meteor.user(), apple); 				
 				single = [];
 			}
 			
