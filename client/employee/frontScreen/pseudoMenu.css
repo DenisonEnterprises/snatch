@@ -31,27 +31,32 @@
    display: inline;
 }
 
-.pseudoMenuContainer .otherMark table{
+
+.pseudoMenuContainer .otherMark ul{
     position: relative;
-	left: 220px;
+	left: 245px;
     background: black;
-	text-align: center;
+	text-align: left;
     margin: 10px;
-    padding: 15px 35px 15px 35px;
-    border: solid #005f5f 3.5px;
+    border: solid #005f5f 5px;
     font-weight:bolder;
-	display: inline-block;
 	cursor: default;
 }
 
+.pseudoMenuContainer .otherMark table{
+	border: none;
+}
+
 .pseudoMenuContainer .otherMark th{
-	border: 0px;
+	border: none;
+    padding: 15px 15px 0px 15px;
+    border-top: solid #005f5f 5px;
+	border-bottom: solid #005f5f 5px;
 }
 
-.pseudoMenuContainer .otherMark td{
-	border: 0px;
+.pseudoMenuContainer .otherMark .priceFont{
+    font-size: 18px;
 }
-
 
 .pseudoMenuContainer .otherMark .bottom label{
     font-family: OpenSans;

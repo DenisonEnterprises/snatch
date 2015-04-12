@@ -81,23 +81,22 @@
 			</tr>
 		</table>
 	   <div class='otherMark'>
-			   <table>
+			<table><ul>
+				<th style="width:15px"><li>
 					<form id="otherList">
 				  	 {{> oBox}}
 					  </form>
-				<tr>
-					<th> Other: </th>
-					<th> Price: </th>
-				</tr>
-				<tr>
-					<td>
-						<input type="text" id="itemThing"/>
-					</td>
-					<td>	
-						<input type="text" id="otherPrice"/>
-					</td>
-				</tr>
-			</table>
+				</li></th>
+				
+				<th style="width: 220px"><li class="priceFont">
+					Other:  <input type="text" style="width:130px" id="dollar"/>
+				</li></th>	
+				
+				<th style="width: 170px"><li class="priceFont">
+					Price: $ <input type="text" style="width:20px" id="dollar"/> . <input type="text" style="width:20px" id="cents"/>
+				</li></th>	
+			
+			</ul></table>	
 		</div>
 		
 		
@@ -153,7 +152,6 @@
 <template name="oBox">
 	<li>
 		<input type="checkBox" id="other" name="otherThing" value ="3.00">
-		<span> Other: </span>
 	</li>
 </template>
 
