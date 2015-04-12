@@ -291,7 +291,6 @@ Meteor.methods({
 	   var late = ""; 
 	   for(var i = 0; i < totOrders.length; i++){
 		   price += parseFloat(totOrders[i].price);
-		
 	   } 
 	   text += "total revenue of the night: $" + price + "\n";
 	   
@@ -343,18 +342,14 @@ Meteor.methods({
 		var numShake = 0;
 		var itemDeets4;		// array for the items to fall into
 		ActiveOrders.find().forEach(function(order){ itemDeets4 = order.item.split('\n'); 
-		for(index = 0; index < itemDeets4.length; index++){
-			if(itemDeets4[index] == "Shake: "){
-				numShake++;
+			for(index = 0; index < itemDeets4.length; index++){
+				if(itemDeets4[index] == "Shake: "){
+					numShake++;
+				}
 			}
-		}
 		});
 		text += "- Number of Shakes sold: " + numShakes + "\n"
-		
-		
-		
-		   
-		   
+  
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
          to: "costa_n1@denison.edu",
@@ -374,6 +369,29 @@ Meteor.methods({
 	   ReadyOrders.remove({});
    },
    
+   empDiscount: function(){
+		var orders = Local.find({userId: Meteor.user()._id}).fetch();
+		for(var i = 0; i < orders.length; i++){
+			var priceS = orders[i].price; 
+			priceF = parseFloat(priceS.slice(1));
+			priceF = (0.75 * priceF).toFixed(2); 
+			priceS = "$" + priceF.toString();
+			Local.update({item: orders[i].item}, {$set: {price: priceS}});
+		} 
+		return 0;
+   },
+   
+   stripDisc: function(){
+	var orders = Local.find({userId: Meteor.user()._id}).fetch();
+		for(var i = 0; i < orders.length; i++){
+			var priceS = orders[i].price; 
+			priceF = parseFloat(priceS.slice(1));
+			priceF = ((4/3) * priceF).toFixed(2); 
+			priceS = "$" + priceF.toString();
+			Local.update({item: orders[i].item}, {$set: {price: priceS}});
+		} 
+		return 0;   	
+   },
    
    /*
   
@@ -381,7 +399,7 @@ Meteor.methods({
       var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 
       Roles.createRole('employee2');
 	  Roles.setUserRoles(bsUser, 'employee2');
-	/*  
+ 
       var bsUser1 = Meteor.users.findOne({username: "bsnemp"}); 
       Roles.createRole('employee');
 	  Roles.setUserRoles(bsUser1, 'employee');

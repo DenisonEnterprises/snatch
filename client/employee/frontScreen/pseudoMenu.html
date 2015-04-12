@@ -83,13 +83,11 @@
 	   <div class='otherMark'>
 			<table><ul>
 				<th style="width:15px"><li>
-					<form id="otherList">
-				  	 {{> oBox}}
-					  </form>
+				  	  <input type="checkBox" id="other" name="otherThing" value ="3.00">
 				</li></th>
 				
 				<th style="width: 220px"><li class="priceFont">
-					Other:  <input type="text" style="width:130px" id="dollar"/>
+					Other:  <input type="text" style="width:130px; height: 20px" id="thing"/>
 				</li></th>	
 				
 				<th style="width: 170px"><li class="priceFont">
@@ -148,12 +146,6 @@
     <span class="text">{{flavorName}}</span>
   </li>
 </template>  
-
-<template name="oBox">
-	<li>
-		<input type="checkBox" id="other" name="otherThing" value ="3.00">
-	</li>
-</template>
 
 <template name="pmixinBox">
     <input type="checkbox" id="{{mixinName}}" name="{{mixinName}}" value="2.75">

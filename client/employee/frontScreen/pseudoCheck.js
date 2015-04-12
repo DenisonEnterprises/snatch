@@ -19,6 +19,10 @@ Template.PseudoShake.helpers({
 	
 });
 
+Template.pseudoCheck.helpers({
+
+});
+
 Template.PseudoShake.helpers({
 	'shake': function(){
 		return this.item;
@@ -40,6 +44,7 @@ Template.PseudoShake.helpers({
 
 Template.pseudoCheck.rendered = function() {
 	$('#appleName').on('input', function(){
+	  
 		var input=$(this).val();
 	    var button = document.getElementById("placeOrder");
 		
@@ -68,15 +73,51 @@ Template.pseudoCheck.helpers({
 		 
         return Local.find({userId: user._id});
       }
-    }
+    },
+	
+	'totalPrice': function(){
+	    var orders = Local.find({userId: Meteor.user()._id}).fetch();
+		var total = 0.0; 
+		var indvPrice = "";
+		for (i=0; i < orders.length; i++) {
+			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
+				indvPrice = orders[i].price;
+				total = total + parseFloat(indvPrice.slice(1));		
+			}
+		}
+		total = total.toFixed(2);
+		return "$" + total;
+	},
 });
 
-
 Template.pseudoCheck.events({
-  
-    
+    'click': function(evt, instance){ // get all clicks
+		if(empDisc.checked){
+			console.log("APPLY DISCOUNT");
+			var countClick = 1;
+			Meteor.call("empDiscount", function(error, result){
+				if(error){
+					return error.reason;
+				}	
+			});
+		}
+		if(!empDisc.checked){
+			if(countClick > 0 && countClick % 2 == 1){
+				console.log("strip discount");
+			}else{
+				Meteor.call('stripDisc', function(error, result){
+					if(error){
+						return error.reason;
+					}
+				});
+			}
+		}
+	},
+	
+});
+
+Template.pseudoCheck.events({  	
   'click #placeOrder': function() {
-	console.log("placing order");
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
     var str = "";
     var temp = "";
@@ -101,10 +142,14 @@ Template.pseudoCheck.events({
 				
 				total = parseFloat(temp);
 				total = total.toFixed(2);
+				if(empDisc.checked == 1){}{
+					total = total * 0.75;
+					Local.update({userId: Meteor.user()._id}, {$set: {price: total}});
+				}
+				console.log("total for this item: " + total);
 				Meteor.call('employeePlaceOrder', orders[i].item, shakes, total, true, Meteor.user(), apple); 				
 			}
 		}
-		
 		
 		if(shakeStr){
 			//seperate into seperate shake orders
@@ -114,6 +159,9 @@ Template.pseudoCheck.events({
 				indvPrice = "";
 				indvPrice = (shakes[j].price)[1] + (shakes[j].price)[2] + (shakes[j].price)[3] + (shakes[j].price)[4];
 				total = parseFloat(indvPrice);
+				if(empDisc.checked == 1){
+					total = total * 0.75;
+				}
 				total = total.toFixed(2);
 				Meteor.call('employeePlaceOrder', "Shake: \n", single, total, true, Meteor.user(), apple); 				
 				single = [];
@@ -135,27 +183,12 @@ Template.pseudoCheck.events({
 			return alert(error.reason);
 	});  
 	var num = Local.find({userId: Meteor.user()._id}).count();
-	console.log('num: ' + num);
     if(num < 2){
   	  	Router.go('/pseudoMenu');
 	  	
     }
   },
-  
-  
-   "click #bagelBTN": function( evt, instance ){
-    Router.go('bagels');
-  },
-  
-  "click #shakesBTN": function( evt, instance){
-    Router.go('shakes');
-  },
-    "click #snackBTN": function( evt, instance ){
-    Router.go('snacks');
-  },
-    "click #bevsBTN": function(evt, instance ){
-    Router.go('beverages');
-  },
+
    "click #menu": function(evt, instance){
       Router.go('/pseudoMenu#m');
    },

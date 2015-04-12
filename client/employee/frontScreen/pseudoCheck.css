@@ -84,28 +84,43 @@
     right: 0px;
 }
 
-.pseudoCheckContainer .cout .totalPrice .price{
+.pseudoCheckContainer .cout .totalPrice .price .total{
 	position: relative;
 	left: 125px;
 	top: -104px;
 }
 
+.pseudoCheckContainer .cout .totalPrice .price .empDisc1{
+	position: relative;
+	left: 95px;
+	top: -107px;
+}
+
+.pseudoCheckContainer .cout .totalPrice .price input[type=checkbox]{
+	top: -112px;
+}
 
 .pseudoCheckContainer .cout .miniText button{
     font-family: OpenSans;
     color: #ffffff;
     font-size: 25px;
-    background: black;
-    margin: 25px;
+	background: black;
+    margin: 5px;
     padding: 15px 35px 15px 35px;
     border: solid black 3.5px;
     font-weight:bolder;
 	cursor: default;
 }
 
+.pseudoCheckContainer input[type=checkbox] {
+    font-size: 150%;
+    display: inline;
+	top: -5px;
+}
+
 .pseudoCheckContainer .cout .bottom{
     background: black;
-    margin: 25px;
+    margin: 15px;
     padding: 15px 35px 15px 35px;
     border: solid black 3.5px;
     font-weight:bolder;

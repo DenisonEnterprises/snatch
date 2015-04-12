@@ -41,24 +41,26 @@
  	  <div class="totalPrice">
 		  	<img src="img/checkBottom.png" alt="CheckBottom">
 		  <div class="price">
- 				    {{> totalPrice}}
+			  <div class="total">
+				  {{totalPrice}}
 				</div>
+			<br>
+			<div class="empDisc1">
+				<input type="checkbox" class="empDisc" id="empDisc"> Employee Discount	
+			</div>
+    	  </div>
        	
 	    </div>
- <br>
 
 	<form class= "bottom" id="appleForm">
 		<label>Apples to Apples Card</label><br>
 		<input type="text" id="appleName"/>
 	</form>
-
-  
 	 <div class="miniText">
-	 	<button> There are {{> orNum}} Orders in front of yours. </button>
+	 	<button> There are {{> orNum}} Orders in front of yours. </button>	<br>	
 	</div>
+	 
 
-
- 	<!-- ><button class="placeOrderBTN" id="deleteOrder"> Cancel </button> -->
     <button class="backBTN" id="menu">Menu</button>  
     <button class="placeOrderBTN" id="placeOrder" disabled="disabled">Place Order</button>
        
@@ -98,8 +100,10 @@
          </div>	  
        </div>
 	</div>
+	
 	{{#if shakey shake}}
-	 <div class="line">
+	
+	<div class="line">
 		 <div class="itemz">
 			 <div class="mixins">
 	<span style="text-align: left">{{flavors}}</span>
@@ -118,3 +122,5 @@
 	
 </template>
 
+	
+	

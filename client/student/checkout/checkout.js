@@ -131,33 +131,29 @@ Template.checkout.events({
   },
   
   
-   "click #bagelBTN": function( evt, instance ){
-    Router.go('bagels');
-  },
-  
-  "click #shakesBTN": function( evt, instance){
-    Router.go('shakes');
-  },
-    "click #snackBTN": function( evt, instance ){
-    Router.go('snacks');
-  },
-    "click #bevsBTN": function(evt, instance ){
-    Router.go('beverages');
-  },
-   "click #menu": function(evt, instance){
-      Router.go('menu');
-   },
-   
-"click #logout": function(evt, instance){
-	Meteor.call("delLocalByUser");
-	Meteor.logout();
-	window.location.assign("/");
-},
-   
+	"click #bagelBTN": function( evt, instance ){
+		Router.go('bagels');
+	},
 
-  
-  
-  
+	"click #shakesBTN": function( evt, instance){
+		Router.go('shakes');
+	},
+	"click #snackBTN": function( evt, instance ){
+		Router.go('snacks');
+	},
+	"click #bevsBTN": function(evt, instance ){
+		Router.go('beverages');
+	},
+	"click #menu": function(evt, instance){
+	 	Router.go('menu');
+	},
+   
+	"click #logout": function(evt, instance){
+		Meteor.call("delLocalByUser");
+		Meteor.logout();
+		window.location.assign("/");
+	},
+ 
 });
 
 

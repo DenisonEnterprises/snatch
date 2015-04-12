@@ -103,22 +103,20 @@ Template.pseudoMenu.events({
   },
   
   "click #atcBTN" : function(evt, instance){
-	  console.log("CLICKED ACTBTN");
 	  
 	 /* =============== other =============== */
   		event.preventDefault();
 		
-		var thing = $($('#itemThing')).val();
-		var price = "$" + $($('#otherPrice')).val(); 
-	//	console.log("THING: " + thing);
-	//	console.log("PRICE: " + parseFloat($($('#otherPrice')).val()));
-	  	$.each($('#otherList').serializeArray(),function() {
-			console.log('order');
+		var thing = $($("#thing")).val();
+		var price = "$" + $($("#dollar")).val() + "." + $($("#cents")).val(); 
+		if(other.checked == 1){
 			Meteor.call('otherOrder', thing, price, function(error, result){
 				if(error)
 					return alert(error.reason);
 			});
-	  	});	  
+		}else{
+			console.log("No 'other' items");
+		}
 	  
  	 /* =============== snack Orders =============== */
 
