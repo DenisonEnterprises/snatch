@@ -50,6 +50,7 @@ Template.pseudoMenu.events({
 
   	$.each($('#otherList').serializeArray(),function() {
   	  countOR++;
+	  console.log(countOR);
   	});
 
 	$.each($('#flavList').serializeArray(),function() {
@@ -109,7 +110,7 @@ Template.pseudoMenu.events({
 		
 		var thing = $($("#thing")).val();
 		var price = "$" + $($("#dollar")).val() + "." + $($("#cents")).val(); 
-		if(other.checked == 1){
+		if(otherList.checked == 1){
 			Meteor.call('otherOrder', thing, price, function(error, result){
 				if(error)
 					return alert(error.reason);

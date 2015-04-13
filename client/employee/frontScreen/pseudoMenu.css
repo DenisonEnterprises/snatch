@@ -38,10 +38,11 @@
     background: black;
 	text-align: left;
     margin: 10px;
-    border: solid #005f5f 5px;
     font-weight:bolder;
 	cursor: default;
 }
+
+
 
 .pseudoMenuContainer .otherMark table{
 	border: none;
@@ -49,13 +50,12 @@
 
 .pseudoMenuContainer .otherMark th{
 	border: none;
-    padding: 15px 15px 0px 15px;
-    border-top: solid #005f5f 5px;
-	border-bottom: solid #005f5f 5px;
+    padding: 0px 15px 0px 15px;
 }
 
-.pseudoMenuContainer .otherMark .priceFont{
-    font-size: 18px;
+.pseudoMenuContainer .otherMark .otherShit{
+	position: relative;
+	top: 5px;
 }
 
 .pseudoMenuContainer .otherMark .bottom label{
@@ -67,7 +67,7 @@
 
 
 .pseudoMenuContainer table{
-    border: solid #005f5f 5px;
+	border: none;
 }
 
 

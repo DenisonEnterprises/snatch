@@ -69,6 +69,8 @@ Template.totalPrice.helpers({
 
 Template.orNum.helpers({
 	'orderNum' : function() {
+		//var ords = ActiveOrders.find({}, {field: {userId: Meteor.user()._id}}).count();
+		//return ords;
 		return ActiveOrders.find().count();
 	}
 });

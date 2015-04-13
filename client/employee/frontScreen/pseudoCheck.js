@@ -4,6 +4,8 @@ Meteor.subscribe('ready');
 Meteor.subscribe('finished');
 
 
+justClickedOn = true;
+justClickedOff = false;
 
 Template.PseudoShake.helpers({
 	'mixins' : function(){
@@ -47,6 +49,9 @@ Template.pseudoCheck.rendered = function() {
 	  
 		var input=$(this).val();
 	    var button = document.getElementById("placeOrder");
+		
+		justClickedOn = true;
+		justClickedOff = false;
 		
 		if(input.length > 0){
 	        $("#placeOrder").css("cursor", "pointer");
@@ -92,26 +97,27 @@ Template.pseudoCheck.helpers({
 
 Template.pseudoCheck.events({
     'click': function(evt, instance){ // get all clicks
-		if(empDisc.checked){
-			console.log("APPLY DISCOUNT");
-			var countClick = 1;
-			Meteor.call("empDiscount", function(error, result){
-				if(error){
-					return error.reason;
-				}	
-			});
-		}
-		if(!empDisc.checked){
-			if(countClick > 0 && countClick % 2 == 1){
-				console.log("strip discount");
-			}else{
-				Meteor.call('stripDisc', function(error, result){
+		
+			if(empDisc.checked && justClickedOn){
+				var countClick = 1;
+				justClickedOn = false;
+				justClickedOff = true;
+				Meteor.call("empDiscount", function(error, result){
 					if(error){
 						return error.reason;
-					}
+					}	
 				});
 			}
-		}
+			if(!empDisc.checked && justClickedOff){
+				justClickedOn = true;
+				justClickedOff = false;
+					Meteor.call('stripDisc', function(error, result){
+						if(error){
+							return error.reason;
+						}
+					});
+			}
+		
 	},
 	
 });
@@ -142,11 +148,6 @@ Template.pseudoCheck.events({
 				
 				total = parseFloat(temp);
 				total = total.toFixed(2);
-				if(empDisc.checked == 1){}{
-					total = total * 0.75;
-					Local.update({userId: Meteor.user()._id}, {$set: {price: total}});
-				}
-				console.log("total for this item: " + total);
 				Meteor.call('employeePlaceOrder', orders[i].item, shakes, total, true, Meteor.user(), apple); 				
 			}
 		}
@@ -159,9 +160,6 @@ Template.pseudoCheck.events({
 				indvPrice = "";
 				indvPrice = (shakes[j].price)[1] + (shakes[j].price)[2] + (shakes[j].price)[3] + (shakes[j].price)[4];
 				total = parseFloat(indvPrice);
-				if(empDisc.checked == 1){
-					total = total * 0.75;
-				}
 				total = total.toFixed(2);
 				Meteor.call('employeePlaceOrder', "Shake: \n", single, total, true, Meteor.user(), apple); 				
 				single = [];
