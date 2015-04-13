@@ -11,6 +11,7 @@
     width:100vw;
     top:0px;
     left:0px;
+	background-attachment: fixed;
   
   text-align: center;
 }

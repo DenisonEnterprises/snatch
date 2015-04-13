@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   color: white;
   
-  overflow: hidden;
+	background-attachment: fixed;
     position:absolute;
     height:100vh;
     width:100vw;
