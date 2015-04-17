@@ -288,68 +288,321 @@ Meteor.methods({
 	   var price = 0.0;
 	   var indvPrice = "";
 	   var text = "";
+	   var totPrice = 0.0;
 	   var late = ""; 
 	   for(var i = 0; i < totOrders.length; i++){
+		  // console.log(price);
 		   price += parseFloat(totOrders[i].price);
 	   } 
-	   text += "total revenue of the night: $" + price + "\n";
+	   text += "total revenue of the night: $" + price.toFixed(2) + "\n";
 	   
 	   var latePPL = ReadyOrders.find().fetch(); 
 	   for(i = 0; i < latePPL.length; i++){
-		   late += latePPL[i].uName + ", ";
+		   late += latePPL[i].uName + "\n";
 	   }
-	   text += "List of people who didn't pick up Order: " + late + "\n\n";
-	   text += "Stats from last night: " + "\n"
+	   text += "List of people who didn't pick up Order: \n" + late + "\n\n";
+	   text += "\n\n\n Stats from last night: " + "\n"
 	   	   
 	/* --------- num Pep Pizza Bagels --------- */
 		var numPizzaBagel = 0;	
 		var itemDeets;		// array for the items to fall into
-		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
+		FinishedOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
 			for(index = 0; index < itemDeets.length; index++){
 				if(itemDeets[index] == 'Pizza Bagel (Pep) '){
 					numPizzaBagel++;
 				}
 			}
 		});
-		text += "- Number of Pep Pizza Bagels sold: " + numPizzaBagels + "\n";
+		totPrice += numPizzaBagel * 2.05;
 		
 	/* --------- num Cheez Pizza Bagels --------- */
 		var numchez = 0;	
 		var itemDeets3;		// array for the items to fall into
-		ActiveOrders.find().forEach(function(order){ itemDeets3 = order.item.split('\n'); 
+		FinishedOrders.find().forEach(function(order){ itemDeets3 = order.item.split('\n'); 
 			for(index = 0; index < itemDeets3.length; index++){
 				if(itemDeets3[index] == 'Pizza Bagel (Cheese) '){
 					numchez++;
 				}
 			}
 		});
-		text += "- Number of Cheese Pizza Bagels sold: " + numchez + "\n";	
+		totPrice += 2.13*numchez;	
 	   
 	/* --------- num Snagels --------- */
 	   
 		var numSnagel = 0; 
 		var itemDeets2;		// array for the items to fall into
-		ActiveOrders.find().forEach(function(order){ itemDeets2 = order.item.split('\n'); 
+		FinishedOrders.find().forEach(function(order){ itemDeets2 = order.item.split('\n'); 
 			for(index = 0; index < itemDeets2.length; index++){
 				if(itemDeets2[index] == 'Snagel '){
 					numSnagel++;
 				}
 			}
 		});
-		text += "- Number of Snagels sold: " + numSnagel + "\n";
+		totPrice += 0.64 * numSnagel;
+		
+	/* --------- num Klynch --------- */
 	   
-	 /* --------- num Shakes --------- */  
+		var numK = 0; 
+		var i4;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i4 = order.item.split('\n'); 
+			for(index = 0; index < i4.length; index++){
+				if(i4[index] == 'Klynch '){
+					 numK++;
+				}
+			}
+		});
+		totPrice += 1.24 * numK;
+		
+	/* --------- num Nuckin' Futz --------- */
+	   
+		var numNF = 0; 
+		var i5;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i5 = order.item.split('\n'); 
+			for(index = 0; index < i5.length; index++){
+				if(i5[index] == 'Nuckin\' Futz '){
+					 numNF++;
+				}
+			}
+		});
+		totPrice += 1.12 * numNF;
+		
+	/* --------- num Pesto Bagel --------- */
+	   
+		var numPB = 0; 
+		var i6;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i6 = order.item.split('\n'); 
+			for(index = 0; index < i6.length; index++){
+				if(i6[index] == 'Pesto Bagel '){
+					 numPB++;
+				}
+			}
+		});
+		totPrice += 2.26 * numPB;
+		
+	/* --------- num Pesto Pepperoni --------- */
+	   
+		var numPBP = 0; 
+		var i7;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i7 = order.item.split('\n'); 
+			for(index = 0; index < i7.length; index++){
+				if(i7[index] == 'Pesto Bagel (Pep) '){
+					 numPBP++;
+				}
+			}
+		});
+		totPrice += 2.18 * numPBP;
+		
+	/* --------- num WDU bagel--------- */
+	   
+		var numWD = 0; 
+		var i8;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i8 = order.item.split('\n'); 
+			for(index = 0; index < i8.length; index++){
+				if(i8[index] == 'WDU Bagel '){
+					 numWD++;
+				}
+			}
+		});
+		totPrice += 1.12 * numWD;
+		
+	/* --------- num Half and Half--------- */
+	   
+		var numHH = 0; 
+		var i9;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i9 = order.item.split('\n'); 
+			for(index = 0; index < i9.length; index++){
+				if(i9[index] == 'Half and Half '){
+					 numHH++;
+				}
+			}
+		});
+		totPrice += 1.84 * numHH;
+		
+	/* --------- num Coffee --------- */
+	   
+		var numC = 0; 
+		var i10;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i10 = order.item.split('\n'); 
+			for(index = 0; index < i10.length; index++){
+				if(i10[index] == 'Coffee'){
+					 numC++;
+				}
+			}
+		});
+		totPrice += 0.20 * numC;
+		
+	/* --------- num Coffee --------- */
+	   
+		var numH = 0; 
+		var i11;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i11 = order.item.split('\n'); 
+			for(index = 0; index < i11.length; index++){
+				if(i11[index] == 'Hum'){
+					 numH++;
+				}
+			}
+		});
+		totPrice += 1.26 * numH;
+	
+	/* --------- num Chai H --------- */
+	   
+		var n1 = 0; 
+		var i12;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i12 = order.item.split('\n'); 
+			for(index = 0; index < i12.length; index++){
+				if(i12[index] == 'Chai Tea (Hot)'){
+					 n1++;
+				}
+			}
+		});
+		totPrice += 1.05 * n1;	
+		
+	/* --------- num Chai C --------- */
+	   
+		var n2 = 0; 
+		var i13;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i13 = order.item.split('\n'); 
+			for(index = 0; index < i13.length; index++){
+				if(i13[index] == 'Chai Tea (Cold)'){
+					 n2++;
+				}
+			}
+		});
+		totPrice += 1.05 * n2;	
+		
+		
+	/* --------- num Iced Tea --------- */
+	   
+		var n3 = 0; 
+		var i14;		// array for the items to fall into
+		FinishedOrders.find().forEach(function(order){ i14 = order.item.split('\n'); 
+			for(index = 0; index < i14.length; index++){
+				if(i14[index] == 'Iced Tea'){
+					 n3++;
+				}
+			}
+		});
+		totPrice += 0.31 * n3;	
+		
+	/* --------- num Latte --------- */
+	   
+		var n5 = 0; 
+		var i16; 
+		FinishedOrders.find().forEach(function(order){ i16 = order.item.split('\n'); 
+			for(index = 0; index < i16.length; index++){
+				if(i16[index] == 'Latte'){
+					 n5++;
+				}
+			}
+		});
+		totPrice += 1.02 * n5;	
+		
+	/* --------- num Red Bull --------- */
+	   
+		var n6 = 0; 
+		var i17; 
+		FinishedOrders.find().forEach(function(order){ i17 = order.item.split('\n'); 
+			for(index = 0; index < i17.length; index++){
+				if(i17[index] == 'Red Bull'){
+					 n6++;
+				}
+			}
+		});
+		totPrice += 0.54 * n6;	
+		
+	/* --------- num Soda --------- */
+	   
+		var n7 = 0; 
+		var i18; 
+		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
+			for(index = 0; index < i18.length; index++){
+				if(i18[index] == 'Soda'){
+					 n7++;
+				}
+			}
+		});
+		totPrice += 0.62 * n7;	
+		
+	/* --------- num Popcorn --------- */
+	   
+		var n7 = 0; 
+		var i18; 
+		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
+			for(index = 0; index < i18.length; index++){
+				if(i18[index] == 'Popcorn '){
+					 n7++;
+				}
+			}
+		});
+		totPrice += 0.17 * n7;	
+		
+	/* --------- num Pizza Pretzel --------- */
+	   
+		var n7 = 0; 
+		var i18; 
+		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
+			for(index = 0; index < i18.length; index++){
+				if(i18[index] == 'Pizza Pretzel '){
+					 n7++;
+				}
+			}
+		});
+		totPrice += 2.39 * n7;	
+		
+	/* --------- num Pizza Pretzel (PEP) --------- */
+	   
+		var n7 = 0; 
+		var i18; 
+		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
+			for(index = 0; index < i18.length; index++){
+				if(i18[index] == 'Pizza Pretzel (Pep) '){
+					 n7++;
+				}
+			}
+		});
+		totPrice += 2.31 * n7;	
+		
+	/* --------- num Hot Pretzel --------- */
+	   
+		var n7 = 0; 
+		var i18; 
+		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
+			for(index = 0; index < i18.length; index++){
+				if(i18[index] == 'Hot Pretzel '){
+					 n7++;
+				}
+			}
+		});
+		totPrice += 1.34 * n7;	
+		
+	/* --------- num Hot Pretzel Cheese --------- */
+	   
+		var n7 = 0; 
+		var i18; 
+		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
+			for(index = 0; index < i18.length; index++){
+				if(i18[index] == 'Hot Pretzel (Cheese) '){
+					 n7++;
+				}
+			}
+		});
+		totPrice += 1.60 * n7;	
+		
+		
+	   
+	 /* --------- num Shakes ---------
 		var numShake = 0;
 		var itemDeets4;		// array for the items to fall into
-		ActiveOrders.find().forEach(function(order){ itemDeets4 = order.item.split('\n'); 
+		FinishedOrders.find().forEach(function(order){ itemDeets4 = order.item.split('\n'); 
 			for(index = 0; index < itemDeets4.length; index++){
 				if(itemDeets4[index] == "Shake: "){
 					numShake++;
 				}
 			}
 		});
-		text += "- Number of Shakes sold: " + numShakes + "\n"
+		text += "- Number of Shakes sold: " + numShake + "\n" */  
   
+  	  	text += "Total profit of the night: $" + totPrice.toFixed(2);
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
          to: "costa_n1@denison.edu",
