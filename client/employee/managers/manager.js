@@ -12,6 +12,7 @@ Template.manager.rendered = function(){
 		$('#on').show();
 		$('#off').hide();
 	}
+	
 };
 
 
@@ -37,5 +38,27 @@ Template.manager.events({
    	  	setTimeout(function(){
           $("#notif2").fadeOut(1000);
    	 	}, 3000);
-	}
+	},
+	
+	'click #addNewItem': function(evt){
+		var itemType = $("#itemType").val(); 
+		var itemName = $($("#itemTitle")).val();
+		var itemPrice = parseFloat($($("#dollar")).val() + "." + $($("#cents")).val()); 
+		Meteor.call('addNewItem',itemType, itemName, itemPrice, function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			});
+		$('#notifAdded').show();
+   	  	setTimeout(function(){
+          $("#notifAdded").fadeOut(1000);
+   	 	}, 3000);
+	},
+	
+	'click #deleteMenuItem': function(evt){
+		var itemType = $('#itemType').val(); 
+	
+	
+	
+		
+	},
 });

@@ -3,28 +3,83 @@
 <head>
 	<title> Bandersnatch - Managers </title>
 </head>	
-	{{#if isInRole 'manager'}}
+	<!-- {{#if isInRole 'manager'}} -->
 	
 	<div class='ManagerContainer'>
 	
 		<h1> Managers </h1>
 	
-	<label id="notif">App Running</label>
-	
-	<button type="button" id="on" class="on">Turn ON</button>
-	<button type="button" id="off" class="off">Turn OFF</button>
-	
-		<div class="lower">
+		<label id="notif">App Running</label>
+		<div class='appSwitch'>
+			<button type="button" id="on" class="on">Turn ON</button>
+			<button type="button" id="off" class="off">Turn OFF</button>
 			<button type="button" id="sendEmail" class="email">Send Email</button>
+			<h4 id="notif2">Email Sent!</h4>
 		</div>
 		
-		<h4 id="notif2">Email Sent!</h4>
+
+		
+		<div class='manage'>
+			<div class="newItem">
+				<form id='addItem'>
+					<div class='name'>
+						<label for='itemTitle'>Name of Item:</label>
+						<input type='text' id='itemTitle'>
+					</div>	
+					<div class='price'>
+						<label for='itemPrice'>Price of Item:</label>
+						$ <input type="text" class="money" id="dollar"/> . <input type="text" class="money" id="cents"/>
+					</div>
+			        <label for="itemType">Category of New Item</label>
+			        <select id="itemType">
+			           <option value="select" id="select">Select</option>
+			           <option value="flavor">Shake Flavor</option>
+					   <option value="mixin">Shake Mixin</option>
+			           <option value="bagel">Bagel</option>
+					   <option value="snack">Snack</option>
+					   <option value="bev">Beverage</option>
+			        </select>
+				</form>
+				<button type=button id=addNewItem> Add New Item </button>
+				<h4 id='notifAdded'>Item Added to Menu</h4>
+			</div>
+
+
+			<div class="delItem">
+				<!-- Claire's Thoughts: 
+					 2 drop down menus: 
+						1. the "type" of item you wish to delete. ie bagel, flavor, etc. 
+						2. Second drop down fills with all items currently in that db
+					delete that specific item
+				-->
+				<form name="findDelItem">
+					<select name="optOne" size="1"
+					onchange="setOptions(document.findDelItem.optOne.options
+					continued from previous line[document.findDelItem.optOne.selectedIndex].value);">
+			           <option value="select" id="select">Select</option>
+			           <option value="flavor">Shake Flavor</option>
+					   <option value="mixin">Shake Mixin</option>
+			           <option value="bagel">Bagel</option>
+					   <option value="snack">Snack</option>
+					   <option value="bev">Beverage</option>
+					</select><br> <br>
+					<select name="optTwo" size="1">
+					<option value=" " selected="selected">Please select one of the options above first</option>
+					</select>
+					<br>
+					<input type="button" name="go" id='delThis' value="Delete Item"
+					onclick="alert(document.myform.opttwo.options
+					continued from previous line[document.myform.opttwo.selectedIndex].value);">
+				</form>
+			
+			</div>
+		</div>
 	</div>
 	
 	
 	
-    {{else}}
+ <!--  {{else}}
      {{> deniedEmp}}
-    {{/if}}
+    {{/if}}  -->
 	
 </template>

@@ -3,9 +3,9 @@
 	background-color: black;
 	color: white;
   
-   overflow: hidden;
-   position:absolute;
-   height:100vh;
+   /*overflow: hidden;
+   position:absolute;*/
+   height:150vh;
    width:100vw;
    top:0px;
    left:0px;
@@ -37,7 +37,35 @@
 	margin-bottom:30px;
 }
 
-.ManagerContainer .lower button{
+.ManagerContainer .appSwitch{
+	display:inline-block;
+}
+.ManagerContainer .manage{
+	display:inline;
+	padding: 10px;
+}
+
+/*
+.ManagerContainer .newItem{
+	border: 5px;
+	background-color: green;
+	height: 400px;
+	padding: 10px;
+}
+
+.ManagerContainer .newItem .price{
+	height: 20px;
+	width: 20px;
+}
+
+.ManagerContainer .delItem{
+	border: 5px;
+	background-color: pink;
+	height: 200px;
+	padding: 10px;
+}*/
+
+.ManagerContainer .delItem button{
     font-family: OpenSans;
     color: #fff;
     font-size: 15px;
