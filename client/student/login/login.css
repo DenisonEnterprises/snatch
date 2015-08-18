@@ -58,10 +58,11 @@
 .ftr {
   padding-top: 40px;
   text-align: center;
-  color: #000000;
+  color: #ffffff;
   font-family: Verdana;
   font-size: 8px;
   text-decoration: underline;
+ 
   
 }
 
@@ -130,6 +131,8 @@
       top:0px;
       left:0px;
 	  
+	  padding:0px;
+	  
     }
   
     .loginContainer img{
@@ -137,11 +140,17 @@
       max-height:200px;
       width:205px;
     }
+	
+	.ftr{
+		color: #ffffff;
+	}
   
     .ftr img{
       width:25px;
 	  height:18px;
 	  padding-right:10pt;
+	 
+	  
 
 	}
     
@@ -170,6 +179,8 @@
  
       top:0px;
       left:0px;
+	  
+	  padding-top:0px;
     }
   
     .loginContainer img{
@@ -178,6 +189,10 @@
       width:200px;
 	  position:center;
     }
+	
+	.ftr{
+		color: #ffffff;
+	}
   
     .ftr img{
       width:55px;
@@ -204,6 +219,8 @@
  
       top:0px;
       left:0px;
+	  
+	  padding-top:0px;
     }
   
     .loginContainer img{
@@ -213,12 +230,60 @@
 	  position:center;
     }
   
-    .ftr img{
+	.ftr{
+		color: #ffffff;
+	}
+    
+	.ftr img{
       width:55px;
     }
 	
 
 }
+
+/*----------- iPhone 6 Plus ----------- */
+@media only screen and (max-width: 1207px) and (min-height:481px) and (max-height:761px){
+	  
+    .loginContainer {
+      background-image: url(/img/lg/loginCrop.jpg);
+      background-size: fixed;
+      background-repeat: no-repeat;
+      color: white;
+  
+      overflow: hidden;
+    
+      background-position: center;
+	  position:absolute;
+      height:100vh;
+      width:100vw;
+ 
+      top:0px;
+      left:0px;
+	  
+	  padding-top:0px;
+    }
+  
+    .loginContainer img{
+      max-width:250px;
+      max-height:250px;
+      width:250px;
+	  position:center;
+    }
+  
+	.ftr{
+		color: #ffffff;
+	}
+    
+	.ftr img{
+      width:55px;
+    }
+	
+
+}
+
+
+
+
 
 
 
