@@ -1,12 +1,15 @@
 .menuContainer {
-  background-image: url(/img/lg/menuLG2.jpg);
-  background-size:cover;
+  background-image: url(/img/lg/lightsLG3.jpg);
+  background-size: cover;
   background-repeat:no-repeat;
+  
+ 
+
   
   color: white;
   
 	background-attachment: fixed;
-  position:absolute;
+    position: absolute;
     height:100vh;
     width:100vw;
     top:0px;
@@ -112,4 +115,159 @@
   
 }
 
+/*----------- iPhone 4 ----------- */
+@media only screen and (max-width: 320px) and (max-height:480px){
 
+	.menuContainer{
+	    background-position: 83% 90%;
+		
+	}
+	
+	.menuContainer .middle h1{
+		font-size: 45px;
+		padding: 0px;
+	}
+	
+	.menuContainer .middle .snackBTN{
+		padding: 5px 25px 5px 25px;
+		font-size: 15px;	
+	}
+	
+	.menuContainer .middle .bagelBTN{
+		padding: 5px 25px 5px 25px;
+		font-size: 15px;
+	}
+	
+	.menuContainer .middle .bevsBTN{
+		padding: 5px 25px 5px 25px;
+		font-size: 15px;
+	}
+	
+	.menuContainer .middle .shakesBTN{
+		padding: 5px 25px 5px 25px;
+		font-size: 15px;
+	}
+
+	.menuContainer .middle .cout{
+		padding: 0px 10px 0px 10px;
+	}
+
+}
+
+
+/*----------- iPhone 5 ----------- */
+@media only screen and (max-width: 320px) and (min-height:481px){
+	 
+	.menuContainer{
+	    background-position: 83% 90%;
+	
+	}
+		
+	.menuContainer .middle h1{
+		font-size: 45px;
+		padding: 0px;
+	}
+	
+	.menuContainer .middle .snackBTN{
+		padding: 5px 45px 5px 45px;
+		font-size: 15px;	
+	}
+	
+	.menuContainer .middle .bagelBTN{
+		padding: 5px 45px 5px 45px;
+		font-size: 15px;
+	}
+	
+	.menuContainer .middle .bevsBTN{
+		padding: 5px 45px 5px 45px;
+		font-size: 15px;
+	}
+	
+	.menuContainer .middle .shakesBTN{
+		padding: 5px 45px 5px 45px;
+		font-size: 15px;
+	}
+
+	.menuContainer .middle .cout{
+		padding: 0px 5px 0px 5px;
+		
+	} 
+
+}
+
+/*----------- iPhone 6 ----------- */
+@media only screen and (min-width: 321px) and (max-width:375px){
+	  
+	.menuContainer{
+	    background-position: 83% 90%;
+	
+	}
+	
+	.menuContainer .middle h1{
+		font-size: 45px;
+		padding: 0px;
+	}
+	
+	.menuContainer .middle .snackBTN{
+		padding: 5px 65px 5px 65px;
+		font-size: 16px;	
+	}
+	
+	.menuContainer .middle .bagelBTN{
+		padding: 5px 65px 5px 65px;
+		font-size: 16px;
+	}
+	
+	.menuContainer .middle .bevsBTN{
+		padding: 5px 65px 5px 65px;
+		font-size: 16px;
+	}
+	
+	.menuContainer .middle .shakesBTN{
+		padding: 5px 65px 5px 65px;
+		font-size: 16px;
+	}
+
+	.menuContainer .middle .cout{
+		padding: 0px 10px 0px 10px;
+	}
+
+}
+
+/*----------- iPhone 6 Plus ----------- */
+@media only screen and (min-width: 376px) and (max-width:600px){
+
+	.menuContainer{
+	    background-position: 83% 90%;
+		
+	}
+	
+	.menuContainer .middle h1{
+		font-size: 50px;
+		padding: 0px;
+	}
+	
+	.menuContainer .middle .snackBTN{
+		padding: 5px 50px 5px 50px;
+		font-size: 15px;	
+	}
+	
+	.menuContainer .middle .bagelBTN{
+		padding: 5px 50px 5px 50px;
+		font-size: 15px;
+	}
+	
+	.menuContainer .middle .bevsBTN{
+		padding: 5px 50px 5px 50px;
+		font-size: 15px;
+	}
+	
+	.menuContainer .middle .shakesBTN{
+		padding: 5px 50px 5px 50px;
+		font-size: 15px;
+	}
+
+	.menuContainer .middle .cout{
+		padding: 0px 10px 0px 10px;
+	}	  
+}

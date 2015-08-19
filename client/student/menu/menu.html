@@ -4,15 +4,16 @@
     <title>Bandersnatch - Menu</title>
   </head>
   
-   {{#if isInRole 'student'}}
+ 
+  {{#if isInRole 'student'}}
    
-   {{#if appOn}}
+   {{#if appOn}} 
   
   <div class="menuContainer">
        
     <div class="nav">
        <ul>
-          <li>{{currentUser.username}}</li>
+         <li>{{currentUser.username}}</li>
           <li class="Settings">
             <a href="/settings" >
               <img src="img/sm/settingsSM.png" alt="Settings">
@@ -58,6 +59,7 @@
     </div>
   
   </div> 
+
   
   {{else}}
     

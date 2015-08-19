@@ -16,6 +16,7 @@
 
 .forgotContainer h1{
 	margin: 40px;
+	
 }
 
 .forgotContainer button{
@@ -44,3 +45,44 @@
 	color:yellow;
 }
 
+
+
+/*----------- iPhone 4 ----------- */
+@media only screen and (max-width: 320px) and (max-height:480px){
+	
+	.forgotContainer h1 {
+		font-size: 45px;
+		padding-top: 15px;}
+		
+}	 
+
+/*----------- iPhone 5 ----------- */
+@media only screen and (max-width: 320px) and (min-height:481px){
+
+	.forgotContainer h1 {
+	font-size: 35px;
+    padding-top: 55px;}
+
+}
+
+/*----------- iPhone 6 ----------- */
+@media only screen and (min-width: 321px) and (max-width:375px){
+
+	.forgotContainer h1 {
+	font-size: 45px;
+    padding-top: 90px;}
+
+}	  
+   
+/*----------- iPhone 6 Plus ----------- */
+@media only screen and (min-width: 376px) and (max-width:600px){
+
+	.forgotContainer h1 {
+	font-size: 50px;
+	padding-top: 150px;	  
+
+}
+
+
+
+}
