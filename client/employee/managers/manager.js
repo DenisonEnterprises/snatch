@@ -15,8 +15,26 @@ Template.manager.rendered = function(){
 	
 };
 
+Template.manager.helpers({
+	'bev': function(){
+		return Beverages.find().fetch();
+	},
+	'snack': function(){
+		return Snacks.find().fetch(); 
+	},
+	'bagel': function(){
+		return Bagels.find().fetch();
+	},
+	'mixin': function(){
+		return Milkshakes.find({type: "mixin"}).fetch(); 
+	},
+	'flavor': function(){
+		return Milkshakes.find({type:'flavor'}).fetch();
+	}
+});
 
 Template.manager.events({
+	
 	'click #on': function(evt) {
 		Meteor.call("appOn");
 		$('#notif').html("App is currently running");
@@ -53,12 +71,19 @@ Template.manager.events({
           $("#notifAdded").fadeOut(1000);
    	 	}, 3000);
 	},
-	
-	'click #deleteMenuItem': function(evt){
-		var itemType = $('#itemType').val(); 
-	
-	
-	
-		
+
+	'click #delThis': function(evt){
+		var itemType = $('#first-choice').val();
+		var item = $('#deleteItem').val();
+		Meteor.call('deleteItem',itemType, item, function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			});
 	},
+	
 });
+
+
+
+
+

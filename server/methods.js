@@ -671,6 +671,21 @@ Meteor.methods({
 	   }
    },
    
+   deleteItem: function(itemType, item){
+		if (itemType == 'bagel'){
+			Bagels.remove({type: item});
+		} 
+		else if (itemType == 'snack'){
+			Snacks.remove({type: item});
+		}
+		else if (itemType == 'bev'){
+			Beverages.remove({type: item});
+		}
+		else if(itemType == "flavor" || itemType == 'mixin'){
+			Milkshakes.remove({name: item});
+		}
+   }
+   
    /*
   
   createAct: function() {

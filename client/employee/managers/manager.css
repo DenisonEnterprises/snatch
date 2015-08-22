@@ -45,6 +45,13 @@
 	padding: 10px;
 }
 
+.ManagerContiner .manage .newItem .price input{
+	height: 20px;
+	width: 20px;
+	
+}
+
+
 /*
 .ManagerContainer .newItem{
 	border: 5px;

@@ -53,23 +53,129 @@
 					delete that specific item
 				-->
 				<form name="findDelItem">
-					<select name="optOne" size="1"
-					onchange="setOptions(document.findDelItem.optOne.options
-					continued from previous line[document.findDelItem.optOne.selectedIndex].value);">
-			           <option value="select" id="select">Select</option>
-			           <option value="flavor">Shake Flavor</option>
-					   <option value="mixin">Shake Mixin</option>
-			           <option value="bagel">Bagel</option>
+					<select id="first-choice">
+			           <option value="select">Select</option>
+					   <option value="bagel">Bagel</option>
 					   <option value="snack">Snack</option>
 					   <option value="bev">Beverage</option>
-					</select><br> <br>
-					<select name="optTwo" size="1">
-					<option value=" " selected="selected">Please select one of the options above first</option>
+					   <option value="mixin">Shake Mixin</option>
+			           <option value="flavor">Shake Flavor</option>
 					</select>
+						
+					<script>
+					var oldChoice = '';
+					$('#deleteItem').click(function() {
+						var listLength = 0;
+						console.log('delete:' ,$('#deleteItem').val()); 
+						if($('#first-choice').val() != 'select' && $('#first-choice').val() != oldChoice){
+							if(oldChoice != ''){
+								console.log('need to delete current options');
+								var sel = document.getElementById('deleteItem');
+								while (sel.firstChild) {
+								    sel.removeChild(sel.firstChild);
+								}
+							}
+							/*************** DELETE A BAGEL ***************/
+							if($('#first-choice').val() == 'bagel'){
+								var bagels = Bagels.find().fetch(); 
+								var sel = document.getElementById('deleteItem');
+								var fragment = document.createDocumentFragment();
+
+								bagels.forEach(function(bagel, index) {
+								
+								    var opt = document.createElement('option');
+								    opt.innerHTML = bagel.type;
+								    opt.value = bagel.type;
+								    fragment.appendChild(opt);
+								});
+								listLength+=1;
+								sel.appendChild(fragment);
+							}
+							/*************** DELETE A SNACK ***************/
+							else if($('#first-choice').val() == 'snack'){
+								var snacks = Snacks.find().fetch(); 
+								var sel = document.getElementById('deleteItem');
+								var fragment = document.createDocumentFragment();
+
+								snacks.forEach(function(snack, index) {
+									listLength+=1;
+								    var opt = document.createElement('option');
+								    opt.innerHTML = snack.type;
+								    opt.value = snack.type;
+								    fragment.appendChild(opt);
+								});
+
+								sel.appendChild(fragment);
+							}
+					
+							/*************** DELETE A BEV ***************/
+							else if($('#first-choice').val() == 'bev'){
+								var snacks = Beverages.find().fetch(); 
+								var sel = document.getElementById('deleteItem');
+								var fragment = document.createDocumentFragment();
+
+								snacks.forEach(function(snack, index) {
+									listLength+=1;
+								    var opt = document.createElement('option');
+								    opt.innerHTML = snack.type;
+								    opt.value = snack.type;
+								    fragment.appendChild(opt);
+								});
+
+								sel.appendChild(fragment);
+							}
+					
+							/*************** DELETE A MIXIN ***************/
+							else if($('#first-choice').val() == 'mixin'){
+								var snacks = Milkshakes.find({type: 'mixin'}).fetch(); 
+								var sel = document.getElementById('deleteItem');
+								var fragment = document.createDocumentFragment();
+
+								snacks.forEach(function(snack, index) {
+									listLength+=1;
+								    var opt = document.createElement('option');
+								    opt.innerHTML = snack.name;
+								    opt.value = snack.name;
+								    fragment.appendChild(opt);
+								});
+
+								sel.appendChild(fragment);
+							}
+
+							/*************** DELETE A FLAVOR ***************/
+							else if($('#first-choice').val() == 'flavor'){
+								var snacks = Milkshakes.find({type: 'flavor'}).fetch(); 
+								var sel = document.getElementById('deleteItem');
+								var fragment = document.createDocumentFragment();
+
+								snacks.forEach(function(thing, index) {
+									listLength+=1;
+								    var opt = document.createElement('option');
+								    opt.innerHTML = thing.name;
+								    opt.value = thing.name;
+								    fragment.appendChild(opt);
+								});
+
+								sel.appendChild(fragment);
+							}
+						}
+						oldChoice = $('#first-choice').val();
+					});
+					</script>	
+						
+					<select id='deleteItem'>
+						<option> Delete an Item </option>
+					</select>
+					
+					
+					<br> <br>
+					
+
+
+
 					<br>
-					<input type="button" name="go" id='delThis' value="Delete Item"
-					onclick="alert(document.myform.opttwo.options
-					continued from previous line[document.myform.opttwo.selectedIndex].value);">
+					
+					<button id='delThis'> Delete Item </button>
 				</form>
 			
 			</div>
@@ -83,3 +189,9 @@
     {{/if}}  -->
 	
 </template>
+
+
+
+
+
+
