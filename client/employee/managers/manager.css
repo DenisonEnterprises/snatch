@@ -40,15 +40,13 @@
 .ManagerContainer .appSwitch{
 	display:inline-block;
 }
-.ManagerContainer .manage{
-	display:inline;
+.ManagerContainer .manage .newItem{
+	display:inline-block;
 	padding: 10px;
 }
 
-.ManagerContiner .manage .newItem .price input{
-	height: 20px;
-	width: 20px;
-	
+.ManagerContiner .manage .newItem .addItem{
+	display:inline-block;
 }
 
 

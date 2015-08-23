@@ -651,23 +651,18 @@ Meteor.methods({
    addNewItem: function(type, Name, Price){
 	   if (type == 'flavor'){
 		   Milkshakes.insert({type: 'flavor', name: Name, price: Price});
-		   console.log("inserted flavor");
 	   }
 	   else if (type == 'mixin'){
 		   Milkshakes.insert({type: 'mixin', name: Name, price: Price});
-		   console.log("inserted mixin");
 	   }
 	   else if (type == 'bagel'){
 	   		Bagels.insert({type: Name, price: Price});
-			console.log("inserted bagel");
 	   }
 	   else if (type == 'snack'){
 	   		Snacks.insert({type: Name, price: Price});
-			console.log("inserted snack");
 	   }
 	   else if (type == 'bev'){
 		   Beverages.insert({type: Name, price:Price});
-		   console.log("inserted bev");
 	   }
    },
    
@@ -684,7 +679,7 @@ Meteor.methods({
 		else if(itemType == "flavor" || itemType == 'mixin'){
 			Milkshakes.remove({name: item});
 		}
-   }
+   },
    
    /*
   

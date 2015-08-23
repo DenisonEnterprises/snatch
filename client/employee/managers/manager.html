@@ -18,18 +18,10 @@
 		</div>
 		
 
-		
 		<div class='manage'>
 			<div class="newItem">
+				<h3> add new menu item </h3>
 				<form id='addItem'>
-					<div class='name'>
-						<label for='itemTitle'>Name of Item:</label>
-						<input type='text' id='itemTitle'>
-					</div>	
-					<div class='price'>
-						<label for='itemPrice'>Price of Item:</label>
-						$ <input type="text" class="money" id="dollar"/> . <input type="text" class="money" id="cents"/>
-					</div>
 			        <label for="itemType">Category of New Item</label>
 			        <select id="itemType">
 			           <option value="select" id="select">Select</option>
@@ -39,9 +31,16 @@
 					   <option value="snack">Snack</option>
 					   <option value="bev">Beverage</option>
 			        </select>
+					<div class='name'>
+						<label for='itemTitle'>Name of Item:</label>
+						<input type='text' id='itemTitle'>
+						<div class='price'>
+							<label for='itemPrice'>Price of Item:</label>
+							$ <input type="text" class="money" id="dollar"/>.<input type="text" class="money" id="cents"/>
+						</div>
+					</div>	
 				</form>
 				<button type=button id=addNewItem> Add New Item </button>
-				<h4 id='notifAdded'>Item Added to Menu</h4>
 			</div>
 
 
@@ -52,9 +51,10 @@
 						2. Second drop down fills with all items currently in that db
 					delete that specific item
 				-->
+				<h3> delete menu item </h3>
 				<form name="findDelItem">
-					<select id="first-choice">
-			           <option value="select">Select</option>
+					<select name='first-choice' class='first-choice' id="first-choice">
+			           <option value="select" selected='selected'>Select</option>
 					   <option value="bagel">Bagel</option>
 					   <option value="snack">Snack</option>
 					   <option value="bev">Beverage</option>
@@ -64,19 +64,17 @@
 						
 					<script>
 					var oldChoice = '';
-					$('#deleteItem').click(function() {
-						var listLength = 0;
-						console.log('delete:' ,$('#deleteItem').val()); 
-						if($('#first-choice').val() != 'select' && $('#first-choice').val() != oldChoice){
+					$('select').change(function() {
+						var choice = $('.first-choice').val(); 
+						if(choice != 'select' && choice != oldChoice){
 							if(oldChoice != ''){
-								console.log('need to delete current options');
 								var sel = document.getElementById('deleteItem');
 								while (sel.firstChild) {
 								    sel.removeChild(sel.firstChild);
 								}
 							}
 							/*************** DELETE A BAGEL ***************/
-							if($('#first-choice').val() == 'bagel'){
+							if(choice == 'bagel'){
 								var bagels = Bagels.find().fetch(); 
 								var sel = document.getElementById('deleteItem');
 								var fragment = document.createDocumentFragment();
@@ -88,17 +86,15 @@
 								    opt.value = bagel.type;
 								    fragment.appendChild(opt);
 								});
-								listLength+=1;
 								sel.appendChild(fragment);
 							}
 							/*************** DELETE A SNACK ***************/
-							else if($('#first-choice').val() == 'snack'){
+							else if(choice == 'snack'){
 								var snacks = Snacks.find().fetch(); 
 								var sel = document.getElementById('deleteItem');
 								var fragment = document.createDocumentFragment();
 
 								snacks.forEach(function(snack, index) {
-									listLength+=1;
 								    var opt = document.createElement('option');
 								    opt.innerHTML = snack.type;
 								    opt.value = snack.type;
@@ -109,13 +105,12 @@
 							}
 					
 							/*************** DELETE A BEV ***************/
-							else if($('#first-choice').val() == 'bev'){
+							else if(choice == 'bev'){
 								var snacks = Beverages.find().fetch(); 
 								var sel = document.getElementById('deleteItem');
 								var fragment = document.createDocumentFragment();
 
 								snacks.forEach(function(snack, index) {
-									listLength+=1;
 								    var opt = document.createElement('option');
 								    opt.innerHTML = snack.type;
 								    opt.value = snack.type;
@@ -126,13 +121,12 @@
 							}
 					
 							/*************** DELETE A MIXIN ***************/
-							else if($('#first-choice').val() == 'mixin'){
+							else if(choice == 'mixin'){
 								var snacks = Milkshakes.find({type: 'mixin'}).fetch(); 
 								var sel = document.getElementById('deleteItem');
 								var fragment = document.createDocumentFragment();
 
 								snacks.forEach(function(snack, index) {
-									listLength+=1;
 								    var opt = document.createElement('option');
 								    opt.innerHTML = snack.name;
 								    opt.value = snack.name;
@@ -143,13 +137,12 @@
 							}
 
 							/*************** DELETE A FLAVOR ***************/
-							else if($('#first-choice').val() == 'flavor'){
+							else if(choice == 'flavor'){
 								var snacks = Milkshakes.find({type: 'flavor'}).fetch(); 
 								var sel = document.getElementById('deleteItem');
 								var fragment = document.createDocumentFragment();
 
 								snacks.forEach(function(thing, index) {
-									listLength+=1;
 								    var opt = document.createElement('option');
 								    opt.innerHTML = thing.name;
 								    opt.value = thing.name;
@@ -159,22 +152,14 @@
 								sel.appendChild(fragment);
 							}
 						}
-						oldChoice = $('#first-choice').val();
+						oldChoice = choice;
 					});
-					</script>	
+					</script>  
 						
-					<select id='deleteItem'>
+					<select id='deleteItem' class='deleteItem'>
 						<option> Delete an Item </option>
 					</select>
-					
-					
-					<br> <br>
-					
-
-
-
 					<br>
-					
 					<button id='delThis'> Delete Item </button>
 				</form>
 			

@@ -1,5 +1,17 @@
 Meteor.subscribe('instance');
 
+$(document).ready(function() {
+	$('#select').change(function() {
+		console.log("enable .change handler");
+		$("select option:selected").each(function() {
+			var choice = $('selected option: selected').val(); 
+			console.log('choice: ', choice);	
+		});
+	});
+		
+});
+
+
 Template.manager.rendered = function(){
 	var app = Instance.findOne({name: "bandersnatch"}); 
 	$('#notif2').hide();
@@ -16,6 +28,7 @@ Template.manager.rendered = function(){
 };
 
 Template.manager.helpers({
+
 	'bev': function(){
 		return Beverages.find().fetch();
 	},
@@ -66,10 +79,10 @@ Template.manager.events({
 				if (error)
 					return alert(error.reason); 
 			});
-		$('#notifAdded').show();
+		/*$('#notifAdded').show();
    	  	setTimeout(function(){
           $("#notifAdded").fadeOut(1000);
-   	 	}, 3000);
+   	 	}, 3000);*/
 	},
 
 	'click #delThis': function(evt){
