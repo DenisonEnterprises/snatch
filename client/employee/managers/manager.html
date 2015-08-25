@@ -13,6 +13,14 @@
 		<div class='appSwitch'>
 			<button type="button" id="on" class="on">Turn ON</button>
 			<button type="button" id="off" class="off">Turn OFF</button>
+			<label for='recieveEmail'> List of email recipients: </label>
+			<ul id='emailList'>
+				<li id='menu-selected'>vanfos_c1@denison.edu</li>
+			</ul>
+			<form id='email'>
+				<input type='text' id='recieveEmail'> <button type='button' id='addRecip'> Add Recipient</button>
+			</form>
+			<br>
 			<button type="button" id="sendEmail" class="email">Send Email</button>
 			<h4 id="notif2">Email Sent!</h4>
 		</div>
@@ -21,7 +29,6 @@
 		<div class='manage'>
 			<div class="newItem">
 				<h3> add new menu item </h3>
-				<form id='addItem'>
 			        <label for="itemType">Category of New Item</label>
 			        <select id="itemType">
 			           <option value="select" id="select">Select</option>
@@ -39,8 +46,8 @@
 							$ <input type="text" class="money" id="dollar"/>.<input type="text" class="money" id="cents"/>
 						</div>
 					</div>	
-				</form>
 				<button type=button id=addNewItem> Add New Item </button>
+				<h4 id='notifAdded'> New item added! </h4>
 			</div>
 
 

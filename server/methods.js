@@ -189,7 +189,6 @@ Meteor.methods({
       user: usr,
       price: price,
     };
-	console.log("PRICE: " + price);
     FinishedOrders.insert(order);
     ReadyOrders.remove({_id: delID});  
     
@@ -283,7 +282,7 @@ Meteor.methods({
 	});
    },
   
-   sendEmail: function(){	   
+   sendEmail: function(recipients){	 
 	   var totOrders = FinishedOrders.find().fetch();
 	   var price = 0.0;
 	   var indvPrice = "";
@@ -299,6 +298,9 @@ Meteor.methods({
 	   var latePPL = ReadyOrders.find().fetch(); 
 	   for(i = 0; i < latePPL.length; i++){
 		   late += latePPL[i].uName + "\n";
+	   }
+	   if (late == ""){
+		   late = 'None';
 	   }
 	   text += "List of people who didn't pick up Order: \n" + late + "\n\n";
 	   text += "\n\n\n Stats from last night: " + "\n"
@@ -590,7 +592,7 @@ Meteor.methods({
 		
 		
 	   
-	 /* --------- num Shakes ---------
+	 /*--------- num Shakes ---------
 		var numShake = 0;
 		var itemDeets4;		// array for the items to fall into
 		FinishedOrders.find().forEach(function(order){ itemDeets4 = order.item.split('\n'); 
@@ -602,10 +604,10 @@ Meteor.methods({
 		});
 		text += "- Number of Shakes sold: " + numShake + "\n" */  
   
-  	  	text += "Total profit of the night: $" + totPrice.toFixed(2);
+  	   text += "Total profit of the night: $" + totPrice.toFixed(2);
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
-         to: "costa_n1@denison.edu",
+         to: recipients,
 
          subject: "Daily Stats",
          text: text, //Still Need to Implement
@@ -681,8 +683,8 @@ Meteor.methods({
 		}
    },
    
-   /*
-  
+   
+  /*
   createAct: function() {
       var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 
       Roles.createRole('employee2');

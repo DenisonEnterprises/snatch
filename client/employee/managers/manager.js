@@ -1,17 +1,5 @@
 Meteor.subscribe('instance');
 
-$(document).ready(function() {
-	$('#select').change(function() {
-		console.log("enable .change handler");
-		$("select option:selected").each(function() {
-			var choice = $('selected option: selected').val(); 
-			console.log('choice: ', choice);	
-		});
-	});
-		
-});
-
-
 Template.manager.rendered = function(){
 	var app = Instance.findOne({name: "bandersnatch"}); 
 	$('#notif2').hide();
@@ -63,12 +51,36 @@ Template.manager.events({
 	},
 
 	'click #sendEmail': function(evt){
-		Meteor.call('sendEmail');
+		/* for loop that pulls all names from ul list and separated by ';' */
+		
+		var emails = []; 
+		var emailChain; 
+		$('#emailList').each(function(){
+			emailChain = ''; 
+			$(this).find('li').each(function(){
+				emailChain += $(this).text();
+				emailChain += ', '; 
+			});
+		});
+		//console.log("emails: ", emailChain);
+
+		Meteor.call('sendEmail', emailChain,  function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			});
 		Meteor.call('pushFinished');
 		$('#notif2').show();
    	  	setTimeout(function(){
           $("#notif2").fadeOut(1000);
    	 	}, 3000);
+	},
+	
+	'click #addRecip': function(evt){
+		var recip = $('#recieveEmail').val(); 
+		var ul = document.getElementById('emailList');
+	    var li = document.createElement("li");
+	    li.appendChild(document.createTextNode(recip));
+		ul.appendChild(li);
 	},
 	
 	'click #addNewItem': function(evt){
@@ -79,10 +91,10 @@ Template.manager.events({
 				if (error)
 					return alert(error.reason); 
 			});
-		/*$('#notifAdded').show();
+		$('#notifAdded').show();
    	  	setTimeout(function(){
           $("#notifAdded").fadeOut(1000);
-   	 	}, 3000);*/
+   	 	}, 3000);
 	},
 
 	'click #delThis': function(evt){
