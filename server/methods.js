@@ -282,7 +282,7 @@ Meteor.methods({
 	});
    },
   
-   sendEmail: function(recipients){	 
+   sendEmail: function(emails){	 
 	   var totOrders = FinishedOrders.find().fetch();
 	   var price = 0.0;
 	   var indvPrice = "";
@@ -604,14 +604,20 @@ Meteor.methods({
 		});
 		text += "- Number of Shakes sold: " + numShake + "\n" */  
   
-  	   text += "Total profit of the night: $" + totPrice.toFixed(2);
+  
+	   var recipients = '';
+	   for(var i = 0; i < emails.length - 1; i++){
+		   recipients += emails[i];
+	   }
+	   console.log(recipients);
+  	  /* text += "Total profit of the night: $" + totPrice.toFixed(2);
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
          to: recipients,
 
          subject: "Daily Stats",
          text: text, //Still Need to Implement
-       });
+       });*/
 	   
    },
  

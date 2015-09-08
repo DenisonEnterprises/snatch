@@ -56,15 +56,16 @@ Template.manager.events({
 		var emails = []; 
 		var emailChain; 
 		$('#emailList').each(function(){
-			emailChain = ''; 
 			$(this).find('li').each(function(){
+				emailChain = ''; 
 				emailChain += $(this).text();
 				emailChain += ', '; 
+				emails.push(emailChain);
 			});
 		});
-		//console.log("emails: ", emailChain);
+		console.log("emails: ", emails);
 
-		Meteor.call('sendEmail', emailChain,  function(error,result) {
+		Meteor.call('sendEmail', emails, function(error,result) {
 				if (error)
 					return alert(error.reason); 
 			});
@@ -75,11 +76,20 @@ Template.manager.events({
    	 	}, 3000);
 	},
 	
+	'click #delRecip': function(evt){
+		console.log($(this).name);
+		
+	},
+	
 	'click #addRecip': function(evt){
 		var recip = $('#recieveEmail').val(); 
 		var ul = document.getElementById('emailList');
 	    var li = document.createElement("li");
-	    li.appendChild(document.createTextNode(recip));
+		var btn = document.createElement('button');
+		//$(btn).className('button-check');
+		btn.appendChild(document.createTextNode('X'));
+		li.appendChild(btn);
+		li.appendChild(document.createTextNode(recip));
 		ul.appendChild(li);
 	},
 	
