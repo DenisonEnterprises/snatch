@@ -7,7 +7,7 @@
     <title>Bandersnatch - Beverages</title>
   </head>
   
-  {{#if isInRole 'student'}}
+   {{#if isInRole 'student'}}
 
 
   {{#if appOn}}
@@ -61,18 +61,18 @@
   
     {{/if}}
   
-    {{else}}
+   {{else}}
     
      {{> denied}}
   
-    {{/if}}
+    {{/if}} 
   
   
 </template>
 
 <template name ="bevBox">
   <li>
-    <input type="checkbox" id="{{bevName}}" name="{{bevName}}" value="{{bevPrice}}">
+    <input type="number" placeholder="0" min="0" style="width: 20px" id="{{bevName}}" name="{{bevName}}" value="{{bevPrice}}">
     <span class="text">{{bevName}}</span>
     <span class="price"> {{bevPrice}} </span>
   </li>

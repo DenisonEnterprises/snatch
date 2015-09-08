@@ -60,21 +60,47 @@ Template.bagels.events({
 		event.preventDefault();
 	var form = {};
 	var price = {};
+	var tot = {};
+	var numItems=0; 
     var price; 
     var count = 0;
-		$.each($('#bagel_list').serializeArray(),function() {
+	$('.bagel').each(function(){
+		numItems = parseFloat($(this).val());
+		if(numItems >0){
+			form[this.name] = this.name; 
+			price[this.name] = this.value; 
+			console.log('numItems: ', numItems);
+			tot[this.name] = numItems; 
+		}		
+	});
+	for (var key in form) {
+		console.log('form: ', form[key]);
+		console.log('price: ', price[key]);
+		console.log('totNum: ', tot[key]);
+		Meteor.call('bagelOrder',form[key], price[key], tot[key], function(error,result) {
+			if (error)
+				return alert(error.reason);
+		});
+	}
+	
+	
+	
+	/*	$.each($('#bagel_list').serializeArray(),function() {
 			form[this.name] = this.name;
       	  	price[this.name] = this.value;
 		}); 
  
 		for (var key in form) {
+			console.log('form: ', form[key]);
+			console.log('price: ', price[key]);
+			/*
 			Meteor.call('bagelOrder',form[key], price[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});
 		}
     
-    Router.go('/menu#u');
+    Router.go('/menu#u');*/
   }
 });
 
@@ -82,7 +108,7 @@ Template.bagelBox.helpers({
   'bagelName': function(){
     return this.type;
   }
-});
+});  
 
 Template.bagelBox.helpers({
   'bagelPrice': function(){

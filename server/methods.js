@@ -196,17 +196,19 @@ Meteor.methods({
   },  
   
     // Food Insert Methods
-  	bagelOrder: function(bagel, price) {
+  	bagelOrder: function(bagel, price, totNum) {
 		var user = Meteor.user();
-		var order = {
-			userId: user._id,
-      itemType: "bagel",
-      uName: user.username,
-      price: price,
-			item: bagel,
-			submitted: new Date()
-		};
-		Local.insert(order);
+		for(var i=0; i < totNum; i++){
+			var order = {
+			   userId: user._id,
+	     	   itemType: "bagel",
+	     	   uName: user.username,
+	     	   price: price,
+			   item: bagel,
+			   submitted: new Date()
+			};
+			Local.insert(order);
+		}	
 		return 0;
 	},
   
