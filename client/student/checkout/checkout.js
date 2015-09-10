@@ -26,7 +26,7 @@ Template.Shake.helpers({
 
 Template.Shake.helpers({
 	'price' : function(){
-		return this.price; 
+		return '$'+ (parseFloat(this.price)).toFixed(2); 
 	}
 });
 
@@ -59,7 +59,8 @@ Template.totalPrice.helpers({
 		for (i=0; i < orders.length; i++) {
 			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
 				indvPrice = orders[i].price;
-				total = total + parseFloat(indvPrice.slice(1));		
+				//total = total + parseFloat(indvPrice.slice(1));		
+				total+= parseFloat(indvPrice); 
 				console.log("TOTAL: " + total);
 			}
 		}

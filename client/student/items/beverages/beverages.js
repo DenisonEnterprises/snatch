@@ -42,7 +42,6 @@ Template.beverages.events({
 
 
 Template.beverages.helpers({
-  
   'bev': function(){
     return Beverages.find().fetch();
   }
@@ -52,16 +51,22 @@ Template.beverages.events({
 
 	'submit form': function(event) {
 		event.preventDefault();
-		var price = {};
 		var form = {};
-    var price;
-		$.each($('#bev_list').serializeArray(),function() {
-			form[this.name] = this.name;
-   		 	price[this.name] = this.value;
+		var price = {};
+		var tot = {};
+		var numItems=0; 
+	    var price; 
+	    var count = 0;
+		$('.beverage').each(function(){
+			numItems = parseFloat($(this).val());
+			if(numItems >0){
+				form[this.name] = this.name; 
+				price[this.name] = this.value; 
+				tot[this.name] = numItems; 
+			}		
 		});
-
 		for (var key in form) {
-			Meteor.call('bevOrder',form[key], price[key], function(error,result) {
+			Meteor.call('bevOrder',form[key], price[key], tot[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});

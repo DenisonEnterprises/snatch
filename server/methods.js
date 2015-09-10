@@ -212,30 +212,39 @@ Meteor.methods({
 		return 0;
 	},
   
-  bevOrder: function(bev, price) {
+  bevOrder: function(bev, price, totNum) {
+	  console.log('bev: ', bev); 
+	  console.log('price: ', price); 
+	  console.log('totNum: ', totNum);
     var user = Meteor.user();
-    var order = {
-      userId: user._id,
-      itemType: "bev",
-      uName: user.username,
-      price: price,
-      item: bev,
-      submitted: new Date()
-    };
-    Local.insert(order);
+	for(var i=0; i < totNum; i++){
+		var order = {
+		   userId: user._id,
+     	   itemType: "bev",
+     	   uName: user.username,
+     	   price: price,
+		   item: bev,
+		   submitted: new Date()
+		};
+		Local.insert(order);
+	}	
+	return 0;
   },
   
-    snackOrder: function(snack, price) {
+    snackOrder: function(snack, price, totNum) {
     var user = Meteor.user();
-    var order = {
-      userId: user._id,
-      itemType: "snack",
-      uName: user.username,
-      price: price,
-      item: snack,
-      submitted: new Date(),
-    };
-    Local.insert(order);
+	for(var i=0; i < totNum; i++){
+		var order = {
+		   userId: user._id,
+     	   itemType: "snack",
+     	   uName: user.username,
+     	   price: price,
+		   item: snack,
+		   submitted: new Date()
+		};
+		Local.insert(order);
+	}	
+	return 0;
   },
 
   otherOrder: function(thing, price){
@@ -260,7 +269,7 @@ Meteor.methods({
  	  flavor: flavors,
  	  mixin: mixins,
        uName: user.username,
-       price: "$3.00",
+       price: 3,
        item: str,
        submitted: new Date(),        
      }

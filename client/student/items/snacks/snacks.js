@@ -54,23 +54,28 @@ Template.snacks.events({
 
 	'submit form': function(event) {
 		event.preventDefault();
-		var price = {};
 		var form = {};
-  		var price;
-		$.each($('#snack_list').serializeArray(),function() {
-			form[this.name] = this.name;
-	    	price[this.name] = this.value;
+		var price = {};
+		var tot = {};
+		var numItems=0; 
+	    var price; 
+	    var count = 0;
+		$('.snack').each(function(){
+			numItems = parseFloat($(this).val());
+			if(numItems >0){
+				form[this.name] = this.name; 
+				price[this.name] = this.value; 
+				tot[this.name] = numItems; 
+			}		
 		});
 		for (var key in form) {
-			console.log('ordering');
-			Meteor.call('snackOrder',form[key], price[key], function(error,result) {
+			Meteor.call('snackOrder',form[key], price[key], tot[key], function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});
 		}
-		Router.go('/menu#u')
-
-
+    
+		Router.go('/menu#u');
 	}
 });
 

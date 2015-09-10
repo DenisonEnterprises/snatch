@@ -78,7 +78,6 @@ Template.manager.events({
 	
 	'click #delRecip': function(evt){
 		console.log($(this).name);
-		
 	},
 	
 	'click #addRecip': function(evt){
