@@ -101,7 +101,7 @@ Template.checkout.events({
 			}else{
 		  	  str = str + orders[i].item + "\n";
 		  	}
-		  total = total + parseFloat(indvPrice.slice(1));
+		  total = total + parseFloat(indvPrice);
 		}
 		
 		if(shakeStr){
