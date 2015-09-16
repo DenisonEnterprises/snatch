@@ -1,31 +1,29 @@
-.menuContainer {
-  background-image: url(/img/lg/lightsLG3.jpg);
-  background-size: cover;
-  background-repeat:no-repeat;
-  
- 
-
-  
-  color: white;
-  
-	background-attachment: fixed;
-    position: absolute;
-    height:100vh;
-    width:100vw;
-    top:0px;
-    left:0px;
-}
-
 .menuContainer .nav .Logout button{
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
-  border-radius: 100px;
+  border-radius: 90px;
   font-family: Arial;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 12px;
   background: #005f5f;
   padding: 2px 15px 2px 15px;
   text-decoration: none;
+}
+
+.menuContainer h1{
+	font-family: "Olivier";
+	text-shadow: 2px 2px #202020;
+	font-size: 50px;
+	color: #fff;
+
+}
+
+.menuContainer .middle{
+	text-align: center;
+}
+
+.menuContainer nav{
+	text-align:center;
 }
 
 .menuContainer .nav .logout:hover {
@@ -38,69 +36,33 @@
   color: #ffffff;
   font-size: 15px;
   background: #005f5f;
-  margin: 20px;
-  padding: 10px 80px 10px 80px;
+  margin: 10px;
+  padding: 10px 50px 10px 50px;
   border: solid white 2px;
-    font-weight:bolder;
+  font-weight:bolder;
 }
 
-.menuContainer .middle emptyButton {
-  background-color: #005f5f;
-  opacity: 0.5;
-  filter: alpha(opacity=100);  
+.menuContainer .middle #bagelBTN {
+  padding: 10px 64px 10px 64px; /*14 greater*/
 }
 
-.menuContainer .middle button:hover {
-  /*
-  background-color: #005f5f;
-  opacity: 0.5;
-  filter: alpha(opacity=100);*/
-  
-}
-
-.menuContainer .middle .bagelBTN {
-  font-family: OpenSans;
-  color: #ffffff;
-  font-size: 15px;
-  background: #005f5f;
-  margin: 20px;
-  padding: 10px 94px 10px 94px;
-  border: solid white 2px;
-}
-
-
-
-.menuContainer .middle .snackBTN {
-  font-family: OpenSans;
-  color: #ffffff;
-  font-size: 15px;
-  background: #005f5f;
-  margin: 20px;
-  padding: 10px 93px 10px 93px;
-  border: solid white 2px;
+.menuContainer .middle #snackBTN {
+  padding: 10px 63px 10px 63px; /*13 greater*/
 }
 
 .menuContainer .cart img {
   width: 30px;
   height: 30px;
   padding-bottom: 40px;
-  
   padding-top: 30px;
   
 }
 
-.menuContainer .middle .cout{
-  font-family: OpenSans;
-  color: white;
+.menuContainer .middle #cout{
   font-size: 35px;
   background: #bf7148;
-  margin: 20px;
-  padding: 0px 100px 0px 100px;
-  border: solid white 2px;
-  
+  padding: 20px 100px 20px 100px;  
   font-family: Olivier;
-  
-  
   opacity: 0.4;
   filter: alpha(opacity=40);
   cursor: default;
@@ -113,161 +75,4 @@
   width:25%;
   height: 25%;
   
-}
-
-/*----------- iPhone 4 ----------- */
-@media only screen and (max-width: 320px) and (max-height:480px){
-
-	.menuContainer{
-	    background-position: 83% 90%;
-		
-	}
-	
-	.menuContainer .middle h1{
-		font-size: 45px;
-		padding: 0px;
-	}
-	
-	.menuContainer .middle .snackBTN{
-		padding: 5px 25px 5px 25px;
-		font-size: 15px;	
-	}
-	
-	.menuContainer .middle .bagelBTN{
-		padding: 5px 25px 5px 25px;
-		font-size: 15px;
-	}
-	
-	.menuContainer .middle .bevsBTN{
-		padding: 5px 25px 5px 25px;
-		font-size: 15px;
-	}
-	
-	.menuContainer .middle .shakesBTN{
-		padding: 5px 25px 5px 25px;
-		font-size: 15px;
-	}
-
-	.menuContainer .middle .cout{
-		padding: 0px 10px 0px 10px;
-	}
-
-}
-
-
-/*----------- iPhone 5 ----------- */
-@media only screen and (max-width: 320px) and (min-height:481px){
-	 
-	.menuContainer{
-	    background-position: 83% 90%;
-	
-	}
-		
-	.menuContainer .middle h1{
-		font-size: 45px;
-		padding: 0px;
-	}
-	
-	.menuContainer .middle .snackBTN{
-		padding: 5px 45px 5px 45px;
-		font-size: 15px;	
-	}
-	
-	.menuContainer .middle .bagelBTN{
-		padding: 5px 45px 5px 45px;
-		font-size: 15px;
-	}
-	
-	.menuContainer .middle .bevsBTN{
-		padding: 5px 45px 5px 45px;
-		font-size: 15px;
-	}
-	
-	.menuContainer .middle .shakesBTN{
-		padding: 5px 45px 5px 45px;
-		font-size: 15px;
-	}
-
-	.menuContainer .middle .cout{
-		padding: 0px 5px 0px 5px;
-		
-	} 
-
-}
-
-/*----------- iPhone 6 ----------- */
-@media only screen and (min-width: 321px) and (max-width:375px){
-	  
-	.menuContainer{
-	    background-position: 83% 90%;
-	
-	}
-	
-	.menuContainer .middle h1{
-		font-size: 45px;
-		padding: 0px;
-	}
-	
-	.menuContainer .middle .snackBTN{
-		padding: 5px 65px 5px 65px;
-		font-size: 16px;	
-	}
-	
-	.menuContainer .middle .bagelBTN{
-		padding: 5px 65px 5px 65px;
-		font-size: 16px;
-	}
-	
-	.menuContainer .middle .bevsBTN{
-		padding: 5px 65px 5px 65px;
-		font-size: 16px;
-	}
-	
-	.menuContainer .middle .shakesBTN{
-		padding: 5px 65px 5px 65px;
-		font-size: 16px;
-	}
-
-	.menuContainer .middle .cout{
-		padding: 0px 10px 0px 10px;
-	}
-
-}
-
-/*----------- iPhone 6 Plus ----------- */
-@media only screen and (min-width: 376px) and (max-width:600px){
-
-	.menuContainer{
-	    background-position: 83% 90%;
-		
-	}
-	
-	.menuContainer .middle h1{
-		font-size: 50px;
-		padding: 0px;
-	}
-	
-	.menuContainer .middle .snackBTN{
-		padding: 5px 50px 5px 50px;
-		font-size: 15px;	
-	}
-	
-	.menuContainer .middle .bagelBTN{
-		padding: 5px 50px 5px 50px;
-		font-size: 15px;
-	}
-	
-	.menuContainer .middle .bevsBTN{
-		padding: 5px 50px 5px 50px;
-		font-size: 15px;
-	}
-	
-	.menuContainer .middle .shakesBTN{
-		padding: 5px 50px 5px 50px;
-		font-size: 15px;
-	}
-
-	.menuContainer .middle .cout{
-		padding: 0px 10px 0px 10px;
-	}	  
 }

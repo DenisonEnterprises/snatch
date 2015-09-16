@@ -1,295 +1,67 @@
-.loginContainer {
-  background-image: url(/img/lg/loginLG.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: white;
-  
-	background-attachment: fixed;
-	position:absolute;
-    height:100vh;
-    width:100vw;
-    top:0px;
-    left:0px;
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+.loginContainer input {
+	padding-top:12px;
+	padding-bottom:12px;
 }
 
-
-
-.loginContainer .loginText{
-  color: white;
-  display:table;
-  margin-right:auto;
-  margin-left:auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 15px;
+.loginContainer .norm {
+	font-family: OpenSans;
+	color: #ffffff;
+	font-size: 15px;
+	background-color:#005f5f ;
+	border: solid white 2px;
+	font-weight: bolder;
+	
+	text-align:center;
+	
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 12px;
+	padding-right: 12px;
+	
+	margin-right:10px;
+	margin-left:10px;
 }
 
-
-.cntr {
-  text-align: center;
-  padding-top: 60px;
-  
+.loginContainer .forgot {
+    font-family: OpenSans;
+    color: #ffffff;
+    font-size: 10px;
+    background-color:#005f5f ;
+    padding: 7px 10px 7px 10px;
+    border: solid #005f5f 1px;
+    font-weight:bolder;
 }
 
-.cntr img {
-  max-width: 500px;
-  max-height: 300px;
-  
-  padding-top: 30px;
-  padding-bottom: 5px;
-  width:400px;
-}
-
-
-
-
-.loginContainer .ftr img{
+.loginContainer #DELogo{
   max-width: 60px;
   max-height: 60px; 
 }
 
-.ftr {
-  padding-top: 40px;
-  text-align: center;
-  color: #ffffff;
-  font-family: Verdana;
-  font-size: 8px;
-  text-decoration: underline;
- 
-  
+.loginContainer #BSNLogo{
+
 }
 
-
-.loginContainer .cntr .normal{
-  font-family: OpenSans;
-  color: #ffffff;
-  font-size: 15px;
-  background-color:#005f5f ;
-  padding: 10px 20px 10px 20px;
-  border: solid white 2px;
-  display: inline;
-  margin: 0px 10px 0px 10px;
-  /*position: relative;*/
-  
-  font-weight:bolder;
+@media (min-width: 500px) { 
+	.loginContainer #BSNLogo{
+		max-width: 480px;
+		max-height: auto;
+	}
 }
 
-.loginContainer .cntr .forgot{
-  font-family: OpenSans;
-  color: #ffffff;
-  font-size: 10px;
-  background-color:#005f5f ;
-  padding: 5px 10px 5px 10px;
-  border: solid #005f5f 1px;
-  margin-top: 15px;  
-  font-weight:bolder;
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
 }
 
-
-.loginContainer form{
-  display: inline;
-  
-}
-
-.middle {
-  text-align: center;
-  padding-top: 60px;
-}
-
-
-.loginContainer .notifText {
-	display:none;
-}
-
-
-
-/*----------- iPhone 4 ----------- */
-@media only screen and (max-width: 320px) and (max-height:480px){
-	  
-    .loginContainer {
-      background-image: url(/img/lg/loginCrop.jpg);
-      background-size: fixed;
-      background-repeat: no-repeat;
-      color: white;
-  
-      overflow: hidden;
-    
-      background-position: -28px, 10px;
-	  postion:absolute;
-      height:100vh;
-      width:100vw;
-	  
- 
-      top:0px;
-      left:0px;
-	  	  
-    }
-  
-    .loginContainer img{
-      max-width:180px;
-      max-height:200px;
-      width:205px;
-    }
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {
 	
-	.ftr{
-		color: #ffffff;
-	}
-  
-    .ftr img{
-      width:35px;
-	  height:27px;
-	  padding-right:10pt;
-	}
-    
-	.loginContainer .cntr {
-		padding-right: 10pt;
-		padding-top: 10px;
-	}
 }
 
-
-/*----------- iPhone 5 ----------- */
-@media only screen and (max-width: 320px) and (min-height:481px){
-	  
-    .loginContainer {
-      background-image: url(/img/lg/loginCrop.jpg);
-      background-size: fixed;
-      background-repeat: no-repeat;
-      color: white;
-  
-      overflow: hidden;
-    
-      background-position: center;
-	  position:absolute;
-      height:100vh;
-      width:100vw;
- 
-      top:0px;
-      left:0px;
-	  
-	  padding-top:0px;
-    }
-  
-    .loginContainer img{
-      max-width:200px;
-      max-height:200px;
-      width:200px;
-	  position:center;
-    }
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 	
-	.ftr{
-		color: #ffffff;
-	}
-  
-    .ftr img{
-      width:55px;
-    }
-	
-	.loginContainer .cntr
-	{
-		padding-top: 10px;
-	}
-	
-
 }
-
-/*----------- iPhone 6 ----------- */
-@media only screen and (min-width: 321px) and (max-width:375px){
-	  
-    .loginContainer {
-      background-image: url(/img/lg/loginCrop.jpg);
-      background-size: fixed;
-      background-repeat: no-repeat;
-      color: white;
-  
-      overflow: hidden;
-    
-      background-position: center;
-	  position:absolute;
-      height:100vh;
-      width:100vw;
- 
-      top:0px;
-      left:0px;
-    }
-  
-    .loginContainer img{
-      max-width:250px;
-      max-height:250px;
-      width:250px;
-	  position:center;
-    }
-  
-	.ftr{
-		color: #ffffff;
-	}
-    
-	.ftr img{
-      width:55px;
-    }
-	
-	.loginContainer .cntr
-	{
-		padding-top: 20px;
-	}
-	
-
-}
-
-/*----------- iPhone 6 Plus ----------- */
-@media only screen and (min-width: 376px) and (max-width:600px){
-	  
-    .loginContainer {
-      background-image: url(/img/lg/loginCrop.jpg);
-      background-size: fixed;
-      background-repeat: no-repeat;
-      color: white;
-  
-      overflow: hidden;
-    
-      background-position: center;
-	  position:absolute;
-      height:100vh;
-      width:100vw;
- 
-      top:0px;
-      left:0px;
-  	}
-  
-    .loginContainer img{
-      max-width:270px;
-      max-height:270px;
-      width:250px;
-	  position:center;
-    }
-  
-	.ftr{
-		color: #ffffff;
-	}
-    
-	.ftr img{
-      width:55px;
-    }
-	
-	.loginContainer .cntr
-	{
-		padding-top: 20px;
-	}
-	
-
-}
-
-
-
-
-
-
-
-

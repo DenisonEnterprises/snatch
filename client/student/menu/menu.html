@@ -2,6 +2,17 @@
   
   <head>
     <title>Bandersnatch - Menu</title>
+	<style>
+	body {
+	  background: url(/img/lg/lightsLG3.jpg) no-repeat center center fixed;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+  
+	  color: white;
+	}
+	</style>
   </head>
   
  
@@ -10,7 +21,7 @@
    {{#if appOn}} 
   
   <div class="menuContainer">
-       
+    <body>
     <div class="nav">
        <ul>
          <li>{{currentUser.username}}</li>
@@ -37,27 +48,26 @@
  
     <div class="middle">
       <h1>Main Menu</h1>
-       <br>
-       <button class="bagelBTN" id="bagelBTN">Bagels</button>
+	  
+	  <div class="row">
+       <button id="bagelBTN">Bagels</button>
+       <button id="shakesBTN">Milkshakes</button>
+      </div>
+	  <div class="row">
+       <button id="bevsBTN">Beverages</button>
+       <button id="snackBTN"> Snacks </button>
+	  </div>
       
-       <button class="shakesBTN" id="shakesBTN">Milkshakes</button>
-      
-       <button class="bevsBTN" id="bevsBTN">Beverages</button>
-      
-       <button class="snackBTN" id="snackBTN"> Snacks </button>
-      
-       <br>
       
       <div class= "cart">
-       <button id="cout" class="cout" disabled="disabled">Checkout
-       <img src="img/lg/Grocery-CartLG.png" alt="Cart"></button>
+       <button id="cout" disabled="disabled">Checkout</button>
       </div>
       
       <div class="notif">
-      <img src="img/cartupdate-3.png"  alt="Order Updated!" id="notif">
+      	<img src="img/cartupdate-3.png"  alt="Order Updated!" id="notif">
       </div>
     </div>
-  
+  </body>
   </div> 
 
   

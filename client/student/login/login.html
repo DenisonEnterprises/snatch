@@ -2,43 +2,55 @@
 
   <head>
     <title>Bandersnatch - Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	body {
+		background: url(/img/lg/loginLG.jpg) no-repeat center center fixed;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
+	}
+	</style>
   </head>
-  
   <div class="loginContainer">
-
-    
-    <div class="cntr">
+  <body>
+	<div class ="container"> 
+		 
+  	
+	  <div class="cntr voffset6">
+        <img id="BSNLogo" src="img/lg/logoLG.png" alt="Bandersnatch Logo">
+  	  </div>
+	  
+	  <div class="row">
+        <h6 class="col-xs-8 col-xs-offset-2 cntr" id="notifText">TEXT HERE</h6>
+	  </div>
+	  
+	  <div class="cntr">
+         <label for="login-username"></label><input type="text" id="login-username" placeholder="Username" />
+	  </div>	
+	  <div class = "cntr">
+	    <label for="login-password"></label><input type="password" id="login-password" placeholder="Password" />
+	  </div>
       
-      <img src="img/lg/logoLG.png" alt="Bandersnatch Logo">
-      
-      <br>
-      <h6 id="notifText" class="notifText">TEXT</h6>
-      <br>
-      <form id="login-form">
-          <label for="login-username"></label><input type="text" id="login-username" placeholder="Username" />
-          <label for="login-password"></label><input type="password" id="login-password" placeholder="Password" />
-		  <br>
-		  <br>
-		  
-          <button type="submit" class="normal">Log In</button>
-      </form>
   
-  	<button id="signUp" class="normal">Sign Up</button>
-      
-	  <br>
-        
-		<button id="forgot" class="forgot">Forgot Password?</button>
-		
+  	  <div class="cntr voffset2">
+  	    <button class="norm" id="signUp">Sign Up</button>
+		<button class="norm" id="login">Log In</button>
+	  </div>
+	  
+	  <div class="cntr voffset3">
+	    <button id="forgot" class = "forgot">Forgot Password?</button>
+	  </div>
+	
+	  <div class="cntr voffset4">
+        <a href="http://www.denisonenterprises.squarespace.com"> <img id="DELogo" src="/img/DE_Logo.png" alt="DE_logo"> </a>
+      </div>
+	  
     </div>
     
-    <div class="ftr">
-      
-      <a href="http://www.denisonenterprises.squarespace.com"> <img src="/img/DE_Logo.png" alt="DE_logo"> </a>
-    </div>
+  </body>
   
-   
-    </div>
- 
-    
+  </div>
   
 </template>

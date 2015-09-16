@@ -1,28 +1,25 @@
-
+.signupContainer input {
+	padding-top:12px;
+	padding-bottom:12px;
+}
 .signupContainer {
-  background-color: #005f5f;
-  background-repeat: no-repeat;
-  text-align: center;
-  font-family: OpenSans;
   color: #ffffff;
-  
-
-background-attachment: fixed;	
-  position:absolute;
-  height:100vh;
-  width:100vw;
-  top:0px;
-  left:0px;
-  
 }
 
 .signupContainer .formContainer{
    background-image: url(/img/lg/signupbackgroundLG.png);
-   /*background-color: #fff;*/
    background-repeat: no-repeat;
    background-position: center;
    padding-top: 130px;
    padding-bottom: 125px;
+}
+
+.signupContainer #signup-cellphone{
+	color:black;
+}
+
+.signupContainer #signup-carrier{
+	color:black;
 }
 
 
