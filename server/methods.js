@@ -621,14 +621,14 @@ Meteor.methods({
 		   recipients += emails[i];
 	   }
 	   console.log(recipients);
-  	  /* text += "Total profit of the night: $" + totPrice.toFixed(2);
+  	   text += "Total profit of the night: $" + totPrice.toFixed(2);
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
          to: recipients,
 
          subject: "Daily Stats",
          text: text, //Still Need to Implement
-       });*/
+       });
 	   
    },
  

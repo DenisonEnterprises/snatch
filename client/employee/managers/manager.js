@@ -77,16 +77,19 @@ Template.manager.events({
 	},
 	
 	'click #delRecip': function(evt){
-		console.log($(this).name);
+		var ul = document.getElementById('emailList');
+		
 	},
 	
 	'click #addRecip': function(evt){
 		var recip = $('#recieveEmail').val(); 
 		var ul = document.getElementById('emailList');
 	    var li = document.createElement("li");
-		var btn = document.createElement('button');
-		//$(btn).className('button-check');
+		li.setAttribute('id','menu-selected');
+		var btn = document.createElement('BUTTON');
 		btn.appendChild(document.createTextNode('X'));
+		btn.setAttribute('id', 'delRecip');
+		btn.setAttribute('class', 'button-check');
 		li.appendChild(btn);
 		li.appendChild(document.createTextNode(recip));
 		ul.appendChild(li);
@@ -117,7 +120,15 @@ Template.manager.events({
 	
 });
 
+$(document).ready(function() {
+	$('.button-check').on(function(){
+		console.log('please delete this email recipient');		
+	})
 
+	
+	
+	
+});
 
 
 
