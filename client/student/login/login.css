@@ -40,8 +40,13 @@
   max-height: 60px; 
 }
 
-.loginContainer #BSNLogo{
 
+.loginContainer #notifText{
+	visibility: hidden;
+    font-family: OpenSans;
+	color: yellow;
+	font-weight: bolder;
+	font-size: 15px;
 }
 
 @media (min-width: 500px) { 

@@ -1,37 +1,4 @@
-.menuContainer .nav .Logout button{
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 90px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 12px;
-  background: #005f5f;
-  padding: 2px 15px 2px 15px;
-  text-decoration: none;
-}
-
-.menuContainer h1{
-	font-family: "Olivier";
-	text-shadow: 2px 2px #202020;
-	font-size: 50px;
-	color: #fff;
-
-}
-
-.menuContainer .middle{
-	text-align: center;
-}
-
-.menuContainer nav{
-	text-align:center;
-}
-
-.menuContainer .nav .logout:hover {
-  background: #1ca8a8;
-  text-decoration: none;
-}
-
-.menuContainer .middle button {
+.menuContainer .main button {
   font-family: OpenSans;
   color: #ffffff;
   font-size: 15px;
@@ -42,11 +9,15 @@
   font-weight:bolder;
 }
 
-.menuContainer .middle #bagelBTN {
+.menuContainer #mainMenu{
+	margin-top: 5px;
+}
+
+.menuContainer #bagelBTN {
   padding: 10px 64px 10px 64px; /*14 greater*/
 }
 
-.menuContainer .middle #snackBTN {
+.menuContainer #snackBTN {
   padding: 10px 63px 10px 63px; /*13 greater*/
 }
 
@@ -55,24 +26,30 @@
   height: 30px;
   padding-bottom: 40px;
   padding-top: 30px;
-  
 }
 
-.menuContainer .middle #cout{
+.menuContainer #cout{
   font-size: 35px;
   background: #bf7148;
-  padding: 20px 100px 20px 100px;  
+  padding: 12px 60px 7px 60px;  
   font-family: Olivier;
   opacity: 0.4;
   filter: alpha(opacity=40);
   cursor: default;
+  color: white;
+  border-color: white;
+  border: solid white 2px;
+  margin-top:12px;
 }
 
 
-.menuContainer .middle .notif img{
-  display: none;
-   
-  width:25%;
-  height: 25%;
-  
+.menuContainer #notif{
+   display: none;
+}
+
+@media (min-width: 300px) { 
+	.menuContainer #notif{
+		max-width: 240px;
+		max-height: auto;
+	}
 }

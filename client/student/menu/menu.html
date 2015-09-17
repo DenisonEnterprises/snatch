@@ -2,17 +2,6 @@
   
   <head>
     <title>Bandersnatch - Menu</title>
-	<style>
-	body {
-	  background: url(/img/lg/lightsLG3.jpg) no-repeat center center fixed;
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
-  
-	  color: white;
-	}
-	</style>
   </head>
   
  
@@ -21,7 +10,6 @@
    {{#if appOn}} 
   
   <div class="menuContainer">
-    <body>
     <div class="nav">
        <ul>
          <li>{{currentUser.username}}</li>
@@ -44,11 +32,8 @@
       </ul>
     </div> 
    
-
- 
-    <div class="middle">
-      <h1>Main Menu</h1>
-	  
+      <h1 class="cntr" id="mainMenu">Main Menu</h1>
+	  <div class="main cntr">
 	  <div class="row">
        <button id="bagelBTN">Bagels</button>
        <button id="shakesBTN">Milkshakes</button>
@@ -57,20 +42,20 @@
        <button id="bevsBTN">Beverages</button>
        <button id="snackBTN"> Snacks </button>
 	  </div>
+  	  </div>
       
-      
-      <div class= "cart">
+      <div class= "cntr">
        <button id="cout" disabled="disabled">Checkout</button>
       </div>
       
-      <div class="notif">
-      	<img src="img/cartupdate-3.png"  alt="Order Updated!" id="notif">
+      <div class="cntr voffset2">
+      	<img id="notif" src="img/cartupdate-3.png"  alt="Order Updated!">
       </div>
-    </div>
-  </body>
-  </div> 
+     </div> 
 
-  
+  <div id="bground">
+  		<img src="/img/mural.jpg" alt="">
+  </div>
   {{else}}
     
      {{> offScreen}}

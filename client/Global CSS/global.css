@@ -15,6 +15,13 @@ header {
   font-size: 200%;
 }
 
+h1 {
+	font-family: "Olivier";
+	text-shadow: 2px 2px #202020;
+	font-size: 50px;
+	color: #fff;
+}
+
   
 .button-check {
   display: inline-block;
@@ -37,6 +44,25 @@ header {
   padding: 0;
 }
 
+
+#bground {
+	position:fixed; 
+	top:-50%; 
+	left:-50%;
+	width:200%; 
+	height:200%;
+	z-index: -1;
+}
+#bground img {
+	position:absolute; 
+	top:0; 
+	left:0; 
+	right:0; 
+	bottom:0; 
+	margin:auto; 
+	min-width:50%;
+	min-height:50%;
+}
 
 .voffset  { margin-top: 2px; }
 .voffset1 { margin-top: 5px; }

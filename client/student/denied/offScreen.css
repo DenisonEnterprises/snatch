@@ -1,0 +1,16 @@
+
+.offScreenContainer {
+  color: white;
+  text-align: center;
+}
+
+.offScreenContainer img{
+  margin-top: 75px;
+}
+
+@media (min-width: 500px) { 
+	.offScreenContainer img{
+		max-width: 500px;
+		max-height: auto;
+	}
+}

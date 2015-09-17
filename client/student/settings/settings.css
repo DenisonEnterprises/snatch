@@ -1,17 +1,6 @@
 .settingsContainer {
-  background-color: #005f5f;
-  
-  text-align: center;
-  font-family: OpenSans;
   color: #ffffff;
-  
-
-	background-attachment: fixed;
-  position:absolute;
-  height:100vh;
-  width:100vw;
-  top:0px;
-  left:0px;
+  text-align: center;
 }
 
 .settingsContainer h1{
@@ -63,8 +52,6 @@
     margin-right: 10px;
     margin-left: 10px;
 }
-
-
 
 .settingsContainer form{
 	display:none;

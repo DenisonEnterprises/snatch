@@ -6,13 +6,15 @@ Template.login.events({
         function(error) {
         	if (error) {
 				var used = Meteor.users.find({username: $('#login-username').val()}).count() > 0;
+				document.getElementById('notifText').style.visibility='visible'
 				if (used){
 					$('#notifText').html("Incorrect Password");
-					$('#notifText').show();
 				}else{
 					$('#notifText').html("Incorrect Username");
-					$('#notifText').show();
 				}
+		    	setTimeout(function(){
+		          $('#notifText').animate({ opacity: 0 }, 1000, 'linear')
+		    	}, 3000);
         	}else{
         		
 		        if (Roles.userIsInRole(Meteor.user()._id, 'employee')){

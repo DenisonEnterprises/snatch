@@ -1,15 +1,12 @@
 <template name="bagels">
   <head>
     <title>Bandersnatch - Bagels</title>
-    <br>
   </head>
   
  {{#if isInRole 'student'}}	
   
   {{#if appOn}}
-  
   <div class="itemContainer">
-       
     <div class="nav">
        <ul>
           <li>{{currentUser.username}}</li>
@@ -42,15 +39,20 @@
         
         <button type="submit" class="atcButton" id="atcButton" disabled="disabled">Add To Cart</button>
       </form>
-    
+
 	<div class="teal">
     	<button type ="button" id="shakesBTN">Shakes</button>
     	<button type ="button" id="bevsBTN">Beverages</button>
     	<button type ="button" id="snackBTN">Snacks</button>
    </div>
-    
-  </div>
 
+	
+  </div>
+  
+  <div id="bground">
+  		<img src="/img/lg/loginLG.jpg" alt="">
+  </div>
+  
   {{else}}
     
      {{> offScreen}}
@@ -62,7 +64,7 @@
      {{> denied}}
   
     {{/if}}	
-  
+ 
 </template>
 
 

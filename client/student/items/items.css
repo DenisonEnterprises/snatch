@@ -1,24 +1,11 @@
 .itemContainer {
-  background-image: url(/img/MainBackgroundLG.jpg);
-  background-repeat: no-repeat;
-   background-position: center;
-   background-size: cover;
-   
-  
-	background-attachment: fixed;
-   position:absolute;
-   height:100vh;
-   width:100vw;
-   top:0px;
-   left:0px;
-   text-align: center;
+     text-align: center;
 }
 
 
 .itemContainer h1 {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  text-align: center;
+  padding-top: -5px;
+  padding-bottom: 10px;
 }
 
 .itemContainer form ul {
@@ -42,6 +29,8 @@
   padding: 10px 40px 10px 40px;
   border: solid #005f5f 2px;
   font-weight:bolder;
+  
+  display:none;
 }
 
 
@@ -109,6 +98,12 @@
   filter: alpha(opacity=40);
   cursor: default;
   
-  
   font-weight:bolder;
+}
+
+
+@media (min-width: 525px) { 
+	.itemContainer .teal button {
+	  display:inline;
+	}
 }
