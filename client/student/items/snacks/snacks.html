@@ -71,8 +71,15 @@
 
 <template name ="snackBox">
   <li>
-    <input class='snack' type="number" placeholder="0" min="0" style="width: 20px" id="{{snackName}}" name="{{snackName}}" value="{{snackPrice}}">
-    <span class="text">{{snackName}}</span>
-    <span class="price"> {{snackPrice}} </span>
+		<select id='itemNum'>
+			<option value='0'>0</option>
+			<option value='1'>1</option>
+			<option value='2'>2</option>
+			<option value='3'>3</option>
+			<option value='4'>4</option>
+			<option value='5'>5</option>
+		</select>
+		<span class='text'>{{snackName}}</span>
+		<span class='price'>{{snackPrice}}</span>
   </li>
 </template>

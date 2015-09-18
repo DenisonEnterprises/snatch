@@ -76,8 +76,15 @@
 
 <template name ="bevBox">
   <li>
-    <input type="number" class="beverage" placeholder="0" min="0" style="width: 20px" id="{{bevName}}" name="{{bevName}}" value="{{bevPrice}}">
-    <span class="text">{{bevName}}</span>
-    <span class="price"> {{bevPrice}} </span>
+		<select id='itemNum'>
+			<option value='0'>0</option>
+			<option value='1'>1</option>
+			<option value='2'>2</option>
+			<option value='3'>3</option>
+			<option value='4'>4</option>
+			<option value='5'>5</option>
+		</select>
+		<span class='text'>{{bevName}}</span>
+		<span class='price'>{{bevPrice}}</span>
   </li>
 </template>

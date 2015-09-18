@@ -18,6 +18,11 @@
   text-align: left; 
 }
 
+.itemContainer #itemNum{
+	color:black;
+	width:40px;
+}
+
 .itemContainer .teal button {
   font-family: OpenSans;
   color: #ffffff;
