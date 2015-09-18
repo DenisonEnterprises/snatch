@@ -47,22 +47,9 @@
 	font-size: 15px;
 }
 
-.shakesContainer .shakez{
-    color: white;
-    border: 3px solid;
-	display: inline-block;
-	font-size: 25px;
-  
-    padding: 10px 20px 10px 20px;
-  
-  
-    background-color: rgba(0, 95, 95, .5);
-    text-align: center;
-  
-    -webkit-column-count: 2; 
-    -moz-column-count: 2; 
-    column-count: 2;
-	
+.shakesContainer #flavorList, #mixinList{
+	color:black;
+	width:150px;
 }
 
 .shakesContainer form ul {

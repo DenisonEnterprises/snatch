@@ -55,9 +55,17 @@ Template.shakes.helpers({
     return Milkshakes.find({type: 'flavor'}).fetch();
   },
   
+  'flavorName': function(){
+  	return this.name;
+  },
+  
   'mixin': function(){
     return Milkshakes.find({type: 'mixin'}).fetch();
   }, 
+  
+  'mixinName': function(){
+    return this.name;
+  }
   
 });
 
@@ -99,17 +107,7 @@ Template.shakes.events({
   }
 });
 
-Template.flavorBox.helpers({
-  'flavorName': function(){
-    return this.name;
-  }
-});
 
-Template.mixinBox.helpers({
-  'mixinName': function(){
-    return this.name;
-  }
-});
 
 Template.shakes.helpers({
     appOn:function(){

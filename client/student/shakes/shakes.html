@@ -40,9 +40,16 @@
 <b> Pick up to two please!</b>
        <form name="flavor" id="flavor_list">
           <ul>
-            {{#each flavor}}
-              {{> flavorBox}}
-            {{/each}}
+			<select id='flavorList' class='flavList1'>
+				{{#each flavor}}
+					<option value={{flavorName}}>{{flavorName}}</option>
+				{{/each}}
+			</select>
+			<select id='flavorList' class='flavList2'>
+				{{#each flavor}}
+					<option value={{flavorName}}>{{flavorName}}</option>
+				{{/each}}
+			</select>
           </ul>
         </form>
     
@@ -54,9 +61,16 @@
         
         <br>
         <ul>
-          {{#each mixin}}
-            {{> mixinBox}}
-          {{/each}}
+			<select id='mixinList' class='mixList1'>
+	          {{#each mixin}}
+	          		<option value={{mixinName}}>{{mixinName}}</option>
+	          {{/each}}
+		  	</select>
+			<select id='mixinList' class='mixList2'>
+	          {{#each mixin}}
+	          		<option value={{mixinName}}>{{mixinName}}</option>
+	          {{/each}}
+		  	</select>
         </ul>
       <br>
           <button type =button id="backBTN" class="backButton">Menu</button>
@@ -84,16 +98,6 @@
   
 </template>
 
-
-
-
-
-<template name="flavorBox">
-  <li>
-    <input type="checkbox" id="{{flavorName}}" name="{{flavorName}}" value="2.75">
-    <span class="text">{{flavorName}}</span>
-  </li>
-</template>
 
 <template name="mixinBox">
   <li>
