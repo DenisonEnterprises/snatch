@@ -39,18 +39,20 @@
     
 <b> Pick up to two please!</b>
        <form name="flavor" id="flavor_list">
-          <ul>
+          
 			<select id='flavorList' class='flavList1'>
+				<option disabled selected>Select a flavor</option>
 				{{#each flavor}}
 					<option value={{flavorName}}>{{flavorName}}</option>
 				{{/each}}
 			</select>
 			<select id='flavorList' class='flavList2'>
+				<option disabled selected>Select a flavor</option>
 				{{#each flavor}}
 					<option value={{flavorName}}>{{flavorName}}</option>
 				{{/each}}
 			</select>
-          </ul>
+          
         </form>
     
     <h4>Mix-ins</h4>
@@ -60,18 +62,20 @@
 <b>Pick up to two please!</b> 
         
         <br>
-        <ul>
+      
 			<select id='mixinList' class='mixList1'>
-	          {{#each mixin}}
-	          		<option value={{mixinName}}>{{mixinName}}</option>
-	          {{/each}}
+				<option disabled selected>Select a mixin</option>
+				{{#each mixin}}
+					<option value={{mixinName}}>{{mixinName}}</option>
+				{{/each}}
 		  	</select>
 			<select id='mixinList' class='mixList2'>
-	          {{#each mixin}}
-	          		<option value={{mixinName}}>{{mixinName}}</option>
-	          {{/each}}
+				<option disabled selected>Select a mixin</option>
+				{{#each mixin}}
+					<option value={{mixinName}}>{{mixinName}}</option>
+				{{/each}}
 		  	</select>
-        </ul>
+      
       <br>
           <button type =button id="backBTN" class="backButton">Menu</button>
 
