@@ -6,6 +6,7 @@ Template.login.events({
         function(error) {
         	if (error) {
 				var used = Meteor.users.find({username: $('#login-username').val()}).count() > 0;
+				document.getElementById('notifText').style.opacity='1.0'
 				document.getElementById('notifText').style.visibility='visible'
 				if (used){
 					$('#notifText').html("Incorrect Password");

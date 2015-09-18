@@ -55,6 +55,8 @@ Template.settings.events({
   		var usernameTaken = Meteor.users.find({username: input}).count() > 0;
   		var usernameEmpty = input.length == 0;
   		uFlag = !usernameTaken && !usernameEmpty;
+		document.getElementById('notif').style.opacity='1.0'
+		document.getElementById('notif').style.visibility='visible'
   		if(uFlag){
 		 Meteor.call("uName", $('#newU').val());
 		  $('#notif').html("Username Succesfully Changed");
@@ -65,15 +67,13 @@ Template.settings.events({
   			$(this).removeClass("valid").addClass("invalid");
   			if(usernameTaken){
   				$('#notif').html("Username Taken");
-	  		 	$('#notif').show();
-				
 			}else{
   				$('#notif').html("Please Enter A Username");
-	  		 	$('#notif').show();
-				
 			}
   		}
-  	
+    	setTimeout(function(){
+          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+    	}, 3000);
 	 
 	 
 
@@ -88,7 +88,11 @@ Template.settings.events({
 		  Accounts.changePassword(p, p, function (error) {
 			  if(error){
 				  $('#notif').html("Incorrect Password");
-				  $('#notif').show();
+				  document.getElementById('notif').style.opacity='1.0'
+				  document.getElementById('notif').style.visibility='visible'
+		      	  setTimeout(function(){
+		            $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+		      	  }, 3000);
 			  }else{
 				  old = false;
 				  $('#old').hide();
@@ -107,21 +111,21 @@ Template.settings.events({
 		  var p1 = $('#newP').val();
 		  var p2 =  $('#cnp').val();
 		  
+		  
+		  document.getElementById('notif').style.opacity='1.0'
+		  document.getElementById('notif').style.visibility='visible'
+
 		  if(p1 === p2){
 				 
 				 
 			  Accounts.changePassword(previous, p1, function (error) {
 				  if(error){
 					  $('#notif').html("An Unknown Issue Occured. Please Try Again.");
-					  $('#notif').show();
 				  }else{
 				  	  $('#new').hide();
 					  $('#pWordForm').hide();
 		  
-		  
-		  
 					  $('#notif').html("Password Succesfully Changed");
-					  $('#notif').show();
 				  }
 
 			  });
@@ -132,15 +136,12 @@ Template.settings.events({
 			  $('#notif').show();
 		  }
 		  
-		  
-		  
-		  
-	  	 
+      	  setTimeout(function(){
+            $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+      	  }, 3000);
+		  	 
 	  }
     },
-	
-	
-	
 	
 });
 

@@ -1,35 +1,28 @@
 
 .thxCheckContainer {
-    background: #005f5f;
-  background-size: cover;
-  background-repeat: no-repeat;
   color: white;
-  
-	background-attachment: fixed;
-    position:absolute;
-    height:100vh;
-    width:100vw;
-    top:0px;
-    left:0px;
-  
   text-align: center;
 }
 
 .thxCheckContainer button {
-    text-align: center;
-   font-family: OpenSans;
+  text-align: center;
+  font-family: OpenSans;
   color: #005f5f;
   font-size: 15px;
   background: white;
   margin-top: 40px;
   padding: 10px 40px 10px 40px;
   border: solid #005f5f 3px;
-  
   font-weight:bolder;
 }
 
 .thxCheckContainer img{
   margin-top: 50px;
-  max-width: 500px;
-  max-height: 800px;
+}
+
+@media (min-width: 500px) { 
+	.thxCheckContainer img{
+		max-width: 475px;
+		max-height: auto;
+	}
 }

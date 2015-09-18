@@ -4,15 +4,6 @@
 
   <head>
     <title>Bandersnatch - Settings</title>
-	<style>
-	body {
-		background: #005f5f;
-	    -webkit-background-size: cover;
-	    -moz-background-size: cover;
-	    -o-background-size: cover;
-	    background-size: cover;
-	}
-	</style>
   </head>
   {{#if isInRole 'student'}}
   
@@ -25,32 +16,33 @@
  
  
   <button id="changeUsername" class="normal">Change Username</button>
-  
-  
+  <br>
+<form id="uNameForm">
+	<label>New Username</label>
+	<br>
+	<input type="text" id="newU"/>
+	<br>
+	<button class="color" type="submit">Change</button>
+</form>
   <button id="changePassword" class="normal">Change Password</button>
- 
  	<br>
-
-
- 	<form id="uNameForm">
-		<label>New Username</label>
-		<input type="text" id="newU"/>
-		<br>
-		<button type="submit">Change</button>
-	</form>
 	
  	<form id="pWordForm">
 		<div id="old">
 			<label>Old Password</label>
+			<br>
 			<input type="password" id="oldP"/>
 		</div>
 		<div id="new">
 		<label>New Password</label>
+		<br>
 			<input type="password" id="newP">
+			<br>
 			<label>Confirm New Password</label>
+			<br>
 			<input type="password" id="cnp">
 		</div>
-		<button type="submit" id="pwSubmit">Change</button>
+		<button class="color" type="submit" id="pwSubmit">Change</button>
 	</form>
 	
 
@@ -59,13 +51,17 @@
  
 	<div id="delForm" class="delForm">
 		<h4 id="msg">Are you certain you want to delete your account?</h4>
-		<button id="yes" class="remove">YES</button>
+		<button id="yes" class="color">YES</button>
 		<button id="no">NO</button>
 	</div>
  
  <br>
  <button id="back">Main Menu</button>
  
+  </div>
+  
+  <div id="bground">
+  		<img src="/img/teal_background.jpg" alt="">
   </div>
   {{else}}
     
