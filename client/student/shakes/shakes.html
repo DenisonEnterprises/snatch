@@ -2,6 +2,7 @@
   
   <head>
     <title>Bandersnatch - Shakes</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
  
   
@@ -34,10 +35,9 @@
       
     <h1>Shakes</h1>  
 	<h4>$3.00</h4> 
-			<br>
-    <h4>Flavors</h4>
+	<div class="back">
+    <h4 class="voffset4">Flavors</h4>
     
-<b> Pick up to two please!</b>
        <form name="flavor" id="flavor_list">
           
 			<select id='flavorList' class='flavList1'>
@@ -58,11 +58,7 @@
     <h4>Mix-ins</h4>
    
       <form id="mixin_list">
-        
-<b>Pick up to two please!</b> 
-        
-        <br>
-      
+                      
 			<select id='mixinList' class='mixList1'>
 				<option disabled selected>Select a mixin</option>
 				{{#each mixin}}
@@ -82,13 +78,17 @@
           <button type="submit" class="atcButton" id="atcButton" disabled="disabled">Add To Cart</button>
 		  
 	  </form>
+	 </div>
     <div class="teal">
     	<button type =button id="bagelBTN">Bagels</button>
     	<button type =button id="bevsBTN">Beverages</button>
     	<button type =button id="snackBTN">Snacks</button>
 	</div>
-  </div> 
-  
+  </div>
+   
+  <div id="bground">
+  		<img src="/img/lg/loginLG.jpg" alt="">
+  </div>
   
   {{else}}
     
