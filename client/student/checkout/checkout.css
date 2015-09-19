@@ -1,23 +1,12 @@
 
 .checkoutContainer {
-  background-image: url(/img/lg/loginLG.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
   color: black;
   font-weight: 500; 
-  
-    position:absolute;
-    height:100vh;
-    width:100vw;
-    top:0px;
-    left:0px;
-	background-attachment: fixed;
-  
   text-align: center;
 }
 
 .checkoutContainer h1{
-  padding: 30px;
+  padding-bottom: 10px;
 }
 
 
@@ -95,16 +84,6 @@
   top: -20px;
 }
 
-.checkoutContainer .cout .goButton{
-  font-family: OpenSans;
-  color: #ffffff;
-  font-size: 15px;
-  background: #005f5f;
-  margin: 20px;
-  padding: 10px 80px 10px 80px;
-  border: solid #005f5f 2px;
-  font-weight:bolder;
-}
 
 .checkoutContainer .cout .placeOrderBTN{
   font-family: OpenSans;
@@ -140,16 +119,6 @@
 	cursor: default;
 }
 
-.checkoutContainer .cout .bevBTN{
-  font-family: OpenSans;
-  color: #ffffff;
-  font-size: 15px;
-  background: #005f5f;
-  margin: 20px;
-  padding: 10px 70px 10px 70px;
-  border: solid #005f5f 2px;
-  font-weight:bolder;
-}
 
 .checkoutContainer .nav .Logout button{
   -webkit-border-radius: 28;

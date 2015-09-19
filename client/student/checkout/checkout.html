@@ -7,7 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
     
-  
   {{#if isInRole 'student'}}
 
   {{#if appOn}}
@@ -77,22 +76,17 @@
  <div class="miniText">
  	<button> There are {{> orNum}} Orders in front of yours. </button>
 </div>
- 	<!-- ><button class="placeOrderBTN" id="deleteOrder"> Cancel </button> -->
     <button class="backBTN" id="menu">Menu</button>  
     <button class="placeOrderBTN" id="placeOrder">Place Order</button>
-       <br>
-    <button class="goButton" id="bagelBTN">Bagels</button>
-    <button class="goButton" id="shakesBTN">Shakes</button>
-    <button class="bevBTN" id="bevsBTN">Beverages</button>
-    <button class="goButton" id="snackBTN">Snacks</button>
-       
-       
+              
 
-       
      </div>
   </div>
-
   
+  
+  <div id="bground">
+  		<img src="/img/lg/loginLG.jpg" alt="">
+  </div>
     {{else}}
     
      {{> offScreen}}

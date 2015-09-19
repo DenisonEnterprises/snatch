@@ -21,9 +21,12 @@
 .shakesContainer .back{
   color: white;
   border: 3px solid;
-  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
   
   background-color: rgba(0, 95, 95, .5);
+  display: inline-block;
 }
 
 .shakesContainer .nav .Logout button{

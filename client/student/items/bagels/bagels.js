@@ -22,7 +22,7 @@ Template.bagels.events({
   
   
   "click #bagel_list": function(evt, instance){ //gets all clicks
-	  count = 0;
+	  /*count = 0;
 	  $.each($('#bagel_list').serializeArray(),function() {
 		  count++;
 	  });
@@ -31,11 +31,11 @@ Template.bagels.events({
 		  $('#atcButton').prop('disabled', true); //TO DISABLED
 		  $('#atcButton').fadeTo(0,.4);
 		  $('#atcButton').css("cursor", "default");
-	  }else{
+	  }else{*/
 		  $('#atcButton').prop('disabled', false); //TO ENABLE
 		  $('#atcButton').fadeTo(0,1);
 		  $('#atcButton').css("cursor", "pointer");
-	  }
+	//}
   	
    },
 
@@ -58,7 +58,7 @@ Template.bagels.events({
 Template.bagels.events({
 	'submit form': function(event) {
 		event.preventDefault();
-	var form = {};
+	/*var form = {};
 	var price = {};
 	var tot = {};
 	var numItems=0; 
@@ -78,7 +78,13 @@ Template.bagels.events({
 			if (error)
 				return alert(error.reason);
 		});
-	}
+	}*/
+	
+	Meteor.call('bagelOrder', "Pizza Bagel (Peperroni)", "2.00", 2, function(error,result) {
+		if (error)
+			return alert(error.reason);
+	});
+	
     Router.go('/menu#u');
   }
 });

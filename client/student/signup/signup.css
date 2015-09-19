@@ -6,33 +6,9 @@
   color: #ffffff;
 }
 
-
 .signupContainer .formContainer{
-   background-image: url(/img/lg/signupbackgroundLG.png);
-   background-repeat: no-repeat;
-   background-position: center;
-   padding-top: 130px;
-   padding-bottom: 125px;
+   padding-top: 50px;
 }
-
-
-#formBackground {
-	position:fixed; 
-	top:-50%; 
-	left:-50%;
-	width:100%; 
-	height:100%;
-	z-index: -1;
-}
-#formBackground img {
-	position:absolute;  
-	margin:auto; 
-	min-width:50%;
-	min-height:50%;
-}
-
-
-
 
 .signupContainer #signup-cellphone{
 	color:black;
@@ -42,14 +18,13 @@
 	color:black;
 }
 
-
 .signupContainer button {
   font-family: OpenSans;
   color: #fff;
   font-size: 15px;
-  background: transparent;
+  background: black;
   padding: 10px 20px 10px 20px;
-  border: solid #005f5f 2px;
+  border: solid black 2px;
   display: inline-block;
   position: relative;
   font-weight:bolder;
