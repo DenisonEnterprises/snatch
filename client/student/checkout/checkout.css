@@ -10,37 +10,105 @@
 }
 
 
-.checkoutContainer .cout .line{
-  background: url(/img/checkMiddle.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-  right: 2px;
-}
+
 
 .checkoutContainer .cout .totalPrice{
-	background: url(img/checkBottom.png);
+	background: url(img/checkBottom2.png);
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
     right: 2px;
 }
 
+
+
+
+
+
+.checkoutContainer .notif {
+  display:none;
+}
+
+/* These 5 css tags control the location*/
+.checkoutContainer .button-check {
+  display: inline-block;
+  vertical-align: top;
+  height: 14px;
+  width: 14px;
+  line-height: 12px;
+  font-family: inherit;
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  background-color: red;
+  border: 1px solid;
+  border-color: black;
+  border-radius: 20px;
+  position: relative;
+  padding: 0;
+  top: 3px;
+  left:4px;
+}
+
 .checkoutContainer .cout .totalPrice .price{
 	position: relative;
-	left: 125px;
-	top: -104px;
+	left: 84px; 
+	top: -74px;
+	font-size: 12px;
 }
+
+.checkoutContainer .cout .line .price .movePrice{
+  position: relative; 
+  left: 68px; 
+  z-index: 1;
+  top: -19px;
+  font-size: 12px;
+}
+
+.checkoutContainer .cout .line .rmBtn .moveBtn{
+   position: relative;
+   right: 120px;
+}
+
+.checkoutContainer .cout .line .itemz .moveItem{
+  position: relative;
+  min-width: 200px;
+  display: inline-block;
+  text-align: left; 
+  right: -12px; 
+  font-size: 12px;
+  top: -1px;
+}
+
+
+
+
+
+.checkoutContainer .cout .line{
+  background: url(/img/checkMiddle3.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  right: 2px;
+  margin: -5px; /* This deals with the spacing b/t lines */
+}
+
+.checkoutContainer #less{
+	margin:-3px;
+}
+
+
+
+
+
+
+
 
 
 .checkoutContainer .cout .line .rmBtn{
    position: absolute;
   display: inline;
-}
-
-.checkoutContainer .cout .line .rmBtn .moveBtn{
-   position: relative;
-   right: 160px;
 }
 
 .checkoutContainer .cout .line .rmBtn{
@@ -55,15 +123,6 @@
 }
 
 
-
-.checkoutContainer .cout .line .itemz .moveItem{
-  position: relative;
-  min-width: 200px;
-  display: inline-block;
-  text-align: left; 
-  right: 20px; 
-}
-
 .checkoutContainer .cout .line .itemz .mixins{
   position: relative;
   min-width: 200px;
@@ -77,12 +136,9 @@
    display: inline;
 }
 
-.checkoutContainer .cout .line .price .movePrice{
-  position: relative; 
-  left: 100px; 
-  z-index: 1;
-  top: -20px;
-}
+
+
+
 
 
 .checkoutContainer .cout .placeOrderBTN{
@@ -107,18 +163,6 @@
   font-weight:bolder;
 }
 
-.checkoutContainer .miniText button{
-    font-family: OpenSans;
-    color: #ffffff;
-    font-size: 25px;
-    background: black;
-    margin: 25px;
-    padding: 15px 35px 15px 35px;
-    border: solid black 3.5px;
-    font-weight:bolder;
-	cursor: default;
-}
-
 
 .checkoutContainer .nav .Logout button{
   -webkit-border-radius: 28;
@@ -137,6 +181,3 @@
   text-decoration: none;
 }
 
-.checkoutContainer .notif {
-  display:none;
-}

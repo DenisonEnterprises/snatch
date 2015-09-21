@@ -23,28 +23,6 @@ h1 {
 }
 
   
-.button-check {
-  display: inline-block;
-  vertical-align: top;
-  height: 20px;
-  line-height: 18px;
-  padding: 0 20px;
-  font-family: inherit;
-  font-size: 15px;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  background-color: red;
-  border: 1px solid;
-  border-color: black;
-  border-radius: 25px;
-  
-  position: relative;
-  width: 20px;
-  padding: 0;
-}
-
-
 #bground {
 	position:fixed; 
 	top:-50%; 
