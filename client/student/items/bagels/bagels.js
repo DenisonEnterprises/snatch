@@ -19,22 +19,38 @@ Template.bagels.events({
 		Meteor.logout();
 		window.location.assign("/");
   },
+
+  
 });
 
 
 Template.bagels.rendered = function(){
-	$('#itemNum').on('input', function(){ 
+	var sel = document.getElementsByClassName('itemNum'); 
+	console.log(sel.length);
+	//console.log(sel[4]);
+
+	for(var i = 0; i < sel.length; i++){
+		$(sel[i]).change(function(){
+			//$(this).selected().val();
+			console.log(sel[i].val());
+		});
+	}
+	/*$('#itemNum').change(function(){
+		console.log('changed');
+	});
+	$('#bagel_list').on('click', function(){ 
 		count = 0; 
 		var place = 0; 
 		$.each($('#bagel_list').serializeArray(),function() {
-			numItems = $("#itemNum").text();
+			numItems = this.val();
 			place++;
-			//console.log(this.name, ':', numItems);	 
+			//console.log(this.name, ':', numItems[place]);	 
+			console.log('numItems: ', numItems);
 			if(numItems > 0){
-				count += numItems;
+				//count += parseFloat(numItems);
 			}
 		});
-		//console.log('count: ', count);
+
 		if(count === 0){
 			$('#atcButton').prop('disabled', true); //TO DISABLED
 			$('#atcButton').fadeTo(0,.4);
@@ -44,7 +60,8 @@ Template.bagels.rendered = function(){
 			$('#atcButton').fadeTo(0,1);
 			$('#atcButton').css("cursor", "pointer");
 		}
-	});
+		console.log('hello');
+	});*/
 }
 
 

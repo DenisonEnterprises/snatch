@@ -37,7 +37,7 @@
           {{/each}}
         </ul>
 
-        <button type="button" class="backButton" id="backBTN">Menu</button>
+        <button type ="button" class="backButton" id="backBTN">Menu</button>
         
         <button type="submit" class="atcButton" id="atcButton" disabled="disabled">Add To Cart</button>
       </form>
@@ -71,16 +71,16 @@
 
 
 <template name ="bagelBox">
-	<li id="{{bagelName}}">
-		<select id='itemNum' value={{bagelPrice}} name='{{bagelName}}'>
-			<option value='0'>0</option>
-			<option value='1'>1</option>
-			<option value='2'>2</option>
-			<option value='3'>3</option>
-			<option value='4'>4</option>
-			<option value='5'>5</option>
-		</select>
-		<span class='text'>{{bagelName}}</span>
-		<span class='price'>{{bagelPrice}}</span>
+	<li>
+			<select id='itemNum' class='itemNum'>
+				<option value='0'>0</option>
+				<option value='1'>1</option>
+				<option value='2'>2</option>
+				<option value='3'>3</option>
+				<option value='4'>4</option>
+				<option value='5'>5</option>
+			</select>
+			<span class='text'>{{bagelName}}</span>
+			<span class='price'>{{bagelPrice}}</span>
 	</li>
 </template>
