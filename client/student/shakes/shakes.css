@@ -1,27 +1,9 @@
 .shakesContainer {
-   background-image: url(/img/MainBackgroundLG.jpg);
-   background-repeat: no-repeat;
-   background-position: center;
-   background-size: cover;
-   padding-bottom: 200px;
-  
-	background-attachment: fixed;	
-	position:absolute;
-   height:100vh;
-   width:100vw;
-   top:0px;
-   left:0px;
    text-align: center;
 }
 
 .shakesContainer h1 {
-  padding-top: 50px;
-}
-
-.shakesContainer h3 {
-  font-family: OpenSans; 
-  color: #fff;
-  font-size: 20px;
+  padding-top: -5px;
 }
 
 .shakesContainer h4 {
@@ -30,49 +12,22 @@
   font-size: 20px;
 }
 
-.shakesContainer b {
-  font-family: OpenSans; 
-  color: #fff;
-  font-size: 13px;
-}
-/*
-.shakesContainer .shakez .shakeSize{
-	font-size: 25px;
-	font-family: OpenSans;
-	color: white;
-}*/
-
-.shakesContainer form b{
-	font-family: OpenSans;
-	font-size: 15px;
-}
 
 .shakesContainer #flavorList, #mixinList{
 	color:black;
 	width:150px;
 }
 
-.shakesContainer form ul {
+.shakesContainer .back{
   color: white;
   border: 3px solid;
-  display: inline-block;
-  
-  padding: 0px 20px 20px 20px;
-  
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
   
   background-color: rgba(0, 95, 95, .5);
-  text-align: left;
-  
-  -webkit-column-count: 3; 
-  -moz-column-count: 3; 
-  column-count: 3;
+  display: inline-block;
 }
-
-/*
-.shakesContainer li {
-  list-style: none;
-  padding-top: 10px;
-}*/
 
 .shakesContainer .nav .Logout button{
   -webkit-border-radius: 28;
@@ -107,11 +62,8 @@
   margin-left: 10px;
   margin-right: 10px;
   
-}
-
-.shakesContainer form li {
-  list-style: none;
-  padding-top: 20px;
+    display:none;
+  
 }
 
 .shakesContainer .text{
@@ -119,6 +71,7 @@
   position:relative;
   top: 3px;
 }
+
 
 .shakesContainer .backButton{
   font-family: OpenSans;
@@ -144,8 +97,13 @@
   opacity: 0.4;
   filter: alpha(opacity=40);
   cursor: default;
-  
-  
-  
+
   font-weight:bolder;
+}
+
+
+@media (min-width: 525px) { 
+	.shakesContainer .teal button {
+	  display:inline;
+	}
 }

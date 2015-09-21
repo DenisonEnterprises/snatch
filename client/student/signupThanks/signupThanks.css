@@ -5,26 +5,24 @@
 }
 
 .thanksContainer .thanksText {
-  margin-top: 200px;
-  margin-bottom: 40px;
+  margin-top: 50px;
+  margin-bottom: 20px;
   
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 5px;
   padding-left: 30px;
   padding-right: 30px;
-  
-  
-  display: table;
+   
   margin-left:auto;
   margin-right:auto;
-  
+   
   border: solid #005f5f 2px;
   font-family:"OpenSans";
-  line-height: 30px;
   text-align: center;
-  font-size: 30px;
   background-color: rgba(0, 0, 0, .5);
   
+  line-height: 25px;
+  font-size: 18px;
 }
 
 .thanksContainer button {
@@ -32,15 +30,21 @@
   color: #ffffff;
   font-size: 15px;
   background: #005f5f;
-  margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-top: 10px;
   padding: 10px 40px 10px 40px;
   border: solid #005f5f 2px; 
  }
 
 .thanksContainer .ftr img{
+	padding-top:10px;
   width: 200px;
-  height: 100px;
+  height: auto;
   text-align: center;
 }
+
+  @media (min-width: 520px) { 
+  	.thanksContainer .thanksText{
+  		max-width: 500px;
+  		max-height: auto;
+  	}
+  }

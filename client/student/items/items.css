@@ -4,7 +4,7 @@
 
 
 .itemContainer h1 {
-  padding-top: -5px;
+  padding-top: -10px;
   padding-bottom: 10px;
 }
 
@@ -72,10 +72,13 @@
 .itemContainer form .price{
   padding-left: 15px;
   position:relative;
-  top: 3px;
+  top: 7px;
   float: right;
 }
 
+.itemContainer form #itemNum{
+	width: 45px;
+}
 
 
 .itemContainer .backButton{

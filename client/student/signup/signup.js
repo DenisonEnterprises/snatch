@@ -17,13 +17,23 @@ Template.signupForm.rendered = function() {
 
   $('#signup-email').focusout(function() {
    if(!du){ 
-    	$('#notif').html("Please Provide A denison.edu Email");
+    	$('#notif').html("Please Provide a denison.edu Email");
+		document.getElementById('notif').style.opacity='1.0'
+		document.getElementById('notif').style.visibility='visible'
+    	setTimeout(function(){
+          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+    	}, 3000);
     }
    });
    
    $('#signup-cellphone').focusout(function() {
     if(!pFlag){ 
      	$('#notif').html("Please Provide 10 Digit Phone Number");
+		document.getElementById('notif').style.opacity='1.0'
+		document.getElementById('notif').style.visibility='visible'
+    	setTimeout(function(){
+          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+    	}, 3000);
      }
     });
 
@@ -36,11 +46,15 @@ Template.signupForm.rendered = function() {
 	uFlag = !usernameTaken && !usernameEmpty;
 	if(uFlag){
 		$(this).removeClass("invalid").addClass("valid");
-		$('#notif').html("");
 	}else{
 		$(this).removeClass("valid").addClass("invalid");
 		if(usernameTaken){
 			$('#notif').html("Username Taken");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
 		}
 	}
 
@@ -54,11 +68,15 @@ Template.signupForm.rendered = function() {
 	eFlag = du && Notused;
 	if(eFlag){
 		$(this).removeClass("invalid").addClass("valid");
-		$('#notif').html("");
 	}else{
 		$(this).removeClass("valid").addClass("invalid");
 		if(!Notused){
 			$('#notif').html("This Email is Already in Use");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
 		}
 	}
  	
@@ -76,12 +94,16 @@ Template.signupForm.rendered = function() {
 	if(pwFlag){
 		$('#signup-confirm-password').removeClass("invalid").addClass("valid");
 		$(this).removeClass("invalid").addClass("valid");
-		$('#notif').html("");
 	}else{
 		$('#signup-confirm-password').removeClass("valid").addClass("invalid");
 		$(this).removeClass("valid").addClass("invalid");
 		if(input.length > 0){
 			$('#notif').html("Passwords Do Not Match");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
 		}
 	}
   	
@@ -97,12 +119,16 @@ Template.signupForm.rendered = function() {
     if(pwFlag){
 	  $(this).removeClass("invalid").addClass("valid");
 	  $('#signup-password').removeClass("invalid").addClass("valid");
-	  $('#notif').html("");
     }else{
       $(this).removeClass("valid").addClass("invalid");
 	  $('#signup-password').removeClass("valid").addClass("invalid");
 	  if(input.length > 0){
 		$('#notif').html("Passwords Do Not Match");
+		document.getElementById('notif').style.opacity='1.0'
+		document.getElementById('notif').style.visibility='visible'
+    	setTimeout(function(){
+          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+    	}, 3000);
 	  }
     }
   });
@@ -113,7 +139,6 @@ Template.signupForm.rendered = function() {
 	pFlag = input.length == 10;
     if(pFlag){
 		$(this).removeClass("invalid").addClass("valid");
-		$('#notif').html("");
     }else{
 		$(this).removeClass("valid").addClass("invalid");
      } 
@@ -126,10 +151,14 @@ Template.signupForm.rendered = function() {
 	cFlag = (input != "select");
     if(cFlag){
 		$(this).removeClass("invalid").addClass("valid");
-		$('#notif').html("");
     }else{
 		$(this).removeClass("valid").addClass("invalid");
 	 	$('#notif').html("Please Select a Carrier");
+		document.getElementById('notif').style.opacity='1.0'
+		document.getElementById('notif').style.visibility='visible'
+    	setTimeout(function(){
+          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+    	}, 3000);
      } 
   });
   
@@ -150,8 +179,6 @@ Template.signupForm.events({
         email: template.find("#signup-email").value,
         
         profile: {
-          //firstName: template.find("#signup-firstName").value,
-          //lastName: template.find("#signup-lastName").value,
           cellNumber: template.find("#signup-cellphone").value,
           cellCarrier: template.find("#signup-carrier").value,
 	  	  du: template.find("#signup-email").value,
@@ -166,18 +193,43 @@ Template.signupForm.events({
      }else{
 		 if(!uFlag){
  			$('#notif').html("Please Provide a Valid Username");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
 		 }
 		 if(!eFlag){
  			$('#notif').html("Please Provide a Valid Email");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
 		 }
 		 if(!pFlag){
   			$('#notif').html("Please Provide a Valid Phone Number");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
 		 }
 		 if(!cFlag){
 			 $('#notif').html("Please Select a Carrier");
+	 		document.getElementById('notif').style.opacity='1.0'
+	 		document.getElementById('notif').style.visibility='visible'
+	     	setTimeout(function(){
+	           $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	     	}, 3000);
 		 }
 		 if(!pwFlag){
 			 $('#notif').html("Please Create and Confirm your Password");
+	 		document.getElementById('notif').style.opacity='1.0'
+	 		document.getElementById('notif').style.visibility='visible'
+	     	setTimeout(function(){
+	           $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	     	}, 3000);
 		 }
      }
     
