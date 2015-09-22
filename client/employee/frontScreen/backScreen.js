@@ -72,11 +72,15 @@ Template.item.helpers({
 
 Template.addIns.helpers({
     'info': function() {
+		console.log('finding info');
 		var str = "";
 		var len = this.shakes.length;
 		var i;
+		if(this.item == 'Shake: '){
+			console.log('we found a shake!');
+		}
 		for(i = 0; i < len; i++){
-			str += (i+1) + ". " + this.shakes[i].flavor + "\n     " + this.shakes[i].mixin + "\n\n";
+			str += (i+1) + ". " + this.shakes[i].flavor + "\n" + this.shakes[i].mixin + "\n";
 		}
   	  return str;
     },

@@ -59,9 +59,13 @@ Template.totalPrice.helpers({
 		for (i=0; i < orders.length; i++) {
 			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
 				indvPrice = orders[i].price;
-				total = total + parseFloat(indvPrice.slice(1));		
-				total+= parseFloat(indvPrice); 
-				//console.log("TOTAL: " + total);
+				if(orders[i].type = 'shake'){
+					total+= parseFloat(indvPrice);
+				}
+				else{
+					total += parseFloat(indvPrice.slice(1));		
+				}
+				//total+= parseFloat(indvPrice); 
 			}
 		}
 		return "$" + total.toFixed(2);
@@ -70,8 +74,6 @@ Template.totalPrice.helpers({
 
 Template.orNum.helpers({
 	'orderNum' : function() {
-		//var ords = ActiveOrders.find({}, {field: {userId: Meteor.user()._id}}).count();
-		//return ords;
 		return ActiveOrders.find().count();
 	}
 });
@@ -110,19 +112,25 @@ Template.checkout.events({
 		
 		if(shakeStr){
 			str += "Shake: " + "\n";
-			Meteor.call('placeOrder', str, shakes, total, false, Meteor.user(), function(error,result) {
-				if (error)
-					return alert(error.reason);
-			}); 
+			console.log('str: ', str);
+			console.log('shakes: ', shakes);
+			for(var k = 0; k < shakes.length; k++){
+				Meteor.call('placeShakeOrder',shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), function(error,result) {
+					if (error)
+						return alert(error.reason);
+				});
+			} 
 		}
 		total = total.toFixed(2);
+		//console.log('total: ', total);
 		for(var j = 0; j < items.length; j++){
-			Meteor.call('placeOrder', items[j], shakes, total, false, Meteor.user(), function(error,result) {
+			console.log('item: ', items[j]);
+			console.log('total: ', total);
+			Meteor.call('placeOrder', items[j], total, false, Meteor.user(), function(error,result) {
 				if (error)
 					return alert(error.reason);
 			});  
 		}
-
 
 		$('#notif').hide();
 		
@@ -132,8 +140,6 @@ Template.checkout.events({
   },
   
   'click #deleteOrder': function() {
-	  
-	  
       var delOrder = this._id;
       Meteor.call('deleteActiveOrder', delOrder, function(error,result) {
   				if (error)

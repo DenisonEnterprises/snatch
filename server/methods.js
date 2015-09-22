@@ -16,19 +16,38 @@ Meteor.methods({
 		Local.remove({userId: this.userId});
 	},
 
-  placeOrder: function(thing, shakes, price, inHouse, usr) {
+    placeShakeOrder: function(flavs, mixins, price, inHouse, usr) {
+      var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
+      var order = {
+        userId: usr._id,
+        inHouse: inHouse,
+        uName: usr.username,
+		  // flavor: flavs; 
+		  // mixin: mixins;
+        item: "Shake: ",
+        submitted: new Date(),
+        orderNum: orNum,
+        phone: usr.profile.cellNumber,
+        carrier: usr.profile.cellCarrier,
+        price: price,
+      };
+      ActiveOrders.insert(order);
+      Local.remove({userId: usr._id});
+
+      return 0;
+    },  
+
+  placeOrder: function(item, price, inHouse, usr) {
     var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: usr.username,
-      item: thing,
-	  shakes: shakes,
+      item: item,
       submitted: new Date(),
       orderNum: orNum,
       phone: usr.profile.cellNumber,
       carrier: usr.profile.cellCarrier,
-      user: usr,
       price: price,
     };
     ActiveOrders.insert(order);
@@ -47,7 +66,7 @@ Meteor.methods({
       inHouse: inHouse,
       uName: apple,
       item: thing,
-		shakes: shakes,
+	  shakes: shakes,
       submitted: new Date(),
       orderNum: orNum,
       user: usr,
