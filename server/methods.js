@@ -23,7 +23,7 @@ Meteor.methods({
       inHouse: inHouse,
       uName: usr.username,
       item: thing,
-		shakes: shakes,
+	  shakes: shakes,
       submitted: new Date(),
       orderNum: orNum,
       phone: usr.profile.cellNumber,

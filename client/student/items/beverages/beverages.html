@@ -39,7 +39,7 @@
     
       <h1>Beverages</h1>
 
-      <form id="bev_list">
+      <form id="bev_list" class='bev_list'>
         <ul>
           {{#each bev}}
             {{>bevBox}}
@@ -77,7 +77,7 @@
 
 <template name ="bevBox">
   <li>
-		<select id='itemNum'>
+		<select id='itemNum' class='{{bevName}}' name='itemNum' title='{{bevPrice}}'>
 			<option value='0'>0</option>
 			<option value='1'>1</option>
 			<option value='2'>2</option>

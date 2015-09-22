@@ -59,9 +59,9 @@ Template.totalPrice.helpers({
 		for (i=0; i < orders.length; i++) {
 			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
 				indvPrice = orders[i].price;
-				//total = total + parseFloat(indvPrice.slice(1));		
+				total = total + parseFloat(indvPrice.slice(1));		
 				total+= parseFloat(indvPrice); 
-				console.log("TOTAL: " + total);
+				//console.log("TOTAL: " + total);
 			}
 		}
 		return "$" + total.toFixed(2);
@@ -82,6 +82,7 @@ Template.checkout.events({
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
    	var delUN = Meteor.user().username;
 	
+	var str = '';
 	var flavor = ""; 
 	var mixin = "";
 	var shakeStr = false;
@@ -95,22 +96,30 @@ Template.checkout.events({
 		$('#notif').html("Sorry! You can only order up to 6 items!");    
 		$('#notif').show();
     }else{
-		for (i=0; i < orders.length; i++) {
-			var indvPrice = "";
+		console.log('num of order: ', orders.length);
+		for (i=0; i < orders.length; i++) {	// iterate through all the orders
+			var indvPrice = "";			
 			indvPrice = orders[i].price;
+			console.log('indvPrice: ', indvPrice);	
 			if(orders[i].item == "Shake: "){
-				shakes.push(orders[i]);
+				console.log('ordered shake');
+				shakes.push(orders[i]);		
 				shakeStr = true;
 			}else{
-		  	  items.push(orders[i].item)
+				console.log('no shake');
+	//			console.log('pushed: ', order[i].item);
+				items.push(orders[i].item);	//push other snatch items into items[]	
 		  	}
-		  total = total + parseFloat(indvPrice);
+			total = total + parseFloat(indvPrice);	// add the price to total
 		}
 		
 		if(shakeStr){
-			//str = str + "Shake: " + "\n";
+			str += "Shake: " + "\n";
 		}
-
+		for(var j = 0; j < items.length; j++){
+			str += items[j] + '\n';  
+		}
+		console.log('total: ', total);
 		total = total.toFixed(2);
 		Meteor.call('placeOrder', str, shakes, total, false, Meteor.user(), function(error,result) {
 			if (error)

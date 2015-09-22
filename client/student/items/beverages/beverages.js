@@ -48,30 +48,51 @@ Template.beverages.helpers({
 });
 
 Template.beverages.events({
+	"change #itemNum": function(event) {
+		//console.log("Value: " + $(event.currentTarget).val() );
+		var itemNums = []
+		itemNums = $(event.currentTarget).val();
+		var count = 0;
+		var sel = document.getElementsByName('itemNum'); 
 
+		for(var i = 0; i < sel.length; i++){
+			if(sel[i].selectedIndex > 0){
+				count += sel[i].selectedIndex;
+			}
+		}
+
+		if(count === 0){
+			$('#atcButton').prop('disabled', true); //TO DISABLED
+			$('#atcButton').fadeTo(0,.4);
+			$('#atcButton').css("cursor", "default");
+		}else{
+			$('#atcButton').prop('disabled', false); //TO ENABLE
+			$('#atcButton').fadeTo(0,1);
+			$('#atcButton').css("cursor", "pointer");
+		}
+  
+	},
+	
 	'submit form': function(event) {
 		event.preventDefault();
-		var form = {};
-		var price = {};
-		var tot = {};
-		var numItems=0; 
-	    var price; 
-	    var count = 0;
-		$('.beverage').each(function(){
-			numItems = parseFloat($(this).val());
-			if(numItems >0){
-				form[this.name] = this.name; 
-				price[this.name] = this.value; 
-				tot[this.name] = numItems; 
-			}		
-		});
-		for (var key in form) {
-			Meteor.call('bevOrder',form[key], price[key], tot[key], function(error,result) {
-				if (error)
-					return alert(error.reason);
-			});
+		var nom = ''; 
+		var totItems = 0; 
+	    var price = 0; 
+		
+		var sel = document.getElementsByName('itemNum'); 
+		for(var i = 0; i < sel.length; i++){
+			if(sel[i].selectedIndex > 0){
+				nom = sel[i].className; 
+				price = ((sel[i].title).slice(1));
+				totItems = sel[i].selectedIndex;
+				console.log(nom + ' ' + price + ' : ' + totItems);
+				Meteor.call('bevOrder', nom, price, totItems, function(error,result) {
+								if (error)
+									return alert(error.reason);
+							});
+			}
 		}
-		Router.go('/menu#u')
+	   Router.go('/menu#u');
 	}
 });
 
