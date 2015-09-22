@@ -213,9 +213,6 @@ Meteor.methods({
 	},
   
   bevOrder: function(bev, price, totNum) {
-	  console.log('bev: ', bev); 
-	  console.log('price: ', price); 
-	  console.log('totNum: ', totNum);
     var user = Meteor.user();
 	for(var i=0; i < totNum; i++){
 		var order = {

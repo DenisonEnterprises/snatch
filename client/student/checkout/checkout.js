@@ -96,18 +96,13 @@ Template.checkout.events({
 		$('#notif').html("Sorry! You can only order up to 6 items!");    
 		$('#notif').show();
     }else{
-		console.log('num of order: ', orders.length);
 		for (i=0; i < orders.length; i++) {	// iterate through all the orders
 			var indvPrice = "";			
 			indvPrice = orders[i].price;
-			console.log('indvPrice: ', indvPrice);	
 			if(orders[i].item == "Shake: "){
-				console.log('ordered shake');
 				shakes.push(orders[i]);		
 				shakeStr = true;
 			}else{
-				console.log('no shake');
-	//			console.log('pushed: ', order[i].item);
 				items.push(orders[i].item);	//push other snatch items into items[]	
 		  	}
 			total = total + parseFloat(indvPrice);	// add the price to total
@@ -115,16 +110,20 @@ Template.checkout.events({
 		
 		if(shakeStr){
 			str += "Shake: " + "\n";
+			Meteor.call('placeOrder', str, shakes, total, false, Meteor.user(), function(error,result) {
+				if (error)
+					return alert(error.reason);
+			}); 
 		}
-		for(var j = 0; j < items.length; j++){
-			str += items[j] + '\n';  
-		}
-		console.log('total: ', total);
 		total = total.toFixed(2);
-		Meteor.call('placeOrder', str, shakes, total, false, Meteor.user(), function(error,result) {
-			if (error)
-				return alert(error.reason);
-		}); 
+		for(var j = 0; j < items.length; j++){
+			Meteor.call('placeOrder', items[j], shakes, total, false, Meteor.user(), function(error,result) {
+				if (error)
+					return alert(error.reason);
+			});  
+		}
+
+
 		$('#notif').hide();
 		
 		Router.go('/thankYouCheckout'); 	
