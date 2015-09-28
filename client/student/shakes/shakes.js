@@ -89,14 +89,14 @@ Template.shakes.events({
 		var mix2 = $('.mixList2 option:selected').val(); 
 
 		var flavStr = flav1; 
-		if(flav2 != 'Select a flavor'){
+		if(flav2 != 'None'){
 			flavStr += ', ' + flav2 + '\n'; 
 		}
 		
-		if(mix1 != 'Select a mixin'){
+		if(mix1 != 'None'){
 			mixStr += mix1; 
 		}
-		if(mix2 != 'Select a mixin'){
+		if(mix2 != 'None'){
 			mixStr += ', ' + mix2 + '\n';
 		}
 		

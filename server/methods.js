@@ -22,8 +22,8 @@ Meteor.methods({
         userId: usr._id,
         inHouse: inHouse,
         uName: usr.username,
-		  // flavor: flavs; 
-		  // mixin: mixins;
+		flavor: flavs,
+		mixin: mixins,
         item: "Shake: ",
         submitted: new Date(),
         orderNum: orNum,
@@ -115,19 +115,18 @@ Meteor.methods({
 
   
   // Employee has finished making an order
-  finishedOrder: function(thing, delID, price, inHouse, orNum, usr, cellNum, cellCarrier){
+  finishedOrder: function(thing, delID, price, inHouse, orNum, usrID, cellNum, cellCarrier){
     var order = {
-      userId: usr._id,
+      userId: usrID,
       inHouse: inHouse,
-      uName: usr.username,
-      fName: usr.firstName,
-      lname: usr.lastName,
+   //   uName: usr.username,
+     // fName: usr.firstName,
+      //lname: usr.lastName,
       item: thing,
       submitted: new Date(),
       orderNum: orNum,
       phone: cellNum,
       carrier: cellCarrier,
-      user: usr,
       price: price, 
     };
     ReadyOrders.insert(order);
@@ -277,19 +276,19 @@ Meteor.methods({
   },
  
   shakeOrder: function(flavors, mixins) {
-     var user = Meteor.user();
-     var str =  "Shake: ";
-     var order = {
- 	  type: "shake",
-       userId: user._id,
- 	  flavor: flavors,
- 	  mixin: mixins,
-       uName: user.username,
-       price: 3,
-       item: str,
-       submitted: new Date(),        
-     }
-     Local.insert(order);
+	var user = Meteor.user();
+	var str =  "Shake: ";
+	var order = {
+		type: "shake",
+		userId: user._id,
+		flavor: flavors,
+		mixin: mixins,
+		uName: user.username,
+		price: 3,
+		item: str,
+		submitted: new Date(),        
+	}
+	Local.insert(order);
    },
    
    appOff: function() {

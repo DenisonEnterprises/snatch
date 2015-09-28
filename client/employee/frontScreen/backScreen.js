@@ -105,6 +105,8 @@ Template.readyInfo.events({
       total = total + orders[i].price; 
     }
 	console.log("Price: " + total);
+	console.log('str: ', str);
+	console.log('delID: ', delID);
     Meteor.call('pickUpOrder', str, delID, orNum, inhaus, total, usr, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);

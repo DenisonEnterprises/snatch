@@ -51,12 +51,9 @@ Template.order2.helpers({
 
 Template.addIn.helpers({
     'info': function() {
-		var str = "";
-		var len = this.shakes.length;
-		var i;
-		for(i = 0; i < len; i++){
-			str += (i+1) + ". " + this.shakes[i].flavor + "\n     " + this.shakes[i].mixin + "\n\n";
-		}
+		var str = "\n\t";
+		var i = 0;
+		str += (i+1) + ". " + this.flavor + "\n\t" + this.mixin;
   	  return str;
     },
   
@@ -89,29 +86,28 @@ Template.orderNum.helpers({
 
 Template.orderInfo.events({
  
-  'click #finished': function(evt) {
-	
-	  var sh = this.shakes;
-	var total = 0; 
-    var orNum = this.orderNum;
-    var orders = ActiveOrders.find({orderNum: orNum}).fetch(); 
-    var usr = this.user;
-	var apple = this.uName; 
-    var cellNumber = this.phone;
-    var cellCarrier = this.carrier;
-    var inhaus = this.inHouse;
-    var str = "";
-    for (i=0; i < orders.length; i++) {
-      str = str + orders[i].item + "\n";
-      total = total + orders[i].price;
-    }
-    var delID = this._id; 
-    Meteor.call('employeeFinishedOrder', str, delID, total, inhaus, apple, orNum, usr, cellNumber, cellCarrier, sh, function(error,result) {
+	'click #finished': function(evt) {
+		var userID = this.userId;
+		var orNum = this.orderNum;
+		var flavs = ''; 
+		var mixins = ''; 
+		var order = this.item;
+		if(order === "Shake: "){
+			flavs = this.flav; 
+			mixins = this.mix; 
+		}
+		var usrName = this.uName; 
+		var cellNumber = this.phone;
+		var cellCarrier = this.carrier;
+		var inhaus = this.inHouse;
+		var total = this.price; 
+		var delID = this._id; 
+	    Meteor.call('finishedOrder', order, delID, total, inhaus, orNum, userID, cellNumber, cellCarrier, function(error,result) {
 		if (error)
 			return alert(error.reason);
-	}); 
-	
-  },
+		}); 
+
+	},
   
   'click #deleBTN': function(){
       var delID = this._id;

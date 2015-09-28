@@ -115,8 +115,6 @@ Template.checkout.events({
 		
 		if(shakeStr){
 			str += "Shake: " + "\n";
-			console.log('str: ', str);
-			console.log('shakes: ', shakes);
 			for(var k = 0; k < shakes.length; k++){
 				Meteor.call('placeShakeOrder',shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), function(error,result) {
 					if (error)
@@ -125,10 +123,7 @@ Template.checkout.events({
 			} 
 		}
 		total = total.toFixed(2);
-		//console.log('total: ', total);
 		for(var j = 0; j < items.length; j++){
-			console.log('item: ', items[j]);
-			console.log('total: ', total);
 			Meteor.call('placeOrder', items[j], total, false, Meteor.user(), function(error,result) {
 				if (error)
 					return alert(error.reason);
