@@ -102,6 +102,14 @@
 }
 
 
+.shakesContainer .flavList2 {
+	display: none;
+}
+
+.shakesContainer .mixList2 {
+	display: none;
+}
+
 @media (min-width: 525px) { 
 	.shakesContainer .teal button {
 	  display:inline;

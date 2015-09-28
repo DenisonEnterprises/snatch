@@ -99,11 +99,11 @@ Template.bagelBox.helpers({
 Template.bagels.helpers({
     appOn:function(){
 		var app = Instance.findOne({name: "bandersnatch"}); 
-		/*if(app.status == "on"){
+		if(app.status == "on"){
 			return true;
 		}else{
 			return false;
-		}*/
+		}
 			return true;
 
     }

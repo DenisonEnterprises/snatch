@@ -39,32 +39,35 @@
     <h4 class="voffset3">Flavors</h4>
               
 			<select id='flavorList' class='flavList1'>
-				<option disabled selected>Select a flavor</option>
+				<option selected>None</option>
 				{{#each flavor}}
 					<option value={{flavorName}}>{{flavorName}}</option>
 				{{/each}}
 			</select>
-			<select id='flavorList' class='flavList2'>
-				<option disabled selected>Select a flavor</option>
-				{{#each flavor}}
-					<option value={{flavorName}}>{{flavorName}}</option>
-				{{/each}}
-			</select>
-              
+			<div class="row voffset2">
+				<select id='flavorList' class='flavList2'>
+					<option selected>None</option>
+					{{#each flavor}}
+						<option value={{flavorName}}>{{flavorName}}</option>
+						{{/each}}
+					</select>
+             </div>
     <h4>Mix-ins</h4>
                          
 			<select id='mixinList' class='mixList1' name = 'mixList1'>
-				<option disabled selected>Select a mixin</option>
+				<option selected>None</option>
 				{{#each mixin}}
 					<option value={{mixinName}}>{{mixinName}}</option>
 				{{/each}}
 		  	</select>
-			<select id='mixinList' class='mixList2' name='mixList2'>
-				<option disabled selected>Select a mixin</option>
-				{{#each mixin}}
-					<option value={{mixinName}}>{{mixinName}}</option>
-				{{/each}}
-		  	</select>
+			<div class="row voffset2">
+				<select id='mixinList' class='mixList2' name='mixList2'>
+					<option selected>None</option>
+					{{#each mixin}}
+						<option value={{mixinName}}>{{mixinName}}</option>
+						{{/each}}
+		  			</select>
+			</div>
  	 </div>
       
       <br>

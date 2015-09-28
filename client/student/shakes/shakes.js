@@ -23,22 +23,34 @@ Template.shakes.events({
   
   'change #flavorList': function(evt, instance){ //gets all clicks
 	  countF = false;
-	  var flav1 = $('.flavList1 option:selected').val(); 
-	 // var flav2 = $('.flavList2 option:selected').val();
-	//  console.log('flav2: ', flav2);
-	  if(flav1){
+	  var flav1 = $('.flavList1').val(); 
+	  if(flav1 != "None"){
 		  countF = true; 
 	  }
 	  if(countF){
 		  $('#atcButton').prop('disabled', false); //TO ENABLE
 		  $('#atcButton').fadeTo(0,1);
 		  $('#atcButton').css("cursor", "pointer");
+		  
+		  $('.flavList2').show();
 	  }else{
 		  $('#atcButton').prop('disabled', true); //TO DISABLED
 		  $('#atcButton').fadeTo(0,.4);
 		  $('#atcButton').css("cursor", "default");
+		  
+		  $('.flavList2').hide();  
 	  }
    },
+   
+   'change #mixinList': function(evt, instance){ //gets all clicks
+ 	  var mix1 = $('.mixList1').val(); 
+ 	  if(mix1 != "None"){
+ 		  $('.mixList2').show();
+ 	  }else{
+ 		  $('.mixList2').hide();  
+ 	  }
+    },
+   
 });
 
 

@@ -3,6 +3,8 @@
   color: black;
   font-weight: 500; 
   text-align: center;
+  
+  
 }
 
 .checkoutContainer h1{
@@ -10,23 +12,10 @@
 }
 
 
-
-
-.checkoutContainer .cout .totalPrice{
-	background: url(img/checkBottom2.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-    right: 2px;
-}
-
-
-
-
-
-
 .checkoutContainer .notif {
-  display:none;
+  visibility:hidden;
+  margin-bottom: -5px;
+  color:yellow;
 }
 
 /* These 5 css tags control the location*/
@@ -54,8 +43,11 @@
 .checkoutContainer .cout .totalPrice .price{
 	position: relative;
 	left: 84px; 
-	top: -74px;
+	top: -77px;
 	font-size: 12px;
+	
+	display: inline-block;
+	
 }
 
 .checkoutContainer .cout .line .price .movePrice{
@@ -64,11 +56,13 @@
   z-index: 1;
   top: -19px;
   font-size: 12px;
+  
 }
 
 .checkoutContainer .cout .line .rmBtn .moveBtn{
    position: relative;
    right: 120px;
+   
 }
 
 .checkoutContainer .cout .line .itemz .moveItem{
@@ -79,6 +73,7 @@
   right: -12px; 
   font-size: 12px;
   top: -1px;
+  
 }
 
 
@@ -90,7 +85,7 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  right: 2px;
+  right: 0px;
   margin: -5px; /* This deals with the spacing b/t lines */
 }
 
@@ -98,16 +93,20 @@
 	margin:-3px;
 }
 
-
-
-
-
+.checkoutContainer .cout .line .itemz .mixins{
+  position: relative;
+  min-width: 200px;
+  display: inline-block;
+  text-align: left; 
+  left: 12px;
+  font-size: 12px;
+}
 
 
 
 
 .checkoutContainer .cout .line .rmBtn{
-   position: absolute;
+  position: absolute;
   display: inline;
 }
 
@@ -123,13 +122,6 @@
 }
 
 
-.checkoutContainer .cout .line .itemz .mixins{
-  position: relative;
-  min-width: 200px;
-  display: inline-block;
-  text-align: left; 
-  left: 0px;
-}
 
 .checkoutContainer .cout .line .price{
    position: absolute;    
@@ -138,15 +130,13 @@
 
 
 
-
-
-
 .checkoutContainer .cout .placeOrderBTN{
   font-family: OpenSans;
   color: white;
   font-size: 15px;
   background: #bf7148;
-  margin: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
   padding: 10px 60px 10px 66px;
   border: solid white 2px;
   font-weight:bolder;
@@ -157,7 +147,8 @@
   color: #005f5f;
   font-size: 15px;
   background: white;
-  margin: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
   padding: 10px 100px 10px 75px;
   border: solid #005f5f 3px;
   font-weight:bolder;
@@ -181,3 +172,13 @@
   text-decoration: none;
 }
 
+@media (min-width: 375px) { 
+	.checkoutContainer .cout .line{
+	  background: url(/img/checkMiddle3.png);
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  position: relative;
+	  right: 2px;
+	  margin: -5px; /* This deals with the spacing b/t lines */
+	}
+}

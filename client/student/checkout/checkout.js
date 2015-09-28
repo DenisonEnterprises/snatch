@@ -95,8 +95,11 @@ Template.checkout.events({
 	
 	var orNum = ActiveOrders.find().count();
     if(orders.length > 6){			// Cap order size at 6
-		$('#notif').html("Sorry! You can only order up to 6 items!");    
-		$('#notif').show();
+		document.getElementById('notif').style.opacity='1.0'
+		document.getElementById('notif').style.visibility='visible'
+    	setTimeout(function(){
+          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+    	}, 3000); 
     }else{
 		for (i=0; i < orders.length; i++) {	// iterate through all the orders
 			var indvPrice = "";			
@@ -130,10 +133,7 @@ Template.checkout.events({
 				if (error)
 					return alert(error.reason);
 			});  
-		}
-
-		$('#notif').hide();
-		
+		}		
 		Router.go('/thankYouCheckout'); 	
 	}
    
