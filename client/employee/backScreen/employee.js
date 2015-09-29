@@ -51,9 +51,14 @@ Template.order2.helpers({
 
 Template.addIn.helpers({
     'info': function() {
-		var str = "\n\t";
+		var str = '';
 		var i = 0;
-		str += (i+1) + ". " + this.flavor + "\n\t" + this.mixin;
+		if(this.flavor != null){
+			str = '\n\t' + this.flavor
+			if(this.mixin != ''){
+				str += "\n\t" + this.mixin;
+			}
+		}
   	  return str;
     },
   
@@ -93,8 +98,8 @@ Template.orderInfo.events({
 		var mixins = ''; 
 		var order = this.item;
 		if(order === "Shake: "){
-			flavs = this.flav; 
-			mixins = this.mix; 
+			flavs = this.flavor; 
+			mixins = this.mixin; 
 		}
 		var usrName = this.uName; 
 		var cellNumber = this.phone;
@@ -102,7 +107,7 @@ Template.orderInfo.events({
 		var inhaus = this.inHouse;
 		var total = this.price; 
 		var delID = this._id; 
-	    Meteor.call('finishedOrder', order, delID, total, inhaus, orNum, userID, cellNumber, cellCarrier, function(error,result) {
+	    Meteor.call('finishedOrder', order, flavs, mixins, delID, total, inhaus, orNum, userID, usrName, cellNumber, cellCarrier, function(error,result) {
 		if (error)
 			return alert(error.reason);
 		}); 

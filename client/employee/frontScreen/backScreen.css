@@ -78,6 +78,10 @@
   white-space: pre; 
 }
 
+.backScreenContainer #pickUp{
+	color: black;
+}
+
 .backScreenContainer .titles th{
 	width: 200px; 
 	padding-top:10px;

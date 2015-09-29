@@ -115,14 +115,16 @@ Meteor.methods({
 
   
   // Employee has finished making an order
-  finishedOrder: function(thing, delID, price, inHouse, orNum, usrID, cellNum, cellCarrier){
+  finishedOrder: function(thing, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, cellNum, cellCarrier){
     var order = {
       userId: usrID,
       inHouse: inHouse,
-   //   uName: usr.username,
+      uName: usrName,
      // fName: usr.firstName,
       //lname: usr.lastName,
       item: thing,
+	  flavor: flavs, 
+	  mixin: mixs,
       submitted: new Date(),
       orderNum: orNum,
       phone: cellNum,
@@ -193,18 +195,19 @@ Meteor.methods({
 	return 0;
 	},
   
-  pickUpOrder: function(thing, delID, orNum, inHouse, price, usr, cellNum){
+  pickUpOrder: function(thing, delID, orNum, inHouse, price, userID, cellNum){
     var order = {
-      userId: usr._id,
+      userId: userID,
       inHouse: inHouse,
-      uName: usr.username,
-      fName: usr.firstName,
-      lname: usr.lastName,
+	
+    //  uName: usr.username,
+    //  fName: usr.firstName,
+    //  lname: usr.lastName,
       item: thing,
       submitted: new Date(),
       orderNum: orNum,
       cellNumber: cellNum,
-      user: usr,
+    //  user: usr,
       price: price,
     };
     FinishedOrders.insert(order);

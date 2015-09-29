@@ -24,10 +24,10 @@ Template.ready1.helpers({
 Template.orderPrice.helpers({
 	'price' : function(){
 
-		if(this.inHouse){
+		if(this.inHouse || this.price == 0.00){
 			return "PAID";
 		}else{
-			var price = parseFloat((this.price).slice(1)); 
+			var price = parseFloat((this.price)); 
 			return "$" + price.toFixed(2); 
 		}
 		
@@ -72,15 +72,13 @@ Template.item.helpers({
 
 Template.addIns.helpers({
     'info': function() {
-		console.log('finding info');
-		var str = "";
-		var len = this.shakes.length;
-		var i;
-		if(this.item == 'Shake: '){
-			console.log('we found a shake!');
-		}
-		for(i = 0; i < len; i++){
-			str += (i+1) + ". " + this.shakes[i].flavor + "\n" + this.shakes[i].mixin + "\n";
+		var str = '';
+		var i = 0;
+		if(this.flavor != ''){
+			str += '\n\t' + this.flavor
+			if(this.mixin != ''){
+				str += "\n\t" + this.mixin;
+			}
 		}
   	  return str;
     },
@@ -94,7 +92,6 @@ Template.readyInfo.events({
     var total = 0.0; 
     var orNum = this.orderNum;
     var orders = ReadyOrders.find({orderNum: orNum}).fetch();
-    var usr = this.user;
     var cellNumber = this.cellNumber;
     var inhaus = this.inHouse;
     var delID = this._id; 
@@ -104,10 +101,7 @@ Template.readyInfo.events({
 	 
       total = total + orders[i].price; 
     }
-	console.log("Price: " + total);
-	console.log('str: ', str);
-	console.log('delID: ', delID);
-    Meteor.call('pickUpOrder', str, delID, orNum, inhaus, total, usr, cellNumber, function(error,result) {
+    Meteor.call('pickUpOrder', str, delID, orNum, inhaus, total, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 
