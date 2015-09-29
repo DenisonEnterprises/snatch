@@ -112,17 +112,18 @@ Template.checkout.events({
 		  	}
 			total = total + parseFloat(indvPrice);	// add the price to total
 		}
-		
+		var multiFlag = false; 
 		if(shakeStr){
 			str += "Shake: " + "\n";
 			for(var k = 0; k < shakes.length; k++){
 				if(k == 0){
-					Meteor.call('placeShakeOrder',shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), function(error,result) {
+					Meteor.call('placeShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), function(error,result) {
 						if (error)
 							return alert(error.reason);
 					});
 				}else{
-					Meteor.call('placeShakeOrder',shakes[k].flavor, shakes[k].mixin, 0.00, false, Meteor.user(), function(error,result) {
+					multiFlag = true;
+					Meteor.call('placeShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, 0.00, false, Meteor.user(), function(error,result) {
 						if (error)
 							return alert(error.reason);
 					});
@@ -132,18 +133,21 @@ Template.checkout.events({
 		total = total.toFixed(2);
 		for(var j = 0; j < items.length; j++){
 			if(shakeStr){
-				Meteor.call('placeOrder', items[j], 0.00, false, Meteor.user(), function(error,result) {
+				multiFlag = true;
+				Meteor.call('placeOrder', multiFlag,items[j], 0.00, false, Meteor.user(), function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});  
 			}
 			else if(j == 1){
-				Meteor.call('placeOrder', items[j], total, false, Meteor.user(), function(error,result) {
+				multiFlag = false; 
+				Meteor.call('placeOrder', multiFlag, items[j], total, false, Meteor.user(), function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});  
 			}else{
-				Meteor.call('placeOrder', items[j], 0.00, false, Meteor.user(), function(error,result) {
+				multiFlag = true; 
+				Meteor.call('placeOrder',multiFlag, items[j], 0.00, false, Meteor.user(), function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});  

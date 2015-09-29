@@ -1,5 +1,10 @@
 Meteor.methods({
-		
+	
+	resetOrNum: function() {
+		orderNum = 0;
+	},
+	
+	
     makeStudent: function () {
         Roles.setUserRoles(this.userId, 'student');
     },
@@ -16,8 +21,10 @@ Meteor.methods({
 		Local.remove({userId: this.userId});
 	},
 
-    placeShakeOrder: function(flavs, mixins, price, inHouse, usr) {
-      var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
+    placeShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr) {
+		if(!multiFlag){
+			orderNum++; 			
+		}
       var order = {
         userId: usr._id,
         inHouse: inHouse,
@@ -26,7 +33,7 @@ Meteor.methods({
 		mixin: mixins,
         item: "Shake: ",
         submitted: new Date(),
-        orderNum: orNum,
+        orderNum: orderNum,
         phone: usr.profile.cellNumber,
         carrier: usr.profile.cellCarrier,
         price: price,
@@ -37,15 +44,17 @@ Meteor.methods({
       return 0;
     },  
 
-  placeOrder: function(item, price, inHouse, usr) {
-    var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
+  placeOrder: function(multiFlag, item, price, inHouse, usr) {
+	  if(!multiFlag){
+		  orderNum++;
+	  }
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: usr.username,
       item: item,
       submitted: new Date(),
-      orderNum: orNum,
+      orderNum: orderNum,
       phone: usr.profile.cellNumber,
       carrier: usr.profile.cellCarrier,
       price: price,
@@ -59,8 +68,8 @@ Meteor.methods({
   
   
   
-  employeePlaceOrder: function(thing, shakes, price, inHouse, usr, apple) {
-    var orNum = ActiveOrders.find().count() + ReadyOrders.find().count() + FinishedOrders.find().count() + 1;
+  employeePlaceOrder: function( thing, shakes, price, inHouse, usr, apple) {
+	  orderNum++;
     var order = {
       userId: usr._id,
       inHouse: inHouse,
@@ -68,7 +77,7 @@ Meteor.methods({
       item: thing,
 	  shakes: shakes,
       submitted: new Date(),
-      orderNum: orNum,
+      orderNum: orderNum,
       user: usr,
       price: price,
     };
