@@ -4,41 +4,41 @@
 // Bagelz
 
 if (Bagels.find().count() === 0){
-  Bagels.insert({type: 'Pizza Bagel (Cheese) ', price: 3.00});
-  Bagels.insert({type: 'Pizza Bagel (Pep) ', price: 3.00});
-  Bagels.insert({type: 'Snagel ', price: 2.00});
-  Bagels.insert({type: 'Klynch ', price: 2.00});
-  Bagels.insert({type: "Nuckin' Futz ", price: 2.00});
-  Bagels.insert({type: 'Pesto Bagel ', price: 3.25});
-  Bagels.insert({type: 'Pesto Bagel (Pep) ', price: 3.25});
-  Bagels.insert({type: 'WDU Bagel', price: 2.00});
-  Bagels.insert({type: 'Half and Half', price: 3.00});
+  Bagels.insert({type:'bagel', name: 'Pizza Bagel (Cheese) ', price: 3.00});
+  Bagels.insert({type:'bagel', name: 'Pizza Bagel (Pep) ', price: 3.00});
+  Bagels.insert({type:'bagel', name: 'Snagel ', price: 2.00});
+  Bagels.insert({type:'bagel', name: 'Klynch ', price: 2.00});
+  Bagels.insert({type:'bagel', name: "Nuckin' Futz ", price: 2.00});
+  Bagels.insert({type:'bagel', name: 'Pesto Bagel ', price: 3.25});
+  Bagels.insert({type:'bagel', name: 'Pesto Bagel (Pep) ', price: 3.25});
+  Bagels.insert({type:'bagel', name: 'WDU Bagel', price: 2.00});
+  Bagels.insert({type:'bagel', name: 'Half and Half', price: 3.00});
 }
 
 
 // Snacks
 
 if (Snacks.find().count() === 0) {
-  Snacks.insert({type: 'Popcorn ', price: 1.00});
-  Snacks.insert({type: 'Pizza Pretzel ', price: 3.00});
-  Snacks.insert({type: 'Pizza Pretzel (Pep)', price: 3.00});
-  Snacks.insert({type: "Mad Hatter's Mix ", price: 1.50});
-  Snacks.insert({type: 'Hot Pretzel ', price: 1.50});
-  Snacks.insert({type: 'Hot Pretzel (Cheese) ', price: 2.00});
+  Snacks.insert({type:'snack', name: 'Popcorn ', price: 1.00});
+  Snacks.insert({type:'snack', name: 'Pizza Pretzel ', price: 3.00});
+  Snacks.insert({type:'snack', name: 'Pizza Pretzel (Pep)', price: 3.00});
+  Snacks.insert({type:'snack', name: "Mad Hatter's Mix ", price: 1.50});
+  Snacks.insert({type:'snack', name: 'Hot Pretzel ', price: 1.50});
+  Snacks.insert({type:'snack', name: 'Hot Pretzel (Cheese) ', price: 2.00});
 }
 
 
 // Beverages
  
 if (Beverages.find().count() === 0) {
-  Beverages.insert({type: 'Coffee', price: 1.00});
-  Beverages.insert({type: 'Hum', price: 2.00});
-  Beverages.insert({type: 'Chai Tea (Hot)', price: 2.00});
-  Beverages.insert({type: 'Chai Tea (Cold)', price: 2.00});
-  Beverages.insert({type: 'Iced Tea', price: 1.00});
-  Beverages.insert({type: 'Latte', price: 2.00});
-  Beverages.insert({type: 'Red Bull', price: 2.00});
-  Beverages.insert({type: 'Soda', price: 1.00});
+  Beverages.insert({type:'bev', name: 'Coffee', price: 1.00});
+  Beverages.insert({type:'bev', name: 'Hum', price: 2.00});
+  Beverages.insert({type:'bev', name: 'Chai Tea (Hot)', price: 2.00});
+  Beverages.insert({type:'bev', name: 'Chai Tea (Cold)', price: 2.00});
+  Beverages.insert({type:'bev', name: 'Iced Tea', price: 1.00});
+  Beverages.insert({type:'bev', name: 'Latte', price: 2.00});
+  Beverages.insert({type:'bev', name: 'Red Bull', price: 2.00});
+  Beverages.insert({type:'bev', name: 'Soda', price: 1.00});
 }
 
 // Milkshakes -- flavor & mixin

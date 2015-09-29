@@ -54,9 +54,9 @@ Template.addIn.helpers({
 		var str = '';
 		var i = 0;
 		if(this.flavor != null){
-			str = '\n\t' + this.flavor
+			str = '\n\t' + this.flavor;
 			if(this.mixin != ''){
-				str += "\n\t" + this.mixin;
+				str += "\t" + this.mixin;
 			}
 		}
   	  return str;
