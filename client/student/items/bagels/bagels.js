@@ -72,11 +72,11 @@ Template.bagels.events({
 				nom = sel[i].className; 
 				price = ((sel[i].title).slice(1));
 				totItems = sel[i].selectedIndex;
-				console.log(nom + ' ' + price + ' : ' + totItems);
+				//console.log(nom + ' ' + price + ' : ' + totItems);
 				Meteor.call('bagelOrder', nom, price, totItems, function(error,result) {
-								if (error)
-									return alert(error.reason);
-							});
+					if (error)
+						return alert(error.reason);
+				});
 			}
 		}
 	   Router.go('/menu#u');
@@ -85,7 +85,7 @@ Template.bagels.events({
 
 Template.bagelBox.helpers({
 	'bagelName': function(){
-		return this.type;
+		return this.name;
 	}
 });  
 

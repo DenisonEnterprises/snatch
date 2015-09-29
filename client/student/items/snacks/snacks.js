@@ -81,11 +81,10 @@ Template.snacks.events({
 });
 
 
-
 Template.snackBox.helpers({
 
   'snackName': function(){
-    return this.type;
+    return this.name;
   }
       
 });

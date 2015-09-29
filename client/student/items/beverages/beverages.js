@@ -99,7 +99,7 @@ Template.beverages.events({
 
 Template.bevBox.helpers({
   'bevName': function(){
-    return this.type;
+    return this.name;
   }
 });
 
