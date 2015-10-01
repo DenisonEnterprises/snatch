@@ -1,3 +1,0 @@
-<option value = "mac">Macaroni and Cheese</option>
-<option value = "greenEggs">Green egg</options>
-<option value='banana'>Banana Bread</option>

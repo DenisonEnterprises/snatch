@@ -643,11 +643,11 @@ Meteor.methods({
 		text += "- Number of Shakes sold: " + numShake + "\n" */  
   
   
-	   var recipients = '';
-	   for(var i = 0; i < emails.length - 1; i++){
+	  var recipients = '';
+	   for(var i = 0; i < emails.length; i++){
 		   recipients += emails[i];
 	   }
-	   console.log(recipients);
+	   console.log('recipients: ', recipients);
   	   text += "Total profit of the night: $" + totPrice.toFixed(2);
 	   Email.send({
          from: "bandersnatchApp@gmail.com",

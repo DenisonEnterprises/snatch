@@ -35,7 +35,6 @@ Template.manager.helpers({
 });
 
 Template.manager.events({
-	
 	'click #on': function(evt) {
 		Meteor.call("appOn");
 		$('#notif').html("App is currently running");
@@ -55,12 +54,17 @@ Template.manager.events({
 		
 		var emails = []; 
 		var emailChain; 
+		count = 0; 
 		$('#emailList').each(function(){
 			$(this).find('li').each(function(){
 				emailChain = ''; 
 				emailChain += $(this).text();
-				emailChain += ', '; 
-				emails.push(emailChain);
+				if(count = 0){
+					emails.push(emailChain.slice(1));
+				}
+				count++; 
+				emailChain += ', ';
+				emails.push(emailChain.slice(1));
 			});
 		});
 		console.log("emails: ", emails);
@@ -69,26 +73,35 @@ Template.manager.events({
 				if (error)
 					return alert(error.reason); 
 			});
-		Meteor.call('pushFinished');
+		//Meteor.call('pushFinished');
 		$('#notif2').show();
    	  	setTimeout(function(){
           $("#notif2").fadeOut(1000);
    	 	}, 3000);
 	},
 	
-	'click #delRecip': function(evt){
-		var ul = document.getElementById('emailList');
-		
+	'click .button-check': function(evt){
+		var recipID = $('.button-check').attr('id'); 
+		console.log('recipID ', recipID);
+		//var delPerson = $(recipID).text();
+		//console.log('delPerson: ', delPerson);
+		//li.remove(); 
 	},
 	
 	'click #addRecip': function(evt){
+		var ELcount = 0;
 		var recip = $('#recieveEmail').val(); 
 		var ul = document.getElementById('emailList');
+		$('#menu-selected').each(function(){
+			ELcount++;
+		});
 	    var li = document.createElement("li");
 		li.setAttribute('id','menu-selected');
 		var btn = document.createElement('BUTTON');
 		btn.appendChild(document.createTextNode('X'));
-		btn.setAttribute('id', 'delRecip');
+		console.log('ELcount: ', ELcount);
+		// the sum to find ID is being a shit and not updating
+		btn.setAttribute('id', 'delRecip' + ELcount++);
 		btn.setAttribute('class', 'button-check');
 		li.appendChild(btn);
 		li.appendChild(document.createTextNode(recip));
