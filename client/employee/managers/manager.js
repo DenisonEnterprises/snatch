@@ -52,7 +52,7 @@ Template.manager.events({
 	'click #sendEmail': function(evt){
 		/* for loop that pulls all names from ul list and separated by ';' */
 		
-		var emails = []; 
+		/*var emails = []; 
 		var emailChain; 
 		count = 0; 
 		$('#emailList').each(function(){
@@ -74,6 +74,7 @@ Template.manager.events({
 					return alert(error.reason); 
 			});
 		//Meteor.call('pushFinished');
+		*/
 		$('#notif2').show();
    	  	setTimeout(function(){
           $("#notif2").fadeOut(1000);

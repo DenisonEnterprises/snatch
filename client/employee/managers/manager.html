@@ -8,11 +8,26 @@
 	<div class='ManagerContainer'>
 	
 		<h1> Managers </h1>
-	
-		<label id="notif">App Running</label>
-		<div class='appSwitch'>
+		
+		<hr>
+		
+		<div class="row">
+			<label id="notif"></label>
+		</div>
+		<div class="row">
 			<button type="button" id="on" class="on">Turn ON</button>
 			<button type="button" id="off" class="off">Turn OFF</button>
+		</div>
+		
+		<hr>
+		
+		<div class="row">
+			<button type="button" id="sendEmail" class="email">Send Email</button>
+		</div>
+		<div class="row">
+			<h4 id="notif2">Email Sent!</h4>
+		</div>
+		
 			<label for='recieveEmail'> List of email recipients: </label>
 			<ul id='emailList'>
 				
@@ -20,16 +35,14 @@
 			<form id='email'>
 				<input type='text' id='recieveEmail'> <button type='button' id='addRecip'> Add Recipient</button>
 			</form>
-			<br>
-			<button type="button" id="sendEmail" class="email">Send Email</button>
-			<h4 id="notif2">Email Sent!</h4>
-		</div>
+
+		<hr>
 		
 
 		<div class='manage'>
 			<div class="newItem">
 				<h3> add new menu item </h3>
-			        <label for="itemType">Category of New Item</label>
+			        <label class="voffset2" for="itemType">Category of New Item</label>
 			        <select id="itemType">
 			           <option value="select" id="select">Select</option>
 			           <option value="flavor">Shake Flavor</option>
@@ -38,7 +51,7 @@
 					   <option value="snack">Snack</option>
 					   <option value="bev">Beverage</option>
 			        </select>
-					<div class='name'>
+					<div class='name voffset3'>
 						<label for='itemTitle'>Name of Item:</label>
 						<input type='text' id='itemTitle'>
 						<div class='price'>
@@ -50,6 +63,8 @@
 				<h4 id='notifAdded'> New item added! </h4>
 			</div>
 
+
+			<hr>
 
 			<div class="delItem">
 				<h3> delete menu item </h3>
@@ -168,6 +183,9 @@
 		</div>
 	</div>
 	
+    <div id="bground">
+    		<img src="/img/plainBlack.png" alt="">
+    </div>
 	
 	
  <!--  {{else}}

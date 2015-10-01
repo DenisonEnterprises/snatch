@@ -7,6 +7,12 @@
 	margin-top: 40px;
 }
 
+.settingsContainer input {
+	padding-top:12px;
+	padding-bottom:12px;
+	color:black;
+}
+
 .settingsContainer button{
     font-family: OpenSans;
     color: #fff;

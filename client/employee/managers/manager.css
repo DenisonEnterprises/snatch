@@ -1,20 +1,12 @@
-.ManagerContainer{
-	
-	background-color: black;
+.ManagerContainer{	
 	color: white;
-  
-   /*overflow: hidden;
-   position:absolute;*/
-   height:150vh;
-   width:100vw;
-   top:0px;
-   left:0px;
-   text-align: center;
-   
+	text-align: center;
 }
 
 .ManagerContainer h1{
 	margin-top: 30px;
+	margin-bottom:20px;
+	text-align:center;
 }
 
 .ManagerContainer li{
@@ -23,9 +15,6 @@
 	text-align:left;
 }
 
-.ManagerContainer label{
-	margin-top: 40px;
-}
 
 .ManagerContainer button{
     font-family: OpenSans;
@@ -40,12 +29,19 @@
     margin-right: 10px;
     margin-left: 10px;
 	margin-top:10px;
-	margin-bottom:30px;
+	margin-bottom:10px;
 }
 
-.ManagerContainer .appSwitch{
-	display:inline-block;
+.ManagerContainer select{
+	color: black;
 }
+
+.ManagerContainer input{
+	padding-top:12px;
+	padding-bottom:12px;
+	color:black;
+}
+
 .ManagerContainer .manage .newItem{
 	display:inline-block;
 	padding: 10px;
@@ -55,6 +51,14 @@
 	display:inline-block;
 }
 
+
+.ManagerContainer #dollar {
+	width: 50px;
+}
+
+.ManagerContainer #cents {
+	width: 50px;
+}
 
 /*
 .ManagerContainer .newItem{
