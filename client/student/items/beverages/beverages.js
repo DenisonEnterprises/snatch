@@ -18,7 +18,7 @@ Template.beverages.events({
     "click #logout": function(ev, instance){
 		Meteor.call("delLocalByUser");
 		Meteor.logout();
-		window.location.assign("/");
+		Router.go("/#l")
   },
   "click #bev_list": function(evt, instance){ //gets all clicks
 	  count = 0;

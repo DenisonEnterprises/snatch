@@ -54,8 +54,7 @@ Template.menu.events({
 	"click #logout": function(evt, instance){
 		Meteor.call("delLocalByUser");
 		Meteor.logout();
-		window.location.assign("/")
-		
+		Router.go("/#l")
 	}
 
 

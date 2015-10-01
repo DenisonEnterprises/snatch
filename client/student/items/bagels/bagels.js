@@ -17,7 +17,7 @@ Template.bagels.events({
     "click #logout": function(ev, instance){
 		Meteor.call("delLocalByUser");
 		Meteor.logout();
-		window.location.assign("/");
+		Router.go("/#l")
   },
 
   
