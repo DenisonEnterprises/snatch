@@ -23,7 +23,7 @@
 				<th><ul>				<!-- pseudoBagels -->
 				<form id="bagelList">
 				  {{#each bagel}}
-					{{>bagelBox}}
+					{{>pbagelBox}}
 					<br>
 				  {{/each}}
 				  </form>
@@ -61,7 +61,7 @@
 				<th><ul>				<!-- pseudoBev -->
 				<form id="bevList">
 				  {{#each bev}}
-					{{>bevBox}}
+					{{>pbevBox}}
 					<br>
 				  {{/each}}
 				  </form>
@@ -72,7 +72,7 @@
 				<th><ul>				<!-- pseudoSnacks -->
 				<form id="snackList">
 		          {{#each snack}}
-					{{>snackBox}}
+					{{>psnackBox}}
 					<br>
 				  {{/each}}
 				  </form>
@@ -110,34 +110,56 @@
         
 		
    </div> 
+   
+   <div id="bground">
+   		<img src="/img/plainBlack.png" alt="">
+   </div>
   <!--   {{else}}
       {{> deniedEmp}}
    {{/if}}		-->
 </template>
    
 <template name ="pbagelBox">
- <li>
-    <input type="checkbox" id="{{bagelName}}" name="{{bagelName}}" value="{{bagelPrice}}">
-    <span class="text">{{bagelName}}</span>
-    <span class="price">{{bagelPrice}}</span>
-  </li>
+	<li>
+			<select id='itemNum' class='{{bagelName}}' name='itemNum' title='bagel'>
+				<option value='0'>0</option>
+				<option value='1'>1</option>
+				<option value='2'>2</option>
+				<option value='3'>3</option>
+				<option value='4'>4</option>
+				<option value='5'>5</option>
+			</select>
+			<span class='text'>{{bagelName}}</span>
+	</li>
 </template>   
    
    
 <template name ="pbevBox">
   <li>
-    <input type="checkbox" id="{{bevName}}" name="{{bevName}}" value="{{bevPrice}}">
-    <span class="text">{{bevName}}</span>
-    <span class="price"> {{bevPrice}} </span>
+		<select id='itemNum' class='{{bevName}}' name='itemNum' title='bev'>
+			<option value='0'>0</option>
+			<option value='1'>1</option>
+			<option value='2'>2</option>
+			<option value='3'>3</option>
+			<option value='4'>4</option>
+			<option value='5'>5</option>
+		</select>
+		<span class='text'>{{bevName}}</span>
   </li>
 </template>
 
 
 <template name ="psnackBox">
   <li>
-    <input type="checkbox" id="{{snackName}}" name="{{snackName}}" value="{{snackPrice}}">
-    <span class="text">{{snackName}}</span>
-    <span class="price"> {{snackPrice}} </span>
+		<select id='itemNum' class='{{snackName}}' name='itemNum' title='snack'>
+			<option value='0'>0</option>
+			<option value='1'>1</option>
+			<option value='2'>2</option>
+			<option value='3'>3</option>
+			<option value='4'>4</option>
+			<option value='5'>5</option>
+		</select>
+		<span class='text'>{{snackName}}</span>
   </li>
 </template>
 

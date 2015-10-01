@@ -1,44 +1,27 @@
-<template name="loginLoading">
+<template name="loading">
 
   <head>
     <title>Bandersnatch - Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  
   <div class="loginContainer">
+  <body>
+	<div class ="container"> 
+	  <div class="cntr voffset4">
+        <img id="BSNLogo" src="img/lg/logoLG.png" alt="Bandersnatch Logo">
+  	  </div>
+	  
+	  <div class="row">
+        <h1 class="cntr">Loading ...</h1>
+	  </div>	  
+    </div>
+  </body>
+  
+  </div>
+  
 
-    
-    <div class="cntr">
-      
-      <img src="img/lg/logoLG.png" alt="Bandersnatch Logo">
-      
-      <br>
-      <br>
-      <form id="login-form">
-          <label for="login-username"></label><input type="text" id="login-username" placeholder="Username" />
-          <label for="login-password"></label><input type="password" id="login-password" placeholder="Password" />
-		  <br>
-		  <br>
-	            <button type="submit" class="normal">Log In</button>
-	        </form>
-  
-	    	<button id="signUp" class="normal">Sign Up</button>
-      
-	  	  <br>
-        
-	  		<button id="forgot" class="forgot">Forgot Password?</button>
-      
-        
-    </div>
-    
-    <div class="ftr">
-      
-      <a href="http://www.denisonenterprises.squarespace.com"> <img src="/img/DELogo.png" alt="DElogo"> </a>
-      <p><a href="http://www.denisonenterprises.squarespace.com" target= "_blank">D E N I S O N E N T E R P R I S E S</a></p>
-    </div>
-  
-   
-    </div>
- 
-    
+  <div id="bground">
+  		<img src="/img/lg/loginLG.jpg" alt="">
+  </div>
   
 </template>

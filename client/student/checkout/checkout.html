@@ -35,9 +35,7 @@
      <div class="cout">
     
  
-  
-    <h1>Checkout</h1>
-       <img src="img/checkTop2.png" alt="CheckTop">
+    <img class="voffset4" src="img/checkTop2.png" alt="CheckTop">
   <br>
 
       {{#each order}}
@@ -71,13 +69,16 @@
  				    {{> totalPrice}}
 				</div>
        	
-	    </div>
+	    	</div>
  
- 	<p id='notif' class='notif'>Sorry! You can only order up to 6 items!</p>
-	
+ 	<img id='notif' src='img/tooMany2.png' alt="You can only order 6 items!">
+	<br>
+	<div class="cntr">
     <button class="backBTN" id="menu">Menu</button>  
     <button class="placeOrderBTN" id="placeOrder">Place Order</button>
      </div>
+	 
+	 </div>
   </div>
   
   

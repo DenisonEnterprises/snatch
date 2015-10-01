@@ -12,10 +12,9 @@
 }
 
 
-.checkoutContainer .notif {
+.checkoutContainer #notif {
   visibility:hidden;
-  margin-bottom: -5px;
-  color:yellow;
+  margin-top: -10px;
 }
 
 /* These 5 css tags control the location*/
@@ -172,6 +171,14 @@
   text-decoration: none;
 }
 
+@media (min-width: 300px) { 
+	.checkoutContainer #notif{
+		max-width: 240px;
+		max-height: auto;
+	}
+}
+
+
 @media (min-width: 375px) { 
 	.checkoutContainer .cout .line{
 	  background: url(/img/checkMiddle3.png);
@@ -182,3 +189,5 @@
 	  margin: -5px; /* This deals with the spacing b/t lines */
 	}
 }
+
+

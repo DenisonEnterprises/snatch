@@ -2,31 +2,27 @@
 <template name="backScreen">
   
 <!--  {{#if isInRole 'employee'}}	-->
-
-
-    <div class="backScreenBackgound">
-	</div>
-	
 	
   <div class="backScreenContainer"> 
-   	<div class="nav">
-		<ul>
-			<li><button type="button" id="swapBTN">Main Menu</button></li>
-		</ul>
-	</div>
+	  <div class="row">
+	  <button type="button" id="swapBTN">Main Menu</button>
+ 	 </div>
 
-      <h1 align="center">Ready for Pick Up</h1>
-      <br>
-      <br>
-        {{> readyInfo}}
+     {{> readyInfo}}
 
  	  
   </div>
     
     
+    <div id="bground">
+    		<img src="/img/plainBlack.png" alt="">
+    </div>
+	
   <!--  {{else}}
      {{> deniedEmp}}
   {{/if		-->
+  
+
   
 </template>
 

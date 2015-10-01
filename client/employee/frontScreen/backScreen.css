@@ -1,53 +1,30 @@
 
 .backScreenContainer {
-  background-color: black;
   color: white; 
-  
-
-  background-attachment: fixed;
-  position:absolute;
-  top: 0;
-  left: 0;
 }
 
 .backScreenContainer table{
       border: solid #005f5f 5px;
-  
 }
 
 
-.backScreenBackgound {
-    position:absolute;
-    top: 0px;
-    left: 0px;
-	background-color: black;
-	
-	width: 100vw;
-	height: 100vh;
-}
-
-.backScreenContainer .nav button{
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
+.backScreenContainer #swapBTN {
+  -webkit-border-radius: 25;
+  -moz-border-radius: 25;
   border-radius: 100px;
   font-family: Arial;
   color: #ffffff;
-  font-size: 35px;
+  font-size: 25px;
   background: #005f5f;
-  padding: 20px 25px 20px 25px;
+  padding: 10px 15px 10px 15px;
   text-decoration: none;
-  margin-top: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-right: 20px;
+  float: right;
 }
 
-.backScreenContainer h1{
-   padding-top: 20px;
-   text-shadow: 4px 4px #005f5f;
-   font-size: 80px;
-   color: #fff;
-    float: center;
-    padding-right: 150px;
-}
+
 
 .backScreenContainer td{
 	text-align: center;

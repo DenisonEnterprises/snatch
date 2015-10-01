@@ -40,63 +40,28 @@ Template.pseudoMenu.rendered = function(){
 };
 
 Template.pseudoMenu.events({
-  'click': function(evt, instance){ // get all clicks
-	  countBev = 0;
-	  countBag = 0;
-	  countSnack = 0;
-	  countOR = 0;
-	  countF = 0;
-	  countM = 0;
-
-  	$.each($('#otherList').serializeArray(),function() {
-  	  countOR++;
-	  console.log(countOR);
-  	});
-
-	$.each($('#flavList').serializeArray(),function() {
-	  countF++;
-	});
-
-	$.each($('#mixList').serializeArray(),function(){
-	  countM++;
-	});
-
-	$.each($('#sizeList').serializeArray(),function(){
-	  countS++;
-	});
-	  
-	$.each($('#snackList').serializeArray(),function() {
-		countSnack++;
-	});
-	
-	$.each($('#bevList').serializeArray(),function() {
-		countBev++;
-	});
-	
-	$.each($('#bagelList').serializeArray(),function() {
-		countBag++;
-	}); 
-	
-	//LOGIC FOR SHAKES!!!!!
-	
-	if(countOR > 0 || countBev > 0 || countBag > 0 || countSnack > 0 || ((countF > 0 && countF < 3) && (countM < 3))){
-	  $('#atcBTN').prop('disabled', false); //TO ENABLE
-	  $('#atcBTN').fadeTo(0,1);
-	  $('#atcBTN').css("cursor", "pointer");
-	}else{
-	    var num = Local.find({uName: "bsnemp"}).count(); 
-		if(num > 0 && ((countF > 0 && countF < 3) && (countM < 3))){	
-	  	  $('#atcBTN').prop('disabled', false); //TO ENABLE
-	  	  $('#atcBTN').fadeTo(0,1);
-	  	  $('#atcBTN').css("cursor", "pointer");
-		}else{					
-	  	  $('#atcBTN').prop('disabled', true); //TO DISABLED
-	  	  $('#atcBTN').fadeTo(0,.4);
-	  	  $('#atcBTN').css("cursor", "default");
+	"change #itemNum": function(event) {
+		var count = 0;
+		var itemNums = []
+		itemNums = $(event.currentTarget).val();
+		var sel = document.getElementsByName('itemNum'); 
+		for(var i = 0; i < sel.length; i++){
+			if(sel[i].selectedIndex > 0){
+				count += sel[i].selectedIndex;
+			}
 		}
-	}
-	
-  },
+
+		if(count === 0){
+			$('#atcBTN').prop('disabled', true); //TO DISABLED
+			$('#atcBTN').fadeTo(0,.4);
+			$('#atcBTN').css("cursor", "default");
+		}else{
+			$('#atcBTN').prop('disabled', false); //TO ENABLE
+			$('#atcBTN').fadeTo(0,1);
+			$('#atcBTN').css("cursor", "pointer");
+		}
+  
+	},
   
   
   "click #swapBTN": function( evt, instance ){
@@ -104,99 +69,45 @@ Template.pseudoMenu.events({
   },
   
   "click #atcBTN" : function(evt, instance){
-	  
-	 /* =============== other =============== */
-  		event.preventDefault();
-		
-		var thing = $($("#thing")).val();
-		var price = "$" + $($("#dollar")).val() + "." + $($("#cents")).val(); 
-		if(otherList.checked == 1){
-			Meteor.call('otherOrder', thing, price, function(error, result){
-				if(error)
-					return alert(error.reason);
-			});
-		}else{
-			console.log("No 'other' items");
-		}
-	  
- 	 /* =============== snack Orders =============== */
-
-		var form1 = {};
-  		var price1 = {};
-		$.each($('#snackList').serializeArray(),function() {
-			form1[this.name] = this.name;
-			price1[this.name] = this.value;
-		});
-		for (var key in form1) {
-			Meteor.call('snackOrder',form1[key], price1[key], function(error,result) {
-				if (error)
-					return alert(error.reason);
-			});
-		}
-		
-		/* =============== bev Orders =============== */
-		var form2 = {};
-		var price2 = {};
-		$.each($('#bevList').serializeArray(),function() {
-			form2[this.name] = this.name;
-    	    price2[this.name] = this.value;
-		});
-
-		for (key in form2) {
-			Meteor.call('bevOrder',form2[key], price2[key], function(error,result) {
-				if (error)
-					return alert(error.reason);
-			});
-		}
-		/* =============== bagel Orders =============== */
-		
-		var form3 = {};
-		var price3 = {};
-    	var count = 0;
-		$.each($('#bagelList').serializeArray(),function() {
-			form3[this.name] = this.name;
-     		price3[this.name] = this.value;
-		}); 
-    
-		for (key in form3) {
-			Meteor.call('bagelOrder',form3[key], price3[key], function(error,result) {
-				if (error)
-					return alert(error.reason);
-			});
-		}
-		/* =============== shake orders ==================*/
-	    var flavForm = {};
-		var mixForm = {};
-		var boolOrder = false; 
-		var size;
-	
-	    $.each($('#flavList').serializeArray(),function(){
-			flavForm[this.name] = this.name;
-			boolOrder = true; 
-	    });
-	    var flavStr = ""
-	    for (var shit in flavForm){
-	      flavStr = flavStr + flavForm[shit] + ", ";
-	    }
-		flavStr = flavStr.substring(0, flavStr.length - 2);
 	    
-	
-	    $.each($('#mixList').serializeArray(),function(){
-	      mixForm[this.name] = this.name;
-	    });
-	    var mixinStr = ""
-	    for (var shit in mixForm){
-	      mixinStr = mixinStr + mixForm[shit] + ", ";
-	    }
-		mixinStr = mixinStr.substring(0, mixinStr.length - 2);
-		
-		if(boolOrder){
-			Meteor.call('shakeOrder', flavStr, mixinStr, function(error,result) {
-				if (error)
-				  return alert(error.reason);
-			});
-		}
-		Router.go('pseudoCheck');
+   		event.preventDefault();
+   		var nom = ''; 
+   		var totItems = 0; 
+		var bag;
+   	    var price = 0; 
+   		var sel = document.getElementsByName('itemNum'); 
+   		for(var i = 0; i < sel.length; i++){
+			var type = sel[i].title;
+			console.log('type: ', type);
+   			if(sel[i].selectedIndex > 0){
+   				nom = sel[i].className; 
+				totItems = sel[i].selectedIndex;
+				if(type === 'bagel'){
+					bag = Bagels.find({name: nom}).fetch();
+					price = bag.price;
+	   				Meteor.call('bagelOrder', nom, price, totItems, function(error,result) {
+	   					if (error)
+	   						return alert(error.reason);
+	   				});
+				}else if(type === 'snack'){
+					sn = Snacks.find({name: nom}).fetch(); 
+					price = sn.price; 
+	   				Meteor.call('snackOrder', nom, price, totItems, function(error,result) {
+	   					if (error)
+	   						return alert(error.reason);
+	   				});
+				}else if(type === 'bev'){
+					bev = Beverages.find({name: nom}).fetch();
+					price = bev.price;
+	   				Meteor.call('bevOrder', nom, price, totItems, function(error,result) {
+	   					if (error)
+	   						return alert(error.reason);
+	   				});
+				}
+   			}
+   		}
+
+   	   Router.go('/pseudoCheck');
 	},
 
 });
@@ -205,15 +116,10 @@ Template.pseudoMenu.events({
 
 Template.pbagelBox.helpers({
   'bagelName': function(){
-    return this.type;
+    return this.name;
   }
 });
 
-Template.pbagelBox.helpers({
-  'bagelPrice': function(){
-     return "$" + this.price.toFixed(2);
-  }
-});
 
 /* ------------------------ beverage shit ------------------------ */
 
@@ -227,17 +133,10 @@ Template.pseudoMenu.helpers({
 
 Template.pbevBox.helpers({
   'bevName': function(){
-    return this.type;
+    return this.name;
   }
 });
 
-
-
-Template.pbevBox.helpers({
-  'bevPrice': function(){
-     return "$" + this.price.toFixed(2);
-  }
-});
 
 
 /* ------------------------ snacks shit ------------------------ */
@@ -254,19 +153,12 @@ Template.pseudoMenu.helpers({
 Template.psnackBox.helpers({
 
   'snackName': function(){
-    return this.type;
+    return this.name;
   }
       
 });
 
 
-Template.psnackBox.helpers({
-
-  'snackPrice': function(){
-    return "$" + this.price.toFixed(2);
-  }
-      
-});
 
 /* ------------------------ flavor in a shake shit ------------------------ */
 
