@@ -19,8 +19,8 @@ Template.menu.rendered = function() {
 	  	window.history.pushState("", "", '/menu');
  		
    	  	setTimeout(function(){
-          $("#notif").fadeIn(2000);
-   	 	}, 100);
+          $("#notif").fadeIn(500);
+   	 	}, 50);
  
  
     	setTimeout(function(){
