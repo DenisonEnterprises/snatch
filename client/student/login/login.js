@@ -58,23 +58,56 @@ Template.login.rendered = function() {
 	}
     
     
-  var usr = Meteor.user()
-  if (usr != null){
-	  var ver = usr.emails[0].verified;
-	  if(ver && Roles.userIsInRole(Meteor.user()._id, 'student')){
-		  Router.go("menu");
-	  }
+ 	var type = window.location.hash.substr(1);
+    if (type === "l"){
+  		window.history.pushState("", "", '/');
+	}else{
+  	  var usr = Meteor.user()
+ 	   if (usr != null){
+	  	 var ver = usr.emails[0].verified;
+	  	if(ver && Roles.userIsInRole(Meteor.user()._id, 'student')){
+		 	 Router.go("menu");
+	 	 }
 	  
-	  if(Roles.userIsInRole(Meteor.user()._id, 'employee')){
-		 // Router.go("pseudoMenu");
-	  }
+	  	if(Roles.userIsInRole(Meteor.user()._id, 'employee')){
+			 // Router.go("pseudoMenu");
+	  	}
 	  
-	  if(Roles.userIsInRole(Meteor.user()._id, 'employee2')){
-		 // Router.go("employee");
-	  }
+	  	if(Roles.userIsInRole(Meteor.user()._id, 'employee2')){
+			 // Router.go("employee");
+	  	}
 	  
-	  if(Roles.userIsInRole(Meteor.user()._id, 'manager')){
-		 // Router.go("manager");
-	  }
-  }
+	  	if(Roles.userIsInRole(Meteor.user()._id, 'manager')){
+			 // Router.go("manager");
+	  	}
+  	
+		}
+	
+	
+	}
+  
+ 
 };
+
+Template.loading.rendered = function() {
+    setInterval (type, 600);
+	dots = 0
+};
+
+function type()
+{
+	if(dots === 3)
+	{
+		dots = 0
+        $('#anim').text('Loading');
+	}
+	
+    if(dots < 3)
+    {
+        $('#anim').append('~');
+        $('#anim').prepend('~');
+        dots++;
+    }
+
+	
+}

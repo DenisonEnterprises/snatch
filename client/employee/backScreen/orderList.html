@@ -1,31 +1,26 @@
 <template name="orderList"> 
- {{#if isInRole 'employee2'}}
+ <!-- {{#if isInRole 'employee2'}} -->
   
 
 
   <div class="orderListContainer"> 
-   	<div class="nav">
-		<ul>
-			<li><button type="button" id="swapBTN">Incoming Orders</button></li>
-		</ul>
+	  <div class="row">
+		<button type="button" id="swapBTN">Incoming Orders</button>
 	</div>
-     <h1 align="center">All Items</h1>
-	 <br>
-	 <br>
-	 <br>
-	 <br>
-	 <br>
-	 <br>
+
 	
 	 
         {{> itemInfo}}
   
   </div>
 
+    <div id="bground">
+    		<img src="/img/plainBlack.png" alt="">
+    </div>
 
-      {{else}}
+    <!--   {{else}}
        {{> deniedEmp}}
-    {{/if}}
+    {{/if}} -->
 	
 
 </template>
