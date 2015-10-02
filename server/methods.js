@@ -125,7 +125,7 @@ Meteor.methods({
   
   // Employee has finished making an order
   finishedOrder: function(thing, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, cellNum, cellCarrier){
-    var order = {
+	  var order = {
       userId: usrID,
       inHouse: inHouse,
       uName: usrName,
@@ -142,7 +142,8 @@ Meteor.methods({
     };
     ReadyOrders.insert(order);
     ActiveOrders.remove({_id: delID});
-    /*
+	var remaining = ActiveOrders.find({orderNum: orNum}).count(); 
+    
     var msg = ""; 
     var cellPhone = order.phone.toString(); 
     var cellCar = order.carrier.toString(); 
@@ -178,10 +179,9 @@ Meteor.methods({
       from: "bandersnatchApp@gmail.com",
       to: msg,
 
-      //subject: "Your order is ready!",
-      text: "Your order is ready!",
-    });*/
-   
+      subject: "Your order is ready!",
+      text: "Your order is ready! You have " + remaining + " items stil in the kitchen!",
+    });
     return 0;
   },
   

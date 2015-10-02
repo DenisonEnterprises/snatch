@@ -139,7 +139,7 @@ Template.checkout.events({
 						return alert(error.reason);
 				});  
 			}
-			else if(j == 1){
+			else if(j == 0){
 				multiFlag = false; 
 				Meteor.call('placeOrder', multiFlag, items[j], total, false, Meteor.user(), function(error,result) {
 					if (error)
