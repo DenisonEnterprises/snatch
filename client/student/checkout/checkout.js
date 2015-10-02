@@ -93,7 +93,6 @@ Template.checkout.events({
 	shakes = [];
 	items = [];
 	
-	var orNum = ActiveOrders.find().count();
     if(orders.length > 6){			// Cap order size at 6
 		document.getElementById('notif').style.opacity='1.0'
 		document.getElementById('notif').style.visibility='visible'
@@ -114,7 +113,7 @@ Template.checkout.events({
 		}
 		var multiFlag = false; 
 		if(shakeStr){
-			str += "Shake: " + "\n";
+			str += "Shake: \n";
 			for(var k = 0; k < shakes.length; k++){
 				if(k == 0){
 					Meteor.call('placeShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), function(error,result) {

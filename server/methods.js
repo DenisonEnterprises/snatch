@@ -65,10 +65,30 @@ Meteor.methods({
     return 0;
   },   
   
+  empPlaceShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr, apple){
+	  if(!multiFlag){
+		  orderNum++;
+	  }
+      var order = {
+        userId: usr._id,
+        inHouse: inHouse,
+        uName: usr.username,
+		flavor: flavs,
+		mixin: mixins,
+        item: "Shake: ",
+        submitted: new Date(),
+        orderNum: orderNum,
+        phone: usr.profile.cellNumber,
+        carrier: usr.profile.cellCarrier,
+        price: price,
+      };
+      ActiveOrders.insert(order);
+      Local.remove({userId: usr._id});
+
+      return 0;
+  },
   
-  
-  
-  employeePlaceOrder: function( thing, shakes, price, inHouse, usr, apple) {
+  employeePlaceOrder: function(thing, shakes, price, inHouse, usr, apple) {
 	  orderNum++;
     var order = {
       userId: usr._id,
@@ -174,16 +194,18 @@ Meteor.methods({
     else if(cellCar === "nTelos"){
       msg = cellPhone + "@pcs.ntelos.com";
     }
-         
-    Email.send({
+     
+	console.log(msg);
+	console.log(thing);    
+ /*   Email.send({
       from: "bandersnatchApp@gmail.com",
-      to: msg,
+      to: "costa_n1@denison.edu",
 
-      subject: "Your order is ready!",
-      text: "Your order is ready! You have " + remaining + " items stil in the kitchen!",
-    });
+      text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
+    });*/
     return 0;
   },
+
   
   employeeFinishedOrder: function(thing, delID, price, inHouse, apple, orNum, usr, cellNum, cellCarrier, shakes){
     var order = {

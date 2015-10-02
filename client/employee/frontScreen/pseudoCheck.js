@@ -21,9 +21,6 @@ Template.PseudoShake.helpers({
 	
 });
 
-Template.pseudoCheck.helpers({
-
-});
 
 Template.PseudoShake.helpers({
 	'shake': function(){
@@ -74,11 +71,12 @@ Template.pseudoCheck.helpers({
     'order': function() {
       //if prevents error due to ordering of page loading, etc.
       if (Meteor.user()) {
-        var user = Meteor.user();
-		 
+        var user = Meteor.user(); 
         return Local.find({userId: user._id});
       }
     },
+	
+	
 	
 	'totalPrice': function(){
 	    var orders = Local.find({userId: Meteor.user()._id}).fetch();
@@ -134,44 +132,64 @@ Template.pseudoCheck.events({
 	shakes = [];
     
  	var apple=$($('#appleName')).val();
-	
-		for (i=0; i < orders.length; i++) {
-			indvPrice = "";
-			indvPrice = (orders[i].price)[1] + (orders[i].price)[2] + (orders[i].price)[3] + (orders[i].price)[4];
-			temp = indvPrice; 
-			
-			if(orders[i].item == "Shake: "){
-				shakes.push(orders[i]);
-				shakeStr = true;
+	console.log('apple: ', apple);
+	for (i=0; i < orders.length; i++) {
+		var indvPrice = "";
+		indvPrice = (orders[i].price);
+		temp = indvPrice; 
+		
+		if(orders[i].item == "Shake: "){
+			console.log('found a shake');
+			shakes.push(orders[i]);
+			shakeStr = true;
+		}else{
+			console.log('found a non-shake');
+			items.push(orders[i].item);
+		}
+	}
+	/*var multiFlag = false; 
+	if(shakeStr){
+		//seperate into seperate shake orders
+		str += "Shake: \n";
+		for(var k = 0; k < shakes.length; k++){
+			if(k == 0){
+				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), apple, function(error,result) {
+					if (error)
+						return alert(error.reason);
+				});
 			}else{
-				
-				
-				total = parseFloat(temp);
-				total = total.toFixed(2);
-				Meteor.call('employeePlaceOrder', orders[i].item, shakes, total, true, Meteor.user(), apple); 				
+				multiFlag = true;
+				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, 0.00, false, Meteor.user(), apple, function(error,result) {
+					if (error)
+						return alert(error.reason);
+				});
 			}
 		}
-		
+	}
+	total = total.toFixed(2);
+	for(var j = 0; j < items.length; j++){
 		if(shakeStr){
-			//seperate into seperate shake orders
-			var single = [];
-			for(j = 0; j < shakes.length; j++){
-				single.push(shakes[j]);
-				indvPrice = "";
-				indvPrice = (shakes[j].price)[1] + (shakes[j].price)[2] + (shakes[j].price)[3] + (shakes[j].price)[4];
-				total = parseFloat(indvPrice);
-				total = total.toFixed(2);
-				Meteor.call('employeePlaceOrder', "Shake: \n", single, total, true, Meteor.user(), apple); 				
-				single = [];
-			}
-			
-
+			multiFlag = true;
+			Meteor.call('employeePlaceOrder', orders[i].item, shakes, 0.00, true, Meteor.user(), apple, function(error, result){
+				if (error)
+					return alert(error.reason);					
+			}); 	
 		}
-		
-		
-		Router.go('/pseudoMenu'); 
-	
-   
+		else if(j == 0){
+			multiFlag = false; 
+			Meteor.call('employeePlaceOrder', orders[i].item, shakes, total, true, Meteor.user(), apple, function(error, result){
+				if (error)
+					return alert(error.reason);					
+			}); 	
+		}else{
+			multiFlag = true; 
+			Meteor.call('employeePlaceOrder', orders[i].item, shakes, 0.00, true, Meteor.user(), apple, function(error, result){
+				if (error)
+					return alert(error.reason);					
+			}); 	
+		}
+	}		
+	Router.go('/thankYouCheckout'); */
   },
   
   'click #deleteOrder': function() {

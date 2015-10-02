@@ -13,7 +13,7 @@
    		<table align="center" cellpadding="0" cellspacing="0" border="0">
 			<tr class="titles">				
 				<th> Bagels </th>		
-				<th style="width:350px"> Shakes ($3) </th>
+				<th style="width:350px"> Shakes </th>
 				<th> Beverages </th>
 				<th> Snacks </th>
 			</tr>
@@ -31,29 +31,40 @@
 				 
 				 
        			 <th><ul>				<!-- pseudoShakes -->
-       			 	<tr style="text-align:center">
-       			 	<th class="flavMix" > Flavors </th>
-       			  	<th class="flavMix" > Mixins </th></tr>
-       			 	<tr><th class="inner1"><ul>
-						<form id="flavList">
-							<br>
-							{{#each flavor}}
-							  {{> pflavorBox}}
-							{{/each}}     
-						</form>  			 	
-       			 	</ul></th>
-       			 	<th class="inner2"><ul>
-						<form id="mixList">
-						  <br>
-						  
-						  {{#each mixin}}
-							{{> pmixinBox}}
-							<br>
-						  {{/each}}
-						  </form>
-						  <br>
-					</ul></th>
-					</tr>
+					<div class="back">
+				    <h4 class="voffset3">Flavors</h4>
+              
+							<select id='flavorList' class='flavList1'>
+								<option selected>None</option>
+								{{#each flavor}}
+									<option value={{flavorName}}>{{flavorName}}</option>
+								{{/each}}
+							</select>
+							<div class="row voffset2">
+								<select id='flavorList' class='flavList2'>
+									<option selected>None</option>
+									{{#each flavor}}
+										<option value={{flavorName}}>{{flavorName}}</option>
+										{{/each}}
+									</select>
+				             </div>
+				    <h4>Mix-ins</h4>
+                         
+							<select id='mixinList' class='mixList1' name = 'mixList1'>
+								<option selected>None</option>
+								{{#each mixin}}
+									<option value={{mixinName}}>{{mixinName}}</option>
+								{{/each}}
+						  	</select>
+							<div class="row voffset2">
+								<select id='mixinList' class='mixList2' name='mixList2'>
+									<option selected>None</option>
+									{{#each mixin}}
+										<option value={{mixinName}}>{{mixinName}}</option>
+										{{/each}}
+						  			</select>
+							</div>
+				 	 </div>
        			</ul></th>
 				
 				
@@ -162,17 +173,3 @@
 		<span class='text'>{{snackName}}</span>
   </li>
 </template>
-
- 
- <template name="pflavorBox">
-  <li>
-    <input type="checkbox" id="{{flavorName}}" name="{{flavorName}}" value="2.75">
-    <span class="text">{{flavorName}}</span>
-  </li>
-</template>  
-
-<template name="pmixinBox">
-    <input type="checkbox" id="{{mixinName}}" name="{{mixinName}}" value="2.75">
-    <span for="{{mixinName}}" class="text">{{mixinName}}</span>
-</template>
-    

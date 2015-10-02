@@ -4,13 +4,13 @@
 // Bagelz
 
 if (Bagels.find().count() === 0){
-  Bagels.insert({type:'bagel', name: 'Pizza Bagel (Cheese) ', price: 3.00});
-  Bagels.insert({type:'bagel', name: 'Pizza Bagel (Pep) ', price: 3.00});
-  Bagels.insert({type:'bagel', name: 'Snagel ', price: 2.00});
-  Bagels.insert({type:'bagel', name: 'Klynch ', price: 2.00});
-  Bagels.insert({type:'bagel', name: "Nuckin' Futz ", price: 2.00});
-  Bagels.insert({type:'bagel', name: 'Pesto Bagel ', price: 3.25});
-  Bagels.insert({type:'bagel', name: 'Pesto Bagel (Pep) ', price: 3.25});
+  Bagels.insert({type:'bagel', name: 'Pizza Bagel (Cheese)', price: 3.00});
+  Bagels.insert({type:'bagel', name: 'Pizza Bagel (Pep)', price: 3.00});
+  Bagels.insert({type:'bagel', name: 'Snagel', price: 2.00});
+  Bagels.insert({type:'bagel', name: 'Klynch', price: 2.00});
+  Bagels.insert({type:'bagel', name: "Nuckin' Futz", price: 2.00});
+  Bagels.insert({type:'bagel', name: 'Pesto Bagel', price: 3.25});
+  Bagels.insert({type:'bagel', name: 'Pesto Bagel (Pep)', price: 3.25});
   Bagels.insert({type:'bagel', name: 'WDU Bagel', price: 2.00});
   Bagels.insert({type:'bagel', name: 'Half and Half', price: 3.00});
 }
@@ -19,12 +19,12 @@ if (Bagels.find().count() === 0){
 // Snacks
 
 if (Snacks.find().count() === 0) {
-  Snacks.insert({type:'snack', name: 'Popcorn ', price: 1.00});
-  Snacks.insert({type:'snack', name: 'Pizza Pretzel ', price: 3.00});
+  Snacks.insert({type:'snack', name: 'Popcorn', price: 1.00});
+  Snacks.insert({type:'snack', name: 'Pizza Pretzel', price: 3.00});
   Snacks.insert({type:'snack', name: 'Pizza Pretzel (Pep)', price: 3.00});
-  Snacks.insert({type:'snack', name: "Mad Hatter's Mix ", price: 1.50});
-  Snacks.insert({type:'snack', name: 'Hot Pretzel ', price: 1.50});
-  Snacks.insert({type:'snack', name: 'Hot Pretzel (Cheese) ', price: 2.00});
+  Snacks.insert({type:'snack', name: "Mad Hatter's Mix", price: 1.50});
+  Snacks.insert({type:'snack', name: 'Hot Pretzel', price: 1.50});
+  Snacks.insert({type:'snack', name: 'Hot Pretzel (Cheese)', price: 2.00});
 }
 
 
