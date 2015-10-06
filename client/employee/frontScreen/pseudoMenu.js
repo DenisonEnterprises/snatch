@@ -192,7 +192,7 @@ Template.pseudoMenu.events({
 						return alert(error.reason);
 			});
 		}
-	//	Router.go('/pseudoCheck');
+		Router.go('/pseudoCheck');
 	},
 
 });
