@@ -4,7 +4,7 @@ Meteor.methods({
 		orderNum = 0;
 	},
 	
-	
+
     makeStudent: function () {
         Roles.setUserRoles(this.userId, 'student');
     },

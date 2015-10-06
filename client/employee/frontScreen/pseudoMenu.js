@@ -5,11 +5,11 @@ Meteor.subscribe('local');
 
 
 
-Template.pseudoMenu.helpers({
+Template.pseudoMenu.helpers({  
 	'bagel': function(){
 		return Bagels.find().fetch();
 	},
-  
+	
 	'flavor': function(){
 	  return Milkshakes.find({type: 'flavor'}).fetch();
 	},
@@ -68,7 +68,8 @@ Template.pseudoMenu.events({
 				count += sel[i].selectedIndex;
 			}
 		}
-
+		
+		
 		if(count === 0){
 			$('#atcBTN').prop('disabled', true); //TO DISABLED
 			$('#atcBTN').fadeTo(0,.4);
@@ -129,23 +130,34 @@ Template.pseudoMenu.events({
    				nom = sel[i].className; 
 				totItems = sel[i].selectedIndex;
 				if(type === 'bagel'){
-					bag = Bagels.find({name: nom}).fetch();
-					price = bag.price;
-					price = sel[i].title;
+					bags = Bagels.find().fetch();
+					var j = 0;
+					while(bags[j].name != nom){
+						j++
+					}
+					price = bags[j].price;
 	   				Meteor.call('bagelOrder', nom, price, totItems, function(error,result) {
 	   					if (error)
 	   						return alert(error.reason);
 	   				});
 				}else if(type === 'snack'){
-					sn = Snacks.find({name: nom}).fetch(); 
-					price = sn.price; 
+					sn = Snacks.find().fetch(); 
+					var j = 0;
+					while(sn[j].name != nom){
+						j++
+					}
+					price = sn[j].price;					
 	   				Meteor.call('snackOrder', nom, price, totItems, function(error,result) {
 	   					if (error)
 	   						return alert(error.reason);
 	   				});
 				}else if(type === 'bev'){
-					bev = Beverages.find({name: nom}).fetch();
-					price = bev.price;
+					bev = Beverages.find().fetch();
+					var j = 0;
+					while(bev[j].name != nom){
+						j++
+					}					
+					price = bev[j].price;
 	   				Meteor.call('bevOrder', nom, price, totItems, function(error,result) {
 	   					if (error)
 	   						return alert(error.reason);
@@ -180,21 +192,21 @@ Template.pseudoMenu.events({
 						return alert(error.reason);
 			});
 		}
-		Router.go('/pseudoCheck');
+	//	Router.go('/pseudoCheck');
 	},
 
 });
   
 /* ------------------------ bagels shit ------------------------ */  
 
-Template.pbagelBox.helpers({
-  'bagelName': function(){
-    return this.name;
-  },
-  
-  'bagelPrice': function(){
-	  return this.price; 
-  }
+Template.pbagelBox.helpers({	
+	'bagelName': function(){
+		return this.name;
+	},
+
+	'bagelPrice': function(){
+		return this.price; 
+	}
 });
 
 
@@ -213,6 +225,7 @@ Template.pbevBox.helpers({
     return this.name;
   }
 });
+
 
 
 
