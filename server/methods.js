@@ -88,14 +88,15 @@ Meteor.methods({
       return 0;
   },
   
-  employeePlaceOrder: function(thing, shakes, price, inHouse, usr, apple) {
-	  orderNum++;
+  employeePlaceOrder: function(multiFlag, thing, price, inHouse, usr, apple) {
+	  if(!multiFlag){
+		  orderNum++;
+	  }
     var order = {
       userId: usr._id,
       inHouse: inHouse,
       uName: apple,
       item: thing,
-	  shakes: shakes,
       submitted: new Date(),
       orderNum: orderNum,
       user: usr,

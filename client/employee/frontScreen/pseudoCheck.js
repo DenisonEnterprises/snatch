@@ -30,7 +30,7 @@ Template.PseudoShake.helpers({
 
 Template.PseudoShake.helpers({
 	'price' : function(){
-		return this.price; 
+		return '$'+ this.price.toFixed(2); 
 	}
 });
 
@@ -130,6 +130,7 @@ Template.pseudoCheck.events({
 	
 	var shakeStr = false;
 	shakes = [];
+	items = [];
     
  	var apple=$($('#appleName')).val();
 	console.log('apple: ', apple);
@@ -139,25 +140,26 @@ Template.pseudoCheck.events({
 		temp = indvPrice; 
 		
 		if(orders[i].item == "Shake: "){
-			console.log('found a shake');
 			shakes.push(orders[i]);
 			shakeStr = true;
 		}else{
-			console.log('found a non-shake');
+			console.log('pushing: ' + orders[i].item);
 			items.push(orders[i].item);
 		}
 	}
-	/*var multiFlag = false; 
+	var multiFlag = false; 
 	if(shakeStr){
 		//seperate into seperate shake orders
 		str += "Shake: \n";
 		for(var k = 0; k < shakes.length; k++){
 			if(k == 0){
+				console.log('shake 1');
 				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), apple, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});
 			}else{
+				console.log('more than one shake');
 				multiFlag = true;
 				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, 0.00, false, Meteor.user(), apple, function(error,result) {
 					if (error)
@@ -170,26 +172,26 @@ Template.pseudoCheck.events({
 	for(var j = 0; j < items.length; j++){
 		if(shakeStr){
 			multiFlag = true;
-			Meteor.call('employeePlaceOrder', orders[i].item, shakes, 0.00, true, Meteor.user(), apple, function(error, result){
+			Meteor.call('employeePlaceOrder', multiFlag, items[j], 0.00, true, Meteor.user(), apple, function(error, result){
 				if (error)
 					return alert(error.reason);					
 			}); 	
 		}
 		else if(j == 0){
 			multiFlag = false; 
-			Meteor.call('employeePlaceOrder', orders[i].item, shakes, total, true, Meteor.user(), apple, function(error, result){
+			Meteor.call('employeePlaceOrder', multiFlag, items[j], total, true, Meteor.user(), apple, function(error, result){
 				if (error)
 					return alert(error.reason);					
 			}); 	
 		}else{
 			multiFlag = true; 
-			Meteor.call('employeePlaceOrder', orders[i].item, shakes, 0.00, true, Meteor.user(), apple, function(error, result){
+			Meteor.call('employeePlaceOrder', multiFlag, items[j], 0.00, true, Meteor.user(), apple, function(error, result){
 				if (error)
 					return alert(error.reason);					
 			}); 	
 		}
 	}		
-	Router.go('/thankYouCheckout'); */
+	Router.go('/pseudoMenu'); 
   },
   
   'click #deleteOrder': function() {

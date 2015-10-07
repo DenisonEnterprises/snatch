@@ -136,7 +136,8 @@ Template.signupForm.rendered = function() {
 
   $('#signup-cellphone').on('input', function(){
     var input=$(this).val();
-	pFlag = input.length == 10;
+	pFlag = true;
+	//pFlag = input.length == 10;
     if(pFlag){
 		$(this).removeClass("invalid").addClass("valid");
     }else{
@@ -168,8 +169,9 @@ Template.signupForm.rendered = function() {
 
 
 Template.signupForm.events({
-  "submit #signup-form": function(event, template) {
+  "click #signup-form": function(event, template) {
     event.preventDefault();
+	console.log('SUBMITTING');
       
 	if(uFlag && eFlag && pFlag && cFlag && pwFlag){
         
