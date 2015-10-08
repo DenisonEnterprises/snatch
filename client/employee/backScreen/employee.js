@@ -23,7 +23,8 @@ Template.orderInfo.helpers({
 
 Template.order3.helpers({
   'orderTime' : function(){
-    var time = this.submitted;
+    var time = this.start;
+	console.log('time: ', time);
 	
 	if(time.getHours() >= 12 && time.getHours() < 24){
 	    if(time.getHours() == 12){
