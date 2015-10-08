@@ -17,7 +17,6 @@ Template.login.events({
 		          $('#notifText').animate({ opacity: 0 }, 1000, 'linear')
 		    	}, 3000);
         	}else{
-        		
 		        if (Roles.userIsInRole(Meteor.user()._id, 'employee')){
 		             Router.go('backScreen'); 
 		        }else if(Roles.userIsInRole(Meteor.user()._id, 'student')){
@@ -26,7 +25,14 @@ Template.login.events({
  		             Router.go('employee');
   		        }else if(Roles.userIsInRole(Meteor.user()._id, 'manager')){
   		             Router.go('manager');
-				 }
+				}else{
+					document.getElementById('notifText').style.opacity='1.0'
+					document.getElementById('notifText').style.visibility='visible'
+					$('#notifText').html("Check Email to Verify Account");
+			    	setTimeout(function(){
+			          $('#notifText').animate({ opacity: 0 }, 1000, 'linear')
+			    	}, 3000);
+				}
         	}
       	});
     

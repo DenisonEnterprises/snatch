@@ -137,7 +137,7 @@ Template.signupForm.rendered = function() {
   $('#signup-cellphone').on('input', function(){
     var input=$(this).val();
 	pFlag = true;
-	//pFlag = input.length == 10;
+	pFlag = (input.length == 10) && /^([0-9]+)$/.test(input);
     if(pFlag){
 		$(this).removeClass("invalid").addClass("valid");
     }else{
