@@ -95,13 +95,15 @@ Template.readyInfo.events({
     var cellNumber = this.cellNumber;
     var inhaus = this.inHouse;
     var delID = this._id; 
+	var start = this.start; 
+	var finish = this.finish;
     var str = "";
     for (i=0; i < orders.length; i++) {
       str = str + orders[i].item;
 	 
       total = total + orders[i].price; 
     }
-    Meteor.call('pickUpOrder', str, delID, orNum, inhaus, total, cellNumber, function(error,result) {
+    Meteor.call('pickUpOrder', str, start, finish, delID, orNum, inhaus, total, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 

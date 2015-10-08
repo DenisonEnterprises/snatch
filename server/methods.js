@@ -20,50 +20,127 @@ Meteor.methods({
 	delLocalByUser: function() {
 		Local.remove({userId: this.userId});
 	},
+	
+    // Food Insert Methods
+	bagelOrder: function(bagel, price, totNum) {
+		var user = Meteor.user();
+		for(var i=0; i < totNum; i++){
+			var order = {
+				userId: user._id,
+				itemType: "bagel",
+				uName: user.username,
+				price: price,
+				item: bagel,
+			};
+			Local.insert(order);
+		}	
+		return 0;
+	},
 
+	bevOrder: function(bev, price, totNum) {
+		var user = Meteor.user();
+		for(var i=0; i < totNum; i++){
+			var order = {
+				userId: user._id,
+				itemType: "bev",
+				uName: user.username,
+				price: price,
+				item: bev,
+			};
+			Local.insert(order);
+		}	
+		return 0;
+	},
+  
+	snackOrder: function(snack, price, totNum) {
+		var user = Meteor.user();
+		for(var i=0; i < totNum; i++){
+			var order = {
+				userId: user._id,
+				itemType: "snack",
+				uName: user.username,
+				price: price,
+				item: snack,
+			};
+			Local.insert(order);
+		}	
+		return 0;
+	},
+
+	shakeOrder: function(flavors, mixins) {
+		var user = Meteor.user();
+		var str =  "Shake: ";
+		var order = {
+			type: "shake",
+			userId: user._id,
+			flavor: flavors,
+			mixin: mixins,
+			uName: user.username,
+			price: 3,
+			item: str,
+		}
+		Local.insert(order);
+		return 0;
+	},  
+
+
+	otherOrder: function(thing, price){
+		var user = Meteor.user(); 
+		var order = {
+			userId: user._id,
+			itemType: "other", 
+			uName: user.username, 
+			price: price,
+			item: thing,
+		};
+		Local.insert(order);
+	},
+ 
     placeShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr) {
 		if(!multiFlag){
 			orderNum++; 			
 		}
-      var order = {
-        userId: usr._id,
-        inHouse: inHouse,
-        uName: usr.username,
-		flavor: flavs,
-		mixin: mixins,
-        item: "Shake: ",
-        submitted: new Date(),
-        orderNum: orderNum,
-        phone: usr.profile.cellNumber,
-        carrier: usr.profile.cellCarrier,
-        price: price,
-      };
-      ActiveOrders.insert(order);
-      Local.remove({userId: usr._id});
+		var order = {
+			userId: usr._id,
+			inHouse: inHouse,
+			uName: usr.username,
+			start: new Date(), 
+			finish: 0,
+			flavor: flavs,
+			mixin: mixins,
+			item: "Shake: ",
+			orderNum: orderNum,
+			phone: usr.profile.cellNumber,
+			carrier: usr.profile.cellCarrier,
+			price: price,
+		};
+		ActiveOrders.insert(order);
+		Local.remove({userId: usr._id});
 
-      return 0;
+		return 0;
     },  
 
-  placeOrder: function(multiFlag, item, price, inHouse, usr) {
-	  if(!multiFlag){
-		  orderNum++;
-	  }
-    var order = {
-      userId: usr._id,
-      inHouse: inHouse,
-      uName: usr.username,
-      item: item,
-      submitted: new Date(),
-      orderNum: orderNum,
-      phone: usr.profile.cellNumber,
-      carrier: usr.profile.cellCarrier,
-      price: price,
-    };
-    ActiveOrders.insert(order);
-    Local.remove({userId: usr._id});
+	placeOrder: function(multiFlag, item, price, inHouse, usr) {
+		if(!multiFlag){
+			orderNum++;
+		}
+		var order = {
+			userId: usr._id,
+			inHouse: inHouse,
+			uName: usr.username,
+			item: item,
+			start: new Date(),
+			finish: 0,
+			orderNum: orderNum,
+			phone: usr.profile.cellNumber,
+			carrier: usr.profile.cellCarrier,
+			price: price,
+		};
+		ActiveOrders.insert(order);
+		Local.remove({userId: usr._id});
 
-    return 0;
-  },   
+		return 0;
+	},   
   
   empPlaceShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr, apple){
 	  if(!multiFlag){
@@ -88,243 +165,161 @@ Meteor.methods({
       return 0;
   },
   
-  employeePlaceOrder: function(multiFlag, thing, price, inHouse, usr, apple) {
-	  if(!multiFlag){
-		  orderNum++;
-	  }
-    var order = {
-      userId: usr._id,
-      inHouse: inHouse,
-      uName: apple,
-      item: thing,
-      submitted: new Date(),
-      orderNum: orderNum,
-      user: usr,
-      price: price,
-    };
-    ActiveOrders.insert(order);
-    Local.remove({userId: usr._id});
+	employeePlaceOrder: function(multiFlag, thing, price, inHouse, usr, apple) {
+		if(!multiFlag){
+			orderNum++;
+		}
+		var order = {
+			userId: usr._id,
+			inHouse: inHouse,
+			uName: apple,
+			item: thing,
+			start: new Date(),
+			finish: 0,
+			orderNum: orderNum,
+			user: usr,
+			price: price,
+		};
+		ActiveOrders.insert(order);
+		Local.remove({userId: usr._id});
 
-    return 0;
-  },   
+		return 0;
+	},   
   
   
   
  // Delete order from the checkout menu
-  
+
 	deleteOrder: function(delID) {
 		Local.remove({userId: delID});
 		return 0;
 	},   
-  
-  deleteCHKOrder: function(delItem){
-  		Local.remove({item: delItem});
-  		return 1;
-  },
+
+	deleteCHKOrder: function(delItem){
+		Local.remove({item: delItem});
+		return 1;
+	},
+
+	delOrder: function(orderId){
+		ActiveOrders.remove({_id: orderId});
+	},
+
+	deleteActiveOrder: function(delID){
+		Local.remove({_id: delID}); 
+		return 0;
+	}, 
   	
-  delOrder: function(orderId){
-	  ActiveOrders.remove({_id: orderId});
-  },
-	
-    deleteActiveOrder: function(delID){
-  		Local.remove({_id: delID}); 
-  		return 0;
-  	}, 
-  	
-  	uName: function(newName) {
+	uName: function(newName) {
 		Meteor.users.update({_id: this.userId}, {$set:{username: newName}} ); 
 	},
-  	
+
 	delLocalByUser: function() {
 		Local.remove({userId: this.userId});
 	},
 
- 	rm: function() {
+	rm: function() {
 		Local.remove({_id: this.userId});
- 	},
+	},
 
   
   // Employee has finished making an order
-  finishedOrder: function(thing, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, cellNum, cellCarrier){
-	  var order = {
-      userId: usrID,
-      inHouse: inHouse,
-      uName: usrName,
-     // fName: usr.firstName,
-      //lname: usr.lastName,
-      item: thing,
-	  flavor: flavs, 
-	  mixin: mixs,
-      submitted: new Date(),
-      orderNum: orNum,
-      phone: cellNum,
-      carrier: cellCarrier,
-      price: price, 
-    };
-    ReadyOrders.insert(order);
-    ActiveOrders.remove({_id: delID});
-	var remaining = ActiveOrders.find({orderNum: orNum}).count(); 
-    
-    var msg = ""; 
-    var cellPhone = order.phone.toString(); 
-    var cellCar = order.carrier.toString(); 
-    if(cellCar === "verizon"){
-      msg = cellPhone + "@vtext.com";
-    }
-    else if(cellCar === "att"){
-      msg = cellPhone + "@txt.att.net";
-    }
-    else if(cellCar === "alltel"){
-      msg = cellPhone + "@sms.alltelwireless.com";
-    }
-    else if(cellCar === "boostMobile"){
-      msg = cellPhone + "@myboostmobile.com";
-    }
-    else if(cellCar === "cell1"){
-      msg = cellPhone + "@mobile.celloneusa.com";
-    }
-    else if(cellCar === "sprint"){
-      msg = cellPhone + "@messaging.sprintpcs.com";
-    }
-    else if(cellCar === "tMobile"){
-      msg = cellPhone + "@tmomail.net";
-    }   
-    else if(cellCar === "virginMobile"){
-      msg = cellPhone + "@vmobl.com";
-    }    
-    else if(cellCar === "nTelos"){
-      msg = cellPhone + "@pcs.ntelos.com";
-    }
-     
-	console.log(msg);
-	console.log(thing);    
- /*   Email.send({
-      from: "bandersnatchApp@gmail.com",
-      to: "costa_n1@denison.edu",
+	finishedOrder: function(thing, start, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, cellNum, cellCarrier){
+		var order = {
+			userId: usrID,
+			inHouse: inHouse,
+			uName: usrName,
+			item: thing,
+			start: start,
+			finish: new Date(),
+			flavor: flavs, 
+			mixin: mixs,
+			orderNum: orNum,
+			phone: cellNum,
+			carrier: cellCarrier,
+			price: price, 
+		};
+		ReadyOrders.insert(order);
+		ActiveOrders.remove({_id: delID});
+		var remaining = ActiveOrders.find({orderNum: orNum}).count(); 
+		var msg = ""; 
+		var cellPhone = order.phone.toString(); 
+		var cellCar = order.carrier.toString(); 
+		if(cellCar === "verizon"){
+			msg = cellPhone + "@vtext.com";
+		}
+		else if(cellCar === "att"){
+			msg = cellPhone + "@txt.att.net";
+		}
+		else if(cellCar === "alltel"){
+			msg = cellPhone + "@sms.alltelwireless.com";
+		}
+		else if(cellCar === "boostMobile"){
+			msg = cellPhone + "@myboostmobile.com";
+		}
+		else if(cellCar === "cell1"){
+			msg = cellPhone + "@mobile.celloneusa.com";
+		}
+		else if(cellCar === "sprint"){
+			msg = cellPhone + "@messaging.sprintpcs.com";
+		}
+		else if(cellCar === "tMobile"){
+			msg = cellPhone + "@tmomail.net";
+		}   
+		else if(cellCar === "virginMobile"){
+			msg = cellPhone + "@vmobl.com";
+		}    
+		else if(cellCar === "nTelos"){
+			msg = cellPhone + "@pcs.ntelos.com";
+		}
+   
+		/*   Email.send({
+		from: "bandersnatchApp@gmail.com",
+		to: "costa_n1@denison.edu",
 
-      text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
-    });*/
-    return 0;
-  },
-
-  
-  employeeFinishedOrder: function(thing, delID, price, inHouse, apple, orNum, usr, cellNum, cellCarrier, shakes){
-    var order = {
-      userId: usr._id,
-      inHouse: inHouse,
-      uName: apple,
-      item: thing,
-      submitted: new Date(),
-      orderNum: orNum,
-      phone: cellNum,
-      carrier: cellCarrier,
-      user: usr,
-      price: price, 
-		shakes: shakes,
-    };
-    ReadyOrders.insert(order);
-    ActiveOrders.remove({_id: delID});
-	return 0;
-	},
-  
-  pickUpOrder: function(thing, delID, orNum, inHouse, price, userID, cellNum){
-    var order = {
-      userId: userID,
-      inHouse: inHouse,
-	
-    //  uName: usr.username,
-    //  fName: usr.firstName,
-    //  lname: usr.lastName,
-      item: thing,
-      submitted: new Date(),
-      orderNum: orNum,
-      cellNumber: cellNum,
-    //  user: usr,
-      price: price,
-    };
-    FinishedOrders.insert(order);
-    ReadyOrders.remove({_id: delID});  
-    
-    return 0;
-  },  
-  
-    // Food Insert Methods
-  	bagelOrder: function(bagel, price, totNum) {
-		var user = Meteor.user();
-		for(var i=0; i < totNum; i++){
-			var order = {
-			   userId: user._id,
-	     	   itemType: "bagel",
-	     	   uName: user.username,
-	     	   price: price,
-			   item: bagel,
-			   submitted: new Date()
-			};
-			Local.insert(order);
-		}	
+		text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
+		});*/
 		return 0;
 	},
-  
-  bevOrder: function(bev, price, totNum) {
-    var user = Meteor.user();
-	for(var i=0; i < totNum; i++){
-		var order = {
-		   userId: user._id,
-     	   itemType: "bev",
-     	   uName: user.username,
-     	   price: price,
-		   item: bev,
-		   submitted: new Date()
-		};
-		Local.insert(order);
-	}	
-	return 0;
-  },
-  
-    snackOrder: function(snack, price, totNum) {
-    var user = Meteor.user();
-	for(var i=0; i < totNum; i++){
-		var order = {
-		   userId: user._id,
-     	   itemType: "snack",
-     	   uName: user.username,
-     	   price: price,
-		   item: snack,
-		   submitted: new Date()
-		};
-		Local.insert(order);
-	}	
-	return 0;
-  },
 
-  otherOrder: function(thing, price){
-	  var user = Meteor.user(); 
-	  var order = {
-		  userId: user._id,
-		  itemType: "other", 
-		  uName: user.username, 
-		  price: price,
-		  item: thing,
-		  submitted: new Date(),
-	  };
-	  Local.insert(order);
-  },
- 
-  shakeOrder: function(flavors, mixins) {
-	var user = Meteor.user();
-	var str =  "Shake: ";
-	var order = {
-		type: "shake",
-		userId: user._id,
-		flavor: flavors,
-		mixin: mixins,
-		uName: user.username,
-		price: 3,
-		item: str,
-		submitted: new Date(),        
-	}
-	Local.insert(order);
-   },
+  // I don't think we actually call this method -- CVF
+/*	employeeFinishedOrder: function(thing, start, delID, price, inHouse, apple, orNum, usr, cellNum, cellCarrier, shakes){
+		var order = {
+			userId: usr._id,
+			inHouse: inHouse,
+			uName: apple,
+			item: thing,
+			start: start,
+			finish: new Date(),
+			orderNum: orNum,
+			phone: cellNum,
+			carrier: cellCarrier,
+			user: usr,
+			price: price, 
+			shakes: shakes,
+		};
+		ReadyOrders.insert(order);
+		ActiveOrders.remove({_id: delID});
+		return 0;
+	},*/
+  
+	pickUpOrder: function(thing, start, finish,delID, orNum, inHouse, price, userID, cellNum){
+		var order = {
+			userId: userID,
+			inHouse: inHouse,
+			item: thing,
+			start: start, 
+			finish: finish,
+			orderNum: orNum,
+			cellNumber: cellNum,
+			price: price,
+		};
+		FinishedOrders.insert(order);
+		ReadyOrders.remove({_id: delID});  
+
+		return 0;
+	},  
+  
+   
    
    appOff: function() {
 	   
@@ -693,12 +688,14 @@ Meteor.methods({
    
    empDiscount: function(){
 		var orders = Local.find({userId: Meteor.user()._id}).fetch();
+		var priceS =''; 
 		for(var i = 0; i < orders.length; i++){
-			var priceS = orders[i].price; 
-			priceF = parseFloat(priceS.slice(1));
-			priceF = (0.75 * priceF).toFixed(2); 
-			priceS = "$" + priceF.toString();
-			Local.update({item: orders[i].item}, {$set: {price: priceS}});
+			var priceF = orders[i].price; 
+			console.log('priceF: ', priceF);
+			priceF = (0.75 * priceF);
+			priceF = parseFloat(priceF.toFixed(2));
+			console.log('new PriceF: ', priceF);
+			Local.update({item: orders[i].item}, {$set: {price: priceF}}); 
 		} 
 		return 0;
    },
@@ -706,11 +703,12 @@ Meteor.methods({
    stripDisc: function(){
 	var orders = Local.find({userId: Meteor.user()._id}).fetch();
 		for(var i = 0; i < orders.length; i++){
-			var priceS = orders[i].price; 
-			priceF = parseFloat(priceS.slice(1));
-			priceF = ((4/3) * priceF).toFixed(2); 
-			priceS = "$" + priceF.toString();
-			Local.update({item: orders[i].item}, {$set: {price: priceS}});
+			var priceF = orders[i].price;
+			console.log('priceS: ', priceF);
+			priceF = (4/3)*priceF;
+			priceF = parseFloat(priceF.toFixed(2));
+			console.log('new price: ', priceF);
+			Local.update({item: orders[i].item}, {$set: {price: priceF}});
 		} 
 		return 0;   	
    },

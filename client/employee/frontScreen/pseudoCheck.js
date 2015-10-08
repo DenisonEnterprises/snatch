@@ -75,9 +75,7 @@ Template.pseudoCheck.helpers({
         return Local.find({userId: user._id});
       }
     },
-	
-	
-	
+
 	'totalPrice': function(){
 	    var orders = Local.find({userId: Meteor.user()._id}).fetch();
 		var total = 0.0; 
@@ -85,7 +83,7 @@ Template.pseudoCheck.helpers({
 		for (i=0; i < orders.length; i++) {
 			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
 				indvPrice = orders[i].price;
-				total = total + parseFloat(indvPrice.slice(1));		
+				total = total + parseFloat(indvPrice);		
 			}
 		}
 		total = total.toFixed(2);
@@ -95,8 +93,8 @@ Template.pseudoCheck.helpers({
 
 Template.pseudoCheck.events({
     'click': function(evt, instance){ // get all clicks
-		
 			if(empDisc.checked && justClickedOn){
+				console.log('empDiscount applied');
 				var countClick = 1;
 				justClickedOn = false;
 				justClickedOff = true;
@@ -133,7 +131,6 @@ Template.pseudoCheck.events({
 	items = [];
     
  	var apple=$($('#appleName')).val();
-	console.log('apple: ', apple);
 	for (i=0; i < orders.length; i++) {
 		var indvPrice = "";
 		indvPrice = (orders[i].price);
@@ -143,7 +140,6 @@ Template.pseudoCheck.events({
 			shakes.push(orders[i]);
 			shakeStr = true;
 		}else{
-			console.log('pushing: ' + orders[i].item);
 			items.push(orders[i].item);
 		}
 	}
@@ -153,13 +149,11 @@ Template.pseudoCheck.events({
 		str += "Shake: \n";
 		for(var k = 0; k < shakes.length; k++){
 			if(k == 0){
-				console.log('shake 1');
 				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), apple, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});
 			}else{
-				console.log('more than one shake');
 				multiFlag = true;
 				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, 0.00, false, Meteor.user(), apple, function(error,result) {
 					if (error)
