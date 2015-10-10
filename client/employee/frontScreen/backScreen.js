@@ -98,7 +98,7 @@ Template.readyInfo.events({
     var delID = this._id; 
 	var start = this.start; 
 	var finish = this.finish;
-    var str = "";
+    var str = this.item;
     var total = this.price; 
     Meteor.call('pickUpOrder', str, start, finish, delID, orNum, inhaus, total, usrID, cellNumber, function(error,result) {
 				if (error)

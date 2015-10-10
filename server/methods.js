@@ -685,12 +685,23 @@ Meteor.methods({
    },
  
    pushFinished: function(){
-	   var finished = FinishedOrders.find().fetch(); 
-	   for(var order in finished){
+ 	   var finished = FinishedOrders.find().fetch(); 
+ 	   for(var i = 0; i < finished.length; i++){
+ 		   FO = finished[i]; 
+		   var order = {
+			   usrID : FO.userId,
+			   inHouse : FO.inHouse, 
+			   item : FO.item,
+			   start : FO.start, 
+			   finish : FO.finish, 
+			   orderNum : FO.orderNum, 
+			   cellNumber : FO.cellNumber, 
+			   price : FO.price,
+		   };
 		   Data.insert(order);
-	   }
-	   FinishedOrders.remove({});
-	   ReadyOrders.remove({});
+ 	   }
+	//   FinishedOrders.remove({});
+	//   ReadyOrders.remove({});
    },
    
    empDiscount: function(){

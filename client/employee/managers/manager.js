@@ -72,9 +72,10 @@ Template.manager.events({
 		Meteor.call('sendEmail', emails, function(error,result) {
 				if (error)
 					return alert(error.reason); 
-			});
-		//Meteor.call('pushFinished');
-		*/
+			}); */
+		Meteor.call('pushFinished');
+
+		
 		$('#notif2').show();
    	  	setTimeout(function(){
           $("#notif2").fadeOut(1000);
