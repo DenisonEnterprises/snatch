@@ -700,8 +700,8 @@ Meteor.methods({
 		   };
 		   Data.insert(order);
  	   }
-	//   FinishedOrders.remove({});
-	//   ReadyOrders.remove({});
+	   FinishedOrders.remove({});
+	   ReadyOrders.remove({});
    },
    
    empDiscount: function(){
