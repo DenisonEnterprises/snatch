@@ -110,9 +110,9 @@ Template.orderInfo.events({
 		var delID = this._id; 
 		var start = this.start;
 	    Meteor.call('finishedOrder', order, start, flavs, mixins, delID, total, inhaus, orNum, userID, usrName, cellNumber, cellCarrier, function(error,result) {
-		if (error)
-			return alert(error.reason);
-		}); 
+			if (error)
+				return alert(error.reason);
+			}); 
 
 	},
   

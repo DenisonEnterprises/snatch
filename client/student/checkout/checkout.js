@@ -122,7 +122,7 @@ Template.checkout.events({
 					});
 				}else{
 					multiFlag = true;
-					Meteor.call('placeShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, 0.00, false, Meteor.user(), function(error,result) {
+					Meteor.call('placeShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), function(error,result) {
 						if (error)
 							return alert(error.reason);
 					});
@@ -131,9 +131,9 @@ Template.checkout.events({
 		}
 		total = total.toFixed(2);
 		for(var j = 0; j < items.length; j++){
-			if(shakeStr){
+			if(shakeStr || j > 0){
 				multiFlag = true;
-				Meteor.call('placeOrder', multiFlag,items[j], 0.00, false, Meteor.user(), function(error,result) {
+				Meteor.call('placeOrder', multiFlag,items[j], total, false, Meteor.user(), function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});  
@@ -141,12 +141,6 @@ Template.checkout.events({
 			else if(j == 0){
 				multiFlag = false; 
 				Meteor.call('placeOrder', multiFlag, items[j], total, false, Meteor.user(), function(error,result) {
-					if (error)
-						return alert(error.reason);
-				});  
-			}else{
-				multiFlag = true; 
-				Meteor.call('placeOrder',multiFlag, items[j], 0.00, false, Meteor.user(), function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});  

@@ -224,6 +224,15 @@ Meteor.methods({
   
   // Employee has finished making an order
 	finishedOrder: function(thing, start, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, cellNum, cellCarrier){
+		ActiveOrders.remove({_id: delID});
+		var RO = ReadyOrders.find({orderNum: orNum, userId: usrID}).count();
+		var FO = FinishedOrders.find({orderNum: orNum, userId: usrID}).count();
+		var firstOrder = RO + FO; 
+		if(firstOrder === 0){
+			orderPrice = price; 
+		}else{
+			orderPrice = 0.00; 
+		}
 		var order = {
 			userId: usrID,
 			inHouse: inHouse,
@@ -236,10 +245,9 @@ Meteor.methods({
 			orderNum: orNum,
 			phone: cellNum,
 			carrier: cellCarrier,
-			price: price, 
+			price: orderPrice, 
 		};
 		ReadyOrders.insert(order);
-		ActiveOrders.remove({_id: delID});
 		var remaining = ActiveOrders.find({orderNum: orNum}).count(); 
 		var msg = ""; 
 		var cellPhone = order.phone.toString(); 
@@ -271,12 +279,11 @@ Meteor.methods({
 		else if(cellCar === "nTelos"){
 			msg = cellPhone + "@pcs.ntelos.com";
 		}
-   
-		/*   Email.send({
-		from: "bandersnatchApp@gmail.com",
-		to: "costa_n1@denison.edu",
+	/*	Email.send({
+			from: "bandersnatchApp@gmail.com",
+			to: "vanfos_c1@denison.edu",
 
-		text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
+			text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
 		});*/
 		return 0;
 	},
@@ -302,9 +309,9 @@ Meteor.methods({
 		return 0;
 	},*/
   
-	pickUpOrder: function(thing, start, finish,delID, orNum, inHouse, price, userID, cellNum){
+	pickUpOrder: function(thing, start, finish,delID, orNum, inHouse, price, usrID, cellNum){
 		var order = {
-			userId: userID,
+			userId: usrID,
 			inHouse: inHouse,
 			item: thing,
 			start: start, 

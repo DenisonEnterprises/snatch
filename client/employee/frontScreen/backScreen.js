@@ -23,9 +23,9 @@ Template.ready1.helpers({
 
 Template.orderPrice.helpers({
 	'price' : function(){
-
+		var orNum = this.orderNum; 
 		if(this.inHouse || this.price == 0.00){
-			return "PAID";
+			return "Paid with order " + orNum;
 		}else{
 			var price = parseFloat((this.price)); 
 			return "$" + price.toFixed(2); 
@@ -91,6 +91,7 @@ Template.readyInfo.events({
   'click #pickUp': function() {
     var total = 0.0; 
     var orNum = this.orderNum;
+	var usrID = this.userId; 
     var orders = ReadyOrders.find({orderNum: orNum}).fetch();
     var cellNumber = this.cellNumber;
     var inhaus = this.inHouse;
@@ -98,12 +99,8 @@ Template.readyInfo.events({
 	var start = this.start; 
 	var finish = this.finish;
     var str = "";
-    for (i=0; i < orders.length; i++) {
-      str = str + orders[i].item;
-	 
-      total = total + orders[i].price; 
-    }
-    Meteor.call('pickUpOrder', str, start, finish, delID, orNum, inhaus, total, cellNumber, function(error,result) {
+    var total = this.price; 
+    Meteor.call('pickUpOrder', str, start, finish, delID, orNum, inhaus, total, usrID, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 

@@ -94,7 +94,6 @@ Template.pseudoCheck.helpers({
 Template.pseudoCheck.events({
     'click': function(evt, instance){ // get all clicks
 			if(empDisc.checked && justClickedOn){
-				console.log('empDiscount applied');
 				var countClick = 1;
 				justClickedOn = false;
 				justClickedOff = true;
@@ -155,7 +154,7 @@ Template.pseudoCheck.events({
 				});
 			}else{
 				multiFlag = true;
-				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, 0.00, false, Meteor.user(), apple, function(error,result) {
+				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), apple, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});
@@ -164,9 +163,9 @@ Template.pseudoCheck.events({
 	}
 	total = total.toFixed(2);
 	for(var j = 0; j < items.length; j++){
-		if(shakeStr){
+		if(shakeStr || j > 0){
 			multiFlag = true;
-			Meteor.call('employeePlaceOrder', multiFlag, items[j], 0.00, true, Meteor.user(), apple, function(error, result){
+			Meteor.call('employeePlaceOrder', multiFlag, items[j], total, true, Meteor.user(), apple, function(error, result){
 				if (error)
 					return alert(error.reason);					
 			}); 	
@@ -174,12 +173,6 @@ Template.pseudoCheck.events({
 		else if(j == 0){
 			multiFlag = false; 
 			Meteor.call('employeePlaceOrder', multiFlag, items[j], total, true, Meteor.user(), apple, function(error, result){
-				if (error)
-					return alert(error.reason);					
-			}); 	
-		}else{
-			multiFlag = true; 
-			Meteor.call('employeePlaceOrder', multiFlag, items[j], 0.00, true, Meteor.user(), apple, function(error, result){
 				if (error)
 					return alert(error.reason);					
 			}); 	
