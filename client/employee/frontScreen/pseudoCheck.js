@@ -148,13 +148,13 @@ Template.pseudoCheck.events({
 		str += "Shake: \n";
 		for(var k = 0; k < shakes.length; k++){
 			if(k == 0){
-				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), apple, function(error,result) {
+				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, true, Meteor.user(), apple, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});
 			}else{
 				multiFlag = true;
-				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), apple, function(error,result) {
+				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, total, true, Meteor.user(), apple, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});

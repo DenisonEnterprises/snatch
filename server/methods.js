@@ -149,14 +149,13 @@ Meteor.methods({
       var order = {
         userId: usr._id,
         inHouse: inHouse,
-        uName: usr.username,
+        uName: apple,
 		flavor: flavs,
 		mixin: mixins,
         item: "Shake: ",
-        submitted: new Date(),
+        start: new Date(),
+		finish: 0,
         orderNum: orderNum,
-        phone: usr.profile.cellNumber,
-        carrier: usr.profile.cellCarrier,
         price: price,
       };
       ActiveOrders.insert(order);
@@ -248,43 +247,46 @@ Meteor.methods({
 			price: orderPrice, 
 		};
 		ReadyOrders.insert(order);
-		var remaining = ActiveOrders.find({orderNum: orNum}).count(); 
-		var msg = ""; 
-		var cellPhone = order.phone.toString(); 
-		var cellCar = order.carrier.toString(); 
-		if(cellCar === "verizon"){
-			msg = cellPhone + "@vtext.com";
+		if(!inHouse){
+			var remaining = ActiveOrders.find({orderNum: orNum}).count(); 
+			var msg = ""; 
+			var cellPhone = '1'+order.phone.toString(); 
+			var cellCar = order.carrier.toString(); 
+			if(cellCar === "verizon"){
+				msg = cellPhone + "@vtext.com";
+			}
+			else if(cellCar === "att"){
+				msg = cellPhone + "@txt.att.net";
+			}
+			else if(cellCar === "alltel"){
+				msg = cellPhone + "@sms.alltelwireless.com";
+			}
+			else if(cellCar === "boostMobile"){
+				msg = cellPhone + "@myboostmobile.com";
+			}
+			else if(cellCar === "cell1"){
+				msg = cellPhone + "@mobile.celloneusa.com";
+			}
+			else if(cellCar === "sprint"){
+				msg = cellPhone + "@messaging.sprintpcs.com";
+			}
+			else if(cellCar === "tMobile"){
+				msg = cellPhone + "@tmomail.net";
+			}   
+			else if(cellCar === "virginMobile"){
+				msg = cellPhone + "@vmobl.com";
+			}    
+			else if(cellCar === "nTelos"){
+				msg = cellPhone + "@pcs.ntelos.com";
+			}
+		
+			console.log(msg);
+			/*Email.send({
+				to: msg,
+				from: "bandersnatchApp@gmail.com",
+				text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
+			});*/
 		}
-		else if(cellCar === "att"){
-			msg = cellPhone + "@txt.att.net";
-		}
-		else if(cellCar === "alltel"){
-			msg = cellPhone + "@sms.alltelwireless.com";
-		}
-		else if(cellCar === "boostMobile"){
-			msg = cellPhone + "@myboostmobile.com";
-		}
-		else if(cellCar === "cell1"){
-			msg = cellPhone + "@mobile.celloneusa.com";
-		}
-		else if(cellCar === "sprint"){
-			msg = cellPhone + "@messaging.sprintpcs.com";
-		}
-		else if(cellCar === "tMobile"){
-			msg = cellPhone + "@tmomail.net";
-		}   
-		else if(cellCar === "virginMobile"){
-			msg = cellPhone + "@vmobl.com";
-		}    
-		else if(cellCar === "nTelos"){
-			msg = cellPhone + "@pcs.ntelos.com";
-		}
-	/*	Email.send({
-			from: "bandersnatchApp@gmail.com",
-			to: "vanfos_c1@denison.edu",
-
-			text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
-		});*/
 		return 0;
 	},
 
@@ -353,7 +355,6 @@ Meteor.methods({
 	   var totPrice = 0.0;
 	   var late = ""; 
 	   for(var i = 0; i < totOrders.length; i++){
-		  // console.log(price);
 		   price += parseFloat(totOrders[i].price);
 	   } 
 	   text += "total revenue of the night: $" + price.toFixed(2) + "\n";
@@ -672,7 +673,6 @@ Meteor.methods({
 	   for(var i = 0; i < emails.length; i++){
 		   recipients += emails[i];
 	   }
-	   console.log('recipients: ', recipients);
   	   text += "Total profit of the night: $" + totPrice.toFixed(2);
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
@@ -709,10 +709,8 @@ Meteor.methods({
 		var priceS =''; 
 		for(var i = 0; i < orders.length; i++){
 			var priceF = orders[i].price; 
-			console.log('priceF: ', priceF);
 			priceF = (0.75 * priceF);
 			priceF = parseFloat(priceF.toFixed(2));
-			console.log('new PriceF: ', priceF);
 			Local.update({item: orders[i].item}, {$set: {price: priceF}}); 
 		} 
 		return 0;
@@ -722,10 +720,8 @@ Meteor.methods({
 	var orders = Local.find({userId: Meteor.user()._id}).fetch();
 		for(var i = 0; i < orders.length; i++){
 			var priceF = orders[i].price;
-			console.log('priceS: ', priceF);
 			priceF = (4/3)*priceF;
 			priceF = parseFloat(priceF.toFixed(2));
-			console.log('new price: ', priceF);
 			Local.update({item: orders[i].item}, {$set: {price: priceF}});
 		} 
 		return 0;   	

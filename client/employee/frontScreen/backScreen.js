@@ -24,7 +24,10 @@ Template.ready1.helpers({
 Template.orderPrice.helpers({
 	'price' : function(){
 		var orNum = this.orderNum; 
-		if(this.inHouse || this.price == 0.00){
+		if(this.inHouse){
+			return "Paid in house";
+		}
+		if(this.price == 0.00){
 			return "Paid with order " + orNum;
 		}else{
 			var price = parseFloat((this.price)); 
@@ -38,21 +41,24 @@ Template.orderPrice.helpers({
 
 Template.cellNum.helpers({
   'cellNum' : function(){
-  	var temp;
-    var str = this.phone;
-    temp = '(';
-    for(var i = 0; i < 3; i++){
-    	temp = temp + str[i];	
-    }
-    temp = temp + ')'; 
-    for(i = 3; i < 6; i++){
-    	temp += str[i]; 
-    }
-    temp += '-';
-    for(i = 6; i < 10; i++){
-    	temp += str[i];
-    }
-    return temp;
+	  if(!this.inHouse){
+	  	var temp;
+	    var str = this.phone;
+	    temp = '(';
+	    for(var i = 0; i < 3; i++){
+	    	temp = temp + str[i];	
+	    }
+	    temp = temp + ')'; 
+	    for(i = 3; i < 6; i++){
+	    	temp += str[i]; 
+	    }
+	    temp += '-';
+	    for(i = 6; i < 10; i++){
+	    	temp += str[i];
+	    }
+	    return temp;
+	  }
+	  return ' ';
   }
 });
 

@@ -23,9 +23,7 @@ Template.orderInfo.helpers({
 
 Template.order3.helpers({
   'orderTime' : function(){
-    var time = this.start;
-	console.log('time: ', time);
-	
+    var time = this.start;	
 	if(time.getHours() >= 12 && time.getHours() < 24){
 	    if(time.getHours() == 12){
 			return '12' + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
@@ -113,7 +111,6 @@ Template.orderInfo.events({
 			if (error)
 				return alert(error.reason);
 			}); 
-
 	},
   
   'click #deleBTN': function(){
