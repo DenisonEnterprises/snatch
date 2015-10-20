@@ -6,7 +6,9 @@ Template.signupForm.rendered = function() {
   $('#signup-password').addClass("invalid");	
   $('#signup-username').addClass("invalid");
   $('#signup-email').addClass("invalid");
-  $('#signup-cellphone').addClass("invalid"); 
+  $('#signup-cell1').addClass("invalid"); 
+  $('#signup-cell2').addClass('invalid'); 
+  $('#signup-cell3').addClass('invalid');
   $('#signup-carrier').addClass("invalid");
     
   uFlag = false;
@@ -133,8 +135,50 @@ Template.signupForm.rendered = function() {
     }
   });
  
+ 	// Area code -- need to have 3 digits else areaFlag = false
+	$('#signup-cell1').on('input', function(){
+		var input = $(this).val(); 
+		pFlag = false; 
+		areaFlag = true; 
+		areaFlag = (input.length == 3) && /^([0-9]+)/.test(input);
+		if(areaFlag){
+			$(this).removeClass('invalid').addClass('valid');
+		}else{
+			pFlag = false;
+			$(this).removeClass("valid").addClass("invalid");	
+		}
+	});
 
-  $('#signup-cellphone').on('input', function(){
+	$('#signup-cell2').on('input', function(){		
+		var input = $(this).val(); 
+		if(areaFlag){							// only want to evaluate if area code has been entered
+			middleDigitFlag = true; 
+			middleDigitFlag = (input.length == 3) && /^([0-9]+)/.test(input);
+			if(middleDigitFlag){
+				$(this).removeClass('invalid').addClass('valid');
+			}else{
+				pFlag = false; 
+				$(this).removeClass("valid").addClass("invalid");	
+			}
+		}
+	});	
+	
+	$('#signup-cell3').on('input', function(){
+		var input = $(this).val(); 
+		if(middleDigitFlag){
+			lastFlag = true; 
+			lastFlag = (input.length == 4) && /^([0-9]+)/.test(input);
+			if(lastFlag){
+				pFlag = true;
+				$(this).removeClass('invalid').addClass('valid');
+			}else{
+				pFlag = false; 
+				$(this).removeClass("valid").addClass("invalid");	
+			}
+		}
+	});	
+
+ /* $('#signup-cellphone').on('input', function(){
     var input=$(this).val();
 	pFlag = true;
 	pFlag = (input.length == 10) && /^([0-9]+)$/.test(input);
@@ -143,7 +187,7 @@ Template.signupForm.rendered = function() {
     }else{
 		$(this).removeClass("valid").addClass("invalid");
      } 
-  });
+  });*/
   
   
   
@@ -171,8 +215,6 @@ Template.signupForm.rendered = function() {
 Template.signupForm.events({
   "click #signup-form": function(event, template) {
     event.preventDefault();
-	console.log('SUBMITTING');
-      
 	if(uFlag && eFlag && pFlag && cFlag && pwFlag){
         
         Accounts.createUser({
@@ -181,7 +223,7 @@ Template.signupForm.events({
         email: template.find("#signup-email").value,
         
         profile: {
-          cellNumber: template.find("#signup-cellphone").value,
+          cellNumber: template.find("#signup-cell1").value +template.find("#signup-cell2").value+template.find("#signup-cell3").value ,
           cellCarrier: template.find("#signup-carrier").value,
 	  	  du: template.find("#signup-email").value,
           
@@ -210,6 +252,7 @@ Template.signupForm.events({
 	    	}, 3000);
 		 }
 		 if(!pFlag){
+			 console.log('pFlag is false.. about to run the handler');
   			$('#notif').html("Please Provide a Valid Phone Number");
 			document.getElementById('notif').style.opacity='1.0'
 			document.getElementById('notif').style.visibility='visible'
