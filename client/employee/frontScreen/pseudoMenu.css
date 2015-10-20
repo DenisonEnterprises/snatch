@@ -8,13 +8,26 @@
 	height: 30px;
 }
 
+.pseudoMenuContainer #flavorList, #mixinList{
+	color: black;
+	width:150px;
+}
+
+.pseudoMenuContainer #back{
+    display: inline-block;
+	vertical-align:center;
+}
+.pseudoMenuContainer .flavList2, .mixList2{
+	display:none;
+}
+
+
 .pseudoMenuContainer ul {
   color: white;
   list-style-type: none;
   display: table;
   margin: 0 auto;
   border: 0px;
-  text-align: left; 
 }
 
 .pseudoMenuContainer input{
@@ -79,14 +92,14 @@
 	
 }
 
+.pseudoMenuContainer ul{
+	text-align: top;
+}
 
 .pseudoMenuContainer th{
 	width: 250px;
 	font-size: 15px;
-	
     border: solid #005f5f 5px;
-	
-	
 }
 
 .pseudoMenuContainer .flavMix{
