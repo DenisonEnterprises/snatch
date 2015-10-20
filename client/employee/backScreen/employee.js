@@ -107,7 +107,9 @@ Template.orderInfo.events({
 		var total = this.price; 
 		var delID = this._id; 
 		var start = this.start;
-	    Meteor.call('finishedOrder', order, start, flavs, mixins, delID, total, inhaus, orNum, userID, usrName, cellNumber, cellCarrier, function(error,result) {
+		var email = this.email;
+		console.log(email);
+	    Meteor.call('finishedOrder', order, start, flavs, mixins, delID, total, inhaus, orNum, userID, usrName, email ,cellNumber, cellCarrier, function(error,result) {
 			if (error)
 				return alert(error.reason);
 			}); 

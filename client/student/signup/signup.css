@@ -10,8 +10,14 @@
    padding-top: 50px;
 }
 
-.signupContainer #signup-cellphone{
+.signupContainer #signup-cellphone1 #signup-cellphone2{
+	width: 100px;
 	color:black;
+}
+
+.signupContainer #signup-cellphone3{
+	width: 200px;
+	color: black;
 }
 
 .signupContainer #signup-carrier{

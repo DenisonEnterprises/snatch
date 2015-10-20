@@ -102,6 +102,7 @@ Meteor.methods({
 		}
 		var order = {
 			userId: usr._id,
+			email: usr.profile.du,
 			inHouse: inHouse,
 			uName: usr.username,
 			start: new Date(), 
@@ -126,6 +127,7 @@ Meteor.methods({
 		}
 		var order = {
 			userId: usr._id,
+			email: usr.profile.du,
 			inHouse: inHouse,
 			uName: usr.username,
 			item: item,
@@ -222,7 +224,7 @@ Meteor.methods({
 
   
   // Employee has finished making an order
-	finishedOrder: function(thing, start, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, cellNum, cellCarrier){
+	finishedOrder: function(thing, start, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, usrEmail, cellNum, cellCarrier){
 		ActiveOrders.remove({_id: delID});
 		var RO = ReadyOrders.find({orderNum: orNum, userId: usrID}).count();
 		var FO = FinishedOrders.find({orderNum: orNum, userId: usrID}).count();
@@ -234,6 +236,7 @@ Meteor.methods({
 		}
 		var order = {
 			userId: usrID,
+			email: usrEmail,
 			inHouse: inHouse,
 			uName: usrName,
 			item: thing,
@@ -280,12 +283,11 @@ Meteor.methods({
 				msg = cellPhone + "@pcs.ntelos.com";
 			}
 		
-			console.log(msg);
-			/*Email.send({
-				to: msg,
+			Email.send({
+				to: usrEmail,
 				from: "bandersnatchApp@gmail.com",
 				text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
-			});*/
+			});
 		}
 		return 0;
 	},
