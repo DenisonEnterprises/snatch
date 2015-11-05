@@ -16,7 +16,7 @@
  
   
     <h1>Checkout</h1>
-       <img src="img/checkTop.png" alt="CheckTop">
+       <img src="img/checkTop2.png" alt="CheckTop">
 
 
       {{#each order}}
@@ -39,14 +39,14 @@
          <br>
        </div>
  	  <div class="totalPrice">
-		  	<img src="img/checkBottom.png" alt="CheckBottom">
+		  	<img src="img/checkBottom2.png" alt="CheckBottom">
 		  <div class="price">
 			  <div class="total">
 				  {{totalPrice}}
 				</div>
 			<br>
 			<div class="empDisc1">
-				<input type="checkbox" class="empDisc" id="empDisc"> Employee Discount	
+				<input type="checkbox" class="empDisc" id="empDisc"> Discount	
 			</div>
     	  </div>
        	
@@ -56,20 +56,19 @@
 		<label>Apples to Apples Card</label><br>
 		<input type="text" id="appleName"/>
 	</form>
-	 <div class="miniText">
-	 	<button> There are {{> orNum}} Orders in front of yours. </button>	<br>	
-	</div>
-	 
-
+	
+	<br>
+	
     <button class="backBTN" id="menu">Menu</button>  
     <button class="placeOrderBTN" id="placeOrder" disabled="disabled">Place Order</button>
-       
-       
-
        
      </div>
   </div>
 
+  
+  <div id="bground">
+  		<img src="/img/lg/loginLG.jpg" alt="">
+  </div>
   
   <!--  {{else}}
     
