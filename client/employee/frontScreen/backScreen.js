@@ -24,15 +24,23 @@ Template.ready1.helpers({
 Template.orderPrice.helpers({
 	'price' : function(){
 		var orNum = this.orderNum; 
+		
+		if(this.uName === "nick" || this.uName === "clairevf" || this.uName === "emma")
+		{
+			return "Paid in house";
+		}
+		
 		if(this.inHouse){
 			return "Paid in house";
 		}
 		if(this.price == 0.00){
 			return "Paid with order " + orNum;
-		}else{
-			var price = parseFloat((this.price)); 
-			return "$" + price.toFixed(2); 
 		}
+		
+		
+		var price = parseFloat((this.price)); 
+		return "$" + price.toFixed(2); 
+		
 		
 	}
 });

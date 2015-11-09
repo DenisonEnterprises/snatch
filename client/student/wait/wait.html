@@ -1,0 +1,63 @@
+
+<template name="wait">
+  
+  <head>
+    <title>Bandersnatch - Wait</title>
+  </head>
+  
+   <!-- {{#if isInRole 'employee2'}}	-->	
+   
+
+
+
+  <div class="waitContainer"> 
+	  
+	  <div class="voffset4 cntr">
+		  
+		<button id="back">Back</button>
+        {{> orderInfoClient}}
+		
+  	  </div>
+  </div>
+    
+	
+    <div id="bground">
+  		<img src="/img/teal_background.jpg" alt="">
+    </div>
+ <!--   {{else}}
+     {{> deniedEmp}}
+  {{/if}} -->
+  
+</template>
+
+
+<template name="orderInfoClient">
+     
+      
+      <table align="center">
+        <tr class="titles">
+          <th> Time of Order </th>
+          <th> Order </th>
+       </tr>
+        {{#each order}}
+       <tr>
+          <td>{{> order3Client}}</td>
+          <td class="items">{{> order2Client}} {{> addInClient}}</td>
+       </tr>   
+        {{/each}}
+     </table> 
+</template>
+
+
+<template name ="order2Client">
+    <span>{{orderDeets}}</span>
+</template>
+
+<template name="addInClient">
+		<span>{{info}}</span>
+</template>
+
+<template name ="order3Client">
+  <span>{{orderTime}}</span>
+</template>
+

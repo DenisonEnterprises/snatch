@@ -102,13 +102,13 @@ Template.loading.rendered = function() {
 
 function type()
 {
-	if(dots === 3)
+	if(dots === 2)
 	{
 		dots = 0
         $('#anim').text('Loading');
 	}
 	
-    if(dots < 3)
+    if(dots < 2)
     {
         $('#anim').append('~');
         $('#anim').prepend('~');

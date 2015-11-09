@@ -43,7 +43,7 @@ a:link:active, a:visited:active {
     
     font-family: OpenSans;
     width: auto;
-    height: 40px;
+    height: 37px;
     line-height: 30px;
     font-size: 1.0em;
     display: inline-block;
@@ -53,8 +53,8 @@ a:link:active, a:visited:active {
 }
 
 .nav li img{
-  width:46px;
-  height:40px;
+  width:40px;
+  height:37px;
 }
 
 .nav a {

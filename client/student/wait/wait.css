@@ -1,0 +1,51 @@
+.waitContainer {
+  color: white; 
+}
+
+.waitContainer td{
+	white-space:pre;
+	text-align: center;
+	vertical-align: center;
+	width: 200px; 
+	padding-top:10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 16px;
+	border: 5px solid #005f5f;
+}
+
+.waitContainer .items{
+	white-space:pre;
+	text-align: left;
+	vertical-align: center;
+	width: 200px; 
+	padding-top:10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 16px;
+	border: 5px solid #005f5f;
+}
+
+.waitContainer th{
+	text-align: center;
+	width: 200px; 
+	padding-top:10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 16px;
+	border: 5px solid #005f5f;
+}
+
+.waitContainer #back{
+	margin-bottom: 15px;
+    font-family: OpenSans;
+    color: #ffffff;
+    font-size: 15px;
+    background: #005f5f;
+    padding: 10px 50px 10px 50px;
+    border: solid white 2px;
+    font-weight:bolder;
+}

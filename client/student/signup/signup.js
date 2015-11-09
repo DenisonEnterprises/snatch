@@ -45,13 +45,25 @@ Template.signupForm.rendered = function() {
 	
 	var usernameEmpty = input.length == 0;
 	
-	uFlag = !usernameTaken && !usernameEmpty;
+	var tooLong = input.length > 8;
+	
+	uFlag = !usernameTaken && !usernameEmpty && !tooLong;
 	if(uFlag){
 		$(this).removeClass("invalid").addClass("valid");
 	}else{
 		$(this).removeClass("valid").addClass("invalid");
-		if(usernameTaken){
+		if(usernameTaken)
+		{
 			$('#notif').html("Username Taken");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
+		}
+		else if(tooLong)
+		{
+			$('#notif').html("Username cannot exceed 8 characters");
 			document.getElementById('notif').style.opacity='1.0'
 			document.getElementById('notif').style.visibility='visible'
 	    	setTimeout(function(){
