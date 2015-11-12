@@ -130,10 +130,14 @@ Template.pseudoMenu.events({
    				nom = sel[i].className; 
 				totItems = sel[i].selectedIndex;
 				if(type === 'bagel'){
+					if(nom ==="Half and"){
+						nom = 'Half and Half';
+					}
 					bags = Bagels.find().fetch();
 					var j = 0;
-					while(bags[j].name != nom){
-						j++
+					var bagLen = Bagels.find().count(); 
+					while(bags[j].name != nom && j < bagLen){
+						j++;
 					}
 					price = bags[j].price;
 	   				Meteor.call('bagelOrder', nom, price, totItems, function(error,result) {
@@ -144,7 +148,7 @@ Template.pseudoMenu.events({
 					sn = Snacks.find().fetch(); 
 					var j = 0;
 					while(sn[j].name != nom){
-						j++
+						j++;
 					}
 					price = sn[j].price;					
 	   				Meteor.call('snackOrder', nom, price, totItems, function(error,result) {
@@ -155,7 +159,7 @@ Template.pseudoMenu.events({
 					bev = Beverages.find().fetch();
 					var j = 0;
 					while(bev[j].name != nom){
-						j++
+						j++;
 					}					
 					price = bev[j].price;
 	   				Meteor.call('bevOrder', nom, price, totItems, function(error,result) {
