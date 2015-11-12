@@ -6,7 +6,7 @@
 	color: black;
 	width: 45px;
 	height: 30px;
-	font-size: 12px;
+	/*font-size: 12px;*/
 }
 
 .pseudoMenuContainer #flavorList, #mixinList{
@@ -20,6 +20,8 @@
 }
 .pseudoMenuContainer .flavList2, .mixList2{
 	display:none;
+	position: relative;
+	left: 15px;
 }
 
 
@@ -71,7 +73,11 @@
 .pseudoMenuContainer .otherMark .otherShit{
 	position: relative;
 	top: 5px;
+	
+	width: 30px;
+	height: 25px;
 }
+
 
 .pseudoMenuContainer .otherMark .bottom label{
     font-family: OpenSans;
