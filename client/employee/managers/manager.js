@@ -50,9 +50,9 @@ Template.manager.events({
 	},
 
 	'click #sendEmail': function(evt){
-		/* for loop that pulls all names from ul list and separated by ';' */
+		/* for loop that pulls all names from ul list and separated by ',' */
 		
-		var emails = []; 
+		emails = []; 			/* create a global list of emails */
 		var emailChain; 
 		count = 0; 
 		$('#emailList').each(function(){
@@ -67,7 +67,6 @@ Template.manager.events({
 				emails.push(emailChain.slice(1));
 			});
 		});
-		console.log("emails: ", emails);
 
 		Meteor.call('sendEmail', emails, function(error,result) {
 				if (error)
@@ -83,8 +82,9 @@ Template.manager.events({
 	},
 	
 	'click .button-check': function(evt){
-		var recipID = $('.button-check').attr('id'); 
-		console.log('recipID ', recipID);
+		var recipID = $(this).attr('id'); // still not finding the correct li to delete
+		console.log('recipID: ', recipID);
+		console.log('email: ', $(this).text)
 		//var delPerson = $(recipID).text();
 		//console.log('delPerson: ', delPerson);
 		//li.remove(); 
@@ -101,10 +101,10 @@ Template.manager.events({
 		li.setAttribute('id','menu-selected');
 		var btn = document.createElement('BUTTON');
 		btn.appendChild(document.createTextNode('X'));
-		console.log('ELcount: ', ELcount);
-		// the sum to find ID is being a shit and not updating
-		btn.setAttribute('id', 'delRecip' + ELcount++);
+		var msg = 'delRecip' + ELcount;
+	//	console.log('msg: ' + msg);
 		btn.setAttribute('class', 'button-check');
+		btn.setAttribute('id', msg);
 		li.appendChild(btn);
 		li.appendChild(document.createTextNode(recip));
 		ul.appendChild(li);
