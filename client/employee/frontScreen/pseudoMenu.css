@@ -68,6 +68,8 @@
 .pseudoMenuContainer .otherMark th{
 	border: none;
     padding: 0px 15px 0px 15px;
+	
+	display: none;
 }
 
 .pseudoMenuContainer .otherMark .otherShit{
@@ -76,6 +78,8 @@
 	
 	width: 30px;
 	height: 25px;
+	
+	display: none;
 }
 
 
