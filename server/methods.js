@@ -351,26 +351,65 @@ Meteor.methods({
   
    sendEmail: function(emails){	 
 	   var totOrders = FinishedOrders.find().fetch();
+	 //  console.log('total finished orders: ', totOrders);
 	   var price = 0.0;
 	   var indvPrice = "";
 	   var text = "";
 	   var totPrice = 0.0;
 	   var late = ""; 
+	   lateFlag = true; 
+	   var lateOrNumList = [];
+	   oCount= 0;
 	   for(var i = 0; i < totOrders.length; i++){
 		   price += parseFloat(totOrders[i].price);
 	   } 
 	   text += "total revenue of the night: $" + price.toFixed(2) + "\n";
 	   
 	   var latePPL = ReadyOrders.find().fetch(); 
-	   for(i = 0; i < latePPL.length; i++){
-		   late += latePPL[i].uName + "\n";
+	   for(i = 0; i < latePPL.length; i++){ 
+		   oNum = latePPL[i].orderNum; 
+		   for(var g = 0; g < lateOrNumList.length; g++){
+			   if(lateOrNumList[g] === oNum){
+				   lateFlag = false; 
+			   }
+		   }
+		   if(lateFlag){
+			   var latePrice = latePPL[i].price;
+			   lateOrNumList[oCount] = oNum; 
+			   if(latePrice === 0)
+			   {
+				   oCount++;
+				   sameOrder = FinishedOrders.find({orderNum : oNum}).fetch();
+				   for(var k = 0; k < sameOrder.length; k++)
+				   {
+					   if(sameOrder[k].price != 0)
+					   {
+						   latePrice = sameOrder[k].price;
+					   }
+				   }
+				   if(latePrice === 0)				// If no order w this orderNum is in Finished yet
+				   {
+					   sameOrder = ReadyOrders.find({orderNum: oNum}).fetch(); 
+					   for(vark = 0; k < sameOrder.length; k++)
+					   {
+						   if(sameOrder[k].price != 0)
+						   {
+							   latePrice = sameOrder[k].price; 
+						   }
+					   }
+				   }
+			   }
+			   late += latePPL[i].email + " : " + latePrice + "\n";
+		   }
+		   lateFlag = true; 
 	   }
 	   if (late == ""){
-		   late = 'None';
+		   late = "None";
 	   }
 	   text += "List of people who didn't pick up Order: \n" + late + "\n\n";
-	   text += "\n\n\n Stats from last night: " + "\n"
-	   	   
+	//   text += "-------------------------------------------\n\n";
+	   // text += " Stats from last night: " + "\n"
+	   
 	/* --------- num Pep Pizza Bagels --------- */
 		var numPizzaBagel = 0;	
 		var itemDeets;		// array for the items to fall into
@@ -670,19 +709,19 @@ Meteor.methods({
 		});
 		text += "- Number of Shakes sold: " + numShake + "\n" */  
   
-  
-	  var recipients = '';
+  	  
+	   var recipients = '';
 	   for(var i = 0; i < emails.length; i++){
 		   recipients += emails[i];
 	   }
-  	   text += "Total profit of the night: $" + totPrice.toFixed(2);
+  	  // text += "Total profit of the night: $" + totPrice.toFixed(2);
 	   Email.send({
          from: "bandersnatchApp@gmail.com",
          to: recipients,
 
          subject: "Daily Stats",
          text: text, //Still Need to Implement
-       });
+       }); 
 	   
    },
  

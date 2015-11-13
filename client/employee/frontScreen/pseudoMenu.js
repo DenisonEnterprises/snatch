@@ -190,7 +190,7 @@ Template.pseudoMenu.events({
 			mixStr += ', ' + mix2 + '\n';
 		}
 
-		if(mix1 != "None"){
+		if(flav1 != "None"){
 			Meteor.call('shakeOrder', flavStr, mixStr, function(error,result) {
 				if (error)
 						return alert(error.reason);
