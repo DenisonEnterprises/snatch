@@ -70,6 +70,9 @@ Template.bagels.events({
 		for(var i = 0; i < sel.length; i++){
 			if(sel[i].selectedIndex > 0){
 				nom = sel[i].className; 
+				if(nom ==="Half and"){
+					nom = 'Half and Half';
+				}
 				price = ((sel[i].title).slice(1));
 				totItems = sel[i].selectedIndex;
 				//console.log(nom + ' ' + price + ' : ' + totItems);
