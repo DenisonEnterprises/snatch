@@ -729,15 +729,25 @@ Meteor.methods({
  	   var finished = FinishedOrders.find().fetch(); 
  	   for(var i = 0; i < finished.length; i++){
  		   FO = finished[i]; 
+		   var startT = FO.start;
+		   var finishT = FO.finish; 
+		   var startMin = startT.getMinutes(); 
+		   if(startT.getMinutes() < 10){
+			   startMin = '0' + startMin; 
+		   }
+		   var finishMin = finishT.getMinutes(); 
+		   if(finishT.getMinutes() < 10){
+			   finishMin = '0' + finishMin; 
+		   }
 		   var order = {
+			   orderID: FO._id,
 			   usrID : FO.userId,
-			   inHouse : FO.inHouse, 
 			   item : FO.item,
-			   start : FO.start, 
-			   finish : FO.finish, 
+			   inHouse : FO.inHouse, 
 			   orderNum : FO.orderNum, 
-			   cellNumber : FO.cellNumber, 
-			  // price : FO.price,
+			   date: startT.getUTCFullYear() + '-' + (startT.getUTCMonth() + 1)+'-' + startT.getUTCDate(),
+			   start : startT.getHours() + ':'+ startMin + ':'+startT.getSeconds(),
+			   finish : finishT.getHours() + ':' + finishMin + ':' +finishT.getSeconds(), 
 		   };
 		   Data.insert(order);
  	   }
