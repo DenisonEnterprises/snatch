@@ -737,7 +737,7 @@ Meteor.methods({
 			   finish : FO.finish, 
 			   orderNum : FO.orderNum, 
 			   cellNumber : FO.cellNumber, 
-			   price : FO.price,
+			  // price : FO.price,
 		   };
 		   Data.insert(order);
  	   }
