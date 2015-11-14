@@ -103,7 +103,6 @@ Template.addIns.helpers({
 Template.readyInfo.events({
  
   'click #pickUp': function() {
-    var total = 0.0; 
     var orNum = this.orderNum;
 	var usrID = this.userId; 
     var orders = ReadyOrders.find({orderNum: orNum}).fetch();
@@ -113,8 +112,8 @@ Template.readyInfo.events({
 	var start = this.start; 
 	var finish = this.finish;
     var str = this.item;
-    var total = this.price; 
-    Meteor.call('pickUpOrder', str, start, finish, delID, orNum, inhaus, total, usrID, cellNumber, function(error,result) {
+    var totalP = this.price; 
+    Meteor.call('pickUpOrder', str, start, finish, delID, orNum, inhaus, totalP, usrID, cellNumber, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 

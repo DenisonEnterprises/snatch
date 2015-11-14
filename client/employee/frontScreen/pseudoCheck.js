@@ -122,7 +122,16 @@ Template.pseudoCheck.events({
     var orders = Local.find({userId: Meteor.user()._id}).fetch();
     var str = "";
     var temp = "";
-    var total = 0; 
+	var total = 0.0; 
+	var indvPrice = "";
+	for (i=0; i < orders.length; i++) {
+		if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
+			indvPrice = orders[i].price;
+			total = total + parseFloat(indvPrice);		
+		}
+	}
+	total = total.toFixed(2);
+	console.log('TOTAL PRICE: ', total);
 	var indvPrice = "";
 	
 	var shakeStr = false;
@@ -161,7 +170,6 @@ Template.pseudoCheck.events({
 			}
 		}
 	}
-	total = total.toFixed(2);
 	for(var j = 0; j < items.length; j++){
 		if(shakeStr || j > 0){
 			multiFlag = true;
