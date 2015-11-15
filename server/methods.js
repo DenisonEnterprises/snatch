@@ -313,11 +313,13 @@ Meteor.methods({
 		return 0;
 	},*/
   
-	pickUpOrder: function(thing, start, finish,delID, orNum, inHouse, price, usrID, cellNum){
+	pickUpOrder: function(thing, flavors, mixins, start, finish,delID, orNum, inHouse, price, usrID, cellNum){
 		var order = {
 			userId: usrID,
 			inHouse: inHouse,
 			item: thing,
+			flavor: flavors, 
+			mixin: mixins, 
 			start: start, 
 			finish: finish,
 			orderNum: orNum,
@@ -739,10 +741,27 @@ Meteor.methods({
 		   if(finishT.getMinutes() < 10){
 			   finishMin = '0' + finishMin; 
 		   }
+		   var flav = FO.flavor;  
+		   if(FO.flavor.includes('\n')){
+			   var flavLen = FO.flavor.length;
+			   flav = FO.flavor.substring(0, flavLen-1);
+		   }
+		   var mix = FO.mixin; 
+		   if(FO.mixin.includes('\n')){
+			   var mixLen = FO.mixin.length; 
+			   mix = FO.mixin.substring(0, mixLen - 1);
+		   }
+		   
+		   var itemz = FO.item; 
+		   if(itemz === "Shake: "){
+		       itemz = itemz.substring(0, itemz.length - 2);
+		   }
 		   var order = {
 			   orderID: FO._id,
 			   usrID : FO.userId,
-			   item : FO.item,
+			   item : itemz,
+			   flavor: flav, 
+			   mixin: mix, 
 			   inHouse : FO.inHouse, 
 			   orderNum : FO.orderNum, 
 			   date: startT.getUTCFullYear() + '-' + (startT.getUTCMonth() + 1)+'-' + startT.getUTCDate(),
