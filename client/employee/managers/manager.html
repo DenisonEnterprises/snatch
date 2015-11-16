@@ -3,7 +3,7 @@
 <head>
 	<title> Bandersnatch - Managers </title>
 </head>	
-	{{#if isInRole 'manager'}}
+	{{#if isInRole 'manager'}}	
 	
 	<div class='ManagerContainer'>
 	
@@ -30,7 +30,9 @@
 		
 			<label for='recieveEmail'> List of email recipients: </label>
 			<ul id='emailList'>
-				
+				{{#each recip}}
+					{{>emailChain}}
+				{{/each}}
 			</ul>
 			<form id='email'>
 				<input type='text' id='recieveEmail'> <button type='button' id='addRecip'> Add Recipient</button>
@@ -194,7 +196,9 @@
 	
 </template>
 
-
+<template name="emailChain">
+	<li id={{indvEmail}}><button class='delEmail'>X</button>{{indvEmail}}</li>
+</template>
 
 
 

@@ -291,27 +291,6 @@ Meteor.methods({
 		}
 		return 0;
 	},
-
-  // I don't think we actually call this method -- CVF
-/*	employeeFinishedOrder: function(thing, start, delID, price, inHouse, apple, orNum, usr, cellNum, cellCarrier, shakes){
-		var order = {
-			userId: usr._id,
-			inHouse: inHouse,
-			uName: apple,
-			item: thing,
-			start: start,
-			finish: new Date(),
-			orderNum: orNum,
-			phone: cellNum,
-			carrier: cellCarrier,
-			user: usr,
-			price: price, 
-			shakes: shakes,
-		};
-		ReadyOrders.insert(order);
-		ActiveOrders.remove({_id: delID});
-		return 0;
-	},*/
   
 	pickUpOrder: function(thing, flavors, mixins, start, finish,delID, orNum, inHouse, price, usrID, cellNum){
 		var order = {
@@ -350,8 +329,17 @@ Meteor.methods({
 	  $set: {status: "on"}
 	});
    },
+   
+   delEmail: function(mail){
+	   EmailList.remove({email:mail});
+   },
+   
+   addToEmailList: function(mail){
+	   var Email = {email: mail};
+	   EmailList.insert(Email);
+   },
   
-   sendEmail: function(emails){	 
+   sendEmail: function(){	 
 	   var totOrders = FinishedOrders.find().fetch();
 	 //  console.log('total finished orders: ', totOrders);
 	   var price = 0.0;
@@ -713,9 +701,11 @@ Meteor.methods({
   
   	  
 	   var recipients = '';
-	   for(var i = 0; i < emails.length; i++){
-		   recipients += emails[i];
+	   emailChain = EmailList.find().fetch(); 
+	   for(var i = 0; i < emailChain.length; i++){
+		   recipients += emailChain[i].email + ', ';
 	   }
+	  
   	  // text += "Total profit of the night: $" + totPrice.toFixed(2);
 	   Email.send({
          from: "bandersnatchApp@gmail.com",

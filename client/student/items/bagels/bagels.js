@@ -19,21 +19,19 @@ Template.bagels.events({
 		Meteor.logout();
 		Router.go("/#l")
   },
-
-  
 });
 
 
 Template.bagels.helpers({
-  'bagel': function(){
-    return Bagels.find().fetch();
-  }
+	'bagel': function(){
+		return Bagels.find().fetch();
+	}
 });
 
 Template.bagels.events({
-  'click': function(count){
-     return this.value; 
-  },
+	'click': function(count){
+	 return this.value; 
+	},
   
 	"change #itemNum": function(event) {
 		//console.log("Value: " + $(event.currentTarget).val() );
@@ -75,7 +73,6 @@ Template.bagels.events({
 				}
 				price = ((sel[i].title).slice(1));
 				totItems = sel[i].selectedIndex;
-				//console.log(nom + ' ' + price + ' : ' + totItems);
 				Meteor.call('bagelOrder', nom, price, totItems, function(error,result) {
 					if (error)
 						return alert(error.reason);

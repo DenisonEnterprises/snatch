@@ -36,6 +36,10 @@ Meteor.publish('instance', function(){
 	return Instance.find();
 });
 
+Meteor.publish('emailList', function(){
+	return EmailList.find(); 
+})
+
 Meteor.publish('ready', function(){
 	return ReadyOrders.find();
 });

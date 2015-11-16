@@ -1,4 +1,6 @@
 Meteor.subscribe('instance');
+Meteor.subscribe('emailList');
+
 
 Template.manager.rendered = function(){
 	var app = Instance.findOne({name: "bandersnatch"}); 
@@ -16,7 +18,6 @@ Template.manager.rendered = function(){
 };
 
 Template.manager.helpers({
-
 	'bev': function(){
 		return Beverages.find().fetch();
 	},
@@ -31,7 +32,17 @@ Template.manager.helpers({
 	},
 	'flavor': function(){
 		return Milkshakes.find({type:'flavor'}).fetch();
+	},
+	'recip': function(){
+		return EmailList.find({}).fetch(); 
 	}
+});
+
+Template.emailChain.helpers({
+	'indvEmail':function(){
+		return this.email; 
+	}, 
+
 });
 
 Template.manager.events({
@@ -51,24 +62,7 @@ Template.manager.events({
 
 	'click #sendEmail': function(evt){
 		/* for loop that pulls all names from ul list and separated by ',' */
-		
-		emails = []; 			/* create a global list of emails */
-		var emailChain; 
-		count = 0; 
-		$('#emailList').each(function(){
-			$(this).find('li').each(function(){
-				emailChain = ''; 
-				emailChain += $(this).text();
-				if(count = 0){
-					emails.push(emailChain.slice(1));
-				}
-				count++; 
-				emailChain += ', ';
-				emails.push(emailChain.slice(1));
-			});
-		});
-
-		Meteor.call('sendEmail', emails, function(error,result) {
+		Meteor.call('sendEmail', function(error,result) {
 				if (error)
 					return alert(error.reason); 
 			}); 
@@ -81,33 +75,13 @@ Template.manager.events({
    	 	}, 3000);
 	},
 	
-	'click .button-check': function(evt){
-		var recipID = $(this).attr('id'); // still not finding the correct li to delete
-		console.log('recipID: ', recipID);
-		console.log('email: ', $(this).text)
-		//var delPerson = $(recipID).text();
-		//console.log('delPerson: ', delPerson);
-		//li.remove(); 
-	},
-	
 	'click #addRecip': function(evt){
-		var ELcount = 0;
-		var recip = $('#recieveEmail').val(); 
-		var ul = document.getElementById('emailList');
-		$('#menu-selected').each(function(){
-			ELcount++;
-		});
-	    var li = document.createElement("li");
-		li.setAttribute('id','menu-selected');
-		var btn = document.createElement('BUTTON');
-		btn.appendChild(document.createTextNode('X'));
-		var msg = 'delRecip' + ELcount;
-	//	console.log('msg: ' + msg);
-		btn.setAttribute('class', 'button-check');
-		btn.setAttribute('id', msg);
-		li.appendChild(btn);
-		li.appendChild(document.createTextNode(recip));
-		ul.appendChild(li);
+		var emailz = $('#recieveEmail').val(); 
+		$('#recieveEmail').val('')
+		Meteor.call('addToEmailList', emailz, function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			});
 	},
 	
 	'click #addNewItem': function(evt){
@@ -123,6 +97,13 @@ Template.manager.events({
           $("#notifAdded").fadeOut(1000);
    	 	}, 3000);
 	},
+	
+	'click .delEmail':function(evt){
+		Meteor.call('delEmail', this.email, function(error, result){
+			if(error)
+				return alert(error.reason);
+		});
+	},
 
 	'click #delThis': function(evt){
 		var itemType = $('#first-choice').val();
@@ -132,16 +113,6 @@ Template.manager.events({
 					return alert(error.reason); 
 			});
 	},
-	
-});
-
-$(document).ready(function() {
-	$('.button-check').on(function(){
-		console.log('please delete this email recipient');		
-	})
-
-	
-	
 	
 });
 
