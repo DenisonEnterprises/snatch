@@ -723,6 +723,7 @@ Meteor.methods({
  		   FO = finished[i]; 
 		   var startT = FO.start;
 		   var finishT = FO.finish; 
+		   
 		   var startMin = startT.getMinutes(); 
 		   if(startT.getMinutes() < 10){
 			   startMin = '0' + startMin; 
@@ -753,7 +754,6 @@ Meteor.methods({
 			   flavor: flav, 
 			   mixin: mix, 
 			   inHouse : FO.inHouse, 
-			   orderNum : FO.orderNum, 
 			   date: startT.getUTCFullYear() + '-' + (startT.getUTCMonth() + 1)+'-' + startT.getUTCDate(),
 			   start : startT.getHours() + ':'+ startMin + ':'+startT.getSeconds(),
 			   finish : finishT.getHours() + ':' + finishMin + ':' +finishT.getSeconds(), 
