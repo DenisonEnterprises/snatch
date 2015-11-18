@@ -90,7 +90,9 @@
 }
 
 .shakesContainer .mixList2 {
+	position:relative;
 	display: none;
+	left: 0px;
 }
 
 @media (min-width: 525px) { 

@@ -253,7 +253,7 @@ Meteor.methods({
 		if(!inHouse){
 			var remaining = ActiveOrders.find({orderNum: orNum}).count(); 
 			var msg = ""; 
-			var cellPhone = '1'+order.phone.toString(); 
+			var cellPhone = order.phone.toString(); 
 			var cellCar = order.carrier.toString(); 
 			if(cellCar === "verizon"){
 				msg = cellPhone + "@vtext.com";
@@ -283,9 +283,24 @@ Meteor.methods({
 				msg = cellPhone + "@pcs.ntelos.com";
 			}
 		
+		
+			if (thing == "Shake: ")
+			{
+				thing = "Milkshake";
+			}
+			
+			
+			console.log(msg);
+			/*Email.send({
+				to: msg,
+				from: "bandersnatchApp@gmail.com",
+				text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
+			});*/
+			
 			Email.send({
 				to: usrEmail,
 				from: "bandersnatchApp@gmail.com",
+				subject: "Bandersnatch Order Ready!",
 				text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
 			});
 		}

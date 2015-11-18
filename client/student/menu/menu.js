@@ -17,6 +17,11 @@ Template.menu.rendered = function() {
 	 var type = window.location.hash.substr(1);
      if (type === "u"){
 	  	window.history.pushState("", "", '/menu');
+		
+        $("#cout").css("cursor", "pointer");
+        button.disabled = false;
+        button.style.opacity = "1.0";
+        button.style.filter  = 'alpha(opacity=100)'; // IE fallback
  		
    	  	setTimeout(function(){
           $("#notif").fadeIn(500);
@@ -27,6 +32,16 @@ Template.menu.rendered = function() {
           $("#notif").fadeOut(2000);
     	}, 3000);
 
+	}
+	
+	
+    if (type === "m"){
+  		window.history.pushState("", "", '/menu');
+	
+       $("#cout").css("cursor", "pointer");
+       button.disabled = true;
+       button.style.opacity = "0.4";
+       button.style.filter  = 'alpha(opacity=40)'; // IE fallback
 
 	}
 	

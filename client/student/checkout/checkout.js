@@ -159,7 +159,7 @@ Template.checkout.events({
   					return alert(error.reason);
   			});  
       if(Local.find({userId: Meteor.user()._id}).count() < 2){
-        Router.go('/menu');
+		Router.go('/menu#m');
       }
   },
   
