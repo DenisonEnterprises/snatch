@@ -718,6 +718,8 @@ Meteor.methods({
    },
  
    pushFinished: function(){
+	   Data.remove({});
+	   
  	   var finished = FinishedOrders.find().fetch(); 
  	   for(var i = 0; i < finished.length; i++){
  		   FO = finished[i]; 
@@ -762,6 +764,7 @@ Meteor.methods({
  	   }
 	   FinishedOrders.remove({});
 	   ReadyOrders.remove({});
+	   ActiveOrders.remove({});
    },
    
    empDiscount: function(){
