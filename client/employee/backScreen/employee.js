@@ -12,7 +12,17 @@ Template.employee.events({
 
 Template.orderInfo.helpers({
   'order' : function(){
-    return ActiveOrders.find().fetch(); 
+	  var orderList = [];
+	  us = ActiveOrders.find({uName:{$in:['nick', 'clairevf', 'emma']}}).fetch(); 
+	  notUs = ActiveOrders.find({uName:{$nin:['nick', 'clairevf', 'emma']}}).fetch(); 
+	  var usLen = us.length; 
+	  for(var i = 0; i < usLen; i++){
+		  orderList[i] = us[i];
+	  }
+	  for(var j = 0; j < notUs.length; j++){
+	  	  orderList[j+usLen] = notUs[j]; 
+	  }
+	  return orderList; 
   },
   
   'shakey' : function() {
