@@ -290,12 +290,11 @@ Meteor.methods({
 			}
 			
 			
-			console.log(msg);
-			/*Email.send({
+			Email.send({
 				to: msg,
 				from: "bandersnatchApp@gmail.com",
 				text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
-			});*/
+			});
 			
 			Email.send({
 				to: usrEmail,
