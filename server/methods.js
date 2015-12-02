@@ -814,25 +814,25 @@ Meteor.methods({
 		   Milkshakes.insert({type: 'mixin', name: Name, price: Price});
 	   }
 	   else if (type == 'bagel'){
-	   		Bagels.insert({type: Name, price: Price});
+	   		Bagels.insert({type: 'bagel', name: Name, price: Price});
 	   }
 	   else if (type == 'snack'){
-	   		Snacks.insert({type: Name, price: Price});
+	   		Snacks.insert({type: 'snack', name: Name, price: Price});
 	   }
 	   else if (type == 'bev'){
-		   Beverages.insert({type: Name, price:Price});
+		   Beverages.insert({type: 'bev', name: Name, price:Price});
 	   }
    },
    
    deleteItem: function(itemType, item){
 		if (itemType == 'bagel'){
-			Bagels.remove({type: item});
+			Bagels.remove({name: item});
 		} 
 		else if (itemType == 'snack'){
-			Snacks.remove({type: item});
+			Snacks.remove({name: item});
 		}
 		else if (itemType == 'bev'){
-			Beverages.remove({type: item});
+			Beverages.remove({name: item});
 		}
 		else if(itemType == "flavor" || itemType == 'mixin'){
 			Milkshakes.remove({name: item});
