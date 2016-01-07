@@ -8,8 +8,7 @@
 }
 
 .settingsContainer input {
-	padding-top:12px;
-	padding-bottom:12px;
+	height: 2em;
 	color:black;
 }
 

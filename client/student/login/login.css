@@ -2,9 +2,8 @@
 /* No media query since this is the default in Bootstrap */
 
 .loginContainer input {
-	padding-top:12px;
-	padding-bottom:12px;
 	color:black;
+	height: 2em;
 }
 
 .loginContainer .norm {
