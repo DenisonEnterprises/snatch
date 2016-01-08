@@ -13,10 +13,16 @@ Template.signupForm.rendered = function() {
     
   uFlag = false;
   eFlag = false;
-  pFlag = false;
   cFlag = false;
   pwFlag = false;
 
+	areaFlag = false;
+	middleDigitFlag = false;
+	lastFlag = false;
+	
+	patt = new RegExp('^\\d+$');
+	
+	
   $('#signup-email').focusout(function() {
    if(!du){ 
     	$('#notif').html("Please Provide a denison.edu Email");
@@ -28,17 +34,7 @@ Template.signupForm.rendered = function() {
     }
    });
    
-   $('#signup-cellphone').focusout(function() {
-    if(!pFlag){ 
-     	$('#notif').html("Please Provide 10 Digit Phone Number");
-		document.getElementById('notif').style.opacity='1.0'
-		document.getElementById('notif').style.visibility='visible'
-    	setTimeout(function(){
-          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
-    	}, 3000);
-     }
-    });
-
+	 
   $('#signup-username').on('input', function(){
   	var input=$(this).val();
 	var usernameTaken = Meteor.users.find({username: input}).count() > 0;
@@ -147,78 +143,56 @@ Template.signupForm.rendered = function() {
     }
   });
  
- 	// Area code -- need to have 3 digits else areaFlag = false
+ 
+ 	// Area code
 	$('#signup-cell1').on('input', function(){
 		var input = $(this).val(); 
-		pFlag = false; 
-		areaFlag = true; 
-		areaFlag = (input.length == 3) && /^([0-9]+)/.test(input);
+		areaFlag = (input.length == 3) && patt.test(input);
 		if(areaFlag){
 			$(this).removeClass('invalid').addClass('valid');
 		}else{
-			pFlag = false;
 			$(this).removeClass("valid").addClass("invalid");	
 		}
 	});
 
 	$('#signup-cell2').on('input', function(){		
 		var input = $(this).val(); 
-		if(areaFlag){							// only want to evaluate if area code has been entered
-			middleDigitFlag = true; 
-			middleDigitFlag = (input.length == 3) && /^([0-9]+)/.test(input);
-			if(middleDigitFlag){
-				$(this).removeClass('invalid').addClass('valid');
-			}else{
-				pFlag = false; 
-				$(this).removeClass("valid").addClass("invalid");	
-			}
+		middleDigitFlag = (input.length == 3) && patt.test(input);
+		if(middleDigitFlag){
+			$(this).removeClass('invalid').addClass('valid');
+		}else{
+			$(this).removeClass("valid").addClass("invalid");	
 		}
 	});	
 	
 	$('#signup-cell3').on('input', function(){
 		var input = $(this).val(); 
-		if(middleDigitFlag){
-			lastFlag = true; 
-			lastFlag = (input.length == 4) && /^([0-9]+)/.test(input);
-			if(lastFlag){
-				pFlag = true;
-				$(this).removeClass('invalid').addClass('valid');
-			}else{
-				pFlag = false; 
-				$(this).removeClass("valid").addClass("invalid");	
-			}
+		lastFlag = (input.length == 4) && patt.test(input);
+		if(lastFlag){
+			$(this).removeClass('invalid').addClass('valid');
+		}else{
+			$(this).removeClass("valid").addClass("invalid");
 		}
 	});	
-
- /* $('#signup-cellphone').on('input', function(){
-    var input=$(this).val();
-	pFlag = true;
-	pFlag = (input.length == 10) && /^([0-9]+)$/.test(input);
-    if(pFlag){
-		$(this).removeClass("invalid").addClass("valid");
-    }else{
-		$(this).removeClass("valid").addClass("invalid");
-     } 
-  });*/
   
-  
-  
+  /*
   $('#signup-carrier').on('input', function(){
     var input=$(this).val();
-	cFlag = (input != "select");
+		console.log("input: " + input);
+		cFlag = (input != "select");
     if(cFlag){
-		$(this).removeClass("invalid").addClass("valid");
+			$(this).removeClass("invalid").addClass("valid");
     }else{
-		$(this).removeClass("valid").addClass("invalid");
-	 	$('#notif').html("Please Select a Carrier");
-		document.getElementById('notif').style.opacity='1.0'
-		document.getElementById('notif').style.visibility='visible'
+			$(this).removeClass("valid").addClass("invalid");
+	 		$('#notif').html("Please Select a Carrier");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
     	setTimeout(function(){
           $('#notif').animate({ opacity: 0 }, 1000, 'linear')
     	}, 3000);
      } 
   });
-  
+  */
   
 }
 
@@ -227,7 +201,7 @@ Template.signupForm.rendered = function() {
 Template.signupForm.events({
   "click #signup-form": function(event, template) {
     event.preventDefault();
-	if(uFlag && eFlag && pFlag && cFlag && pwFlag){
+	if(uFlag && eFlag && cFlag && pwFlag && areaFlag && middleDigitFlag && lastFlag){
         
         Accounts.createUser({
         username: template.find("#signup-username").value,
@@ -263,14 +237,13 @@ Template.signupForm.events({
 	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
 	    	}, 3000);
 		 }
-		 if(!pFlag){
-			 console.log('pFlag is false.. about to run the handler');
-  			$('#notif').html("Please Provide a Valid Phone Number");
-			document.getElementById('notif').style.opacity='1.0'
-			document.getElementById('notif').style.visibility='visible'
-	    	setTimeout(function(){
-	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
-	    	}, 3000);
+		 if(!areaFlag || !middleDigitFlag || !lastFlag){
+      	$('#notif').html("Please Provide Valid Phone Number");
+ 			document.getElementById('notif').style.opacity='1.0'
+ 			document.getElementById('notif').style.visibility='visible'
+     	setTimeout(function(){
+           $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+     	}, 3000);
 		 }
 		 if(!cFlag){
 			 $('#notif').html("Please Select a Carrier");
@@ -296,6 +269,21 @@ Template.signupForm.events({
     Router.go('/');
   },
   
-  
+  'change #signup-carrier': function(evt, instance){ //gets all clicks
+    var input= $('#signup-carrier').val();
+		cFlag = (input != "select");
+    if(cFlag){
+			$('#signup-carrier').removeClass("invalid").addClass("valid");
+    }else{
+			$('#signup-carrier').removeClass("valid").addClass("invalid");
+	 		$('#notif').html("Please Select a Carrier");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+    	setTimeout(function(){
+          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+    	}, 3000);
+     } 
+   },
+   
 
  } );
