@@ -7,6 +7,12 @@ Template.backScreen.events({
   "click #swapBTN": function( evt, instance ){
     Router.go('/pseudoMenu');
   },
+	
+	"click #logout": function(evt, instance){
+		Meteor.call("delLocalByUser");
+		Meteor.logout();
+		Router.go("/#l")
+	},
 });
 
 Template.readyInfo.helpers({
