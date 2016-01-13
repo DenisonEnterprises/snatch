@@ -4,7 +4,6 @@ Meteor.subscribe('emailList');
 
 Template.manager.rendered = function(){
 	var app = Instance.findOne({name: "bandersnatch"}); 
-	$('#notif2').hide();
 	if(app.status == "on"){
 		$('#notif').html("App is currently running");
 		$('#on').hide();
@@ -66,13 +65,14 @@ Template.manager.events({
 				if (error)
 					return alert(error.reason); 
 			}); 
-		Meteor.call('pushFinished');
+			Meteor.call('pushFinished');
 
-		
-		$('#notif2').show();
-   	  	setTimeout(function(){
-          $("#notif2").fadeOut(1000);
-   	 	}, 3000);
+			document.getElementById('notif2').style.opacity='1.0';
+			document.getElementById('notif2').style.visibility='visible';
+
+  	setTimeout(function(){
+        $('#notif2').animate({ opacity: 0 }, 1000, 'linear')
+  	}, 3000);
 	},
 	
 	'click #addRecip': function(evt){
@@ -86,16 +86,25 @@ Template.manager.events({
 	
 	'click #addNewItem': function(evt){
 		var itemType = $("#itemType").val(); 
+		if(itemType === "select"){
+			return;
+		}
 		var itemName = $($("#itemTitle")).val();
+		if(itemName === ""){
+			return;
+		}
 		var itemPrice = parseFloat($($("#dollar")).val() + "." + $($("#cents")).val()); 
 		Meteor.call('addNewItem',itemType, itemName, itemPrice, function(error,result) {
 				if (error)
 					return alert(error.reason); 
 			});
-		$('#notifAdded').show();
-   	  	setTimeout(function(){
-          $("#notifAdded").fadeOut(1000);
-   	 	}, 3000);
+			
+			document.getElementById('notifAdded').style.opacity='1.0';
+			document.getElementById('notifAdded').style.visibility='visible';
+
+  	setTimeout(function(){
+        $('#notifAdded').animate({ opacity: 0 }, 1000, 'linear')
+  	}, 3000);
 	},
 	
 	'click .delEmail':function(evt){
@@ -106,12 +115,19 @@ Template.manager.events({
 	},
 
 	'click #delThis': function(evt){
-		var itemType = $('#first-choice').val();
+		/*var itemType = $('#first-choice').val();
 		var item = $('#deleteItem').val();
-		Meteor.call('deleteItem',itemType, item, function(error,result) {
+		/*Meteor.call('deleteItem',itemType, item, function(error,result) {
 				if (error)
 					return alert(error.reason); 
-			});
+			});*/
+			/*
+			document.getElementById('notifDeleted').style.opacity='1.0';
+			document.getElementById('notifDeleted').style.visibility='visible';
+
+  	setTimeout(function(){
+        $('#notifDeleted').animate({ opacity: 0 }, 1000, 'linear')
+  	}, 3000);*/
 	},
 	
 });

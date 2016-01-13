@@ -3,48 +3,47 @@
 <head>
 	<title> Bandersnatch - Managers </title>
 </head>	
-	{{#if isInRole 'manager'}}	
+	<!--  {{#if isInRole 'manager'}}  -->
 	
 	<div class='ManagerContainer'>
 	
-		<h1> Managers </h1>
+		<h1>Managers</h1>
 		
 		<hr>
 		
-		<div class="row">
+		<div class="row voffset5">
 			<label id="notif"></label>
 		</div>
 		<div class="row">
 			<button type="button" id="on" class="on">Turn ON</button>
 			<button type="button" id="off" class="off">Turn OFF</button>
+			<button type="button" id="sendEmail" class="email">Send Email</button>
+		</div>
+		
+		<div class="row">
+			<label id="notif2">Email Sent!</label>
 		</div>
 		
 		<hr>
 		
-		<div class="row">
-			<button type="button" id="sendEmail" class="email">Send Email</button>
-		</div>
-		<div class="row">
-			<h4 id="notif2">Email Sent!</h4>
-		</div>
-		
-			<label for='recieveEmail'> List of email recipients: </label>
+			<h3>Email Recipient List</h3>
 			<ul id='emailList'>
 				{{#each recip}}
 					{{>emailChain}}
 				{{/each}}
 			</ul>
 			<form id='email'>
-				<input type='text' id='recieveEmail'> <button type='button' id='addRecip'> Add Recipient</button>
+				<input type='text' id='recieveEmail'>
+				<br>
+				<button type='button' id='addRecip'> Add Recipient</button>
 			</form>
 
+			<div class="voffset5"></div>
 		<hr>
-		
 
-		<div class='manage'>
-			<div class="newItem">
-				<h3> add new menu item </h3>
-			        <label class="voffset2" for="itemType">Category of New Item</label>
+				<h3>Add Item to Menu</h3>
+					<div class="wrap2">
+			        <label class="voffset2" for="itemType">Category: </label>
 			        <select id="itemType">
 			           <option value="select" id="select">Select</option>
 			           <option value="flavor">Shake Flavor</option>
@@ -54,30 +53,29 @@
 					   <option value="bev">Beverage</option>
 			        </select>
 					<div class='name voffset3'>
-						<label for='itemTitle'>Name of Item:</label>
+						<label for='itemTitle'>Name: &nbsp;&nbsp;&nbsp;&nbsp; </label>
 						<input type='text' id='itemTitle'>
 						<div class='price'>
-							<label for='itemPrice'>Price of Item:</label>
-							$ <input type="text" class="money" id="dollar"/>.<input type="text" class="money" id="cents"/>
+							<label for='itemPrice'>Price: &nbsp;&nbsp;&nbsp;&nbsp; $</label>
+							<input type="number" min="1" max="99" id="dollar"/>.<input type="number" min="1" max="99" id="cents"/>
 						</div>
 					</div>	
+				</div>
 				<button type=button id=addNewItem> Add New Item </button>
-				<h4 id='notifAdded'> New item added! </h4>
-			</div>
-
+				<br>
+				<label id='notifAdded'> New item added! </label>
 
 			<hr>
 
-			<div class="delItem">
-				<h3> delete menu item </h3>
+				<h3>Delete Item from Menu</h3>
 				<form name="findDelItem">
-					<select name='first-choice' class='first-choice' id="first-choice">
-			           <option value="select" selected='selected'>Select</option>
+					<select name='first-choice' class='first-choice voffset2' id="first-choice">
+			       <option value="select" selected='selected'>Select</option>
 					   <option value="bagel">Bagel</option>
 					   <option value="snack">Snack</option>
 					   <option value="bev">Beverage</option>
 					   <option value="mixin">Shake Mixin</option>
-			           <option value="flavor">Shake Flavor</option>
+			       <option value="flavor">Shake Flavor</option>
 					</select>
 						
 					<script>
@@ -173,16 +171,18 @@
 						oldChoice = choice;
 					});
 					</script>  
-						
-					<select id='deleteItem' class='deleteItem'>
-						<option> Delete an Item </option>
+					<br>
+					<select id='deleteItem' class='deleteItem voffset2'>
+						<option>Delete an Item</option>
 					</select>
 					<br>
-					<button id='delThis'> Delete Item </button>
+					<div class="voffset2"></div>
+					<button id='delThis'> Delete Item </button> 
+					<br>
+					<label id='notifDeleted'> Item Deleted! </label>
 				</form>
 			
-			</div>
-		</div>
+			<hr>
 	</div>
 	
     <div id="bground">
@@ -190,14 +190,16 @@
     </div>
 	
 	
-   {{else}}
+   <!-- {{else}}
      {{> deniedEmp}}
-    {{/if}} 
+    {{/if}} -->
 	
 </template>
 
 <template name="emailChain">
-	<li id={{indvEmail}}><button class='delEmail'>X</button>{{indvEmail}}</li>
+	<div class="wrap">
+		<li id={{indvEmail}}><button class='delEmail'>X</button>{{indvEmail}}</li>
+	</div>
 </template>
 
 

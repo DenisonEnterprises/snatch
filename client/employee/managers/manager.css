@@ -12,9 +12,22 @@
 .ManagerContainer li{
     list-style: none;
     padding: 5px 5px 5px 5px;
-	text-align:left;
+		position: relative;
 }
 
+.ManagerContainer .wrap{
+	text-align: left;
+	width: 250px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.ManagerContainer .wrap2{
+	text-align: left;
+	width: 200px;
+	margin-left:auto;
+	margin-right:auto;
+}
 
 .ManagerContainer button{
     font-family: OpenSans;
@@ -28,29 +41,32 @@
     font-weight:bolder;
     margin-right: 10px;
     margin-left: 10px;
-	margin-top:10px;
-	margin-bottom:10px;
+		margin-top:10px;
+		margin-bottom:10px;
 }
 
 .ManagerContainer select{
 	color: black;
+	width: 130px;
 }
 
 .ManagerContainer input{
-	padding-top:12px;
-	padding-bottom:12px;
+	height: 2em;
 	color:black;
 }
 
-.ManagerContainer .manage .newItem{
-	display:inline-block;
-	padding: 10px;
+
+.ManagerContainer #notif2 {
+	visibility: hidden;
 }
 
-.ManagerContiner .manage .newItem .addItem{
-	display:inline-block;
+.ManagerContainer #notifAdded {
+	visibility: hidden;
 }
 
+.ManagerContainer #notifDeleted {
+	visibility: hidden;
+}
 
 .ManagerContainer #dollar {
 	width: 50px;
@@ -60,38 +76,16 @@
 	width: 50px;
 }
 
-/*
-.ManagerContainer .newItem{
-	border: 5px;
-	background-color: green;
-	height: 400px;
-	padding: 10px;
+.ManagerContainer #itemTitle {
+	width: 130px;
 }
 
-.ManagerContainer .newItem .price{
-	height: 20px;
-	width: 20px;
+.ManagerContainer #deleteItem {
+	width: 170px;
 }
 
-.ManagerContainer .delItem{
-	border: 5px;
-	background-color: pink;
-	height: 200px;
-	padding: 10px;
-}*/
-
-.ManagerContainer .delItem button{
-    font-family: OpenSans;
-    color: #fff;
-    font-size: 15px;
-    background: #005f5f;
-    padding: 10px 20px 10px 20px;
-    border: solid white 2px;
-    display: inline-block;
-    position: relative;
-    font-weight:bolder;
-    margin-right: 10px;
-    margin-left: 10px;
-	margin-top:10px;
-	margin-bottom:60px;
+.ManagerContainer .delEmail {
+	background-color: red;
+	border-radius: 20%;
+  padding: 5px 10px 5px 10px;
 }

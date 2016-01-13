@@ -8,6 +8,8 @@ App.info({
   website: 'http://denisonenterprises.com'	
 });
 
+/*App.accessRule('*');*/
+
 App.icons({
   
 	// iOS
