@@ -3,9 +3,11 @@
 <head>
 	<title> Bandersnatch - Managers </title>
 </head>	
-	<!--  {{#if isInRole 'manager'}}  -->
+	{{#if isInRole 'manager'}} 
 	
 	<div class='ManagerContainer'>
+	
+		<button class="logout" id="logout">Logout</button>
 	
 		<h1>Managers</h1>
 		
@@ -190,9 +192,9 @@
     </div>
 	
 	
-   <!-- {{else}}
+    {{else}}
      {{> deniedEmp}}
-    {{/if}} -->
+    {{/if}}
 	
 </template>
 

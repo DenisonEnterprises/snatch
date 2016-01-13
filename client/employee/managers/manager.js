@@ -115,19 +115,24 @@ Template.manager.events({
 	},
 
 	'click #delThis': function(evt){
-		/*var itemType = $('#first-choice').val();
+		var itemType = $('#first-choice').val();
 		var item = $('#deleteItem').val();
-		/*Meteor.call('deleteItem',itemType, item, function(error,result) {
+		Meteor.call('deleteItem',itemType, item, function(error,result) {
 				if (error)
 					return alert(error.reason); 
-			});*/
-			/*
+			});
+			
 			document.getElementById('notifDeleted').style.opacity='1.0';
 			document.getElementById('notifDeleted').style.visibility='visible';
 
   	setTimeout(function(){
         $('#notifDeleted').animate({ opacity: 0 }, 1000, 'linear')
-  	}, 3000);*/
+  	}, 3000);
+	},
+	
+	"click #logout": function(evt, instance){
+		Meteor.logout();
+		Router.go("/#l");
 	},
 	
 });
