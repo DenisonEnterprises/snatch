@@ -8,7 +8,7 @@ App.info({
   website: 'http://denisonenterprises.com'	
 });
 
-/*App.accessRule('*');*/
+App.accessRule('http://denisonbandersnatch.com/*');
 
 App.icons({
   
