@@ -2,7 +2,7 @@ App.info({
   name: 'Bandersnatch',
   description: 'The Bandersnatch App offers customers the opportunity to place orders remotely at the Bandersnatch Cafe at Denison University.',
   id: 'com.denisonenterprises.bandersnatch',
-  version: '1.0.0',
+  version: '1.1.0',
   author: 'Denison Enterprises',
   email: 'denisonenterprises@gmail.com',
   website: 'http://denisonenterprises.com'	
