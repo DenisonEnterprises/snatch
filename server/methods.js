@@ -121,7 +121,7 @@ Meteor.methods({
 		return 0;
     },  
 
-	placeOrder: function(multiFlag, item, price, inHouse, usr) {
+	placeOrder: function(multiFlag, item, price, inHouse, usr){
 		if(!multiFlag){
 			orderNum++;
 		}
@@ -140,8 +140,13 @@ Meteor.methods({
 		};
 		ActiveOrders.insert(order);
 		Local.remove({userId: usr._id});
-
-		return 0;
+		if(ActiveOrders.find().count() > 35){
+			Meteor.call('appOff',  function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			}); 
+		}
+		return ActiveOrders.find().count();
 	},   
   
   empPlaceShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr, apple){
@@ -162,6 +167,12 @@ Meteor.methods({
       };
       ActiveOrders.insert(order);
       Local.remove({userId: usr._id});
+		if(ActiveOrders.find().count() > 35){
+			Meteor.call('appOff',  function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			}); 
+		}
 
       return 0;
   },
@@ -183,6 +194,12 @@ Meteor.methods({
 		};
 		ActiveOrders.insert(order);
 		Local.remove({userId: usr._id});
+		if(ActiveOrders.find().count() > 35){
+			Meteor.call('appOff',  function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			}); 
+		}
 
 		return 0;
 	},   
@@ -203,6 +220,12 @@ Meteor.methods({
 
 	delOrder: function(orderId){
 		ActiveOrders.remove({_id: orderId});
+		if(ActiveOrders.find().count() <= 35){
+			Meteor.call('appOn',  function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			}); 
+		}
 	},
 
 	deleteActiveOrder: function(delID){
@@ -302,6 +325,12 @@ Meteor.methods({
 				subject: "Bandersnatch Order Ready!",
 				text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
 			});
+		}
+		if(ActiveOrders.find().count() <= 34){
+			Meteor.call('appOn', function(error,result) {
+				if (error)
+					return alert(error.reason); 
+			}); 
 		}
 		return 0;
 	},
