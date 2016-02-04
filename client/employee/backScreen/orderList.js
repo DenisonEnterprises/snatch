@@ -16,7 +16,7 @@ Template.itemInfo.helpers({
 		var itemDeets;		// array for the items to fall into
 		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
 			for(index = 0; index < itemDeets.length; index++){
-				if(itemDeets[index] == 'Pizza Bagel (Cheese) '){
+				if(itemDeets[index] == 'Pizza Bagel (Cheese)'){
 					j++;
 				}
 			}
@@ -29,7 +29,7 @@ Template.itemInfo.helpers({
 		var itemDeets;		// array for the items to fall into
 		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
 			for(index = 0; index < itemDeets.length; index++){
-				if(itemDeets[index] == 'Pizza Bagel (Pep) '){
+				if(itemDeets[index] == 'Pizza Bagel (Pep)'){
 					j++;
 				}
 			}
@@ -41,7 +41,7 @@ Template.itemInfo.helpers({
 		var itemDeets;		// array for the items to fall into
 		ActiveOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
 			for(index = 0; index < itemDeets.length; index++){
-				if(itemDeets[index] == 'Snagel '){
+				if(itemDeets[index] == 'Snagel'){
 					j++;
 				}
 			}
