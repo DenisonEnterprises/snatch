@@ -114,6 +114,11 @@ Template.orderInfo.events({
 		var delID = this._id; 
 		var start = this.start;
 		var email = this.email;
+		
+		$('#finished').prop('disabled', true); //TO DISABLED
+		$('#finished').fadeTo(0,.4);
+		$('#finished').css("cursor", "default");
+		
 		console.log(email);
 	    Meteor.call('finishedOrder', order, start, flavs, mixins, delID, total, inhaus, orNum, userID, usrName, email ,cellNumber, cellCarrier, function(error,result) {
 			if (error)
