@@ -1,4 +1,6 @@
+
 Meteor.methods({
+	
 	
 	resetOrNum: function() {
 		orderNum = 0;
@@ -20,6 +22,8 @@ Meteor.methods({
 	delLocalByUser: function() {
 		Local.remove({userId: this.userId});
 	},
+	
+	
 	
     // Food Insert Methods
 	bagelOrder: function(bagel, price, totNum) {
@@ -357,7 +361,6 @@ Meteor.methods({
    
    
    appOff: function() {
-	   
 		Instance.update({
 		  name: "bandersnatch"
 		}, {
@@ -749,14 +752,27 @@ Meteor.methods({
 		   recipients += emailChain[i].email + ', ';
 	   }
 	  
-  	  // text += "Total profit of the night: $" + totPrice.toFixed(2);
-	   Email.send({
-         from: "bandersnatchApp@gmail.com",
-         to: recipients,
+	  var psr = later.parse.recur().on('03:00:00').time();
+	  
+	   SyncedCron.add({
+	     name: 'Send email',
+	     schedule: function(psr) {
+	       // parser is a later.parse object
+	       return psr.text('send email');
+	     },
+	     job: function() {
+			// text += "Total profit of the night: $" + totPrice.toFixed(2);
+			Email.send({
+			    from: "bandersnatchApp@gmail.com",
+			    to: recipients,
 
-         subject: "Daily Stats",
-         text: text, //Still Need to Implement
-       }); 
+			    subject: "Daily Stats",
+			    text: text, //Still Need to Implement
+			  }); 
+			return 0
+	     }
+	   });
+
 	   
    },
  
@@ -884,6 +900,5 @@ Meteor.methods({
       Roles.setUserRoles(mana, 'manager');
   }
   */
-  
   
 });
