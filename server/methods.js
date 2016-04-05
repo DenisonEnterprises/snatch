@@ -5,7 +5,9 @@ Meteor.methods({
 	resetOrNum: function() {
 		orderNum = 0;
 	},
-	
+	setCap: function(){
+ 	   KitchenCap.insert({name: 'bandersnatch', capNum: 35});
+	},
 
     makeStudent: function () {
         Roles.setUserRoles(this.userId, 'student');
@@ -19,11 +21,11 @@ Meteor.methods({
 		Meteor.users.update({_id: this.userId}, {$set:{username: newName}} ); 
 	},
 	
+	
 	delLocalByUser: function() {
 		Local.remove({userId: this.userId});
 	},
-	
-	
+
 	
     // Food Insert Methods
 	bagelOrder: function(bagel, price, totNum) {
@@ -129,6 +131,7 @@ Meteor.methods({
 		if(!multiFlag){
 			orderNum++;
 		}
+		var CAP = KitchenCap.findOne({name: "bandersnatch"}).capNum;
 		var order = {
 			userId: usr._id,
 			email: usr.profile.du,
@@ -144,7 +147,7 @@ Meteor.methods({
 		};
 		ActiveOrders.insert(order);
 		Local.remove({userId: usr._id});
-		if(ActiveOrders.find().count() > 35){
+		if(ActiveOrders.find().count() > CAP){
 			Meteor.call('appOff',  function(error,result) {
 				if (error)
 					return alert(error.reason); 
@@ -157,6 +160,7 @@ Meteor.methods({
 	  if(!multiFlag){
 		  orderNum++;
 	  }
+	  var CAP = KitchenCap.findOne({name: "bandersnatch"}).capNum;
       var order = {
         userId: usr._id,
         inHouse: inHouse,
@@ -171,7 +175,7 @@ Meteor.methods({
       };
       ActiveOrders.insert(order);
       Local.remove({userId: usr._id});
-		if(ActiveOrders.find().count() > 35){
+		if(ActiveOrders.find().count() > CAP){
 			Meteor.call('appOff',  function(error,result) {
 				if (error)
 					return alert(error.reason); 
@@ -185,6 +189,7 @@ Meteor.methods({
 		if(!multiFlag){
 			orderNum++;
 		}
+		var CAP = KitchenCap.findOne({name: "bandersnatch"}).capNum;
 		var order = {
 			userId: usr._id,
 			inHouse: inHouse,
@@ -198,7 +203,7 @@ Meteor.methods({
 		};
 		ActiveOrders.insert(order);
 		Local.remove({userId: usr._id});
-		if(ActiveOrders.find().count() > 35){
+		if(ActiveOrders.find().count() > CAP){
 			Meteor.call('appOff',  function(error,result) {
 				if (error)
 					return alert(error.reason); 
@@ -223,8 +228,9 @@ Meteor.methods({
 	},
 
 	delOrder: function(orderId){
+		var CAP = KitchenCap.findOne({name: "bandersnatch"}).capNum;
 		ActiveOrders.remove({_id: orderId});
-		if(ActiveOrders.find().count() <= 35){
+		if(ActiveOrders.find().count() <= CAP){
 			Meteor.call('appOn',  function(error,result) {
 				if (error)
 					return alert(error.reason); 
@@ -358,7 +364,9 @@ Meteor.methods({
 		return 0;
 	},  
   
-   
+	changeCap: function(cn){
+		KitchenCap.update({name: "bandersnatch"}, {$set: {capNum: cn}});	
+	},
    
    appOff: function() {
 		Instance.update({

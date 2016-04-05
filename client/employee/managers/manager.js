@@ -1,5 +1,6 @@
 Meteor.subscribe('instance');
 Meteor.subscribe('emailList');
+Meteor.subscribe('kitchenCap');
 
 
 Template.manager.rendered = function(){
@@ -34,7 +35,12 @@ Template.manager.helpers({
 	},
 	'recip': function(){
 		return EmailList.find({}).fetch(); 
-	}
+	},
+	
+	'kitchenCap': function(){
+		var maxCap = KitchenCap.findOne({name:'bandersnatch'}); //findOne({name:'cap'});
+		return maxCap.capNum;
+	},
 });
 
 Template.emailChain.helpers({
@@ -59,21 +65,12 @@ Template.manager.events({
 		$('#off').hide();
 	},
 
-	'click #sendEmail': function(evt){
-		/* for loop that pulls all names from ul list and separated by ',' */
-		Meteor.call('sendEmail', function(error,result) {
-				if (error)
-					return alert(error.reason); 
-			}); 
-			Meteor.call('pushFinished');
 
-			document.getElementById('notif2').style.opacity='1.0';
-			document.getElementById('notif2').style.visibility='visible';
-
-  	setTimeout(function(){
-        $('#notif2').animate({ opacity: 0 }, 1000, 'linear')
-  	}, 3000);
+	'submit #chngCap': function(evt){
+		var cn = $('#capNum').val(); 
+		Meteor.call('changeCap', cn);
 	},
+	
 	
 	'click #addRecip': function(evt){
 		var emailz = $('#recieveEmail').val(); 

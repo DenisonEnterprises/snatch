@@ -36,6 +36,10 @@ Meteor.publish('instance', function(){
 	return Instance.find();
 });
 
+Meteor.publish('kitchenCap', function(){
+	return KitchenCap.find();
+});
+
 Meteor.publish('emailList', function(){
 	return EmailList.find(); 
 })

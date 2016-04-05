@@ -19,11 +19,6 @@
 		<div class="row">
 			<button type="button" id="on" class="on">Turn ON</button>
 			<button type="button" id="off" class="off">Turn OFF</button>
-			<button type="button" id="sendEmail" class="email">Send Email</button>
-		</div>
-		
-		<div class="row">
-			<label id="notif2">Email Sent!</label>
 		</div>
 		
 		<hr>
@@ -183,6 +178,24 @@
 					<br>
 					<label id='notifDeleted'> Item Deleted! </label>
 				</form>
+				
+
+				<hr>
+
+					<h3>Kitchen Capacity</h3>
+					
+				<form id="chngCap">
+					Please choose a number between 15 and 50
+					<br>
+					Current capacity at: {{kitchenCap}}
+					<div class="voffset2"></div>
+					<label for="capNum">Capacity: &nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<input type="number" id="capNum" min="15" max="50">
+					
+					<div class="voffset2"></div>
+					<button id="submit" value="Submit">Submit</button>
+				</form>
+				
 			
 			<hr>
 	</div>

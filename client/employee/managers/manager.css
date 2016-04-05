@@ -41,8 +41,24 @@
     font-weight:bolder;
     margin-right: 10px;
     margin-left: 10px;
-		margin-top:10px;
-		margin-bottom:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.ManagerContainer #submit{
+    font-family: OpenSans;
+    color: #fff;
+    font-size: 15px;
+    background: #005f5f;
+    padding: 10px 20px 10px 20px;
+    border: solid white 2px;
+    display: inline-block;
+    position: relative;
+    font-weight:bolder;
+    margin-right: 10px;
+    margin-left: 10px;
+	margin-top:10px;
+	margin-bottom:20px;
 }
 
 .ManagerContainer select{
@@ -69,6 +85,10 @@
 }
 
 .ManagerContainer #dollar {
+	width: 50px;
+}
+
+.ManagerContainer #capNum {
 	width: 50px;
 }
 

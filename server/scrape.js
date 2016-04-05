@@ -1,7 +1,6 @@
 
 var later = Npm.require('later');
 
-console.log('find')
 later.date.localTime();
 var psr = later.parse.recur().every(1).minute();
 // var psr = later.parse.recur().on(3).hour();
@@ -36,7 +35,13 @@ SyncedCron.add({
 	  return later.parse.recur().on(21).hour();		// turns on at 9pm every evening 
   },
   job: function() {
-	Meteor.call('appOn')
+	// turn the app on and reset order numbers
+	Meteor.call('appOn');
+	var app = Instance.findOne({name: 'bandersnatch'});
+	if(app.status == 'on'){
+		Meteor.call('resetOrNum');	
+	}
+	
 	// adding comment to reboot server
   }
 });
