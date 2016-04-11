@@ -392,6 +392,23 @@ Meteor.methods({
 	   var Email = {email: mail};
 	   EmailList.insert(Email);
    },
+   
+   
+  JSON2CSV: function(objArray) {
+   	   var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+   	   var str = '';
+   	   var line = '';
+
+   	   for (var i = 0; i < array.length; i++) {
+   	   	   var line = '';
+   	   	   for (var index in array[i]) {
+   	   	   	   line += array[i][index] + ',';
+   	   	   }
+        line = line.slice(0, -1);
+        str += line + '\r\n';
+       }
+       return str;    
+   },
   
    sendEmail: function(){	 
 	   var totOrders = FinishedOrders.find().fetch();
@@ -762,6 +779,12 @@ Meteor.methods({
 	  
 	  var psr = later.parse.recur().on('03:00:00').time();
 	  
+	  var data = FinishedOrders.find().fetch();		// Mongo DB stuff
+   	  var yourCSV = Meteor.call('JSON2CSV', data, function(error, result) {
+   	   		   if (error)
+   	   		   	   return alert(error.reason);
+   	   });
+	  
 	   SyncedCron.add({
 	     name: 'Send email',
 	     schedule: function(psr) {
@@ -776,6 +799,7 @@ Meteor.methods({
 
 			    subject: "Daily Stats",
 			    text: text, //Still Need to Implement
+			    attachment: yourCSV,
 			  }); 
 			return 0
 	     }
