@@ -263,10 +263,11 @@ Meteor.methods({
 
   
   // Employee has finished making an order
-	finishedOrder: function(thing, start, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, usrEmail, cellNum, cellCarrier){
+	finishedOrder: function(thing, start, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, usrEmail, cellNum, cellCarrier, dnum){
 		ActiveOrders.remove({_id: delID});
 		var RO = ReadyOrders.find({orderNum: orNum, userId: usrID}).count();
 		var FO = FinishedOrders.find({orderNum: orNum, userId: usrID}).count();
+		var usr = Meteor.users.find({_id: usrID});
 		var firstOrder = RO + FO; 
 		if(firstOrder === 0){
 			orderPrice = price; 
@@ -287,6 +288,7 @@ Meteor.methods({
 			phone: cellNum,
 			carrier: cellCarrier,
 			price: orderPrice, 
+			dnum: dnum,
 		};
 		ReadyOrders.insert(order);
 		if(!inHouse){
@@ -351,7 +353,8 @@ Meteor.methods({
 		return 0;
 	},
   
-	pickUpOrder: function(thing, flavors, mixins, start, finish,delID, orNum, inHouse, price, usrID, cellNum){
+	pickUpOrder: function(thing, flavors, mixins, start, finish,delID, orNum, inHouse, price, usrID, cellNum, dnum){
+		var usr = Meteor.users.find({_id: usrID});
 		var order = {
 			userId: usrID,
 			inHouse: inHouse,
@@ -363,6 +366,7 @@ Meteor.methods({
 			orderNum: orNum,
 			cellNumber: cellNum,
 			price: price,
+			dnum: dnum,
 		};
 		FinishedOrders.insert(order);
 		ReadyOrders.remove({_id: delID});  
