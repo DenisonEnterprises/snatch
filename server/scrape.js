@@ -20,10 +20,11 @@ SyncedCron.add({
   name: 'Send Email',
   schedule: function(psr) {
     // parser is a later.parse object
-	  return later.parse.recur().on(3).hour();		// turns on at 9pm every evening 
-  },
+	  return later.parse.recur().on(3).hour();		// sends email at 3am every morning
+	  },
   job: function() {
 	Meteor.call('sendEmail')
+	Meteor.call('pushFinished')
 	// adding comment to reboot server
   }
 });
