@@ -17,7 +17,7 @@ Template.backScreen.events({
 
 Template.readyInfo.helpers({
   'ready' : function(){
- 	 return ReadyOrders.find().fetch();
+ 	 return ReadyOrders.find().fetch().reverse();
   }
 });
 
