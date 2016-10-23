@@ -50,7 +50,14 @@ Template.order3.helpers({
 
 Template.order2.helpers({
   'orderDeets' : function(){
-    return this.item; 
+    return this.item;
+	//return this.comment; 
+  },
+});
+
+Template.comm.helpers({
+  'comments' : function(){
+	  return "\n"+this.comment;
   },
 });
 

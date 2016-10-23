@@ -76,7 +76,20 @@
 }
 
 
+.pseudoCheckContainer .cout .comm{
+    background: none;
+    margin-bottom: 15px;
+    font-weight:bolder;
+	display: inline-block;
+	cursor: default;
+}
 
+
+.pseudoCheckContainer .cout .comm #label{
+    font-family: OpenSans;
+    color: #ffffff;
+    font-size: 15px;
+}
 
 
 .checkoutContainer .cout .line{

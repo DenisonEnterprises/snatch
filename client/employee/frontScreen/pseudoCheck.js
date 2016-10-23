@@ -139,6 +139,7 @@ Template.pseudoCheck.events({
 	items = [];
     
  	var apple=$($('#appleName')).val();
+	var comment=$($('#commentName')).val();
 	for (i=0; i < orders.length; i++) {
 		var indvPrice = "";
 		indvPrice = (orders[i].price);
@@ -157,13 +158,13 @@ Template.pseudoCheck.events({
 		str += "Shake: \n";
 		for(var k = 0; k < shakes.length; k++){
 			if(k == 0){
-				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, true, Meteor.user(), apple, function(error,result) {
+				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, true, Meteor.user(), apple, comment, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});
 			}else{
 				multiFlag = true;
-				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, total, true, Meteor.user(), apple, function(error,result) {
+				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, total, true, Meteor.user(), apple, comment, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});
@@ -173,14 +174,14 @@ Template.pseudoCheck.events({
 	for(var j = 0; j < items.length; j++){
 		if(shakeStr || j > 0){
 			multiFlag = true;
-			Meteor.call('employeePlaceOrder', multiFlag, items[j], total, true, Meteor.user(), apple, function(error, result){
+			Meteor.call('employeePlaceOrder', multiFlag, items[j], total, true, Meteor.user(), apple, comment, function(error, result){
 				if (error)
 					return alert(error.reason);					
 			}); 	
 		}
 		else if(j == 0){
 			multiFlag = false; 
-			Meteor.call('employeePlaceOrder', multiFlag, items[j], total, true, Meteor.user(), apple, function(error, result){
+			Meteor.call('employeePlaceOrder', multiFlag, items[j], total, true, Meteor.user(), apple, comment, function(error, result){
 				if (error)
 					return alert(error.reason);					
 			}); 	
