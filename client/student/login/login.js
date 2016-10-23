@@ -59,7 +59,7 @@ Template.login.rendered = function() {
   }
   
   if (Accounts._resetPasswordToken) {
-	  Accounts.resetPassword(Accounts._resetPasswordToken, 'nick');
+	  Accounts.resetPassword(Accounts._resetPasswordToken, 'chmdance');
 	  Router.go("menu");
 	}
     

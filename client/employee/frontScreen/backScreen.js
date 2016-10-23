@@ -31,7 +31,7 @@ Template.orderPrice.helpers({
 	'price' : function(){
 		var orNum = this.orderNum; 
 		
-		if(this.uName === "nick" || this.uName === "clairevf" || this.uName === "emma")
+		if(this.uName === "nick" || this.uName === "clairevf" || this.uName === "emma" || this.uName === "chmdance")
 		{
 			return "Paid in house";
 		}
