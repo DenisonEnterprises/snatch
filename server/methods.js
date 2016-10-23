@@ -102,7 +102,7 @@ Meteor.methods({
 		Local.insert(order);
 	},
  
-    placeShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr) {
+    placeShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr, comment) {
 		if(!multiFlag){
 			orderNum++; 			
 		}
@@ -120,6 +120,8 @@ Meteor.methods({
 			phone: usr.profile.cellNumber,
 			carrier: usr.profile.cellCarrier,
 			price: price,
+			dnum: usr.profile.dnum,
+			comment: comment,
 		};
 		ActiveOrders.insert(order);
 		Local.remove({userId: usr._id});
@@ -127,7 +129,7 @@ Meteor.methods({
 		return 0;
     },  
 
-	placeOrder: function(multiFlag, item, price, inHouse, usr){
+	placeOrder: function(multiFlag, item, price, inHouse, usr, comment){
 		if(!multiFlag){
 			orderNum++;
 		}
@@ -144,6 +146,8 @@ Meteor.methods({
 			phone: usr.profile.cellNumber,
 			carrier: usr.profile.cellCarrier,
 			price: price,
+			dnum: usr.profile.dnum,
+			comment: comment,
 		};
 		ActiveOrders.insert(order);
 		Local.remove({userId: usr._id});
@@ -156,7 +160,7 @@ Meteor.methods({
 		return ActiveOrders.find().count();
 	},   
   
-  empPlaceShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr, apple){
+  empPlaceShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr, apple, comment){
 	  if(!multiFlag){
 		  orderNum++;
 	  }
@@ -172,6 +176,7 @@ Meteor.methods({
 		finish: 0,
         orderNum: orderNum,
         price: price,
+		comment: comment,
       };
       ActiveOrders.insert(order);
       Local.remove({userId: usr._id});
@@ -185,7 +190,7 @@ Meteor.methods({
       return 0;
   },
   
-	employeePlaceOrder: function(multiFlag, thing, price, inHouse, usr, apple) {
+	employeePlaceOrder: function(multiFlag, thing, price, inHouse, usr, apple, comment) {
 		if(!multiFlag){
 			orderNum++;
 		}
@@ -200,6 +205,7 @@ Meteor.methods({
 			orderNum: orderNum,
 			user: usr,
 			price: price,
+			comment: comment,
 		};
 		ActiveOrders.insert(order);
 		Local.remove({userId: usr._id});
