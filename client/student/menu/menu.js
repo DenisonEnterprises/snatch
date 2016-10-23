@@ -1,10 +1,8 @@
 Meteor.subscribe('local');
+Meteor.subscribe('users');
 
 Template.menu.rendered = function() {
 	
-	
-	
-
     var button = document.getElementById("cout");
    
     if (Local.find({userId: Meteor.user()._id}).count() > 0){
@@ -63,7 +61,18 @@ Template.menu.events({
     Router.go('beverages');
   },
     "click #cout": function(evt, instance){
-      Router.go('/checkout');
+		// Start of D# checking
+		
+		var user = Meteor.user();
+		var d = user.profile.dnum;
+		
+		if (d != undefined) {
+			Router.go('/checkout');
+		}
+		else {
+			Router.go("/dnumUpdate");
+		}
+		
     },
 	
 	"click #logout": function(evt, instance){

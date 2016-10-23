@@ -120,8 +120,9 @@ Template.readyInfo.events({
     var str = this.item;
 	var flavors = this.flavor; 
 	var mixins = this.mixin; 
-    var totalP = this.price; 
-    Meteor.call('pickUpOrder', str, flavors, mixins, start, finish, delID, orNum, inhaus, totalP, usrID, cellNumber, function(error,result) {
+    var totalP = this.price;
+	var dnum = this.dnum;
+    Meteor.call('pickUpOrder', str, flavors, mixins, start, finish, delID, orNum, inhaus, totalP, usrID, cellNumber, dnum, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 

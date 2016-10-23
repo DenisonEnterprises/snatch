@@ -6,6 +6,7 @@ Template.signupForm.rendered = function() {
   $('#signup-password').addClass("invalid");	
   $('#signup-username').addClass("invalid");
   $('#signup-email').addClass("invalid");
+  $('#signup-dnum').addClass("invalid");
   $('#signup-cell1').addClass("invalid"); 
   $('#signup-cell2').addClass('invalid'); 
   $('#signup-cell3').addClass('invalid');
@@ -15,6 +16,7 @@ Template.signupForm.rendered = function() {
   eFlag = false;
   cFlag = false;
   pwFlag = false;
+  dFlag = false;
 
 	areaFlag = false;
 	middleDigitFlag = false;
@@ -90,6 +92,50 @@ Template.signupForm.rendered = function() {
 		}
 	}
  	
+  });
+  
+  
+  $('#signup-dnum').on('input', function(){
+	var input=$(this).val();
+	
+	var num = true;
+	for (i = 0; i < input.length; i++) {
+		var numero = parseInt(input[i], 10);
+		if(typeof numero==='number' && (numero%1)===0) {
+			num = true;
+			// data is an integer
+		}
+		else {
+			num = false;
+		}
+	}
+	
+	var dnumNotTaken = Meteor.users.find({"profile.dnum": input}).count() == 0;
+	
+	dFlag = dnumNotTaken && (num===true);
+	if(dFlag){
+		$(this).removeClass("invalid").addClass("valid");
+	}else{
+		$(this).removeClass("valid").addClass("invalid");
+		if(!dnumNotTaken)
+		{
+			$('#notif').html("D# Taken");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
+		}
+		 else if(num===false)
+		{
+			$('#notif').html("D# can only contain numbers");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+	    	setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
+		}
+	}
   });
 
 
@@ -201,7 +247,7 @@ Template.signupForm.rendered = function() {
 Template.signupForm.events({
   "click #signup-form": function(event, template) {
     event.preventDefault();
-	if(uFlag && eFlag && cFlag && pwFlag && areaFlag && middleDigitFlag && lastFlag){
+	if(uFlag && eFlag && cFlag && pwFlag && areaFlag && middleDigitFlag && lastFlag && dFlag){
         
         Accounts.createUser({
         username: template.find("#signup-username").value,
@@ -212,6 +258,7 @@ Template.signupForm.events({
           cellNumber: template.find("#signup-cell1").value +template.find("#signup-cell2").value+template.find("#signup-cell3").value ,
           cellCarrier: template.find("#signup-carrier").value,
 	  	  du: template.find("#signup-email").value,
+		  dnum: template.find("#signup-dnum").value,
           
         }
       }, function(error) {
@@ -255,6 +302,14 @@ Template.signupForm.events({
 		 }
 		 if(!pwFlag){
 			 $('#notif').html("Please Create and Confirm your Password");
+	 		document.getElementById('notif').style.opacity='1.0'
+	 		document.getElementById('notif').style.visibility='visible'
+	     	setTimeout(function(){
+	           $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	     	}, 3000);
+		 }
+		 if(!dFlag){
+			 $('#notif').html("Please Enter Your D#");
 	 		document.getElementById('notif').style.opacity='1.0'
 	 		document.getElementById('notif').style.visibility='visible'
 	     	setTimeout(function(){
