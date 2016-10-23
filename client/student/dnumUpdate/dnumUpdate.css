@@ -1,0 +1,63 @@
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+.dnumContainer input {
+	color:black;
+	height: 2em;
+}
+
+.dnumContainer .norm {
+	font-family: OpenSans;
+	color: #ffffff;
+	font-size: 15px;
+	background-color:#005f5f;
+	border: solid white 2px;
+	font-weight: bolder;
+	
+	text-align:center;
+	
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 12px;
+	padding-right: 12px;
+	
+	margin-right:10px;
+	margin-left:10px;
+}
+
+.dnumContainer #DELogo{
+  max-width: 60px;
+  max-height: 60px; 
+}
+
+@media (min-width: 500px) { 
+	.dnumContainer #BSNLogo{
+		max-width: 480px;
+		max-height: auto;
+	}
+}
+
+.dnumContainer #anim{
+	text-align:center;
+}
+
+.dnumContainer h6{
+   color: red;
+   visibility: hidden;
+}
+
+/* Small devices (tablets)
+@media (min-width: 768px) { 
+
+}
+
+Medium devices (desktops)
+@media (min-width: 992px) {
+	
+}
+
+Large devices (large desktops)
+@media (min-width: 1200px) {
+	
+}
+*/
