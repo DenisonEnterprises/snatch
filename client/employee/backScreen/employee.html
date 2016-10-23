@@ -54,7 +54,7 @@
          <td style="width: 100px">{{> orderNum}}</td>
 		 <td style="width:100px">{{>inHaus}}</td>
 		 
-         	<td style="width: 230px" class="items">{{> order2}} {{> addIn}}</td>
+         	<td style="width: 230px" class="items">{{> order2}} {{> addIn}} {{> comm}}</td>
 	     
           <td class="done" style="width: 100px">{{> done}}</td>
        </tr>   
@@ -83,6 +83,10 @@
 
 <template name="addIn">
 		<span>{{info}}</span>
+</template>
+
+<template name="comm">
+		<span style="width: 230px; display: block; color:red; word-wrap:normal; white-space:normal;">{{comments}}</span>
 </template>
 
 <template name ="order3">
