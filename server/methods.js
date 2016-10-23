@@ -325,13 +325,13 @@ Meteor.methods({
 			
 			Email.send({
 				to: msg,
-				from: "bandersnatchApp@gmail.com",
+				from: "bandersnatchapp@gmail.com",
 				text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
 			});
 			
 			Email.send({
 				to: usrEmail,
-				from: "bandersnatchApp@gmail.com",
+				from: "bandersnatchapp@gmail.com",
 				subject: "Bandersnatch Order Ready!",
 				text: "Your " + thing + " is ready! You have " + remaining + " item(s) still in the kitchen!",
 			});
@@ -394,8 +394,8 @@ Meteor.methods({
    },
    
    
-  JSON2CSV: function(objArray) {
-   	   var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+  /* JSON2CSV: function(objArray) {
+   	   var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;						// for email Excel doc
    	   var str = '';
    	   var line = '';
 
