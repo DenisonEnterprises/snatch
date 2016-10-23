@@ -418,408 +418,280 @@ Meteor.methods({
         str += line + '\r\n';
        }
        return str;    
-   },
+   }, */
   
-   sendEmail: function(){	 
+   sendEmail: function(){
 	   var totOrders = FinishedOrders.find().fetch();
-	 //  console.log('total finished orders: ', totOrders);
 	   var price = 0.0;
 	   var indvPrice = "";
 	   var text = "";
 	   var totPrice = 0.0;
-	   var late = ""; 
-	   lateFlag = true; 
-	   var lateOrNumList = [];
-	   oCount= 0;
+	   var late = "";
 	   for(var i = 0; i < totOrders.length; i++){
 		   price += parseFloat(totOrders[i].price);
-	   } 
-	   text += "total revenue of the night: $" + price.toFixed(2) + "\n";
-	   
-	   var latePPL = ReadyOrders.find().fetch(); 
-	   for(i = 0; i < latePPL.length; i++){ 
-		   oNum = latePPL[i].orderNum; 
-		   for(var g = 0; g < lateOrNumList.length; g++){
-			   if(lateOrNumList[g] === oNum){
-				   lateFlag = false; 
-			   }
-		   }
-		   if(lateFlag){
-			   var latePrice = latePPL[i].price;
-			   lateOrNumList[oCount] = oNum; 
-			   if(latePrice === 0)
-			   {
-				   oCount++;
-				   sameOrder = FinishedOrders.find({orderNum : oNum}).fetch();
-				   for(var k = 0; k < sameOrder.length; k++)
-				   {
-					   if(sameOrder[k].price != 0)
-					   {
-						   latePrice = sameOrder[k].price;
-					   }
-				   }
-				   if(latePrice === 0)				// If no order w this orderNum is in Finished yet
-				   {
-					   sameOrder = ReadyOrders.find({orderNum: oNum}).fetch(); 
-					   for(vark = 0; k < sameOrder.length; k++)
-					   {
-						   if(sameOrder[k].price != 0)
-						   {
-							   latePrice = sameOrder[k].price; 
-						   }
-					   }
-				   }
-			   }
-			   late += latePPL[i].email + " : " + latePrice + "\n";
-		   }
-		   lateFlag = true; 
 	   }
+	   var utc = new Date().toJSON().slice(0,10);
+	   text += "Date: " + utc;
+	   text += "\n" + "total revenue of the night: $" + price.toFixed(2) + "\n\n";
+	   
+	   var products = [];																// Code below finds current product list -- don't want product list hard-coded
+	   products.push("Shake: ");
+	   
+	   Bagels.find().forEach(function(names){ nameList = names.name.split('\n'); 
+			for(index = 0; index < nameList.length; index++){
+				products.push(nameList[index]);
+			}
+		});
+		
+		Snacks.find().forEach(function(names){ nameList = names.name.split('\n'); 
+			for(index = 0; index < nameList.length; index++){
+				products.push(nameList[index]);
+			}
+		});
+	   
+	   Beverages.find().forEach(function(names){ nameList = names.name.split('\n'); 
+			for(index = 0; index < nameList.length; index++){
+				products.push(nameList[index]);
+			}
+		});
+		
+		
+		text += "\n========== Sales broken down in 30 minute intervals ========== \n\n";
+		
+		var currentDate = new Date();													// Finds current date to use in email
+		var year = currentDate.getUTCFullYear();
+		var month = currentDate.getUTCMonth() + 1;
+		var day = currentDate.getUTCDate();
+		
+		var allOrdersTimeCorrect = FinishedOrders.find().fetch().reverse();
+		var orderCount = 0;
+		var orderCountLength = allOrdersTimeCorrect.length;
+		
+		var timeArrayText = ["21:00 - 21:30", "21:30 - 22:00", "22:00 - 22:30", "22:30 - 23:00", "23:00 - 23:30", "23:30 - 00:00", "00:00 - 00:30", "00:30 - 01:00", "01:00 - 01:30", "01:30 - 02:00"];
+		var timeCutOffs = ["21:29:59:999", "21:59:59:999", "22:29:59:999", "22:59:59:999", "23:29:59:999", "23:59:59:999", "00:29:59:999", "00:59:59:999", "01:29:59:999", "01:59:59:999"];
+		
+		for (t = 0; t < timeCutOffs.length; t++) {				// For each time range
+			text += timeArrayText[t] + "   ";
+			
+			var productDict = {};
+			for(i = 0; i < products.length; i++){
+				var nameOfProduct = products[i];
+				productDict[nameOfProduct] = 0;
+			};
+			
+			var time = timeCutOffs[t];
+			var timeArray = time.split(":");
+			
+			var hour = parseInt(timeArray[0], 10);
+			var minute = parseInt(timeArray[1], 10);
+			var second = parseInt(timeArray[2], 10);
+			var millisecond = parseInt(timeArray[3], 10);
+			
+			
+			if (orderCount<orderCountLength) {
+				var DATE = allOrdersTimeCorrect[orderCount].finish;
+				var YR = parseInt(DATE.getUTCFullYear(), 10);
+				var MO = parseInt((DATE.getUTCMonth() + 1), 10);
+				var DY = parseInt(DATE.getUTCDate(), 10);
+				var HR = parseInt(DATE.getUTCHours(), 10);
+				var MN = parseInt(DATE.getUTCMinutes(), 10);
+				var SC = parseInt(DATE.getUTCSeconds(), 10);
+				var MS = parseInt(DATE.getUTCMilliseconds(), 10);
+			}
+			
+			while((orderCount<orderCountLength)&&(YR == year)&&(MO == month)&&(DY == day)&&(HR <= hour)&&(MN <= minute)&&(SC <= second)&&(MS <= millisecond)) {
+				var currentProd = allOrdersTimeCorrect[orderCount].item;
+				productDict[currentProd] += 1;
+				orderCount += 1;
+				
+				if ((orderCount>=orderCountLength)) {
+					break;
+				}
+				else {
+					var DATE = allOrdersTimeCorrect[orderCount].finish;
+					var YR = parseInt(DATE.getUTCFullYear(), 10);
+					var MO = parseInt((DATE.getUTCMonth() + 1), 10);
+					var DY = parseInt(DATE.getUTCDate(), 10);
+					var HR = parseInt(DATE.getUTCHours(), 10);
+					var MN = parseInt(DATE.getUTCMinutes(), 10);
+					var SC = parseInt(DATE.getUTCSeconds(), 10);
+					var MS = parseInt(DATE.getUTCMilliseconds(), 10);
+				};
+			};
+			
+			for(i = 0; i < products.length; i++){
+				var nameOfProduct = products[i];
+				if (nameOfProduct == "Shake: ") {
+					text += nameOfProduct + productDict[nameOfProduct] + "   ";
+				}
+				else {
+					text += nameOfProduct  + ": " + productDict[nameOfProduct] + "   ";
+				};
+			};
+			text += "\n\n";
+		}
+		
+		
+		text += "\n\n" + "========== Total sales by item ========== \n\n";						// Finds total number of each product sold during the night
+		
+		for(i = 0; i < products.length; i++){
+			var nameOfProduct = products[i];
+			var currentProduct = 0;
+			var itemArray;
+			FinishedOrders.find().forEach(function(order){ itemArray = order.item.split('\n'); 
+				for(index = 0; index < itemArray.length; index++){
+					if(itemArray[index] == nameOfProduct){
+						currentProduct++;
+					}
+				}
+			});
+			if (products[i] == "Shake: ") {
+				text += products[i] + currentProduct + "\n";
+			}
+			else {
+				text += products[i]  + ": " + currentProduct + "\n";
+			};
+		}
+	   
+	   text += "\n\n" + "========== Sales by order number ==========";						// Goes through and prints specs of every order
+			
+		var latePPL = ReadyOrders.find().fetch();								// If the order is still in  readyOrders, then add to late text
+	   var lateOrderNumPPL = {};
+	   for(i = 0; i < latePPL.length; i++){
+		   var orderNum = latePPL[i].orderNum;
+		   if (lateOrderNumPPL[orderNum]) {								
+			   late += "\n\n\t made @: " + latePPL[i].finish;
+				if (latePPL[i].item != "") {
+					late += "\n\t item: " + latePPL[i].item;
+				}
+				if (latePPL[i].flavor != "") {
+					var stringFlavorLate = latePPL[i].flavor;
+					late += "\n\t flavor: " + stringFlavorLate.replace(/(\r\n|\n|\r)/gm,"");
+				}
+				if (latePPL[i].mixin != "") {
+					var stringMixinLate = latePPL[i].mixin;
+					late += "\n\t mixin: " + stringMixinLate.replace(/(\r\n|\n|\r)/gm,"");
+				};
+		   }
+				
+			else{																// Haven't create a section for particular order # yet
+				late += "\n\n\n order #: " + latePPL[i].orderNum;
+				late += "\n\t inHouse: " + latePPL[i].inHouse;
+				if (latePPL[i].inHouse == false) {
+					late += "\n\t\t D#: " + latePPL[i].dnum;
+					late += "\n\t\t phone: " + latePPL[i].phone;
+					late += "\n\t\t email: " + latePPL[i].email;
+					late += "\n";
+				}
+				
+				var listOfSameLate = ReadyOrders.find({"orderNum": latePPL[i].orderNum}).fetch();
+				for (j = 0; j < listOfSameLate.length; j++) {
+					var currentOrderLate = listOfSameLate[j];
+					if (currentOrderLate.price > 0) {
+						late += "\n\t price: $" + currentOrderLate.price + "\n";
+					}
+				}
+				late += "\n\t made @: " + latePPL[i].finish;
+				
+				if (latePPL[i].item != "") {
+					late += "\n\t item: " + latePPL[i].item;
+				}
+				if (latePPL[i].flavor != "") {
+					var stringFlavorLate = latePPL[i].flavor;
+					late += "\n\t flavor: " + stringFlavorLate.replace(/(\r\n|\n|\r)/gm,"");
+				}
+				if (latePPL[i].mixin != "") {
+					var stringMixinLate = latePPL[i].mixin;
+					late += "\n\t mixin: " + stringMixinLate.replace(/(\r\n|\n|\r)/gm,"");
+				}
+				lateOrderNumPPL[orderNum] = 1;
+			}
+	   }
+	   
+		
 	   if (late == ""){
 		   late = "None";
 	   }
-	   text += "List of people who didn't pick up Order: \n" + late + "\n\n";
-	//   text += "-------------------------------------------\n\n";
-	   // text += " Stats from last night: " + "\n"
+	   late = "People who didn't pick up their order: " + late + "\n\n";
 	   
-	/* --------- num Pep Pizza Bagels --------- */
-		var numPizzaBagel = 0;	
-		var itemDeets;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ itemDeets = order.item.split('\n'); 
-			for(index = 0; index < itemDeets.length; index++){
-				if(itemDeets[index] == 'Pizza Bagel (Pep) '){
-					numPizzaBagel++;
-				}
-			}
-		});
-		totPrice += numPizzaBagel * 2.05;
-		
-	/* --------- num Cheez Pizza Bagels --------- */
-		var numchez = 0;	
-		var itemDeets3;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ itemDeets3 = order.item.split('\n'); 
-			for(index = 0; index < itemDeets3.length; index++){
-				if(itemDeets3[index] == 'Pizza Bagel (Cheese) '){
-					numchez++;
-				}
-			}
-		});
-		totPrice += 2.13*numchez;	
+	   /////////////////////////////
 	   
-	/* --------- num Snagels --------- */
-	   
-		var numSnagel = 0; 
-		var itemDeets2;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ itemDeets2 = order.item.split('\n'); 
-			for(index = 0; index < itemDeets2.length; index++){
-				if(itemDeets2[index] == 'Snagel '){
-					numSnagel++;
+	   var PPL = FinishedOrders.find().fetch();											// Picked up order specs
+	   var orderNumPPL = {};
+	   for(i = 0; i < PPL.length; i++){
+		   var orderNum = PPL[i].orderNum;
+		   if (orderNumPPL[orderNum]) {
+			   text += "\n\n\t made @: " + PPL[i].finish;
+				if (PPL[i].item != "") {
+					text += "\n\t item: " + PPL[i].item;
 				}
-			}
-		});
-		totPrice += 0.64 * numSnagel;
-		
-	/* --------- num Klynch --------- */
-	   
-		var numK = 0; 
-		var i4;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i4 = order.item.split('\n'); 
-			for(index = 0; index < i4.length; index++){
-				if(i4[index] == 'Klynch '){
-					 numK++;
+				if (PPL[i].flavor != "") {
+					var stringFlavor = PPL[i].flavor;
+					text += "\n\t flavor: " + stringFlavor.replace(/(\r\n|\n|\r)/gm,"");
 				}
-			}
-		});
-		totPrice += 1.24 * numK;
-		
-	/* --------- num Nuckin' Futz --------- */
-	   
-		var numNF = 0; 
-		var i5;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i5 = order.item.split('\n'); 
-			for(index = 0; index < i5.length; index++){
-				if(i5[index] == 'Nuckin\' Futz '){
-					 numNF++;
+				if (PPL[i].mixin != "") {
+					var stringMixin = PPL[i].mixin;
+					text += "\n\t mixin: " + stringMixin.replace(/(\r\n|\n|\r)/gm,"");
+				};
+		   }
+				
+			else{
+				text += "\n\n\n order #: " + PPL[i].orderNum;
+				text += "\n\t inHouse: " + PPL[i].inHouse;
+				if (PPL[i].inHouse == false) {
+					text += "\n\t\t phone: " + PPL[i].phone + "\n";
 				}
-			}
-		});
-		totPrice += 1.12 * numNF;
-		
-	/* --------- num Pesto Bagel --------- */
-	   
-		var numPB = 0; 
-		var i6;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i6 = order.item.split('\n'); 
-			for(index = 0; index < i6.length; index++){
-				if(i6[index] == 'Pesto Bagel '){
-					 numPB++;
+				
+				var listOfSame = FinishedOrders.find({"orderNum": PPL[i].orderNum}).fetch();
+				for (j = 0; j < listOfSame.length; j++) {
+					var currentOrder = listOfSame[j];
+					if (currentOrder.price > 0) {
+						text += "\n\t price: $" + currentOrder.price + "\n";
+					}
 				}
-			}
-		});
-		totPrice += 2.26 * numPB;
-		
-	/* --------- num Pesto Pepperoni --------- */
-	   
-		var numPBP = 0; 
-		var i7;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i7 = order.item.split('\n'); 
-			for(index = 0; index < i7.length; index++){
-				if(i7[index] == 'Pesto Bagel (Pep) '){
-					 numPBP++;
+				text += "\n\t made @: " + PPL[i].finish;
+				
+				if (PPL[i].item != "") {
+					text += "\n\t item: " + PPL[i].item;
 				}
-			}
-		});
-		totPrice += 2.18 * numPBP;
-		
-	/* --------- num WDU bagel--------- */
-	   
-		var numWD = 0; 
-		var i8;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i8 = order.item.split('\n'); 
-			for(index = 0; index < i8.length; index++){
-				if(i8[index] == 'WDU Bagel '){
-					 numWD++;
+				if (PPL[i].flavor != "") {
+					var stringFlavor = PPL[i].flavor;
+					text += "\n\t flavor: " + stringFlavor.replace(/(\r\n|\n|\r)/gm,"");
 				}
-			}
-		});
-		totPrice += 1.12 * numWD;
-		
-	/* --------- num Half and Half--------- */
-	   
-		var numHH = 0; 
-		var i9;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i9 = order.item.split('\n'); 
-			for(index = 0; index < i9.length; index++){
-				if(i9[index] == 'Half and Half '){
-					 numHH++;
+				if (PPL[i].mixin != "") {
+					var stringMixin = PPL[i].mixin;
+					text += "\n\t mixin: " + stringMixin.replace(/(\r\n|\n|\r)/gm,"");
 				}
+				orderNumPPL[orderNum] = 1;
 			}
-		});
-		totPrice += 1.84 * numHH;
-		
-	/* --------- num Coffee --------- */
+	   }
 	   
-		var numC = 0; 
-		var i10;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i10 = order.item.split('\n'); 
-			for(index = 0; index < i10.length; index++){
-				if(i10[index] == 'Coffee'){
-					 numC++;
-				}
-			}
-		});
-		totPrice += 0.20 * numC;
-		
-	/* --------- num Coffee --------- */
-	   
-		var numH = 0; 
-		var i11;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i11 = order.item.split('\n'); 
-			for(index = 0; index < i11.length; index++){
-				if(i11[index] == 'Hum'){
-					 numH++;
-				}
-			}
-		});
-		totPrice += 1.26 * numH;
-	
-	/* --------- num Chai H --------- */
-	   
-		var n1 = 0; 
-		var i12;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i12 = order.item.split('\n'); 
-			for(index = 0; index < i12.length; index++){
-				if(i12[index] == 'Chai Tea (Hot)'){
-					 n1++;
-				}
-			}
-		});
-		totPrice += 1.05 * n1;	
-		
-	/* --------- num Chai C --------- */
-	   
-		var n2 = 0; 
-		var i13;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i13 = order.item.split('\n'); 
-			for(index = 0; index < i13.length; index++){
-				if(i13[index] == 'Chai Tea (Cold)'){
-					 n2++;
-				}
-			}
-		});
-		totPrice += 1.05 * n2;	
-		
-		
-	/* --------- num Iced Tea --------- */
-	   
-		var n3 = 0; 
-		var i14;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ i14 = order.item.split('\n'); 
-			for(index = 0; index < i14.length; index++){
-				if(i14[index] == 'Iced Tea'){
-					 n3++;
-				}
-			}
-		});
-		totPrice += 0.31 * n3;	
-		
-	/* --------- num Latte --------- */
-	   
-		var n5 = 0; 
-		var i16; 
-		FinishedOrders.find().forEach(function(order){ i16 = order.item.split('\n'); 
-			for(index = 0; index < i16.length; index++){
-				if(i16[index] == 'Latte'){
-					 n5++;
-				}
-			}
-		});
-		totPrice += 1.02 * n5;	
-		
-	/* --------- num Red Bull --------- */
-	   
-		var n6 = 0; 
-		var i17; 
-		FinishedOrders.find().forEach(function(order){ i17 = order.item.split('\n'); 
-			for(index = 0; index < i17.length; index++){
-				if(i17[index] == 'Red Bull'){
-					 n6++;
-				}
-			}
-		});
-		totPrice += 0.54 * n6;	
-		
-	/* --------- num Soda --------- */
-	   
-		var n7 = 0; 
-		var i18; 
-		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
-			for(index = 0; index < i18.length; index++){
-				if(i18[index] == 'Soda'){
-					 n7++;
-				}
-			}
-		});
-		totPrice += 0.62 * n7;	
-		
-	/* --------- num Popcorn --------- */
-	   
-		var n7 = 0; 
-		var i18; 
-		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
-			for(index = 0; index < i18.length; index++){
-				if(i18[index] == 'Popcorn '){
-					 n7++;
-				}
-			}
-		});
-		totPrice += 0.17 * n7;	
-		
-	/* --------- num Pizza Pretzel --------- */
-	   
-		var n7 = 0; 
-		var i18; 
-		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
-			for(index = 0; index < i18.length; index++){
-				if(i18[index] == 'Pizza Pretzel '){
-					 n7++;
-				}
-			}
-		});
-		totPrice += 2.39 * n7;	
-		
-	/* --------- num Pizza Pretzel (PEP) --------- */
-	   
-		var n7 = 0; 
-		var i18; 
-		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
-			for(index = 0; index < i18.length; index++){
-				if(i18[index] == 'Pizza Pretzel (Pep) '){
-					 n7++;
-				}
-			}
-		});
-		totPrice += 2.31 * n7;	
-		
-	/* --------- num Hot Pretzel --------- */
-	   
-		var n7 = 0; 
-		var i18; 
-		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
-			for(index = 0; index < i18.length; index++){
-				if(i18[index] == 'Hot Pretzel '){
-					 n7++;
-				}
-			}
-		});
-		totPrice += 1.34 * n7;	
-		
-	/* --------- num Hot Pretzel Cheese --------- */
-	   
-		var n7 = 0; 
-		var i18; 
-		FinishedOrders.find().forEach(function(order){ i18 = order.item.split('\n'); 
-			for(index = 0; index < i18.length; index++){
-				if(i18[index] == 'Hot Pretzel (Cheese) '){
-					 n7++;
-				}
-			}
-		});
-		totPrice += 1.60 * n7;	
-		
-		
-	   
-	 /*--------- num Shakes ---------
-		var numShake = 0;
-		var itemDeets4;		// array for the items to fall into
-		FinishedOrders.find().forEach(function(order){ itemDeets4 = order.item.split('\n'); 
-			for(index = 0; index < itemDeets4.length; index++){
-				if(itemDeets4[index] == "Shake: "){
-					numShake++;
-				}
-			}
-		});
-		text += "- Number of Shakes sold: " + numShake + "\n" */  
-  
-  	  
-	   var recipients = '';
+	   //////////////////////////////////////
+	  
+	  var recipients = '';
 	   emailChain = EmailList.find().fetch(); 
 	   for(var i = 0; i < emailChain.length; i++){
 		   recipients += emailChain[i].email + ', ';
-	   }
+	   };
+	   
+	   Email.send({
+			    from: "bandersnatchapp@gmail.com",
+			    to: recipients,
+
+			    subject: "Didn't Pick Up Order",
+			    text: late,
+			  }); 
 	  
-	  var psr = later.parse.recur().on('03:00:00').time();
-	  
-	  var data = FinishedOrders.find().fetch();		// Mongo DB stuff
-   	  var yourCSV = Meteor.call('JSON2CSV', data, function(error, result) {
-   	   		   if (error)
-   	   		   	   return alert(error.reason);
-   	   });
-	  
-	   SyncedCron.add({
-	     name: 'Send email',
-	     schedule: function(psr) {
-	       // parser is a later.parse object
-	       return psr.text('send email');
-	     },
-	     job: function() {
-			// text += "Total profit of the night: $" + totPrice.toFixed(2);
-			Email.send({
-			    from: "bandersnatchApp@gmail.com",
+	  Email.send({
+			    from: "bandersnatchapp@gmail.com",
 			    to: recipients,
 
 			    subject: "Daily Stats",
-			    text: text, //Still Need to Implement
-			    attachment: yourCSV,
+			    text: text,
 			  }); 
-			return 0
-	     }
-	   });
-
-	   
    },
  
    pushFinished: function(){
-	   Data.remove({});
 	   
  	   var finished = FinishedOrders.find().fetch(); 
  	   for(var i = 0; i < finished.length; i++){
@@ -853,6 +725,7 @@ Meteor.methods({
 		   var order = {
 			   orderID: FO._id,
 			   usrID : FO.userId,
+			   dnum: FO.dnum,
 			   item : itemz,
 			   flavor: flav, 
 			   mixin: mix, 
