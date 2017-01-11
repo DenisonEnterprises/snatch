@@ -49,11 +49,9 @@
 	font-size: 15px;
 }
 
-@media (min-width: 500px) { 
-	.loginContainer #BSNLogo{
-		max-width: 480px;
+.loginContainer #BSNLogo{
+		max-width: 100%;
 		max-height: auto;
-	}
 }
 
 
