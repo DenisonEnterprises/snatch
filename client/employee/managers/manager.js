@@ -30,6 +30,9 @@ Template.manager.helpers({
 	'mixin': function(){
 		return Milkshakes.find({type: "mixin"}).fetch(); 
 	},
+	'topping': function(){
+		return Milkshakes.find({type: "topping"}).fetch(); 
+	},
 	'flavor': function(){
 		return Milkshakes.find({type:'flavor'}).fetch();
 	},
