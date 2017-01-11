@@ -70,6 +70,9 @@ Template.addIn.helpers({
 			if(this.mixin != ''){
 				str += "\n\t" + this.mixin;
 			}
+			if(this.topping != ''){
+				str += "\n\t" + this.topping;
+			}
 		}
   	  return str;
     },
@@ -107,11 +110,13 @@ Template.orderInfo.events({
 		var userID = this.userId;
 		var orNum = this.orderNum;
 		var flavs = ''; 
-		var mixins = ''; 
+		var mixins = '';
+		var toppings = ''; 
 		var order = this.item;
 		if(order === "Shake: "){
 			flavs = this.flavor; 
 			mixins = this.mixin; 
+			toppings = this.toppings;
 		}
 		var usrName = this.uName; 
 		var cellNumber = this.phone;
@@ -128,7 +133,7 @@ Template.orderInfo.events({
 		$('#finished').css("cursor", "default");
 		
 		console.log(email);
-	    Meteor.call('finishedOrder', order, start, flavs, mixins, delID, total, inhaus, orNum, userID, usrName, email ,cellNumber, cellCarrier, dnum, function(error,result) {
+	    Meteor.call('finishedOrder', order, start, flavs, mixins, toppings, delID, total, inhaus, orNum, userID, usrName, email ,cellNumber, cellCarrier, dnum, function(error,result) {
 			if (error)
 				return alert(error.reason);
 			}); 

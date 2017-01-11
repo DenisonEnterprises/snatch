@@ -74,6 +74,15 @@
 						{{/each}}
 		  			</select>
 			</div>
+
+      <h4>Toppings</h4>
+                         
+							<select id='toppingList' class='toppingList1' name = 'toppingList1'>
+								<option selected>None</option>
+								{{#each topping}}
+									<option value={{toppingName}}>{{toppingName}}</option>
+								{{/each}}
+						  	</select>
  	 </div>
       
       <br>

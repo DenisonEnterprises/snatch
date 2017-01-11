@@ -24,7 +24,16 @@ Template.pseudoMenu.helpers({
 
 	'mixinName': function(){
 	  return this.name;
+	},
+
+	'topping': function(){
+	  return Milkshakes.find({type: 'topping'}).fetch();
+	}, 
+
+	'toppingName': function(){
+	  return this.name;
 	}
+
 });
 
 
@@ -111,6 +120,10 @@ Template.pseudoMenu.events({
 	   		  $('.mixList2').hide();  
 	   	  }
       },
+
+			'change #toppingList': function(evt, instance){ //gets all clicks
+	   	  var top1 = $('.toppingList1').val(); 
+      },
   
   "click #swapBTN": function( evt, instance ){
     Router.go('backScreen');
@@ -171,12 +184,14 @@ Template.pseudoMenu.events({
    		}
 
 		var nom = ''; 
-		var price = 0; 
+		var price = 3; 
 		var mixStr = '';
 		var flav1 = $('.flavList1 option:selected').val(); 
 		var flav2 = $('.flavList2 option:selected').val();
 		var mix1 = $('.mixList1 option:selected').val(); 
-		var mix2 = $('.mixList2 option:selected').val(); 
+		var mix2 = $('.mixList2 option:selected').val();
+		var top1 = $('.toppingList1 option:selected').val();
+
 
 		var flavStr = flav1; 
 		if(flav2 != 'None'){
@@ -184,14 +199,45 @@ Template.pseudoMenu.events({
 		}
 		
 		if(mix1 != 'None'){
-			mixStr += mix1; 
+			mixStr += mix1;
+
+			var mk = Milkshakes.find().fetch(); 
+			var m = 0;
+			while(mk[m].name != mix1){
+				m++;
+			}
+			var mp1 = mk[m].price;
+			if(mp1 != undefined) {
+			price=price+mp1} 
 		}
 		if(mix2 != 'None'){
 			mixStr += ', ' + mix2 + '\n';
+			
+			var mk2 = Milkshakes.find().fetch(); 
+			var n = 0;
+			while(mk2[n].name != mix2){
+				n++;
+			}
+			var mp2 = mk2[n].price;
+			if(mp2 != undefined) {
+			price=price+mp2}
+		}
+
+		if(top1 != 'None') {
+			var topStr = top1; 
+
+			var tp = Milkshakes.find().fetch(); 
+			var t = 0;
+			while(tp[t].name != top1){
+				t++;
+			}
+			var tp1 = tp[t].price;
+			if(tp1 != undefined) {
+			price=price+tp1} 
 		}
 
 		if(flav1 != "None"){
-			Meteor.call('shakeOrder', flavStr, mixStr, function(error,result) {
+			Meteor.call('shakeOrder', flavStr, mixStr, topStr, price, function(error,result) {
 				if (error)
 						return alert(error.reason);
 			});

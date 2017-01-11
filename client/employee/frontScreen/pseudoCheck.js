@@ -21,6 +21,13 @@ Template.PseudoShake.helpers({
 	
 });
 
+Template.PseudoShake.helpers({
+	'toppings' : function(){
+		return this.topping; 
+	}
+	
+});
+
 
 Template.PseudoShake.helpers({
 	'shake': function(){
@@ -125,7 +132,7 @@ Template.pseudoCheck.events({
 	var total = 0.0; 
 	var indvPrice = "";
 	for (i=0; i < orders.length; i++) {
-		if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
+		if((orders[i].type != "flavor") && (orders[i].type != "mixin") && (orders[i].type != "topping")){
 			indvPrice = orders[i].price;
 			total = total + parseFloat(indvPrice);		
 		}
@@ -158,13 +165,13 @@ Template.pseudoCheck.events({
 		str += "Shake: \n";
 		for(var k = 0; k < shakes.length; k++){
 			if(k == 0){
-				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, true, Meteor.user(), apple, comment, function(error,result) {
+				Meteor.call('empPlaceShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, shakes[k].topping, total, true, Meteor.user(), apple, comment, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});
 			}else{
 				multiFlag = true;
-				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, total, true, Meteor.user(), apple, comment, function(error,result) {
+				Meteor.call('empPlaceShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, shakes[k].topping, total, true, Meteor.user(), apple, comment, function(error,result) {
 					if (error)
 						return alert(error.reason);
 				});

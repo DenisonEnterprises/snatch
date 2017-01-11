@@ -20,6 +20,13 @@ Template.Shake.helpers({
 });
 
 Template.Shake.helpers({
+	'toppings' : function(){
+		return this.topping; 
+	}
+	
+});
+
+Template.Shake.helpers({
 	'shake': function(){
 		return this.item;
 	}
@@ -58,7 +65,7 @@ Template.totalPrice.helpers({
 		var total = 0.0; 
 		var indvPrice = "";
 		for (i=0; i < orders.length; i++) {
-			if((orders[i].type != "flavor") && (orders[i].type != "mixin")){
+			if((orders[i].type != "flavor") && (orders[i].type != "mixin") && (orders[i].type != "topping")){
 				indvPrice = orders[i].price;
 				if(orders[i].type = 'shake'){
 					total+= parseFloat(indvPrice);
@@ -88,6 +95,7 @@ Template.checkout.events({
 	var str = '';
 	var flavor = ""; 
 	var mixin = "";
+	var topping = "";
 	var shakeStr = false;
     var total = 0; 
 	var comment=$($('#commentName')).val();
@@ -118,13 +126,13 @@ Template.checkout.events({
 			str += "Shake: \n";
 			for(var k = 0; k < shakes.length; k++){
 				if(k == 0){
-					Meteor.call('placeShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), comment, function(error,result) {
+					Meteor.call('placeShakeOrder',multiFlag, shakes[k].flavor, shakes[k].mixin, shakes[k].topping, total, false, Meteor.user(), comment, function(error,result) {
 						if (error)
 							return alert(error.reason);
 					});
 				}else{
 					multiFlag = true;
-					Meteor.call('placeShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, total, false, Meteor.user(), comment, function(error,result) {
+					Meteor.call('placeShakeOrder',multiFlag,shakes[k].flavor, shakes[k].mixin, shakes[k].topping, total, false, Meteor.user(), comment, function(error,result) {
 						if (error)
 							return alert(error.reason);
 					});

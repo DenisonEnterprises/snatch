@@ -99,6 +99,9 @@ Template.addIns.helpers({
 			if(this.mixin != ''){
 				str += "\n\t" + this.mixin;
 			}
+			if(this.topping != ''){
+				str += "\n\t" + this.topping;
+			}
 		}
   	  return str;
     },
@@ -120,9 +123,10 @@ Template.readyInfo.events({
     var str = this.item;
 	var flavors = this.flavor; 
 	var mixins = this.mixin; 
+	var toppings = this.topping;
     var totalP = this.price;
 	var dnum = this.dnum;
-    Meteor.call('pickUpOrder', str, flavors, mixins, start, finish, delID, orNum, inhaus, totalP, usrID, cellNumber, dnum, function(error,result) {
+    Meteor.call('pickUpOrder', str, flavors, mixins, toppings, start, finish, delID, orNum, inhaus, totalP, usrID, cellNumber, dnum, function(error,result) {
 				if (error)
 					return alert(error.reason);
 			}); 

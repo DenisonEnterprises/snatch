@@ -45,6 +45,7 @@
 			           <option value="select" id="select">Select</option>
 			           <option value="flavor">Shake Flavor</option>
 					   <option value="mixin">Shake Mixin</option>
+					   <option value="topping">Shake Topping</option>
 			           <option value="bagel">Bagel</option>
 					   <option value="snack">Snack</option>
 					   <option value="bev">Beverage</option>
@@ -71,8 +72,9 @@
 					   <option value="bagel">Bagel</option>
 					   <option value="snack">Snack</option>
 					   <option value="bev">Beverage</option>
-					   <option value="mixin">Shake Mixin</option>
 			       <option value="flavor">Shake Flavor</option>
+				   <option value="mixin">Shake Mixin</option>
+				   <option value="topping">Shake Topping</option>
 					</select>
 						
 					<script>
@@ -136,6 +138,22 @@
 							/*************** DELETE A MIXIN ***************/
 							else if(choice == 'mixin'){
 								var snacks = Milkshakes.find({type: 'mixin'}).fetch(); 
+								var sel = document.getElementById('deleteItem');
+								var fragment = document.createDocumentFragment();
+
+								snacks.forEach(function(snack, index) {
+								    var opt = document.createElement('option');
+								    opt.innerHTML = snack.name;
+								    opt.value = snack.name;
+								    fragment.appendChild(opt);
+								});
+
+								sel.appendChild(fragment);
+							}
+
+							/*************** DELETE A TOPPING ***************/
+							else if(choice == 'topping'){
+								var snacks = Milkshakes.find({type: 'topping'}).fetch(); 
 								var sel = document.getElementById('deleteItem');
 								var fragment = document.createDocumentFragment();
 

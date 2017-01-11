@@ -73,7 +73,7 @@ Meteor.methods({
 		return 0;
 	},
 
-	shakeOrder: function(flavors, mixins) {
+	shakeOrder: function(flavors, mixins, toppings, price) {
 		var user = Meteor.user();
 		var str =  "Shake: ";
 		var order = {
@@ -81,8 +81,9 @@ Meteor.methods({
 			userId: user._id,
 			flavor: flavors,
 			mixin: mixins,
+			topping: toppings,
 			uName: user.username,
-			price: 3,
+			price: price,
 			item: str,
 		}
 		Local.insert(order);
@@ -102,7 +103,7 @@ Meteor.methods({
 		Local.insert(order);
 	},
  
-    placeShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr, comment) {
+    placeShakeOrder: function(multiFlag, flavs, mixins, toppings, price, inHouse, usr, comment) {
 		if(!multiFlag){
 			orderNum++; 			
 		}
@@ -115,6 +116,7 @@ Meteor.methods({
 			finish: 0,
 			flavor: flavs,
 			mixin: mixins,
+			topping: toppings,
 			item: "Shake: ",
 			orderNum: orderNum,
 			phone: usr.profile.cellNumber,
@@ -160,7 +162,7 @@ Meteor.methods({
 		return ActiveOrders.find().count();
 	},   
   
-  empPlaceShakeOrder: function(multiFlag, flavs, mixins, price, inHouse, usr, apple, comment){
+  empPlaceShakeOrder: function(multiFlag, flavs, mixins, toppings, price, inHouse, usr, apple, comment){
 	  if(!multiFlag){
 		  orderNum++;
 	  }
@@ -171,6 +173,7 @@ Meteor.methods({
         uName: apple,
 		flavor: flavs,
 		mixin: mixins,
+		topping: toppings,
         item: "Shake: ",
         start: new Date(),
 		finish: 0,
@@ -263,7 +266,7 @@ Meteor.methods({
 
   
   // Employee has finished making an order
-	finishedOrder: function(thing, start, flavs, mixs, delID, price, inHouse, orNum, usrID, usrName, usrEmail, cellNum, cellCarrier, dnum){
+	finishedOrder: function(thing, start, flavs, mixs, tops, delID, price, inHouse, orNum, usrID, usrName, usrEmail, cellNum, cellCarrier, dnum){
 		ActiveOrders.remove({_id: delID});
 		var RO = ReadyOrders.find({orderNum: orNum, userId: usrID}).count();
 		var FO = FinishedOrders.find({orderNum: orNum, userId: usrID}).count();
@@ -281,9 +284,10 @@ Meteor.methods({
 			uName: usrName,
 			item: thing,
 			start: start,
-			finish: new Date(),
+			finish: finishTime,
 			flavor: flavs, 
 			mixin: mixs,
+			topping: tops,
 			orderNum: orNum,
 			phone: cellNum,
 			carrier: cellCarrier,
@@ -353,7 +357,7 @@ Meteor.methods({
 		return 0;
 	},
   
-	pickUpOrder: function(thing, flavors, mixins, start, finish,delID, orNum, inHouse, price, usrID, cellNum, dnum){
+	pickUpOrder: function(thing, flavors, mixins, toppings, start, finish,delID, orNum, inHouse, price, usrID, cellNumber, dnum){
 		var usr = Meteor.users.find({_id: usrID});
 		var order = {
 			userId: usrID,
@@ -361,10 +365,11 @@ Meteor.methods({
 			item: thing,
 			flavor: flavors, 
 			mixin: mixins, 
+			topping: toppings,
 			start: start, 
 			finish: finish,
 			orderNum: orNum,
-			cellNumber: cellNum,
+			phone: cellNumber,
 			price: price,
 			dnum: dnum,
 		};
@@ -772,6 +777,9 @@ Meteor.methods({
 	   }
 	   else if (type == 'mixin'){
 		   Milkshakes.insert({type: 'mixin', name: Name, price: Price});
+	   }
+	   else if (type == 'topping'){
+		   Milkshakes.insert({type: 'topping', name: Name, price: Price});
 	   }
 	   else if (type == 'bagel'){
 	   		Bagels.insert({type: 'bagel', name: Name, price: Price});
