@@ -115,7 +115,7 @@ Template.readyInfo.events({
     var orNum = this.orderNum;
 	var usrID = this.userId; 
     var orders = ReadyOrders.find({orderNum: orNum}).fetch();
-    var cellNumber = this.cellNumber;
+    var cellNumber = this.phone;
     var inhaus = this.inHouse;
     var delID = this._id; 
 	var start = this.start; 
