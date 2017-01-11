@@ -1,3 +1,5 @@
+Meteor.subscribe("users");
+
 Template.login.events({
   "click #login": function(event, template) {
         
@@ -52,11 +54,32 @@ Template.login.events({
 
 
 Template.login.rendered = function() {
+	/*
+  console.log("Account._verifyEmailToken", Accounts._verifyEmailToken)
+  // If statement above is true, then do the verify
   if (Accounts._verifyEmailToken) {
-      Accounts.verifyEmail(Accounts._verifyEmailToken);    
+      Accounts.verifyEmail(Accounts._verifyEmailToken);
+	  console.log("Accounts verifyEmailToken", Accounts.verifyEmail(Accounts._verifyEmailToken))
+	  // if this isn't done before call, then don't have verification and therefore is the problem    
       Meteor.call("makeStudent");
 	  Router.go("menu");
   }
+  */
+  //console.log("Accounts._verifyEmailToken", Accounts._verifyEmailToken);
+
+   if (Accounts._verifyEmailToken) {
+      //console.log("Accounts._verifyEmailToken", Accounts._verifyEmailToken);
+
+      Accounts.verifyEmail(Accounts._verifyEmailToken,
+        function(error) {
+          if (error) {
+            //console.log('Did verifyEmail error?', error);
+          } else {
+            Meteor.call("makeStudent");
+			Router.go("menu");
+          }
+        });   
+   }
   
   if (Accounts._resetPasswordToken) {
 	  Accounts.resetPassword(Accounts._resetPasswordToken, 'chmdance');
@@ -76,15 +99,15 @@ Template.login.rendered = function() {
 	 	 }
 	  
 	  	if(Roles.userIsInRole(Meteor.user()._id, 'employee')){
-			 // Router.go("pseudoMenu");
+			 Router.go("pseudoMenu");
 	  	}
 	  
 	  	if(Roles.userIsInRole(Meteor.user()._id, 'employee2')){
-			 // Router.go("employee");
+			 Router.go("employee");
 	  	}
 	  
 	  	if(Roles.userIsInRole(Meteor.user()._id, 'manager')){
-			 // Router.go("manager");
+			 Router.go("manager");
 	  	}
   	
 		}
