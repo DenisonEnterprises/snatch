@@ -98,44 +98,50 @@ Template.signupForm.rendered = function() {
   $('#signup-dnum').on('input', function(){
 	var input=$(this).val();
 	
-	var num = true;
-	for (i = 0; i < input.length; i++) {
-		var numero = parseInt(input[i], 10);
-		if(typeof numero==='number' && (numero%1)===0) {
-			num = true;
-			// data is an integer
+	var dnumTaken = Meteor.users.find({"profile.dnum": input}).count() > 0;
+		var dnumEmpty = input.length === 0;
+		var dnumNumber = true;
+
+		good_dnum = input.replace(/(\s*)(D|d|0)?(\d{8})(.*)/, 'D$3');
+
+		if(good_dnum.length == 9){
+			dnumNumber = true;
 		}
-		else {
-			num = false;
+		else{
+			dnumNumber = false;
 		}
-	}
-	
-	var dnumNotTaken = Meteor.users.find({"profile.dnum": input}).count() == 0;
-	
-	dFlag = dnumNotTaken && (num===true);
+		
+	dFlag = !dnumTaken && !dnumEmpty && dnumNumber;
 	if(dFlag){
 		$(this).removeClass("invalid").addClass("valid");
-	}else{
-		$(this).removeClass("valid").addClass("invalid");
-		if(!dnumNotTaken)
-		{
-			$('#notif').html("D# Taken");
+	}
+	else{
+  		$(this).removeClass("valid").addClass("invalid");
+  		if(dnumTaken){
+  			$('#notif').html("D# Taken");
 			document.getElementById('notif').style.opacity='1.0'
 			document.getElementById('notif').style.visibility='visible'
-	    	setTimeout(function(){
+			setTimeout(function(){
 	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
 	    	}, 3000);
 		}
-		 else if(num===false)
-		{
+		else if(!dnumNumber){
 			$('#notif').html("D# can only contain numbers");
 			document.getElementById('notif').style.opacity='1.0'
 			document.getElementById('notif').style.visibility='visible'
-	    	setTimeout(function(){
+			setTimeout(function(){
 	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
 	    	}, 3000);
 		}
-	}
+		else{
+  			$('#notif').html("Please Enter Your D#");
+			document.getElementById('notif').style.opacity='1.0'
+			document.getElementById('notif').style.visibility='visible'
+			setTimeout(function(){
+	          $('#notif').animate({ opacity: 0 }, 1000, 'linear')
+	    	}, 3000);
+		}
+  	}
   });
 
 
@@ -248,7 +254,9 @@ Template.signupForm.events({
   "click #signup-form": function(event, template) {
     event.preventDefault();
 	if(uFlag && eFlag && cFlag && pwFlag && areaFlag && middleDigitFlag && lastFlag && dFlag){
-        
+		var input = template.find("#signup-dnum").value;
+        good_dnum = input.replace(/(\s*)(D|d|0)?(\d{8})(.*)/, 'D$3');
+
         Accounts.createUser({
         username: template.find("#signup-username").value,
         password: template.find("#signup-password").value,
@@ -258,7 +266,7 @@ Template.signupForm.events({
           cellNumber: template.find("#signup-cell1").value +template.find("#signup-cell2").value+template.find("#signup-cell3").value ,
           cellCarrier: template.find("#signup-carrier").value,
 	  	  du: template.find("#signup-email").value,
-		  dnum: template.find("#signup-dnum").value,
+		  dnum: good_dnum,
           
         }
       }, function(error) {

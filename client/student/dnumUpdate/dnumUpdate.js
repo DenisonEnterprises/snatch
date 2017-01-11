@@ -10,21 +10,19 @@ Template.dnumUpdateForm.events({
   		var dnumTaken = Meteor.users.find({"profile.dnum": input}).count() > 0;
 		var dnumEmpty = input.length === 0;
 		var dnumNumber = true;
-		
-		for (i = 0; i < input.length; i++) {
-			var numero = parseInt(input[i], 10);
-			if(typeof numero==='number' && (numero%1)===0) {
-				dnumNumber = true;
-			}
-			else {
-				dnumNumber = false;
-				break;
-			}
+
+		good_dnum = input.replace(/(\s*)(D|d|0)?(\d{8})(.*)/, 'D$3');
+
+		if(good_dnum.length == 9){
+			dnumNumber = true;
+		}
+		else{
+			dnumNumber = false;
 		}
 		
   		dFlag = !dnumTaken && !dnumEmpty && dnumNumber;
 		if(dFlag){
-		 Meteor.users.update({_id:Meteor.user()._id}, { $set: {"profile.dnum": input} });
+		 Meteor.users.update({_id:Meteor.user()._id}, { $set: {"profile.dnum": good_dnum} });
 		  Router.go('/checkout');
   		}else{
   			$(this).removeClass("valid").addClass("invalid");
