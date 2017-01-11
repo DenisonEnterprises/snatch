@@ -198,6 +198,9 @@ Meteor.methods({
 			orderNum++;
 		}
 		var CAP = KitchenCap.findOne({name: "bandersnatch"}).capNum;
+		//var startTime = new Date();
+		//startTime.setTime(startTime.getTime()+startTime.getTimezoneOffset());
+
 		var order = {
 			userId: usr._id,
 			inHouse: inHouse,
@@ -277,6 +280,12 @@ Meteor.methods({
 		}else{
 			orderPrice = 0.00; 
 		}
+		var finishTime = new Date();
+		//var offSet = finishTime.getTimezoneOffset();
+		//offSet = offSet / 60;
+		//finishTime.setHours(finishTime.getUTCHours() - offSet);
+		//setTime(finishTime.getTime()+finishTime.getTimezoneOffset());
+
 		var order = {
 			userId: usrID,
 			email: usrEmail,
@@ -435,8 +444,22 @@ Meteor.methods({
 	   for(var i = 0; i < totOrders.length; i++){
 		   price += parseFloat(totOrders[i].price);
 	   }
-	   var utc = new Date().toJSON().slice(0,10);
-	   text += "Date: " + utc;
+	   //var utc = new Date().toJSON().slice(0,10);
+
+	   var today = new Date();
+	   var yesterday = new Date(today);
+	   yesterday.setDate(today.getDate() - 1);
+	   yesterday.toJSON().slice(0,10);
+
+	   //var dd = yesterday.getDate();
+	   //var mm = yesterday.getMonth()+1;
+	   //var yyyy = yesterday.getFullYear();
+	   //if(dd < 10) {dd = '0'+dd}
+	   //if(mm<10) {mm = '0'+mm}
+	   //yesterday = dd+'/'+mm+'/'+yyyy;
+
+	   //text += "Date: " + utc;
+	   text += "Date: " + yesterday;
 	   text += "\n" + "total revenue of the night: $" + price.toFixed(2) + "\n\n";
 	   
 	   var products = [];																// Code below finds current product list -- don't want product list hard-coded
@@ -460,10 +483,11 @@ Meteor.methods({
 			}
 		});
 		
-		
+		/*
 		text += "\n========== Sales broken down in 30 minute intervals ========== \n\n";
 		
-		var currentDate = new Date();													// Finds current date to use in email
+		var currentDate = new Date();
+		//currentDate.setTime(currentDate.getTime()+currentDate.getTimezoneOffset());													// Finds current date to use in email
 		var year = currentDate.getUTCFullYear();
 		var month = currentDate.getUTCMonth() + 1;
 		var day = currentDate.getUTCDate();
@@ -474,7 +498,8 @@ Meteor.methods({
 		
 		var timeArrayText = ["21:00 - 21:30", "21:30 - 22:00", "22:00 - 22:30", "22:30 - 23:00", "23:00 - 23:30", "23:30 - 00:00", "00:00 - 00:30", "00:30 - 01:00", "01:00 - 01:30", "01:30 - 02:00"];
 		var timeCutOffs = ["21:29:59:999", "21:59:59:999", "22:29:59:999", "22:59:59:999", "23:29:59:999", "23:59:59:999", "00:29:59:999", "00:59:59:999", "01:29:59:999", "01:59:59:999"];
-		
+		//var timeCutOffs = ["02:29:59:999", "02:59:59:999", "03:29:59:999", "03:59:59:999", "05:29:59:999", "05:59:59:999", "06:29:59:999", "06:59:59:999", "07:29:59:999", "07:59:59:999"];
+
 		for (t = 0; t < timeCutOffs.length; t++) {				// For each time range
 			text += timeArrayText[t] + "   ";
 			
@@ -504,7 +529,7 @@ Meteor.methods({
 				var MS = parseInt(DATE.getUTCMilliseconds(), 10);
 			}
 			
-			while((orderCount<orderCountLength)&&(YR == year)&&(MO == month)&&(DY == day)&&(HR <= hour)&&(MN <= minute)&&(SC <= second)&&(MS <= millisecond)) {
+			while((orderCount<orderCountLength)&&(HR <= hour)&&(MN <= minute)&&(SC <= second)&&(MS <= millisecond)) {
 				var currentProd = allOrdersTimeCorrect[orderCount].item;
 				productDict[currentProd] += 1;
 				orderCount += 1;
@@ -819,9 +844,9 @@ Meteor.methods({
 	  Roles.setUserRoles(bsUser1, 'employee');
 	
       var mana = Meteor.users.findOne({username: "bsnman"}); 
-      //Roles.createRole('manager');
+      Roles.createRole('manager');
       Roles.setUserRoles(mana, 'manager');
   }
-  */
+  
   
 });
