@@ -601,6 +601,10 @@ Meteor.methods({
 				if (latePPL[i].mixin != "") {
 					var stringMixinLate = latePPL[i].mixin;
 					late += "\n\t mixin: " + stringMixinLate.replace(/(\r\n|\n|\r)/gm,"");
+				}
+				if (latePPL[i].topping != "") {
+					var stringToppingLate = latePPL[i].topping;
+					late += "\n\t topping: " + stringToppingLate.replace(/(\r\n|\n|\r)/gm,"");
 				};
 		   }
 				
@@ -634,6 +638,10 @@ Meteor.methods({
 					var stringMixinLate = latePPL[i].mixin;
 					late += "\n\t mixin: " + stringMixinLate.replace(/(\r\n|\n|\r)/gm,"");
 				}
+				if (latePPL[i].topping != "") {
+					var stringToppingLate = latePPL[i].topping;
+					late += "\n\t topping: " + stringToppingLate.replace(/(\r\n|\n|\r)/gm,"");
+				}
 				lateOrderNumPPL[orderNum] = 1;
 			}
 	   }
@@ -662,6 +670,10 @@ Meteor.methods({
 				if (PPL[i].mixin != "") {
 					var stringMixin = PPL[i].mixin;
 					text += "\n\t mixin: " + stringMixin.replace(/(\r\n|\n|\r)/gm,"");
+				}
+				if (PPL[i].topping != "") {
+					var stringTopping = PPL[i].topping;
+					text += "\n\t topping: " + stringTopping.replace(/(\r\n|\n|\r)/gm,"");
 				};
 		   }
 				
@@ -691,6 +703,10 @@ Meteor.methods({
 				if (PPL[i].mixin != "") {
 					var stringMixin = PPL[i].mixin;
 					text += "\n\t mixin: " + stringMixin.replace(/(\r\n|\n|\r)/gm,"");
+				}
+				if (PPL[i].toping != "") {
+					var stringTopping = PPL[i].topping;
+					text += "\n\t topping: " + stringTopping.replace(/(\r\n|\n|\r)/gm,"");
 				}
 				orderNumPPL[orderNum] = 1;
 			}
