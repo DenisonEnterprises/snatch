@@ -1,5 +1,7 @@
 # Bandersnatch WebApp
 
+<img src="img/bandersnatch-screenshot.png">
+
 ## A Little About The WebApp
 
 This project was built to remedy a problem with Denison University's on-campus coffeehouse, The Bandersnatch. The Bandersnatch struggles with turning a profit and using data to properly plan when purchasing food supplies for their kitchen. Therefore, this webapp serves as a point-of-sale system and data management tool for Bandersnatch employees, managers, consultants, and auditors.
