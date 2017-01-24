@@ -13,7 +13,7 @@
 }
 
 
-.shakesContainer #flavorList, #mixinList{
+.shakesContainer #flavorList, #mixinList, #toppingList{
 	color:black;
 	width:150px;
 }

@@ -9,7 +9,7 @@
 	/*font-size: 12px;*/
 }
 
-.pseudoMenuContainer #flavorList, #mixinList{
+.pseudoMenuContainer #flavorList, #mixinList, #toppingList{
 	color: black;
 	width:150px;
 }
