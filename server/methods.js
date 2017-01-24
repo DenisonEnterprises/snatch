@@ -560,7 +560,7 @@ Meteor.methods({
 			};
 			text += "\n\n";
 		}
-		
+		*/
 		
 		text += "\n\n" + "========== Total sales by item ========== \n\n";						// Finds total number of each product sold during the night
 		
@@ -849,7 +849,7 @@ Meteor.methods({
    },
    
    
-  /*
+
   createAct: function() {
       var bsUser = Meteor.users.findOne({username: "bsnemp2"}); 
       Roles.createRole('employee2');
