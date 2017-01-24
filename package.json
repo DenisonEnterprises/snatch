@@ -5,8 +5,10 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "bcrypt": "0.8.7",
     "later": "^1.2.0",
     "meteor-node-stubs": "~0.2.0",
+    "moment-timezone": "^0.5.11",
     "react": "^15.4.1",
     "react-addons-create-fragment": "^15.4.1",
     "react-addons-css-transition-group": "^15.4.1",
@@ -18,5 +20,8 @@
     "react-addons-update": "^15.4.1",
     "react-dom": "^15.4.1",
     "reast": "0.0.1"
+  },
+  "engines": {
+    "node": "4.7.2"
   }
 }
