@@ -515,10 +515,10 @@ Meteor.methods({
 					var stringMixinLate = latePPL[i].mixin;
 					late += "\n\t mixin: " + stringMixinLate.replace(/(\r\n|\n|\r)/gm,"");
 				}
-				if (latePPL[i].topping != "") {
+				/* if (latePPL[i].topping != "") {
 					var stringToppingLate = latePPL[i].topping;
 					late += "\n\t topping: " + stringToppingLate.replace(/(\r\n|\n|\r)/gm,"");
-				};
+				} */
 		   }
 				
 			else{																// Haven't create a section for particular order # yet
@@ -551,10 +551,10 @@ Meteor.methods({
 					var stringMixinLate = latePPL[i].mixin;
 					late += "\n\t mixin: " + stringMixinLate.replace(/(\r\n|\n|\r)/gm,"");
 				}
-				if (latePPL[i].topping != "") {
+				/* if (latePPL[i].topping != "") {
 					var stringToppingLate = latePPL[i].topping;
 					late += "\n\t topping: " + stringToppingLate.replace(/(\r\n|\n|\r)/gm,"");
-				}
+				} */
 				lateOrderNumPPL[orderNum] = 1;
 			}
 	   }
@@ -584,10 +584,10 @@ Meteor.methods({
 					var stringMixin = PPL[i].mixin;
 					text += "\n\t mixin: " + stringMixin.replace(/(\r\n|\n|\r)/gm,"");
 				}
-				if (PPL[i].topping != "") {
+				/* if (PPL[i].topping != "") {
 					var stringTopping = PPL[i].topping;
 					text += "\n\t topping: " + stringTopping.replace(/(\r\n|\n|\r)/gm,"");
-				};
+				} */
 		   }
 				
 			else{
@@ -617,10 +617,10 @@ Meteor.methods({
 					var stringMixin = PPL[i].mixin;
 					text += "\n\t mixin: " + stringMixin.replace(/(\r\n|\n|\r)/gm,"");
 				}
-				if (PPL[i].toping != "") {
+				/* if (PPL[i].topping != "") {
 					var stringTopping = PPL[i].topping;
 					text += "\n\t topping: " + stringTopping.replace(/(\r\n|\n|\r)/gm,"");
-				}
+				} */
 				orderNumPPL[orderNum] = 1;
 			}
 	   }
@@ -676,6 +676,11 @@ Meteor.methods({
 			   var mixLen = FO.mixin.length; 
 			   mix = FO.mixin.substring(0, mixLen - 1);
 		   }
+		   /* var topping = FO.topping; 
+		   if(FO.topping.includes('\n')){
+			   var topLen = FO.topping.length; 
+			   topp = FO.topping.substring(0, topLen - 1);
+		   } */
 		   
 		   var itemz = FO.item; 
 		   if(itemz === "Shake: "){
@@ -688,6 +693,7 @@ Meteor.methods({
 			   item : itemz,
 			   flavor: flav, 
 			   mixin: mix, 
+			   //topping: topping,
 			   inHouse : FO.inHouse, 
 			   date: startT.getUTCFullYear() + '-' + (startT.getUTCMonth() + 1)+'-' + startT.getUTCDate(),
 			   start : startT.getHours() + ':'+ startMin + ':'+startT.getSeconds(),
