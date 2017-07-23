@@ -6,6 +6,11 @@ Template.employee.events({
   'click #swapBTN': function( evt, instance ){
     Router.go('orderList');
   },
+  
+  'click #refresh': function( evt, instance ){
+    //Router.go('employee');
+	document.location.reload(true);
+  },
 	
 	"click #logout": function(evt, instance){
 		Meteor.call("delLocalByUser");
