@@ -34,19 +34,20 @@ Template.orderInfo.helpers({
 
 Template.order3.helpers({
   'orderTime' : function(){
-    var time = this.start;	
-	if(time.getHours() >= 12 && time.getHours() < 24){
-	    if(time.getHours() == 12){
+    var time = this.start;
+	var hours = time.getHours();			// adjusted for daylight savings -- UTC is 5 hours ahead spring/summer
+	if(hours >= 12 && hours < 24){
+	    if(hours == 12){
 			return '12' + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
 	    }else{
-			return (time.getHours() - 12) + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
+			return (hours - 12) + ":" + ("0" + time.getMinutes()).slice(-2) + " PM"; //PM
 	    }
 		
 	}else{
-		if(time.getHours() == 0){
+		if(hours == 0){
 	    	return '12' + ":" + ("0" + time.getMinutes()).slice(-2) + " AM"; //AM
 		}else{
-	    	return time.getHours() + ":" + ("0" + time.getMinutes()).slice(-2) + " AM"; //AM
+	    	return hours + ":" + ("0" + time.getMinutes()).slice(-2) + " AM"; //AM
 		}
 	}
   }
