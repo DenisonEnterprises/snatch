@@ -72,10 +72,10 @@ Template.addIn.helpers({
 		var i = 0;
 		if(this.flavor != null){
 			str = '\n\t' + this.flavor;
-			if(this.mixin != ''){
+			if((this.mixin != '')&&(this.mixin != null)){
 				str += "\n\t" + this.mixin;
 			}
-			if(this.topping != ''){
+		if((this.topping != '')&&(this.topping != null)){
 				str += "\n\t" + this.topping;
 			}
 		}
@@ -121,7 +121,7 @@ Template.orderInfo.events({
 		if(order === "Shake: "){
 			flavs = this.flavor; 
 			mixins = this.mixin; 
-			toppings = this.toppings;
+			toppings = this.topping;
 		}
 		var usrName = this.uName; 
 		var cellNumber = this.phone;
