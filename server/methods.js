@@ -444,21 +444,13 @@ Meteor.methods({
 	   for(var i = 0; i < totOrders.length; i++){
 		   price += parseFloat(totOrders[i].price);
 	   }
-	   //var utc = new Date().toJSON().slice(0,10);
 
 	   var today = new Date();
 	   var yesterday = new Date(today);
 	   yesterday.setDate(today.getDate() - 1);
 	   yesterday.toJSON().slice(0,10);
 
-	   //var dd = yesterday.getDate();
-	   //var mm = yesterday.getMonth()+1;
-	   //var yyyy = yesterday.getFullYear();
-	   //if(dd < 10) {dd = '0'+dd}
-	   //if(mm<10) {mm = '0'+mm}
-	   //yesterday = dd+'/'+mm+'/'+yyyy;
-
-	   //text += "Date: " + utc;
+	   
 	   text += "Date: " + yesterday;
 	   text += "\n" + "total revenue of the night: $" + price.toFixed(2) + "\n\n";
 	   
@@ -482,85 +474,6 @@ Meteor.methods({
 				products.push(nameList[index]);
 			}
 		});
-		
-		/*
-		text += "\n========== Sales broken down in 30 minute intervals ========== \n\n";
-		
-		var currentDate = new Date();
-		//currentDate.setTime(currentDate.getTime()+currentDate.getTimezoneOffset());													// Finds current date to use in email
-		var year = currentDate.getUTCFullYear();
-		var month = currentDate.getUTCMonth() + 1;
-		var day = currentDate.getUTCDate();
-		
-		var allOrdersTimeCorrect = FinishedOrders.find().fetch().reverse();
-		var orderCount = 0;
-		var orderCountLength = allOrdersTimeCorrect.length;
-		
-		var timeArrayText = ["21:00 - 21:30", "21:30 - 22:00", "22:00 - 22:30", "22:30 - 23:00", "23:00 - 23:30", "23:30 - 00:00", "00:00 - 00:30", "00:30 - 01:00", "01:00 - 01:30", "01:30 - 02:00"];
-		var timeCutOffs = ["21:29:59:999", "21:59:59:999", "22:29:59:999", "22:59:59:999", "23:29:59:999", "23:59:59:999", "00:29:59:999", "00:59:59:999", "01:29:59:999", "01:59:59:999"];
-		//var timeCutOffs = ["02:29:59:999", "02:59:59:999", "03:29:59:999", "03:59:59:999", "05:29:59:999", "05:59:59:999", "06:29:59:999", "06:59:59:999", "07:29:59:999", "07:59:59:999"];
-
-		for (t = 0; t < timeCutOffs.length; t++) {				// For each time range
-			text += timeArrayText[t] + "   ";
-			
-			var productDict = {};
-			for(i = 0; i < products.length; i++){
-				var nameOfProduct = products[i];
-				productDict[nameOfProduct] = 0;
-			};
-			
-			var time = timeCutOffs[t];
-			var timeArray = time.split(":");
-			
-			var hour = parseInt(timeArray[0], 10);
-			var minute = parseInt(timeArray[1], 10);
-			var second = parseInt(timeArray[2], 10);
-			var millisecond = parseInt(timeArray[3], 10);
-			
-			
-			if (orderCount<orderCountLength) {
-				var DATE = allOrdersTimeCorrect[orderCount].finish;
-				var YR = parseInt(DATE.getUTCFullYear(), 10);
-				var MO = parseInt((DATE.getUTCMonth() + 1), 10);
-				var DY = parseInt(DATE.getUTCDate(), 10);
-				var HR = parseInt(DATE.getUTCHours(), 10);
-				var MN = parseInt(DATE.getUTCMinutes(), 10);
-				var SC = parseInt(DATE.getUTCSeconds(), 10);
-				var MS = parseInt(DATE.getUTCMilliseconds(), 10);
-			}
-			
-			while((orderCount<orderCountLength)&&(HR <= hour)&&(MN <= minute)&&(SC <= second)&&(MS <= millisecond)) {
-				var currentProd = allOrdersTimeCorrect[orderCount].item;
-				productDict[currentProd] += 1;
-				orderCount += 1;
-				
-				if ((orderCount>=orderCountLength)) {
-					break;
-				}
-				else {
-					var DATE = allOrdersTimeCorrect[orderCount].finish;
-					var YR = parseInt(DATE.getUTCFullYear(), 10);
-					var MO = parseInt((DATE.getUTCMonth() + 1), 10);
-					var DY = parseInt(DATE.getUTCDate(), 10);
-					var HR = parseInt(DATE.getUTCHours(), 10);
-					var MN = parseInt(DATE.getUTCMinutes(), 10);
-					var SC = parseInt(DATE.getUTCSeconds(), 10);
-					var MS = parseInt(DATE.getUTCMilliseconds(), 10);
-				};
-			};
-			
-			for(i = 0; i < products.length; i++){
-				var nameOfProduct = products[i];
-				if (nameOfProduct == "Shake: ") {
-					text += nameOfProduct + productDict[nameOfProduct] + "   ";
-				}
-				else {
-					text += nameOfProduct  + ": " + productDict[nameOfProduct] + "   ";
-				};
-			};
-			text += "\n\n";
-		}
-		*/
 		
 		text += "\n\n" + "========== Total sales by item ========== \n\n";						// Finds total number of each product sold during the night
 		
