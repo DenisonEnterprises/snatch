@@ -17,14 +17,14 @@ Meteor.publish('beverages', function(){
 });
 
 Meteor.publish('milkshakes', function(){
-	return Milkshakes.find();	
+	return Milkshakes.find();
 });
 
 Meteor.publish('local', function(){
 	return Local.find();
 });
 
-Meteor.publish('active', function(){ 
+Meteor.publish('active', function(){
 	return ActiveOrders.find();
 });
 
@@ -41,12 +41,9 @@ Meteor.publish('kitchenCap', function(){
 });
 
 Meteor.publish('emailList', function(){
-	return EmailList.find(); 
+	return EmailList.find();
 })
 
 Meteor.publish('ready', function(){
 	return ReadyOrders.find();
 });
-//Roles??
-//Local
-
