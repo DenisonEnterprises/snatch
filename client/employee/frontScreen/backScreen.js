@@ -2,6 +2,14 @@ Meteor.subscribe('active');
 Meteor.subscribe('ready');
 Meteor.subscribe('finished');
 
+const admin = [
+    "nick",
+    "clairevf",
+    "emma",
+    "chmdance",
+    "bobby",
+];
+
 Template.backScreen.events({
     "click #swapBTN": function(evt, instance) {
         Router.go('/pseudoMenu');
@@ -30,8 +38,10 @@ Template.orderPrice.helpers({
     'price': function() {
         var orNum = this.orderNum;
 
-        if (this.uName === "nick" || this.uName === "clairevf" || this.uName === "emma" || this.uName === "chmdance") {
-            return "Paid in house";
+        for ( i in admin ) {
+            if (admin[i] === this.uName) {
+                return "Paid in house";
+            }
         }
 
         if (this.inHouse) {
