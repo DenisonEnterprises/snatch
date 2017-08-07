@@ -1,74 +1,68 @@
-.nav .Logout button{
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 90px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 12px;
-  background: #005f5f;
-  padding: 1px 15px 1px 15px;
-  text-decoration: none;
+.nav .Logout button {
+	-webkit-border-radius: 28;
+	-moz-border-radius: 28;
+	border-radius: 90px;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 12px;
+	background: #005f5f;
+	padding: 1px 15px 1px 15px;
+	text-decoration: none;
 }
 
 .nav .logout:hover {
-  background: #1ca8a8;
-  text-decoration: none;
+	background: #1ca8a8;
+	text-decoration: none;
 }
 
-
-a:link, a:visited { 
-    color: #000000;
-    text-decoration: underline;
-    cursor: auto;
+a:link, a:visited {
+	color: #000000;
+	text-decoration: underline;
+	cursor: auto;
 }
 
-a:link:active, a:visited:active { 
-    color: #000000;
+a:link:active, a:visited:active {
+	color: #000000;
 }
 
 .nav {
-	margin-top:25px;
-  background-color:transparent;
+	margin-top: 25px;
+	background-color: transparent;
 }
 
-.nav ul{
-  list-style: none;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-    
+.nav ul {
+	list-style: none;
+	text-align: center;
+	padding: 0;
+	margin: 0;
 }
 
 .nav li {
-    
-    font-family: OpenSans;
-    width: auto;
-    height: 37px;
-    line-height: 30px;
-    font-size: 1.0em;
-    display: inline-block;
-    color: #fff;
-
-    
+	font-family: OpenSans;
+	width: auto;
+	height: 37px;
+	line-height: 30px;
+	font-size: 1.0em;
+	display: inline-block;
+	color: #fff;
 }
 
-.nav li img{
-  width:40px;
-  height:37px;
+.nav li img {
+	width: 40px;
+	height: 37px;
 }
 
 .nav a {
-  
-  color: #fff;
-  display: block;
-  transition: .3s background-color;
+	color: #fff;
+	display: block;
+	transition: .3s background-color;
 }
- 
+
 .nav a:hover {
-  background-color: #005f5f;
+	background-color: #005f5f;
 }
 
 .nav a.active {
-  color: #fff;
-  cursor: default;
+	color: #fff;
+	cursor: default;
 }

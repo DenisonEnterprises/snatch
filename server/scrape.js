@@ -27,7 +27,7 @@ SyncedCron.add({
     name: 'Turn app off',
     schedule: function(psr) {
         // parser is a later.parse object
-        return later.parse.recur().on(6).hour(); // turns off  at 2am every morning -- UTC 6am (spring/summer)
+        return later.parse.recur().on(6).hour(); // turns off at 2am every morning -- UTC 6am (spring/summer)
     },
     job: function() {
         Meteor.call('appOff');

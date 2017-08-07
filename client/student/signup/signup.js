@@ -11,12 +11,14 @@ Template.signupForm.rendered = function() {
     $('#signup-cell2').addClass('invalid');
     $('#signup-cell3').addClass('invalid');
     $('#signup-carrier').addClass("invalid");
+    $('#signup-year').addClass("invalid");
 
     uFlag = false;
     eFlag = false;
     cFlag = false;
     pwFlag = false;
     dFlag = false;
+    yFlag = false;
 
     areaFlag = false;
     middleDigitFlag = false;
@@ -155,6 +157,17 @@ Template.signupForm.rendered = function() {
         }
     });
 
+    $('#signup-year').on('change', function(e) {
+        if (e.target.value != "select") {
+            yFlag = true;
+            $(this).removeClass("invalid").addClass("valid");
+        }
+        else {
+            yFlag = false;
+            $(this).removeClass("valid").addClass("invalid");
+        }
+    });
+
     $('#signup-password').on('input', function() {
         var input = $(this).val();
         var input2 = $('#signup-confirm-password').val();
@@ -243,28 +256,34 @@ Template.signupForm.rendered = function() {
 Template.signupForm.events({
     "click #signup-form": function(event, template) {
         event.preventDefault();
-        if (uFlag && eFlag && cFlag && pwFlag && areaFlag && middleDigitFlag && lastFlag && dFlag) {
-            var input = template.find("#signup-dnum").value;
-            good_dnum = input.replace(/(\s*)(D|d|0)?(\d{8})(.*)/, 'D$3');
+        if (uFlag &&
+            eFlag &&
+            cFlag &&
+            pwFlag &&
+            areaFlag &&
+            middleDigitFlag &&
+            lastFlag &&
+            dFlag && yFlag) {
+                var input = template.find("#signup-dnum").value;
+                good_dnum = input.replace(/(\s*)(D|d|0)?(\d{8})(.*)/, 'D$3');
 
-            Accounts.createUser({
-                username: template.find("#signup-username").value,
-                password: template.find("#signup-password").value,
-                email: template.find("#signup-email").value,
+                Accounts.createUser({
+                    username: template.find("#signup-username").value,
+                    password: template.find("#signup-password").value,
+                    email: template.find("#signup-email").value,
 
-                profile: {
-                    cellNumber: template.find("#signup-cell1").value + template.find("#signup-cell2").value + template.find("#signup-cell3").value,
-                    cellCarrier: template.find("#signup-carrier").value,
-                    du: template.find("#signup-email").value,
-                    dnum: good_dnum,
-
-                }
-            }, function(error) {
-                if (!error) {
-                    Router.go('thanks');
-                }
-            });
-
+                    profile: {
+                        cellNumber: template.find("#signup-cell1").value + template.find("#signup-cell2").value + template.find("#signup-cell3").value,
+                        cellCarrier: template.find("#signup-carrier").value,
+                        du: template.find("#signup-email").value,
+                        dnum: good_dnum,
+                        classYear: template.find("#signup-year").value,
+                    }
+                }, function(error) {
+                    if (!error) {
+                        Router.go('thanks');
+                    }
+                });
         } else {
             if (!uFlag) {
                 $('#notif').html("Please Provide a Valid Username");

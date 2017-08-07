@@ -1,0 +1,60 @@
+<template name="forgotField">
+    <head>
+    	<title>Bandersnatch - Forgotten Field</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+    </head>
+
+	<div class="signupContainer">
+		<div class="container">
+			<div class="formContainer">
+                <h1 style="text-align: center; margin-bottom: 1em;">Looks like you forgot something!</h1>
+
+                <div class="dnumCont">
+                    <div class="cntr">
+                        <label id="signup-dnum-lbl">D#</label>
+                    </div>
+
+                    <div class="cntr">
+                        <input id="signup-dnum" placeholder="ex. 01342998" maxlength="8" type="text">
+                    </div>
+                </div>
+
+                <div class="gradYearCont">
+                    <div class="cntr">
+                        <label id="signup-year-lbl">Grad Year</label>
+                    </div>
+
+                    <div class="cntr">
+                        <select id="signup-year">
+                            <option value="select">
+                                Select
+                            </option>
+                            <option value="2018">
+                                2018
+                            </option>
+                            <option value="2019">
+                                2019
+                            </option>
+                            <option value="2020">
+                                2020
+                            </option>
+                            <option value="2021">
+                                2021
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+				<h6 class="cntr" id="notif">Text</h6>
+
+				<div class="cntr">
+                    <button id="proceedButton" type="submit">Proceed</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="bground"><img alt="" src="/img/teal_background.jpg"></div>
+
+</template>
