@@ -1,21 +1,16 @@
 <template name="about">
-  <head>
-    <title>Bandersnatch - About</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-
 
 	{{#if isInRole 'student'}}
-	
+
 	{{#if appOn}}
-  
-  
+
+
   <div class="aboutcontainer">
-  
-   
+
+
    <div class="wrapper">
    <h1>About Us</h1>
-       
+
     <p>Denison Enterprises was founded in 2014 when students recognized there were no outlets for hands-on business experience on campus. The group works with the Bandersnatch, helping to transition the late-night snack spot to run like a true business. </p>
 
 
@@ -28,18 +23,17 @@
     		<img src="/img/about.jpg" alt="">
     </div>
   {{else}}
-    
-     {{> offScreen}}
-  
-  {{/if}}
-  
-  
-  
-  {{else}}
-    
-     {{> denied}}
-  
-  {{/if}}
-  
-</template>
 
+     {{> offScreen}}
+
+  {{/if}}
+
+
+
+  {{else}}
+
+     {{> denied}}
+
+  {{/if}}
+
+</template>
