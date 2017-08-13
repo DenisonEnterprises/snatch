@@ -660,21 +660,25 @@ Meteor.methods({
             recipients += emailChain[i].email + ', ';
         };
 
-        Email.send({
-            from: "bandersnatchapp@gmail.com",
-            to: recipients,
+		if (ReadyOrders.find().fetch().length > 0) {
+	        Email.send({
+	            from: "bandersnatchapp@gmail.com",
+	            to: recipients,
 
-            subject: "Didn't Pick Up Order",
-            text: late,
-        });
+	            subject: "Didn't Pick Up Order",
+	            text: late,
+	        });
+		}
 
-        Email.send({
-            from: "bandersnatchapp@gmail.com",
-            to: recipients,
+		if (FinishedOrders.find().fetch().length > 0) {
+	        Email.send({
+	            from: "bandersnatchapp@gmail.com",
+	            to: recipients,
 
-            subject: "Daily Stats",
-            text: text,
-        });
+	            subject: "Daily Stats",
+	            text: text,
+	        });
+		}
     },
 
     pushFinished: function() {
